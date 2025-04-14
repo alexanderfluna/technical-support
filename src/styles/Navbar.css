@@ -1,51 +1,128 @@
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --text-color: #1e293b;
+  --text-light: #64748b;
+  --bg-color: #ffffff;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .navbar {
     display: flex;
     flex-direction: column;
     width: 100%;
+    border-bottom: 1px solid black;
 }
 
 .comnet-logo {
-    height: 80px;
-    width: 400px;
-    cursor: pointer;
+  height: 10rem;
+  width: 35rem;
+  cursor: pointer;
+  transition: var(--transition);
 }
-
-/* CATEGORIES */
 
 .categories {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    padding-top: 20px;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
 }
 
-.categories div span {
-    font-size: 2rem;
-    cursor: pointer;
-    color: rgb(39, 96, 194);
-    position: relative;
-    display: block;
+.categories > div {
+  position: relative;
+  cursor: pointer;
+  padding: 0.75rem 0;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: var(--transition);
 }
 
-.categories div span:hover {
-    color: rgb(90, 150, 255);
+.categories > div > span {
+  position: relative;
+  padding: 1.3rem 0;
+  font-size: 1.8rem;
+  display: block;
+  color: #2a3a8f;
+  font-weight: 600;
+}
+
+.categories > div > span::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: var(--transition);
+}
+
+.categories > div:hover > span::after {
+  width: 100%;
+}
+
+.categories > div:hover {
+  color: var(--primary-color);
 }
 
 .hover-box {
-    position: absolute;
-    background: #eee;
-    padding: 10px;
-    border: 1px solid #ccc;
-    z-index: 1000;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  padding: .1rem;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 1000;
+}
+
+.categories > div:hover .hover-box {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0.5rem);
 }
 
 .hover-box li {
-    font-size: 1.5rem;
-    cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem 0;
+  border-radius: 0.25rem;
+  color: var(--text-color);
+  list-style: none;
+  transition: var(--transition);
+  cursor: pointer;
+  font-size: 1.2rem;
 }
 
-.hover-box li:hover {
-    color: rgb(90, 150, 255);
+.hover-box p:hover, .hover-box li:hover {
+  background-color: #f1f5f9;
+  color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .comnet-logo {
+    margin-bottom: 1rem;
+  }
+  
+  .navbar > .search-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+  
+  .categories {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 /* SEARCH CONTAINER */
@@ -55,12 +132,14 @@
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  top: 20px;
-  right: 100px;
+  top: 3rem;
+  right: 11rem;
 }
 
 .search-input-container {
   position: relative;
+  display: flex;
+  flex-direction: row;
 }
 
 .search-input {
@@ -68,15 +147,57 @@
   padding: 12px 20px;
   font-size: 16px;
   border: 2px solid #e0e0e0;
-  border-radius: 30px;
   outline: none;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.search-input:hover {
+  border-color: #4a90e2;
+}
+
 .search-input:focus {
   border-color: #4a90e2;
   box-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
+}
+
+.search-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  color: #374151;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-button:hover {
+  background-color: #e5e7eb; 
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-button:active {
+  background-color: #d1d5db;
+  transform: translateY(0);
+}
+
+.search-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(209, 213, 219, 0.5);
+}
+
+.search-button:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
 }
 
 .search-results {
@@ -158,20 +279,12 @@
   }
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-
-  
-  
-}
-
-
 /* IPHONE CSS */
 
-@media (max-width: 900px){
+@media (max-width: 1300px){
 .comnet-logo {
-    height: 50px;
-    width: 200px;
+    height: 8rem;
+    width: 25rem;
 }
 
 .categories {
@@ -180,9 +293,9 @@
 }
 
 .search-container{
-    max-width: 200px;
-    top: 10px;
-    right: 50px;
+    max-width: 300px;
+    top: 2rem;
+    right: 4rem;
 }
 
 .search-input {

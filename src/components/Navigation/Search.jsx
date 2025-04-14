@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { FaSearch } from 'react-icons/fa';
 import ServerProducts from '../../pages/Razberi/RazberiProducts'
 import EthernetSwitchProducts from '../../pages/EthernetSwitch/EthernetSwitchProducts' 
 import MediaConverterProducts from '../../pages/MediaConverter/MediaConverterProducts'
@@ -87,27 +88,31 @@ const Search = () => {
   return (
     <div className="search-container">
       <div className="search-input-container">
-            <input
-              value={searchTerm}
-              onChange={handleSearch}
-              placeholder="Enter product number..."
-              className="search-input"
-            />
-          </div>
+        <input
+          value={searchTerm}
+          onChange={handleSearch}
+          placeholder="Enter product number..."
+          className="search-input"
+        />
+        <button class="search-button">
+          <span>Search</span>
+        </button>
+      </div>
 
-          {searchTerm && filteredProducts.length > 0 && (
-            <div className="search-results">
-              {filteredProducts.map((product, index) => (
-                <div
-                  key={index}
-                  className="search-result-item"
-                  onClick={() => handleProductSelect(product.Model)}
-                >
-                  {product.Model}
-                </div>
-              ))}
+      {searchTerm && filteredProducts.length > 0 && (
+        <div className="search-results">
+          {filteredProducts.map((product, index) => (
+            <div
+              key={index}
+              className="search-result-item"
+              onClick={() => handleProductSelect(product.Model)}
+            >
+              {product.Model}
             </div>
-          )}
+          ))}
+        </div>
+      )}
+
     </div>
   )
 }

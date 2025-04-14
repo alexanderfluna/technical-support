@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Categories from './Categories'
 import Search from './Search'
 import '../../styles/Navbar.css'
 
@@ -27,7 +26,7 @@ const Navbar = ({ onCategoryChange }) => {
 
         <div 
           onClick={() => handleMouseClick("server")}>
-            <span>Server</span>
+            <span>Edge Computing</span>
         </div>
 
         <div 

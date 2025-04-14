@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
 
 const RazberiFAQ = () => {
+  useEffect(() => {
+    if (window.location.hash) {
+      const element = document.getElementById(window.location.hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, []);
+
   return (
     <div className="faq-list">
       <h1 className="faq-title">Relevant Razberi Server Information</h1>
@@ -9,7 +20,7 @@ const RazberiFAQ = () => {
       <div className="table-of-contents">
         <h1>Table of Contents</h1>
         <li><a href="#computing">Computing Terminology</a></li>
-        <li><a href="#poe">Power Over Ethernet</a></li>
+        <li><a href="#power-over-ethernet">Power Over Ethernet</a></li>
       </div>
 
       <div id="computing" className="faq-answer">
@@ -81,7 +92,7 @@ const RazberiFAQ = () => {
         <p><strong>iDRAC (Integrated Dell Remote Access Controller):</strong> iDRAC is Dell’s proprietary remote management solution for servers, allowing administrators to monitor, configure, and troubleshoot systems remotely.</p>
       </div>
 
-      <div id="poe" className="faq-answer"><PowerOverEthernet /></div>
+      <div id="power-over-ethernet" className="faq-answer"><PowerOverEthernet /></div>
 
 
     </div>

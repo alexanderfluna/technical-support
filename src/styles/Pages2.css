@@ -1,0 +1,9 @@
+.page {
+    display: flex;
+    flex-direction: row;
+}
+
+.table-of-contents2 {
+    position: fixed;
+    width: 10vw;
+}
