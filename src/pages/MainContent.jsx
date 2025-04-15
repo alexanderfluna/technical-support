@@ -46,7 +46,8 @@ const MainContent = ({ category }) => {
             <div className="support-hero">
                 <div className="support-header">
                   <h1 className="support-title">
-                    <span className="title-gradient">Technical Support</span>
+                    <span className="title-gradient">Technical</span>
+                    <span className="title-gradient">Support</span>
                   </h1>
                   <div className="support-description">
                     <span>Need help? We've got you covered.</span>

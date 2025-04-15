@@ -9,11 +9,11 @@
 .support-header {
   position: relative;
   z-index: 2;
-  width: 90vw;
+  width: 65vw;
   margin: 2rem auto;
   display: flex;
   flex-direction: row;
-  gap: 6rem;
+  gap: 10rem;
 }
 
 .support-title {
@@ -22,6 +22,8 @@
   line-height: 1.2;
   margin-bottom: 1.5rem;
   letter-spacing: -0.5px;
+  display: flex;
+  flex-direction: column;
 }
 
 .title-gradient {
@@ -39,7 +41,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: 3rem;
+  margin-top: 6rem;
 }
 
 .support-description:before {
