@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const EthernetExtenderTroubleshooting = () => {
+const EthernetExtenderTroubleshooting = ({ activeSubSection }) => {
+  useEffect(() => {
+    if (activeSubSection) {
+      const element = document.getElementById(activeSubSection);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [activeSubSection]);
+
   return (
     <div className="faq-list">
       <h1 className="faq-title">Troubleshooting Ethernet Extenders</h1>
-
-      <div className="table-of-contents">
-        <h1>Table of Contents</h1>
-        <li><a href="#CLFE(X)EO(U/C) to CLFE(X)EO(U/C)">How to Troubleshoot CLFE(X)EO(U/C) to CLFE(X)EO(U/C) Devices</a></li>
-        <li><a href="#CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)">How to Troubleshoot CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C) Devices</a></li>
-      </div>
 
       <div className="faq-answer">
         <h1>How to Troubleshoot CLFE(X)EO(U/C) to CLFE(X)EO(U/C) Devices</h1>

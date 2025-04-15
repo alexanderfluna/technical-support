@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NoPowerLight from '../../relevant-information/NoPowerLight';
 import NoOpticalLink from '../../relevant-information/NoOpticalLink';
 import NoPoE from '../../relevant-information/NoPoe';
 
-function MediaConverterTroubleshooting() {
-    return (
+const MediaConverterTroubleshooting = ({ activeSubSection }) => {
+  useEffect(() => {
+    if (activeSubSection) {
+      const element = document.getElementById(activeSubSection);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [activeSubSection]);
+
+  return (
         <div className="faq-list">
             <h1 className="faq-title">Troubleshooting Media Converters</h1>
-
-            <div className="table-of-contents">
-                <h1>Table of Contents</h1>
-                <li><a href="#no-power-light">How to Troubleshoot a Media Converter with Power Issues</a></li>
-                <li><a href="#no-optical-link">How to Troubleshoot a Media Converter with Optical Link Issues</a></li>
-                <li><a href="#no-communication">How to Troubleshoot a Media Converter with no Ethernet Port Activity</a></li>
-                <li><a href="#no-poe">How to Troubleshoot a Media Converter with PoE Issues</a></li>
-                <li><a href="#cnfe2mc2c">How to configure the contacts on a CNFE2MC2C</a></li>
-            </div>
 
             <div className="faq-answer" id="no-power-light">
                 <h1>How to Troubleshoot a Media Converter with Power Issues</h1>

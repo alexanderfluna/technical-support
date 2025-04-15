@@ -1,26 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const RazberiTroubleshooting = () => {
+const RazberiTroubleshooting = ({ activeSubSection }) => {
+  useEffect(() => {
+    // Scroll to active subsection if it exists
+    if (activeSubSection) {
+      const element = document.getElementById(activeSubSection);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [activeSubSection]);
+
   return (
     <div className="faq-list">
       <h1 className="faq-title">Troubleshooting Razberi Servers</h1>
 
-      <div className="table-of-contents">
-        <h1>Table of Contents</h1>
-        <li><a href="#power-ss32x">How to Troubleshoot Power Issues on a Server Switch</a></li>
-        <li><a href="#power-core">How to Troubleshoot Power Issues on a Core Server</a></li>
-        <li><a href="#no-poe">How to Troubleshoot a Server Switch with PoE Issues</a></li>
-        <li><a href="#raid">How to Troubleshoot Issues with the RAID</a></li>
-        <li><a href="#nic">How to Troubleshoot Issues with the NIC</a></li>
-        <li><a href="#os">How to Troubleshoot Issues with the OS</a></li>
-        <li><a href="#rdp">How to Set Up a Remote Desktop Connection</a></li>
-        <li><a href="#registration">How to Skip the Razberi Monitor Registration</a></li>
-        <li><a href="#camera-defense">How to Set Up Camera Defense</a></li>
-        <li><a href="#password">What to do if the Windows Password is Fogotten</a></li>
-        <li><a href="#ping-ssiq24">Pinging the Server Switch</a></li>
-      </div>
-
-      <div id="power-ss23x" className="faq-answer">
+      <div id="power-ss32x" className="faq-answer">
         <h1>How to Troubleshoot Power Issues on a Server Switch</h1>
         <p><strong>[1]</strong> Determine if the unit boots up at all or how frequently the unit powers off.</p>
         <p><strong>[2]</strong> Verify the unit is receiving 100-120VAC.</p>
@@ -102,7 +99,7 @@ const RazberiTroubleshooting = () => {
           <p><strong>[5]</strong> Perform a recovery of the operaitng system.</p>
         </div>
 
-        <div id="RDP" className="faq-answer">
+        <div id="rdp" className="faq-answer">
           <h1>How to Set Up a Remote Desktop Connection</h1>
           <p><strong>[1]</strong> Enable Remote Desktop in the server's settings.</p>
           <p><strong>[2]</strong> Connect a laptop to a NIC on the server.</p>
@@ -142,7 +139,7 @@ const RazberiTroubleshooting = () => {
         <li>Device default and common passwords are tested by default. You can optionally add additional prohibited passwords below. (Limit 48)</li>
       </div>
 
-      <div id="password "className="faq-answer">
+      <div id="password" className="faq-answer">
         <h1>What to do if the Windows Password is Fogotten</h1>
         <p>There is no way to reset the Windows password. A recovery of the operating system will need to be performed. Contact technical support for the Windows recovery procedure.</p>
       </div>
@@ -154,8 +151,9 @@ const RazberiTroubleshooting = () => {
         <li>The switch can be pinged from the U1 Uplink port.</li>
         <li>The switch cannot be pinged from the U2 Uplink port.</li>
       </div>
+
     </div>
   )
 }
 
-export default RazberiTroubleshooting
+export default RazberiTroubleshooting;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaSearch } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import ServerProducts from '../../pages/Razberi/RazberiProducts'
 import EthernetSwitchProducts from '../../pages/EthernetSwitch/EthernetSwitchProducts' 
 import MediaConverterProducts from '../../pages/MediaConverter/MediaConverterProducts'
@@ -14,75 +14,88 @@ import PoeInjectorProducts from '../../pages/PoeInjector/PoeInjectorProducts'
 import EnclosureProducts from '../../pages/Enclosure/EnclosureProducts'
 
 const productsConfig = {
+  RazberiServer: { 
+    products: ServerProducts,
+    path: '/razberi'
+  },
   EthernetSwitch: {
     products: EthernetSwitchProducts,
+    path: '/ethernet-switch'
   },
   MediaConverter: {
     products: MediaConverterProducts,
-  },
-  WirelessEthernet: {
-    products: WirelessProducts,
-  },
-  SFP: {
-    products: SFPProducts,
-  },
-  RazberiServer: { 
-    products: ServerProducts,
+    path: '/media-converter'
   },
   EthernetExtender: {
     products: EthernetExtenderProducts,
+    path: '/ethernet-extender'
   },
-  ContactClosure: {
-    products: ContactClosureProducts,
+  WirelessEthernet: {
+    products: WirelessProducts,
+    path: '/wireless'
   },
   SerialData: {
     products: SerialDataProducts,
+    path: '/serial-data'
   },
   Wiegand: {
     products: WiegandProducts,
+    path: '/wiegand'
+  },
+  ContactClosure: {
+    products: ContactClosureProducts,
+    path: '/contact-closure'
+  },
+  SFP: {
+    products: SFPProducts,
+    path: '/sfp'
   },
   PowerSupply: {
     products: PowerSupplyProducts,
+    path: '/power-supply'
   },
   PoeInjector: {
     products: PoeInjectorProducts,
+    path: '/poe-injector'
   },
   Enclosure: {
     products: EnclosureProducts,
+    path: '/enclosure'
   },
 };
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const navigate = useNavigate();
 
   const handleSearch = (event) => {
     const searchValue = event.target.value;
     setSearchTerm(searchValue);
 
     if (searchValue) {
-      const allProducts = Object.values(productsConfig).flatMap(
-        (config) => config.products
+      const allProducts = Object.entries(productsConfig).flatMap(
+        ([category, config]) => config.products.map(product => ({
+          ...product,
+          category
+        }))
       );
 
       const filtered = allProducts.filter((product) =>
         product.Model.toLowerCase().includes(searchValue.toLowerCase())
       );
 
-      setFilteredProducts(filtered.slice(0, 1000));
+      setFilteredProducts(filtered.slice(0, 10)); // Limit to 10 results
     } else {
       setFilteredProducts([]);
     }
   };
 
-  const handleProductSelect = (model) => {
-    for (const [category, config] of Object.entries(productsConfig)) {
-      const product = config.products.find((p) => p.Model === model);
-      if (product) {
-        setSearchTerm('');
-        return;
-      }
-    }
+  const handleProductSelect = (product) => {
+    const categoryPath = productsConfig[product.category].path;
+    navigate(categoryPath, { state: { selectedProduct: product.Model } });
+    setSearchTerm('');
+    setFilteredProducts([]);
   };
 
   return (
@@ -94,7 +107,7 @@ const Search = () => {
           placeholder="Enter product number..."
           className="search-input"
         />
-        <button class="search-button">
+        <button className="search-button">
           <span>Search</span>
         </button>
       </div>
@@ -105,16 +118,15 @@ const Search = () => {
             <div
               key={index}
               className="search-result-item"
-              onClick={() => handleProductSelect(product.Model)}
+              onClick={() => handleProductSelect(product)}
             >
               {product.Model}
             </div>
           ))}
         </div>
       )}
-
     </div>
-  )
-}
+  );
+};
 
-export default Search
+export default Search;

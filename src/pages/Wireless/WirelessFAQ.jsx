@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
 import OSI from '../../relevant-information/OSI';
 
-function WirelessFrequentlyAskedQuestions() {
+const WirelessFAQ = ({ activeSubSection }) => {
   const wifiStandards = [
     { standard: '802.11', frequency: '2.4 GHz', maxDataRate: '2 Mbps', channelBandwidth: '22 MHz', date: '1997' },
     { standard: '802.11a', frequency: '5 GHz', maxDataRate: '54 Mbps', channelBandwidth: '20 MHz', date: '1999' },
@@ -13,16 +13,20 @@ function WirelessFrequentlyAskedQuestions() {
     { standard: '802.11ax', frequency: '2.4 GHz / 5 GHz / 6 GHz', maxDataRate: '9.6 Gbps', channelBandwidth: '20/40/80/160 MHz', date: '2019' },
   ];
 
+  useEffect(() => {
+    if (activeSubSection) {
+      const element = document.getElementById(activeSubSection);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [activeSubSection]);
+
   return (
     <div className="faq-list">
       <h1 className="faq-title">Relevant Wireless Ethernet Information</h1>
-
-      <div className="table-of-contents">
-        <h1>Table of Contents</h1>
-        <li><a href="#wireless">Wireless Ethernet</a></li>
-        <li><a href="#poe">Power Over Ethernet</a></li>
-        <li><a href="#osi">The OSI Model</a></li>
-      </div>
 
       <div className="faq-answer" id="wireless">
         <h1>Wireless Ethernet</h1>
@@ -78,4 +82,4 @@ function WirelessFrequentlyAskedQuestions() {
   );
 }
 
-export default WirelessFrequentlyAskedQuestions;
+export default WirelessFAQ;

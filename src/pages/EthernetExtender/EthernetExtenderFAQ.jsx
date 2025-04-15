@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
-const EthernetExtenderFAQ = () => {
+const EthernetExtenderFAQ = ({ activeSubSection }) => {
+  useEffect(() => {
+    if (activeSubSection) {
+      const element = document.getElementById(activeSubSection);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [activeSubSection]);
+
   return (
     <div className="faq-list">
       <h1 className="faq-title">Relevant Ethernet Extender Information</h1>
-
-      <div className="table-of-contents">
-        <h1>Table of Contents</h1>
-        <li><a href="#copper">Copper</a></li>
-        <li><a href="#coax">Coax</a></li>
-      </div>
 
       <div id="copper" className="faq-answer">
         <h1>Copper</h1>

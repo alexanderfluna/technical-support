@@ -1,6 +1,5 @@
 .faq-list {
     width: 80%;
-    margin-left: 20rem;
     padding: 30px;
 }
 
@@ -40,10 +39,8 @@
 
 .faq-answer {
     margin-bottom: 20px;
-    border-left: 4px solid #7da9d6; 
     padding: 10px 20px;
     border-radius: 8px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
 
 .faq-answer p {
@@ -192,3 +189,5 @@
       margin-left: 5rem;
     }
   }
+
+  

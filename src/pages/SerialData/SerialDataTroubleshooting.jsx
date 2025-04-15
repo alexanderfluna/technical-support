@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NoPowerLight from '../../relevant-information/NoPowerLight';
 import NoOpticalLink from '../../relevant-information/NoOpticalLink';
 
-const SerialDataTroubleshooting = () => {
+const SerialDataTroubleshooting = ({ activeSubSection }) => {
+  useEffect(() => {
+    if (activeSubSection) {
+      const element = document.getElementById(activeSubSection);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [activeSubSection]);
+
   return (
     <div className="faq-list">
       <h1 className="faq-title">Troubleshooting Serial Data</h1>
-
-      <div className="table-of-contents">
-        <h1>Table of Contents</h1>
-        <li><a href="#no-power">How to Troubleshoot a Unit with Power Issues</a></li>
-        <li><a href="#no-optical-link">How to Troubleshoot a Unit with Optical Link Issues</a></li>
-        <li><a href="#fdx60">How to Troubleshoot an FDX60</a></li>
-        <li><a href="#cnfe3doe2">How to Troubleshoot a CNFE3DOE2/M</a></li>
-      </div>
 
       <div id="no-power" className="faq-answer">
         <h1>How to Troubleshoot a Unit with Power Issues</h1>

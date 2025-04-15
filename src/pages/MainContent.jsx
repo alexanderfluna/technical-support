@@ -48,12 +48,12 @@ const MainContent = ({ category }) => {
                   <h1 className="support-title">
                     <span className="title-gradient">Technical Support</span>
                   </h1>
-                  <p className="support-description">
-                    Thank you for visiting Comnet's technical support page. Our page can assist with
-                    <span className="highlight"> troubleshooting common product issues</span>,
-                    contains <span className="highlight">relevant product information</span> for educational purposes, 
-                    and <span className="highlight">product selector tools</span> for identifying the correct part number for an application.
-                  </p>
+                  <div className="support-description">
+                    <span>Need help? We've got you covered.</span>
+                    <span>- <span className="highlight">Troubleshoot product issues</span> with our step-by-step guides.</span>
+                    <span>- Discover  <span className="highlight">detailed product insights</span>and technical specifications.</span>
+                    <span>-Use our <span className="highlight">product selector tools</span> to find the perfect fit for your setup.</span>
+                  </div>
                 </div>
 
                 <div className="product-visual">

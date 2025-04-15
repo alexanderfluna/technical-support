@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NoOpticalLink from '../../relevant-information/NoOpticalLink';
 import Fiber from '../../relevant-information/Fiber';
 
-const SFPFAQ = () => {
+const SFPFAQ = ({ activeSubSection }) => {
+  useEffect(() => {
+    if (activeSubSection) {
+      const element = document.getElementById(activeSubSection);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [activeSubSection]);
+
   return (
     <div className="faq-list">
       <h1 className="faq-title">SFP</h1>
-
-      <div className="table-of-contents">
-        <h1>Table of Contents</h1>
-          <li><a href="#no-optical-link">How to Troubleshoot an SFP module with Optical Link Issues</a></li>
-          <li><a href="#ddi">How to View the Status of an SFP Module</a></li>
-          <li><a href="#cisco">Will Comnet SFPs work with Cisco devices?</a></li>
-          <li><a href="#sfp-chart">Comnet's SFP Chart</a></li>
-          <li><a href="#fiber">Fiber Optics</a></li>
-      </div>
 
       <div id="no-optical-link" className="faq-answer">
         <h1>How to Troubleshoot an SFP module with Optical Link Issues</h1>

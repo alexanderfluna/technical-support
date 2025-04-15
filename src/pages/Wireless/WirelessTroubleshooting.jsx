@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const WirelessTroubleshooting = () => {
+const WirelessTroubleshooting = ({ activeSubSection }) => {
+  useEffect(() => {
+    if (activeSubSection) {
+      const element = document.getElementById(activeSubSection);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [activeSubSection]);
+
   return (
     <div className="faq-list">
       <h1 className="faq-title">Troubleshooting Wireless Ethernet</h1>
-
-      <div className="table-of-contents">
-        <h1>Table of Contents</h1>
-        <li><a href="#netwave-configurations">How to Configure Comnet's Wireless Radios</a></li>
-        <li><a href="#radio-not-powering-on">How to Troubleshoot a Wireless Radio with Power Issues</a></li>
-        <li><a href="#radio-losing-connection">How to Troubleshoot a Wireless Radio that Drops Out</a></li>
-      </div>
 
       <div className="faq-answer" id="netwave-configurations">
         <h1>How to Configure Comnet's Wireless Radios</h1>

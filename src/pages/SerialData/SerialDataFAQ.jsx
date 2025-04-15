@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Fiber from '../../relevant-information/Fiber';
 
-const SerialDataFAQ = () => {
+const SerialDataFAQ = ({ activeSubSection }) => {
+  useEffect(() => {
+    if (activeSubSection) {
+      const element = document.getElementById(activeSubSection);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [activeSubSection]);
+
   return (
     <div className="faq-list">
       <h1 className="faq-title">Relevant Serial Data Information</h1>
-
-      <div className="table-of-contents">
-        <h1>Table of Contents</h1>
-        <li><a href="#rs232">RS232</a></li>
-        <li><a href="#rs422">RS422</a></li>
-        <li><a href="#rs485">RS485</a></li>
-        <li><a href="#fiber">Fiber Optics</a></li>
-      </div>
 
       <div id="rs232" className="faq-answer">
         <h1>RS232</h1>
@@ -24,7 +27,7 @@ const SerialDataFAQ = () => {
         <p><strong>RS-422</strong> is a serial communication standard that supports full-duplex data transmission using four wires: two for transmitting (TX+ and TX-) and two for receiving (RX+ and RX-). Unlike RS-232, which uses single-ended signaling, RS-422 employs balanced (differential) signaling, meaning data is transmitted as the voltage difference between each pair of wires rather than a single voltage level referenced to ground. This design makes RS-422 highly resistant to electrical noise because any interference affects both wires equally, and the receiver only processes the difference between them, effectively canceling out external noise. RS-422 supports point-to-point connections but can also be used in multi-drop configurations where multiple receivers share a common transmitter, a feature useful for industrial and automation systems. Additionally, RS-422 supports add/drop/repeat functionality, allowing data signals to be relayed across long distances by intermediate devices. With its improved noise immunity and signal integrity, RS-422 can reliably transmit data up to 1200 meters (about 4000 feet) at a baud rate of 9600 bps, making it ideal for applications requiring long-distance and high-reliability communication, such as industrial automation, telemetry, and process control.</p>
       </div>
 
-      <div id="485" className="faq-answer">
+      <div id="rs485" className="faq-answer">
         <h1>RS485</h1>
         <p><strong>RS-485</strong> is a serial communication standard designed for long-distance, high-speed, and noise-resistant data transmission. Unlike RS-232, RS-485 uses balanced (differential) signaling, where data is transmitted as the voltage difference between two wires, D+ and D-. This differential approach makes RS-485 highly resistant to electrical noise, as interference affects both wires equally, and the receiver only processes the voltage difference, effectively canceling out external noise. RS-485 is widely used in industrial automation, building management systems, and other applications where multiple devices need to communicate over long distances. It supports both two-wire and four-wire configurations, each with distinct advantages.</p>
         <p>In a <strong>2-wire RS-485</strong> setup, communication is half-duplex, meaning the same pair of wires is used for both transmitting and receiving data, but not at the same time. Devices must switch between sending and receiving, which requires careful coordination to avoid collisions. Since RS-485 relies on differential signaling, binary 1s and 0s are determined by the voltage difference between the D+ and D- wires. The system can transmit data up to 1200 meters (about 4000 feet) at a baud rate of 9600 bps, making it ideal for industrial applications where long-distance communication is needed but full-duplex communication is not required.</p>

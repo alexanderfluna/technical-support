@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Search from './Search'
 import '../../styles/Navbar.css'
 
-// /images/Comnet-Logo.jpg
-
 const Navbar = ({ onCategoryChange }) => {
   const [hoveredCategory, setHoveredCategory] = useState(null);
   

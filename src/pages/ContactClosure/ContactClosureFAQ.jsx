@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Fiber from '../../relevant-information/Fiber';
 
-const ContactClosureFAQ = () => {
+const ContactClosureFAQ = ({ activeSubSection }) => {
+  useEffect(() => {
+    if (activeSubSection) {
+      const element = document.getElementById(activeSubSection);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [activeSubSection]);
+
   return (
     <div className="faq-list">
         <h1 className="faq-title">Relevant Contact Closure Information</h1>
-
-        <div className="table-of-contents">
-          <h1>Table of Contents</h1>
-          <li><a href="#formA">Form A Relays</a></li>
-          <li><a href="#formC">Form C Relays</a></li>
-          <li><a href="#latching">Latching vs. Non-Latching Relays</a></li>
-          <li><a href="#supervision">Supervision</a></li>
-          <li><a href="#summary">Summary Fault Relays</a></li>
-          <li><a href="#fiber">Fiber Optics</a></li>
-        </div>
 
         <div id="formA" className="faq-answer">
           <h1>Form A Relays</h1>

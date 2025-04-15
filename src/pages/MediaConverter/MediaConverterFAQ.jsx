@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Fiber from '../../relevant-information/Fiber';
 import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
 import OSI from '../../relevant-information/OSI';
 
-function MediaConverterFrequentlyAskedQuestions() {
-    return (
+const MediaConverterFAQ = ({ activeSubSection }) => {
+  useEffect(() => {
+    if (activeSubSection) {
+      const element = document.getElementById(activeSubSection);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [activeSubSection]);
+
+  return (
         <div className="faq-list">
             <h1 className="faq-title">Relevant Media Converter Information</h1>
-
-            <div className="table-of-contents">
-                <h1>Table of Contents</h1>
-                <li><a href="#media-converters">Media Converters</a></li>
-                <li><a href="#fiber">Fiber Optics</a></li>
-                <li><a href="#poe">Power over Ethernet</a></li>
-                <li><a href="#osi">The OSI Model</a></li>
-            </div>
 
             <div className="faq-answer" id="media-converters">
                 <h1>Media Converters</h1>
@@ -32,4 +35,4 @@ function MediaConverterFrequentlyAskedQuestions() {
     );
 }
 
-export default MediaConverterFrequentlyAskedQuestions;
+export default MediaConverterFAQ;
