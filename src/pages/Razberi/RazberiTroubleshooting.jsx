@@ -96,7 +96,9 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
           <p><strong>[2]</strong> Review the errors in Event Viewer.</p>
           <p><strong>[3]</strong> Review the iDRAC alert logs</p>
           <p><strong>[4]</strong> Review the CPU utilization and processes in Task Manager</p>
-          <p><strong>[5]</strong> Perform a recovery of the operaitng system.</p>
+          <p><strong>[5]</strong> Perform a recovery of the operating system.</p>
+          <p><strong>[6]</strong> Type the command "systeminfo | find /i "Original Install Date" to find the OS image installation date. </p>
+          <p><strong>[7]</strong>Check Disk Management to ensure there is only one OS partition.</p>
         </div>
 
         <div id="rdp" className="faq-answer">

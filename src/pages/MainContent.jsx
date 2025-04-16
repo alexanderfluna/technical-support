@@ -52,7 +52,7 @@ const MainContent = ({ category }) => {
                   <div className="support-description">
                     <span>Need help? We've got you covered.</span>
                     <span>- <span className="highlight">Troubleshoot product issues</span> with our step-by-step guides.</span>
-                    <span>- Discover  <span className="highlight">detailed product insights</span>and technical specifications.</span>
+                    <span>- Discover  <span className="highlight">detailed product insights</span> and technical specifications.</span>
                     <span>-Use our <span className="highlight">product selector tools</span> to find the perfect fit for your setup.</span>
                   </div>
                 </div>
