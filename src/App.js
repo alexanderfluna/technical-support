@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Page from './pages/Page';
+import MainContent from './pages/MainContent';
 import Razberi from './pages/Razberi/Razberi';
 import EthernetSwitch from './pages/EthernetSwitch/EthernetSwitch';
 import MediaConverter from './pages/MediaConverter/MediaConverter';
@@ -18,7 +18,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/technical-support" element={<Page />} />
+        <Route path="/technical-support" element={<MainContent />} />
         <Route path="/razberi" element={<Razberi />} />
         <Route path="/ethernet-switch" element={<EthernetSwitch />} />
         <Route path="/media-converter" element={<MediaConverter />} />

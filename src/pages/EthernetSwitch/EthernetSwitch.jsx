@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import EthernetSwitchTroubleshooting from './EthernetSwitchTroubleshooting';
 import EthernetSwitchSelectorTool from './EthernetSwitchSelectorTool';
 import EthernetSwitchFAQ from './EthernetSwitchFAQ';
+import Navbar from '../../components/Navigation/Navbar';
 
 const EthernetSwitch = () => {
   const [selectedContent, setSelectedContent] = useState('');
@@ -38,7 +39,9 @@ const EthernetSwitch = () => {
   };
 
   return (
-    <div className="page">
+    <div>
+      <Navbar/>
+      <div className="page">
       <div className="table-of-contents2">
         <p onClick={() => handleSectionClick("ethernet-troubleshooting")}>Troubleshooting</p>
         {selectedContent === "ethernet-troubleshooting" && (
@@ -152,6 +155,7 @@ const EthernetSwitch = () => {
           <EthernetSwitchSelectorTool />
         </div>
       </div>
+    </div>
     </div>
   );
 };

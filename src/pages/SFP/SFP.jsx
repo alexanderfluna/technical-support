@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import SFPSelectorTool from './SFPSelectorTool';
 import SFPFAQ from './SFPFAQ';
+import Navbar from '../../components/Navigation/Navbar';
 
 const SFP = () => {
   const [selectedContent, setSelectedContent] = useState('');
@@ -34,62 +35,65 @@ const SFP = () => {
   };
 
   return (
-    <div className="page">
-      <div className="table-of-contents2">
-        <p onClick={() => handleSectionClick("sfp-faq")}>SFP Information</p>
-        {selectedContent === "sfp-faq" && (
-          <>
-            <li 
-              className={activeSubSection === "no-optical-link" ? "active" : ""}
-              onClick={() => handleSubSectionClick("no-optical-link")}
-            >
-              How to Troubleshoot an SFP module with Optical Link Issues
-            </li>
-            <li 
-              className={activeSubSection === "ddi" ? "active" : ""}
-              onClick={() => handleSubSectionClick("ddi")}
-            >
-              How to View the Status of an SFP Module
-            </li>
-            <li 
-              className={activeSubSection === "cisco" ? "active" : ""}
-              onClick={() => handleSubSectionClick("cisco")}
-            >
-              Will Comnet SFPs work with Cisco devices?
-            </li>
-            <li 
-              className={activeSubSection === "sfp-chart" ? "active" : ""}
-              onClick={() => handleSubSectionClick("sfp-chart")}
-            >
-              Comnet's SFP Chart
-            </li>
-            <li 
-              className={activeSubSection === "fiber" ? "active" : ""}
-              onClick={() => handleSubSectionClick("fiber")}
-            >
-              Fiber Optics
-            </li>
-          </>
-        )}
-        
-        <p onClick={() => handleSectionClick("sfp-selector-tool")}>Selector Tool</p>
-      </div>
-
-      <div className="main-content">
-        <div 
-          id="sfp-faq" 
-          ref={faqRef}
-          className="relevant-information"
-        >
-          <SFPFAQ activeSubSection={activeSubSection} />
+    <div>
+      <Navbar/>
+      <div className="page">
+        <div className="table-of-contents2">
+          <p onClick={() => handleSectionClick("sfp-faq")}>SFP Information</p>
+          {selectedContent === "sfp-faq" && (
+            <>
+              <li 
+                className={activeSubSection === "no-optical-link" ? "active" : ""}
+                onClick={() => handleSubSectionClick("no-optical-link")}
+              >
+                How to Troubleshoot an SFP module with Optical Link Issues
+              </li>
+              <li 
+                className={activeSubSection === "ddi" ? "active" : ""}
+                onClick={() => handleSubSectionClick("ddi")}
+              >
+                How to View the Status of an SFP Module
+              </li>
+              <li 
+                className={activeSubSection === "cisco" ? "active" : ""}
+                onClick={() => handleSubSectionClick("cisco")}
+              >
+                Will Comnet SFPs work with Cisco devices?
+              </li>
+              <li 
+                className={activeSubSection === "sfp-chart" ? "active" : ""}
+                onClick={() => handleSubSectionClick("sfp-chart")}
+              >
+                Comnet's SFP Chart
+              </li>
+              <li 
+                className={activeSubSection === "fiber" ? "active" : ""}
+                onClick={() => handleSubSectionClick("fiber")}
+              >
+                Fiber Optics
+              </li>
+            </>
+          )}
+          
+          <p onClick={() => handleSectionClick("sfp-selector-tool")}>Selector Tool</p>
         </div>
 
-        <div 
-          id="sfp-selector-tool" 
-          ref={selectorToolRef}
-          className="selector-tool"
-        >
-          <SFPSelectorTool />
+        <div className="main-content">
+          <div 
+            id="sfp-faq" 
+            ref={faqRef}
+            className="relevant-information"
+          >
+            <SFPFAQ activeSubSection={activeSubSection} />
+          </div>
+
+          <div 
+            id="sfp-selector-tool" 
+            ref={selectorToolRef}
+            className="selector-tool"
+          >
+            <SFPSelectorTool />
+          </div>
         </div>
       </div>
     </div>

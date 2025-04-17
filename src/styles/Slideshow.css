@@ -1,0 +1,138 @@
+.slideshow-container {
+    position: relative;
+    width: 98vw;
+    height: 50rem;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 100, 200, 0.5);
+  }
+  
+  .slideshow {
+    display: flex;
+    height: 100%;
+    position: relative;
+  }
+  
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; 
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat; 
+    border-radius: inherit;
+    background-color: #2a5a8a;
+  }
+  
+  .slide.active {
+    opacity: 1;
+  }
+  
+  .empty-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, #2a5a8a, #3a7aba);
+  }
+  
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s;
+    border-radius: 0 5px 5px 0;
+    user-select: none;
+    background-color: rgba(42, 90, 138, 0.7);
+    border: none;
+  }
+  
+  .next {
+    right: 0;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .prev:hover, .next:hover {
+    background-color: rgba(42, 90, 138, 0.9);
+    transform: scale(1.1);
+  }
+
+  .prev:focus, .next:focus,
+    .play-pause:focus, .dot:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+    }
+  
+  .controls {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .play-pause {
+    cursor: pointer;
+    background-color: rgba(42, 90, 138, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    transition: all 0.3s;
+  }
+  
+  .play-pause:hover {
+    background-color: rgba(42, 90, 138, 0.9);
+    transform: scale(1.1);
+  }
+  
+  .dots {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transition: all 0.3s;
+  }
+  
+  .dot.active {
+    background-color: white;
+    transform: scale(1.2);
+  }
+  
+  .dot:hover {
+    background-color: white;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 768px) {
+    .slideshow-container {
+      height: 30rem; 
+    }
+    
+    .prev, .next {
+      padding: 12px;
+      font-size: 18px;
+    }
+  }

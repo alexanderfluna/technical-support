@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Navbar from '../../components/Navigation/Navbar';
 import '../../styles/Pages.css'
 
 const PowerSupply = () => {
@@ -69,7 +70,9 @@ const PowerSupply = () => {
   };
 
   return (
-    <div className="faq-list">
+    <div>
+      <Navbar />
+      <div className="faq-list">
         <h1 className="faq-title">Power Supply</h1>
         <div className="filter-options" style={{
           display: 'flex',
@@ -256,6 +259,7 @@ const PowerSupply = () => {
             </tbody>
           </table>
         </div>
+    </div>
     </div>
   );
 };

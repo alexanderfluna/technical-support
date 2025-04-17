@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Navbar from '../../components/Navigation/Navbar';
 import '../../styles/Pages.css'
 
 const PoEInjector = () => {
@@ -73,7 +74,9 @@ const PoEInjector = () => {
   };
 
   return (
-    <div className="faq-list">
+    <div>
+      <Navbar />
+      <div className="faq-list">
         <h1 className="faq-title">PoE Injector</h1>
         <div 
           className="filter-options" 
@@ -217,6 +220,7 @@ const PoEInjector = () => {
             </tbody>
           </table>
         </div>
+    </div>
     </div>
   );
 };

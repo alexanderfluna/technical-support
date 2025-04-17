@@ -1,18 +1,37 @@
 import React from 'react';
-import Server from './Razberi/Razberi'
-import EthernetSwitch from './EthernetSwitch/EthernetSwitch'
-import MediaConverter from './MediaConverter/MediaConverter'
-import EthernetExtender from './EthernetExtender/EthernetExtender'
-import Wireless from './Wireless/Wireless'
-import SerialData from './SerialData/SerialData'
-import Wiegand from './Wiegand/Wiegand'
-import ContactClosure from './ContactClosure/ContactClosure'
-import SFP from './SFP/SFP'
-import PowerSupply from './PowerSupply/PowerSupply'
-import PoeInjector from './PoeInjector/PoeInjector'
-import CardCage from './Enclosure/Enclosures'
+import Server from './Razberi/Razberi';
+import EthernetSwitch from './EthernetSwitch/EthernetSwitch';
+import MediaConverter from './MediaConverter/MediaConverter';
+import EthernetExtender from './EthernetExtender/EthernetExtender';
+import Wireless from './Wireless/Wireless';
+import SerialData from './SerialData/SerialData';
+import Wiegand from './Wiegand/Wiegand';
+import ContactClosure from './ContactClosure/ContactClosure';
+import SFP from './SFP/SFP';
+import PowerSupply from './PowerSupply/PowerSupply';
+import PoeInjector from './PoeInjector/PoeInjector';
+import CardCage from './Enclosure/Enclosures';
+import Navbar from '../components/Navigation/Navbar';
+import Slideshow from '../components/Slideshow';
+import '../styles/MainContent.css';
 
 const MainContent = ({ category }) => {
+  const imageNames = [
+    "SS32X.jpg",
+    "CNGE3FE8MS.jpg",
+    "CLFE1EOU.jpg",
+    "CNFE3DOE2.jpg",
+    "NW1.jpg",
+    "CNMCSFP.jpg",
+    "FDX60.jpg",
+    "FDW1000.jpg",
+    "FDC80.jpg",
+    "FVT110.jpg",
+    "SFP.jpg",
+    "PSU.jpg",
+    "CNGE1IPS.jpg",
+    "C1US.jpg",
+  ];
 
   const renderContent = () => {
     switch (category) {
@@ -41,43 +60,16 @@ const MainContent = ({ category }) => {
       case 'card-cage':
         return <CardCage />;
       default:
-        return (
-          <>
-            <div className="support-hero">
-                <div className="support-header">
-                  <h1 className="support-title">
-                    <span className="title-gradient">Technical</span>
-                    <span className="title-gradient">Support</span>
-                  </h1>
-                  <div className="support-description">
-                    <span>Need help? We've got you covered.</span>
-                    <span>- <span className="highlight">Troubleshoot product issues</span> with our step-by-step guides.</span>
-                    <span>- Discover  <span className="highlight">detailed product insights</span> and technical specifications.</span>
-                    <span>-Use our <span className="highlight">product selector tools</span> to find the perfect fit for your setup.</span>
-                  </div>
-                </div>
-
-                <div className="product-visual">
-                  <div className="visual-container">
-                    <img
-                      src="https://acresecurity.com/hubfs/Website/Pages/Solutions/Finalised%20Graphic%20Desktop.jpg"
-                      alt="ComNet Product Range"
-                      loading="lazy"
-                      className="product-image"
-                    />
-                  </div>
-                </div>
-            </div>
-          </>
-        )
+        return <Slideshow imageNames={imageNames} />;
     }
-  }
+  };
 
   return (
     <main>
-        {renderContent()}
+      <Navbar />
+      {renderContent()}
     </main>
-  )
-}
+  );
+};
 
-export default MainContent
+export default MainContent;

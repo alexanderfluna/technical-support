@@ -1,30 +1,56 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Search from './Search'
 import '../../styles/Navbar.css'
 
 const Navbar = ({ onCategoryChange }) => {
   const [hoveredCategory, setHoveredCategory] = useState(null);
+  const navigate = useNavigate();
   
-    const handleMouseEnter = (category) => {
-      setHoveredCategory(category);
+  const handleMouseEnter = (category) => {
+    setHoveredCategory(category);
+  };
+  
+  const handleMouseClick = (category) => {
+    // Map category names to their corresponding routes
+    const routeMap = {
+      "technical-support": "/technical-support",
+      "razberi": "/razberi",
+      "ethernet-switch": "/ethernet-switch",
+      "media-converter": "/media-converter",
+      "ethernet-extender": "/ethernet-extender",
+      "wireless": "/wireless",
+      "serial-data": "/serial-data",
+      "wiegand": "/wiegand",
+      "contact-closure": "/contact-closure",
+      "sfp": "/sfp",
+      "power-supply": "/power-supply",
+      "poe-injector": "/poe-injector",
+      "card-cage": "/enclosure",
+      "enclosure": "/enclosure",
+      "server": "/razberi" // Assuming "Edge Computing" should go to Razberi
     };
-  
-    const handleMouseClick = (category) => {
-      onCategoryChange(category)
+    
+    const route = routeMap[category];
+    if (route) {
+      navigate(route);
     }
+    
+    // Call the original onCategoryChange if needed
+    if (onCategoryChange) {
+      onCategoryChange(category);
+    }
+  };
 
   return (
     <nav className="navbar">
-
-      <img onClick={() => {window.location.reload()}} className="comnet-logo" src="https://th.bing.com/th/id/OIP.QEpdXFZIcPoZBpgnZpTHoAHaCP?rs=1&pid=ImgDetMain" alt="Comnet Logo"/>
+      <img onClick={() => {navigate('/technical-support')}} className="comnet-logo" src="https://th.bing.com/th/id/OIP.QEpdXFZIcPoZBpgnZpTHoAHaCP?rs=1&pid=ImgDetMain" alt="Comnet Logo"/>
 
       <Search/>
 
       <div className="categories">
-
-        <div 
-          onClick={() => handleMouseClick("server")}>
-            <span>Edge Computing</span>
+        <div onClick={() => handleMouseClick("server")}>
+          <span>Edge Computing</span>
         </div>
 
         <div 
@@ -34,16 +60,14 @@ const Navbar = ({ onCategoryChange }) => {
             {hoveredCategory === "ethernet" && (
               <div className="hover-box">
                 <li onClick={() => handleMouseClick("ethernet-switch")}>Ethernet Switch</li>
-                <li onClick={() => handleMouseClick("media-converter")}>Media Converter</li>
                 <li onClick={() => handleMouseClick("ethernet-extender")}>Ethernet Extender</li>
                 <li onClick={() => handleMouseClick("terminal-server")}>Terminal Server</li>
               </div>
             )}
         </div>
 
-        <div 
-          onClick={() => handleMouseClick("wireless")}>
-            <span>Wireless Ethernet</span>
+        <div onClick={() => handleMouseClick("wireless")}>
+          <span>Wireless Ethernet</span>
         </div>
 
         <div 
@@ -52,6 +76,7 @@ const Navbar = ({ onCategoryChange }) => {
             <span>Data Over Fiber</span>
             {hoveredCategory === "data-over-fiber" && (
               <div className="hover-box">
+                <li onClick={() => handleMouseClick("media-converter")}>Media Converter</li>
                 <li onClick={() => handleMouseClick("serial-data")}>Serial Data</li>
                 <li onClick={() => handleMouseClick("wiegand")}>Wiegand</li>
                 <li onClick={() => handleMouseClick("contact-closure")}>Contact Closure</li>
@@ -73,10 +98,7 @@ const Navbar = ({ onCategoryChange }) => {
               </div>
             )}
         </div>
-        
-    </div>
-
-
+      </div>
     </nav>
   )
 }

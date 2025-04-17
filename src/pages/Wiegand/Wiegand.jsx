@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import WiegandSelectorTool from './WiegandSelectorTool';
 import WiegandFAQ from './WiegandFAQ';
+import Navbar from '../../components/Navigation/Navbar';
 
 const Wiegand = () => {
   const [selectedContent, setSelectedContent] = useState('');
@@ -34,64 +35,67 @@ const Wiegand = () => {
   };
 
   return (
-    <div className="page">
-      <div className="table-of-contents2">
-        <p onClick={() => handleSectionClick("wiegand-faq")}>Wiegand Information</p>
-        {selectedContent === "wiegand-faq" && (
-          <>
-            <li 
-              className={activeSubSection === "no-power" ? "active" : ""}
-              onClick={() => handleSubSectionClick("no-power")}
-            >
-              How to Troubleshoot a Unit with Power Issues
-            </li>
-            <li 
-              className={activeSubSection === "no-link-light" ? "active" : ""}
-              onClick={() => handleSubSectionClick("no-link-light")}
-            >
-              How to Troubleshoot a Unit with Optical Link Issues
-            </li>
-            <li 
-              className={activeSubSection === "fdw1000" ? "active" : ""}
-              onClick={() => handleSubSectionClick("fdw1000")}
-            >
-              How to Troubleshoot FDW1000 and EXP101 Devices
-            </li>
-            <li 
-              className={activeSubSection === "Wiegand vs. OSDP" ? "active" : ""}
-              onClick={() => handleSubSectionClick("Wiegand vs. OSDP")}
-            >
-              Wiegand vs. OSDP
-            </li>
-            <li 
-              className={activeSubSection === "fiber" ? "active" : ""}
-              onClick={() => handleSubSectionClick("fiber")}
-            >
-              Optical Fiber
-            </li>
-          </>
-        )}
-        
-        <p onClick={() => handleSectionClick("wiegand-selector-tool")}>Selector Tool</p>
-      </div>
+    <div>
+        <Navbar/>
+        <div className="page">
+          <div className="table-of-contents2">
+            <p onClick={() => handleSectionClick("wiegand-faq")}>Wiegand Information</p>
+            {selectedContent === "wiegand-faq" && (
+              <>
+                <li 
+                  className={activeSubSection === "no-power" ? "active" : ""}
+                  onClick={() => handleSubSectionClick("no-power")}
+                >
+                  How to Troubleshoot a Unit with Power Issues
+                </li>
+                <li 
+                  className={activeSubSection === "no-link-light" ? "active" : ""}
+                  onClick={() => handleSubSectionClick("no-link-light")}
+                >
+                  How to Troubleshoot a Unit with Optical Link Issues
+                </li>
+                <li 
+                  className={activeSubSection === "fdw1000" ? "active" : ""}
+                  onClick={() => handleSubSectionClick("fdw1000")}
+                >
+                  How to Troubleshoot FDW1000 and EXP101 Devices
+                </li>
+                <li 
+                  className={activeSubSection === "Wiegand vs. OSDP" ? "active" : ""}
+                  onClick={() => handleSubSectionClick("Wiegand vs. OSDP")}
+                >
+                  Wiegand vs. OSDP
+                </li>
+                <li 
+                  className={activeSubSection === "fiber" ? "active" : ""}
+                  onClick={() => handleSubSectionClick("fiber")}
+                >
+                  Optical Fiber
+                </li>
+              </>
+            )}
+            
+            <p onClick={() => handleSectionClick("wiegand-selector-tool")}>Selector Tool</p>
+          </div>
 
-      <div className="main-content">
-        <div 
-          id="wiegand-faq" 
-          ref={faqRef}
-          className="relevant-information"
-        >
-          <WiegandFAQ activeSubSection={activeSubSection} />
-        </div>
+          <div className="main-content">
+            <div 
+              id="wiegand-faq" 
+              ref={faqRef}
+              className="relevant-information"
+            >
+              <WiegandFAQ activeSubSection={activeSubSection} />
+            </div>
 
-        <div 
-          id="wiegand-selector-tool" 
-          ref={selectorToolRef}
-          className="selector-tool"
-        >
-          <WiegandSelectorTool />
+            <div 
+              id="wiegand-selector-tool" 
+              ref={selectorToolRef}
+              className="selector-tool"
+            >
+              <WiegandSelectorTool />
+            </div>
+          </div>
         </div>
-      </div>
     </div>
   );
 };
