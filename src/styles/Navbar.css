@@ -177,6 +177,17 @@
 
 /* Mobile styles */
 @media (max-width: 1000px) {
+  .dropdown-chevron {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .main-category[aria-expanded="true"] .dropdown-chevron {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
   .mobile-header {
     justify-content: space-between;
     padding: 1rem;
@@ -198,8 +209,8 @@
     position: fixed;
     top: 0;
     left: -100%;
-    width: 80%;
-    height: 100vh;
+    width: 40%;
+    height: 50vh;
     background-color: white;
     flex-direction: column;
     align-items: flex-start;
@@ -267,24 +278,20 @@
   }
 }
 
-/* iPhone-specific adjustments */
-@media (max-width: 480px) {
-  .comnet-logo {
-    max-width: 180px;
-    max-height: 45px;
-  }
+.dropdown-chevron {
+  display: inline-block;
+  margin-left: 8px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #437cc7;
+  transition: var(--transition);
+  vertical-align: middle;
+}
 
-  .categories {
-    width: 90%;
-  }
-
-  .search-container {
-    margin: 0.5rem 0;
-  }
-
-  .search-input {
-    padding: 10px 15px;
-  }
+.main-category:hover .dropdown-chevron {
+  transform: rotate(180deg);
 }
 
 /* SEARCH CONTAINER IMPROVEMENTS */

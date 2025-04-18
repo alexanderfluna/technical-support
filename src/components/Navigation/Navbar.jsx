@@ -117,7 +117,7 @@ const Navbar = ({ onCategoryChange }) => {
           onMouseLeave={() => setHoveredCategory(null)}
           onClick={() => window.innerWidth <= 768 ? toggleCategory('ethernet') : null}
         >
-          <span>Ethernet</span>
+          <span>Ethernet<span className="dropdown-chevron"></span></span>
           {(hoveredCategory === "ethernet" || (window.innerWidth <= 768 && expandedCategory === 'ethernet')) && (
             <div className="hover-box">
               {getSubcategories('ethernet').map(item => (
@@ -137,7 +137,7 @@ const Navbar = ({ onCategoryChange }) => {
           onMouseLeave={() => setHoveredCategory(null)}
           onClick={() => window.innerWidth <= 768 ? toggleCategory('data-over-fiber') : null}
         >
-          <span>Data Over Fiber</span>
+          <span>Data Over Fiber<span className="dropdown-chevron"></span></span>
           {(hoveredCategory === "data-over-fiber" || (window.innerWidth <= 768 && expandedCategory === 'data-over-fiber')) && (
             <div className="hover-box">
               {getSubcategories('data-over-fiber').map(item => (
@@ -153,7 +153,7 @@ const Navbar = ({ onCategoryChange }) => {
           onMouseLeave={() => setHoveredCategory(null)}
           onClick={() => window.innerWidth <= 768 ? toggleCategory('accessories') : null}
         >
-          <span>Accessories</span>
+          <span>Accessories<span className="dropdown-chevron"></span></span>
           {(hoveredCategory === "accessories" || (window.innerWidth <= 768 && expandedCategory === 'accessories')) && (
             <div className="hover-box">
               {getSubcategories('accessories').map(item => (
