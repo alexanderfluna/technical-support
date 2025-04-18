@@ -58,7 +58,7 @@ const Wiegand = () => {
                   className={activeSubSection === "fdw1000" ? "active" : ""}
                   onClick={() => handleSubSectionClick("fdw1000")}
                 >
-                  How to Troubleshoot FDW1000 and EXP101 Devices
+                  How to Configure FDW1000 and EXP101 Devices
                 </li>
                 <li 
                   className={activeSubSection === "Wiegand vs. OSDP" ? "active" : ""}

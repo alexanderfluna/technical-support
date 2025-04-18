@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Search from './Search';
+import Chatbox from '../Chatbox'
 import '../../styles/Navbar.css';
 
 const Navbar = ({ onCategoryChange }) => {
@@ -18,20 +19,20 @@ const Navbar = ({ onCategoryChange }) => {
   const handleMouseClick = (category) => {
     const routeMap = {
       "technical-support": "/technical-support",
-      "razberi": "/razberi",
-      "ethernet-switch": "/ethernet-switch",
-      "media-converter": "/media-converter",
-      "ethernet-extender": "/ethernet-extender",
-      "wireless": "/wireless",
-      "serial-data": "/serial-data",
-      "wiegand": "/wiegand",
-      "contact-closure": "/contact-closure",
-      "sfp": "/sfp",
-      "power-supply": "/power-supply",
-      "poe-injector": "/poe-injector",
-      "card-cage": "/enclosure",
-      "enclosure": "/enclosure",
-      "server": "/razberi"
+      "razberi": "/technical-support/razberi",
+      "ethernet-switch": "/technical-support/ethernet-switch",
+      "media-converter": "/technical-support/media-converter",
+      "ethernet-extender": "/technical-support/ethernet-extender",
+      "wireless": "/technical-support/wireless",
+      "serial-data": "/technical-support/serial-data",
+      "wiegand": "/technical-support/wiegand",
+      "contact-closure": "/technical-support/contact-closure",
+      "sfp": "/technical-support/sfp",
+      "power-supply": "/technical-support/power-supply",
+      "poe-injector": "/technical-support/poe-injector",
+      "card-cage": "/technical-support/enclosure",
+      "enclosure": "/technical-support/enclosure",
+      "server": "/technical-support/razberi"
     };
     
     const route = routeMap[category];
@@ -87,6 +88,8 @@ const Navbar = ({ onCategoryChange }) => {
 
   return (
     <nav className="navbar">
+      <Chatbox/>
+
       <div className="mobile-header">
         <div className="hamburger" onClick={toggleMobileMenu}>
           <div className={`hamburger-line ${isMobileMenuOpen ? 'open' : ''}`}></div>

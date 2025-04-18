@@ -16,51 +16,51 @@ import EnclosureProducts from '../../pages/Enclosure/EnclosureProducts'
 const productsConfig = {
   RazberiServer: { 
     products: ServerProducts,
-    path: '/razberi'
+    path: '/technical-support/razberi'
   },
   EthernetSwitch: {
     products: EthernetSwitchProducts,
-    path: '/ethernet-switch'
+    path: '/technical-support/ethernet-switch'
   },
   MediaConverter: {
     products: MediaConverterProducts,
-    path: '/media-converter'
+    path: '/technical-support/media-converter'
   },
   EthernetExtender: {
     products: EthernetExtenderProducts,
-    path: '/ethernet-extender'
+    path: '/technical-support/ethernet-extender'
   },
   WirelessEthernet: {
     products: WirelessProducts,
-    path: '/wireless'
+    path: '/technical-support/wireless'
   },
   SerialData: {
     products: SerialDataProducts,
-    path: '/serial-data'
+    path: '/technical-support/serial-data'
   },
   Wiegand: {
     products: WiegandProducts,
-    path: '/wiegand'
+    path: '/technical-support/wiegand'
   },
   ContactClosure: {
     products: ContactClosureProducts,
-    path: '/contact-closure'
+    path: '/technical-support/contact-closure'
   },
   SFP: {
     products: SFPProducts,
-    path: '/sfp'
+    path: '/technical-support/sfp'
   },
   PowerSupply: {
     products: PowerSupplyProducts,
-    path: '/power-supply'
+    path: '/technical-support/power-supply'
   },
   PoeInjector: {
     products: PoeInjectorProducts,
-    path: '/poe-injector'
+    path: '/technical-support/poe-injector'
   },
   Enclosure: {
     products: EnclosureProducts,
-    path: '/enclosure'
+    path: '/technical-support/enclosure'
   },
 };
 

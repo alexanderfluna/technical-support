@@ -29,7 +29,7 @@ const WiegandFAQ = ({ activeSubSection }) => {
       </div>
 
       <div id="fdw1000" className="faq-answer">
-        <h1>How to Troubleshoot FDW1000 and EXP101 Devices</h1>
+        <h1>How to Configure FDW1000 and EXP101 Devices</h1>
         <p><strong>[1] Default the FDW1000/C.</strong></p>
         <p style={{paddingLeft: "40px"}}>[1.1] Remove the power, fiber strands, and metal housing to expose the DIP switches.</p>
         <p style={{paddingLeft: "40px"}}>[1.2] Flip all dip switches OFF.</p>

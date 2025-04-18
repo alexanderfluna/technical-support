@@ -153,3 +153,13 @@
     opacity: 1;
   }
 }
+
+@media (max-width: 1500px){
+  .chatbox-container {
+    position: fixed;
+    bottom: 7px;
+    right: 7px;
+    z-index: 1000;
+  }
+  
+}
