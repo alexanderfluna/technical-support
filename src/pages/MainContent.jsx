@@ -17,16 +17,16 @@ import '../styles/MainContent.css';
 
 const MainContent = ({ category }) => {
   const imageNames = [
-    "SS32X.jpg",
+    //"SS32X.jpg",
     "CNGE3FE8MS.jpg",
-    "CLFE1EOU.jpg",
+    //"CLFE1EOU.jpg",
     "CNFE3DOE2.jpg",
     "NW1.jpg",
-    "CNMCSFP.jpg",
+    //"CNMCSFP.jpg",
     "FDX60.jpg",
     "FDW1000.jpg",
     "FDC80.jpg",
-    "FVT110.jpg",
+    //"FVT110.jpg",
     "SFP.jpg",
     "PSU.jpg",
     "CNGE1IPS.jpg",

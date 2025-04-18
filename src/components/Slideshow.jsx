@@ -10,12 +10,12 @@ const Slideshow = ({ imageNames = [] }) => {
     // Ensure imageNames is an array
     const safeImageNames = Array.isArray(imageNames) ? imageNames : [];
     
-    // Create full paths and pad to 14 items
-    const processed = safeImageNames.slice(0, 14) // Take first 14 items
+    // Create full paths and pad to 10 items
+    const processed = safeImageNames.slice(0, 10) // Take first 10 items
       .map(name => name ? `${process.env.PUBLIC_URL}/photos/Slideshow/${name}` : null);
     
     // Fill remaining slots with null
-    while (processed.length < 14) {
+    while (processed.length < 10) {
       processed.push(null);
     }
     
@@ -24,8 +24,8 @@ const Slideshow = ({ imageNames = [] }) => {
 
   const images = getProcessedImages();
 
-  const goToNext = () => setCurrentIndex((prev) => (prev + 1) % 14);
-  const goToPrev = () => setCurrentIndex((prev) => (prev - 1 + 14) % 14);
+  const goToNext = () => setCurrentIndex((prev) => (prev + 1) % 10);
+  const goToPrev = () => setCurrentIndex((prev) => (prev - 1 + 10) % 10);
   const goToSlide = (index) => setCurrentIndex(index);
   const togglePlay = () => setIsPlaying(!isPlaying);
 

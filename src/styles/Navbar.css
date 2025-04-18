@@ -9,13 +9,50 @@
 }
 
 .navbar {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.mobile-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  margin-right: 15px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: #2a3a8f;
+  transition: var(--transition);
+}
+
+.hamburger-line.open:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
 }
 
 .comnet-logo {
-  height: rem;
+  height: 8rem;
   width: 30rem;
   cursor: pointer;
   transition: var(--transition);
@@ -23,11 +60,11 @@
 
 .categories {
   display: flex;
-  gap: 3rem;
+  gap: 4rem;
   align-items: center;
 }
 
-.categories > div {
+.main-category {
   position: relative;
   cursor: pointer;
   padding: 0.75rem 0;
@@ -36,16 +73,16 @@
   transition: var(--transition);
 }
 
-.categories > div > span {
+.main-category > span {
   position: relative;
   padding: 1.3rem 0;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   display: block;
-  color: #2a3a8f;
-  font-weight: 600;
+  color: #437cc7;
+  font-weight: 100;
 }
 
-.categories > div > span::after {
+.main-category > span::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -56,12 +93,8 @@
   transition: var(--transition);
 }
 
-.categories > div:hover > span::after {
+.main-category:hover > span::after {
   width: 100%;
-}
-
-.categories > div:hover {
-  color: var(--primary-color);
 }
 
 .hover-box {
@@ -80,7 +113,8 @@
   z-index: 1000;
 }
 
-.categories > div:hover .hover-box {
+.main-category:hover .hover-box,
+.mobile-open .hover-box {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0.5rem);
@@ -97,30 +131,115 @@
   font-size: 1.2rem;
 }
 
-.hover-box p:hover, .hover-box li:hover {
+.hover-box li:hover {
   background-color: #f1f5f9;
   color: var(--primary-color);
 }
 
-/* Responsive adjustments */
-@media (max-width: 500px) {
-  .navbar {
-    flex-direction: column;
+.search-container {
+  position: absolute;
+  width: 40rem;
+  margin: 0 auto;
+  top: 3rem;
+  right: 11rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #e0e0e0;
+  outline: none;
+  transition: var(--transition);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-input:hover,
+.search-input:focus {
+  border-color: #4a90e2;
+}
+
+.search-input:focus {
+  box-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
+}
+
+
+@media (max-width: 1000px) {
+  .mobile-header {
+    justify-content: flex-start;
     padding: 1rem;
   }
-  
+
+  .hamburger {
+    display: flex;
+  }
+
   .comnet-logo {
-    margin-bottom: 1rem;
+    width: auto;
+    max-width: 250px;
+    height: auto;
+    max-height: 60px;
   }
-  
-  .navbar > .search-container {
-    width: 100%;
-    margin: 1rem 0;
-  }
-  
+
   .categories {
-    flex-wrap: wrap;
-    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: white;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 20px 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: var(--transition);
+    z-index: 1000;
+    gap: 0;
+  }
+
+  .categories.mobile-open {
+    left: 0;
+  }
+
+  .main-category {
+    width: 100%;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .main-category > span {
+    padding: 0.5rem 0;
+    font-size: 1.2rem;
+  }
+
+  .hover-box {
+    position: static;
+    transform: none;
+    width: 100%;
+    box-shadow: none;
+    padding: 0;
+    margin-top: 0.5rem;
+    opacity: 1;
+    visibility: visible;
+    display: none;
+  }
+
+  .mobile-open .hover-box {
+    display: block;
+    transform: none;
+  }
+
+  .hover-box li {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+  }
+
+  .search-container {
+    position: absolute;
+    width: 10%;
+    top: 0;
+    right: 0;
   }
 }
 
@@ -264,49 +383,4 @@
   padding: 15px;
   text-align: center;
   color: #666;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* IPHONE CSS */
-
-@media (max-width: 1300px){
-.comnet-logo {
-    height: 8rem;
-    width: 25rem;
-}
-
-.categories {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.search-container{
-    max-width: 300px;
-    top: 2rem;
-    right: 4rem;
-}
-
-.search-input {
-    padding: 10px 15px;
-    font-size: 14px;
-}
-
-.search-results {
-    max-height: 300px;
-}
-
-.search-result-item {
-    padding: 10px 15px;
-    font-size: 14px;
-}
 }
