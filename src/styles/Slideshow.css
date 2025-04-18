@@ -128,7 +128,7 @@
 
   @media (max-width: 1000px) {
     .slideshow-container {
-      height: 20rem; 
+      height: 40rem; 
       width: 85vw;
       margin: 0 auto;
     }

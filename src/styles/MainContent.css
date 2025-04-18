@@ -138,6 +138,11 @@
     order: -1;
     margin: 0 auto;
   }
+
+  .slideshow-container {
+    margin: 0 auto;
+    width: 80vw;
+  }
 }
 
 @media (max-width: 576px) {

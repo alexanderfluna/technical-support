@@ -107,9 +107,6 @@ const Search = () => {
           placeholder="Enter product number..."
           className="search-input"
         />
-        <button className="search-button">
-          <span>Search</span>
-        </button>
       </div>
 
       {searchTerm && filteredProducts.length > 0 && (

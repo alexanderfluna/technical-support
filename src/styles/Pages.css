@@ -324,16 +324,30 @@
   .page {
     display: flex;
     flex-direction: column;
-    align-items: center;;
+    align-items: center;
   }
 
   .table-of-contents2 {
     position: relative;
     height: 10rem;
-    width: 75vw;
+    width: 60%;
   }
 
   .main-content {
+    width: 100vw;
+    padding: 0;
+  }
+
+  .faq-list {
+    width: 60vw;
+  }
+
+  .faq-title {
+    font-size: 2rem;
+  }
+
+  .selector-placeholder {
     width: 80vw;
   }
+
 }

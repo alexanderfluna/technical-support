@@ -12,16 +12,16 @@ const SFP = () => {
   const selectorToolRef = useRef(null);
 
   const handleSectionClick = (content) => {
-    setSelectedContent(content);
+    setSelectedContent(prevContent => prevContent === content ? '' : content);
     setActiveSubSection(null);
     
-    setTimeout(() => {
-      if (content === "sfp-faq" && faqRef.current) {
-        faqRef.current.scrollIntoView({ behavior: 'smooth' });
-      } else if (content === "sfp-selector-tool" && selectorToolRef.current) {
-        selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 50);
+    if (selectedContent !== content) {
+      setTimeout(() => {
+        if (content === "razberi-selector-tool" && selectorToolRef.current) {
+          selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 50);
+    }
   };
 
   const handleSubSectionClick = (sectionId) => {

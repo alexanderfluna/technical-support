@@ -14,18 +14,16 @@ const Razberi = () => {
   const selectorToolRef = useRef(null);
 
   const handleSectionClick = (content) => {
-    setSelectedContent(content);
+    setSelectedContent(prevContent => prevContent === content ? '' : content);
     setActiveSubSection(null);
     
-    setTimeout(() => {
-      if (content === "razberi-troubleshooting" && troubleshootingRef.current) {
-        troubleshootingRef.current.scrollIntoView({ behavior: 'smooth' });
-      } else if (content === "razberi-relevant-information" && relevantInfoRef.current) {
-        relevantInfoRef.current.scrollIntoView({ behavior: 'smooth' });
-      } else if (content === "razberi-selector-tool" && selectorToolRef.current) {
-        selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 50);
+    if (selectedContent !== content) {
+      setTimeout(() => {
+        if (content === "razberi-selector-tool" && selectorToolRef.current) {
+          selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 50);
+    }
   };
 
   const handleSubSectionClick = (sectionId) => {

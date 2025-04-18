@@ -162,4 +162,7 @@
     z-index: 1000;
   }
   
+  .chatbox-popup {
+    width: 60vw;
+  }
 }

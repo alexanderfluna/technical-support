@@ -109,8 +109,8 @@
 
 .hover-box {
   position: absolute;
-  top: 100%;
-  left: 0; 
+  top: 85%;
+  left: 50; 
   transform: none; 
   background-color: white;
   border-radius: 0.5rem;
@@ -177,6 +177,15 @@
 
 /* Mobile styles */
 @media (max-width: 1000px) {
+  .navbar {
+    width: 95vw;
+    margin: 0 auto;
+  }
+
+  .search-input-container {
+    width: 90vw;
+  }
+
   .dropdown-chevron {
     position: absolute;
     right: 0;
@@ -198,11 +207,10 @@
   }
 
   .comnet-logo {
-    width: auto;
     max-width: 200px;
     height: auto;
     max-height: 50px;
-    margin-left: 10px;
+    padding-right: 5pxx;
   }
 
   .categories {
