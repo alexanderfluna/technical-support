@@ -19,7 +19,7 @@ const SerialData = () => {
     
     if (selectedContent !== content) {
       setTimeout(() => {
-        if (content === "razberi-selector-tool" && selectorToolRef.current) {
+        if (content === "serial-data-selector-tool" && selectorToolRef.current) {
           selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
         }
       }, 50);
@@ -101,7 +101,7 @@ const SerialData = () => {
             </>
           )}
           
-          <p onClick={() => handleSectionClick("serial-selector-tool")}>Selector Tool</p>
+          <p onClick={() => handleSectionClick("serial-data-selector-tool")}>Selector Tool</p>
         </div>
 
         <div className="main-content">
@@ -122,7 +122,7 @@ const SerialData = () => {
           </div>
 
           <div 
-            id="serial-selector-tool" 
+            id="serial-data-selector-tool" 
             ref={selectorToolRef}
             className="selector-tool"
           >

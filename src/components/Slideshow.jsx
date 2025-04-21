@@ -10,29 +10,25 @@ const Slideshow = ({ imageNames = [] }) => {
     // Ensure imageNames is an array
     const safeImageNames = Array.isArray(imageNames) ? imageNames : [];
     
-    // Create full paths and pad to 10 items
-    const processed = safeImageNames.slice(0, 10) // Take first 10 items
+    // Create full paths for all images (up to 14)
+    const processed = safeImageNames.slice(0, 14) // Take first 14 items
       .map(name => name ? `${process.env.PUBLIC_URL}/photos/Slideshow/${name}` : null);
-    
-    // Fill remaining slots with null
-    while (processed.length < 10) {
-      processed.push(null);
-    }
     
     return processed;
   };
 
   const images = getProcessedImages();
+  const totalSlides = images.length;
 
-  const goToNext = () => setCurrentIndex((prev) => (prev + 1) % 10);
-  const goToPrev = () => setCurrentIndex((prev) => (prev - 1 + 10) % 10);
+  const goToNext = () => setCurrentIndex((prev) => (prev + 1) % totalSlides);
+  const goToPrev = () => setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   const goToSlide = (index) => setCurrentIndex(index);
   const togglePlay = () => setIsPlaying(!isPlaying);
 
   useEffect(() => {
     const interval = isPlaying ? setInterval(goToNext, 3000) : null;
     return () => interval && clearInterval(interval);
-  }, [isPlaying, currentIndex]);
+  }, [isPlaying, currentIndex, totalSlides]);
 
   return (
     <div className="slideshow-container">

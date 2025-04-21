@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Fiber from '../../relevant-information/Fiber';
 import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
 import OSI from '../../relevant-information/OSI';
+import SurgeSuppression from '../../relevant-information/SurgeSuppression';
 
 const EthernetSwitchFAQ = ({ activeSubSection }) => {
   useEffect(() => {
@@ -48,6 +49,10 @@ const EthernetSwitchFAQ = ({ activeSubSection }) => {
 
       <div id="poe" className="faq-answer">
         <PowerOverEthernet />
+      </div>
+
+      <div id="surge" className="faq-answer">
+        <SurgeSuppression />
       </div>
 
       <div id="osi" className="faq-answer">

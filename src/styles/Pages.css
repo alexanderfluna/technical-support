@@ -1,5 +1,5 @@
 .faq-list {
-    width: 80%;
+    width: 100%;
     padding: 30px;
 }
 
@@ -140,7 +140,6 @@
   
   .selector-placeholder {
     margin-top: 15px;
-    text-align: center;
   }
   
   .selector-options {
@@ -320,7 +319,7 @@
   background: #95a5a6;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1300px) {
   .page {
     display: flex;
     flex-direction: column;
@@ -330,7 +329,7 @@
   .table-of-contents2 {
     position: relative;
     height: 10rem;
-    width: 60%;
+    width: 100%;
   }
 
   .main-content {
@@ -339,7 +338,7 @@
   }
 
   .faq-list {
-    width: 60vw;
+    width: 80%;
   }
 
   .faq-title {

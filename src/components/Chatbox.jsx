@@ -1,38 +1,124 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import ServerProducts from '../pages/Razberi/RazberiProducts';
+import EthernetSwitchProducts from '../pages/EthernetSwitch/EthernetSwitchProducts';
+import MediaConverterProducts from '../pages/MediaConverter/MediaConverterProducts';
+import EthernetExtenderProducts from '../pages/EthernetExtender/EthernetExtenderProducts';
+import WirelessProducts from '../pages/Wireless/WirelessProducts';
+import SerialDataProducts from '../pages/SerialData/SerialDataProducts';
+import WiegandProducts from '../pages/Wiegand/WiegandProducts';
+import ContactClosureProducts from '../pages/ContactClosure/ContactClosureProducts';
+import SFPProducts from '../pages/SFP/SFPProducts';
+import PowerSupplyProducts from '../pages/PowerSupply/PowerSupplyProducts';
+import PoeInjectorProducts from '../pages/PoeInjector/PoeInjectorProducts';
+import EnclosureProducts from '../pages/Enclosure/EnclosureProducts';
 import "../styles/Chatbox.css";
 
 const Chatbox = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [responses, setResponses] = useState({});
+  const [messages, setMessages] = useState([
+    { 
+      text: "Please enter a Comnet part number or choose one of the following categories:\n- Server\n- Ethernet Switch\n- Ethernet Extender\n- Wireless\n- Media Converter\n- Serial Data Over Fiber\n- Contact Closure Over Fiber\n- Wiegand Over Fiber\n- Power Supply\n- PoE Injector\n- Enclosure", 
+      isUser: false 
+    }
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const [selectedItem, setSelectedItem] = useState(null);
+  const messagesEndRef = useRef(null);
+
+  // Combine all products into a single array with their categories
+  const allProducts = [
+    ...ServerProducts.map(p => ({ ...p, category: 'Server' })),
+    ...EthernetSwitchProducts.map(p => ({ ...p, category: 'Ethernet Switch' })),
+    ...MediaConverterProducts.map(p => ({ ...p, category: 'Media Converter' })),
+    ...EthernetExtenderProducts.map(p => ({ ...p, category: 'Ethernet Extender' })),
+    ...WirelessProducts.map(p => ({ ...p, category: 'Wireless' })),
+    ...SerialDataProducts.map(p => ({ ...p, category: 'Serial Data Over Fiber' })),
+    ...WiegandProducts.map(p => ({ ...p, category: 'Wiegand Over Fiber' })),
+    ...ContactClosureProducts.map(p => ({ ...p, category: 'Contact Closure Over Fiber' })),
+    ...SFPProducts.map(p => ({ ...p, category: 'SFP' })),
+    ...PowerSupplyProducts.map(p => ({ ...p, category: 'Power Supply' })),
+    ...PoeInjectorProducts.map(p => ({ ...p, category: 'PoE Injector' })),
+    ...EnclosureProducts.map(p => ({ ...p, category: 'Enclosure' }))
+  ];
+
+  const categories = [
+    "Server",
+    "Ethernet Switch",
+    "Ethernet Extender",
+    "Wireless",
+    "Media Converter",
+    "Serial Data Over Fiber",
+    "Contact Closure Over Fiber",
+    "Wiegand Over Fiber",
+    "Power Supply",
+    "PoE Injector",
+    "Enclosure"
+  ];
+
+  // Scroll to bottom whenever messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
-  };
-
-  const handleButtonClick = (question) => {
-    const newResponses = {
-      contact: 'Please email comnetsupport@acresecurity.com to create a ticket or call us at 203-796-5300 from 8:00am to 4:30pm EST.',
-      support: "Comnet's technical support can assist with providing product information, providing part numbers, application designs, troubleshooting, and processing RMAs.",
-      datasheet: 'Enter the device\'s part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> and click the \'View product details\' button.',
-      rma: 'To request an RMA, please contact Comnet\'s technical support with the product model, a description of the issue, and the troubleshooting that has been performed.',
-      firmware: 'You will need to request this from Comnet\'s technical support and provide the current firmware version of the device.',
-      warranty: 'The warranty information is listed in the product\'s data sheet on the bottom of the first page.',
-    };
-
-    setResponses(prevResponses => {
-      const isResponseVisible = prevResponses[question] !== undefined;
-      if (isResponseVisible) {
-        const { [question]: removedResponse, ...remainingResponses } = prevResponses;
-        return remainingResponses;
-      } else {
-        return { ...prevResponses, [question]: newResponses[question] }; 
-      }
-    });
+    scrollToBottom();
   };
 
   const closeChat = () => {
     setIsOpen(false);
-    setResponses({});
+    setSelectedItem(null);
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSendMessage = () => {
+    if (inputValue.trim() === '') return;
+    
+    // Add user message
+    const userMessage = inputValue;
+    setMessages(prev => [...prev, { text: userMessage, isUser: true }]);
+    setInputValue('');
+    
+    // Check if input matches a category
+    const matchedCategory = categories.find(cat => 
+      cat.toLowerCase() === userMessage.toLowerCase()
+    );
+
+    // Check if input matches a product model
+    const matchedProduct = allProducts.find(product => 
+      product.Model.toLowerCase() === userMessage.toLowerCase()
+    );
+
+    if (matchedCategory || matchedProduct) {
+      const item = (matchedCategory || matchedProduct.Model).toLowerCase();
+      setSelectedItem(item);
+      setTimeout(() => {
+        setMessages(prev => [...prev, { 
+          text: `While we are working on our Chatbox, please use the navigation bar at the top of the screen for help regarding the ${item}.`, 
+          isUser: false 
+        }]);
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        setMessages(prev => [...prev, { 
+          text: "Please enter a full valid Comnet part number or one of the mentioned categories.", 
+          isUser: false 
+        }]);
+      }, 1000);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSendMessage();
+    }
   };
 
   return (
@@ -48,48 +134,39 @@ const Chatbox = () => {
             <button onClick={closeChat} className="close-button">X</button>
           </div>
 
-          <div className="chatbox-buttons">
-            <button onClick={() => handleButtonClick('contact')}>
-              How can I contact Comnet's technical support?
-            </button>
-            {responses.contact && (
-              <div className="chat-message bot" dangerouslySetInnerHTML={{ __html: responses.contact }} />
-            )}
+          <div className="chatbox-messages">
+            {messages.map((message, index) => (
+              <div 
+                key={index} 
+                className={`message ${message.isUser ? 'user-message' : 'bot-message'}`}
+              >
+                {message.text.split('\n').map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </div>
+            ))}
+            <div ref={messagesEndRef} />
+          </div>
 
-            <button onClick={() => handleButtonClick('support')}>
-              What technical support services are offered by Comnet?
+          <div className="chatbox-input-container">
+            <input
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              onKeyPress={handleKeyPress}
+              placeholder={selectedItem ? `Ask about ${selectedItem}...` : "Enter part number or select category..."}
+              className="chatbox-input"
+            />
+            <button 
+              onClick={handleSendMessage}
+              className="send-button"
+              disabled={!inputValue.trim()}
+            >
+              Send
             </button>
-            {responses.support && (
-              <div className="chat-message bot" dangerouslySetInnerHTML={{ __html: responses.support }} />
-            )}
-
-            <button onClick={() => handleButtonClick('datasheet')}>
-              Where can I find a Comnet product's data sheets or manual?
-            </button>
-            {responses.datasheet && (
-              <div className="chat-message bot" dangerouslySetInnerHTML={{ __html: responses.datasheet }} />
-            )}
-
-            <button onClick={() => handleButtonClick('rma')}>
-              How do I request an RMA for a Comnet product?
-            </button>
-            {responses.rma && (
-              <div className="chat-message bot" dangerouslySetInnerHTML={{ __html: responses.rma }} />
-            )}
-
-            <button onClick={() => handleButtonClick('firmware')}>
-              How can I get the latest firmware version of a Comnet device?
-            </button>
-            {responses.firmware && (
-              <div className="chat-message bot" dangerouslySetInnerHTML={{ __html: responses.firmware }} />
-            )}
-
-            <button onClick={() => handleButtonClick('warranty')}>
-              Where can I find the warranty information for a Comnet product?
-            </button>
-            {responses.warranty && (
-              <div className="chat-message bot" dangerouslySetInnerHTML={{ __html: responses.warranty }} />
-            )}
           </div>
         </div>
       )}

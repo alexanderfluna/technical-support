@@ -45,16 +45,10 @@ const Razberi = () => {
           {selectedContent === "razberi-troubleshooting" && (
             <>
               <li 
-                className={activeSubSection === "power-ss32x" ? "active" : ""}
-                onClick={() => handleSubSectionClick("power-ss32x")}
+                className={activeSubSection === "server-power" ? "active" : ""}
+                onClick={() => handleSubSectionClick("server-power")}
               >
-                How to Troubleshoot Power Issues on a Server Switch
-              </li>
-              <li 
-                className={activeSubSection === "power-core" ? "active" : ""}
-                onClick={() => handleSubSectionClick("power-core")}
-              >
-                How to Troubleshoot Power Issues on a Core Server
+                How to Troubleshoot a Server With Powering Issues
               </li>
               <li 
                 className={activeSubSection === "no-poe" ? "active" : ""}
@@ -66,19 +60,19 @@ const Razberi = () => {
                 className={activeSubSection === "raid" ? "active" : ""}
                 onClick={() => handleSubSectionClick("raid")}
               >
-                How to Troubleshoot Issues with the RAID
+                How to Troubleshoot a Server with RAID Issues
               </li>
               <li 
                 className={activeSubSection === "nic" ? "active" : ""}
                 onClick={() => handleSubSectionClick("nic")}
               >
-                How to Troubleshoot Issues with the NIC
+                How to Troubleshoot a Server with NIC Issues
               </li>
               <li 
                 className={activeSubSection === "os" ? "active" : ""}
                 onClick={() => handleSubSectionClick("os")}
               >
-                How to Troubleshoot Issues with the OS
+                How to Troubleshoot a Server with OS Issues
               </li>
               <li 
                 className={activeSubSection === "rdp" ? "active" : ""}

@@ -25,7 +25,7 @@ const RazberiFAQ = ({ activeSubSection }) => {
 
   return (
     <div className="faq-list">
-      <h1 className="faq-title">Relevant Razberi Server Information</h1>
+      <h1 className="faq-title">Relevant Server Information</h1>
 
       <div id="computing" className="faq-answer">
         <h1>Computing Terminology</h1>

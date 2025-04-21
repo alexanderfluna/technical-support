@@ -17,7 +17,7 @@ const Wiegand = () => {
     
     if (selectedContent !== content) {
       setTimeout(() => {
-        if (content === "razberi-selector-tool" && selectorToolRef.current) {
+        if (content === "wiegand-selector-tool" && selectorToolRef.current) {
           selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
         }
       }, 50);

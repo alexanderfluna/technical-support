@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const RazberiSelectorTool = () => {
   const [selected, setSelected] = useState("");
   return (
-    <div className="faq-list">
-        <h1 className="faq-title">Razberi Server Selector Tool</h1>
+    <div>
+        <h1 className="faq-title">Server Selector Tool</h1>
         <div className="selector-placeholder" >
           <div className="selector-options" style={{width: "50%"}}>
             <button
@@ -27,9 +27,6 @@ const RazberiSelectorTool = () => {
               {selected === "Server Switch" && (
                 <div className="faq-answer">
                   <a href="pdf/razberi/SS32_Data_Sheet.pdf">
-                    <button style={{ backgroundColor: "rgb(13, 128, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px", marginBottom: "20px" }}>
-                      Click to view the SS32X data sheet
-                    </button>
                   </a>
                   <p>The <strong>SS32X server switch</strong> is a high-performance networking device designed for enterprise environments. It features a <strong>32-port PoE switch,</strong> powered by an <strong>Intel I5 processor</strong> for reliable performance. It includes two <strong>M.2 SSDs</strong> in RAID 1 for redundancy, with up to <strong>88TB</strong> of total capacity with <strong>RAID</strong> configurations of 0, 1, 5, 6, or 10 for storage flexibility. Users can choose between <strong>16GB or 32GB of RAM</strong>. It supports Windows 10, Windows 11, Windows Server 2019, and Windows Server 2022. The SS32X is also available in two form factors: a <strong>long chassis</strong> version, marked with "LX" in the part number, and a <strong>2U rack-mounted</strong> model, identified by "2U."</p>
                   <p>By default, the SS32X server switch is configured for easy deployment. The <strong>switch IP</strong> is set to 192.168.50.1, with a dedicated <strong>Admin Uplink IP</strong> of 192.168.50.19 for management access. The <strong>U2</strong> port is set to receive IP addresses via DHCP, allowing for seamless integration into dynamic network environments.</p>

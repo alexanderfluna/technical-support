@@ -19,7 +19,7 @@ const MediaConverter = () => {
     
     if (selectedContent !== content) {
       setTimeout(() => {
-        if (content === "razberi-selector-tool" && selectorToolRef.current) {
+        if (content === "media-converter-selector-tool" && selectorToolRef.current) {
           selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
         }
       }, 50);
@@ -107,7 +107,7 @@ const MediaConverter = () => {
             </>
           )}
           
-          <p onClick={() => handleSectionClick("media-selector-tool")}>Selector Tool</p>
+          <p onClick={() => handleSectionClick("media-converter-selector-tool")}>Selector Tool</p>
         </div>
 
         <div className="main-content">
@@ -128,7 +128,7 @@ const MediaConverter = () => {
           </div>
 
           <div 
-            id="media-selector-tool" 
+            id="media-converter-selector-tool" 
             ref={selectorToolRef}
             className="selector-tool"
           >

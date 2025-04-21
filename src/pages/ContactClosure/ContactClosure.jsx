@@ -19,7 +19,7 @@ const ContactClosure = () => {
     
     if (selectedContent !== content) {
       setTimeout(() => {
-        if (content === "razberi-selector-tool" && selectorToolRef.current) {
+        if (content === "contact-closure-selector-tool" && selectorToolRef.current) {
           selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
         }
       }, 50);
@@ -107,7 +107,7 @@ const ContactClosure = () => {
             </>
           )}
           
-          <p onClick={() => handleSectionClick("contact-selector-tool")}>Selector Tool</p>
+          <p onClick={() => handleSectionClick("contact-closure-selector-tool")}>Selector Tool</p>
         </div>
 
         <div className="main-content">
@@ -128,7 +128,7 @@ const ContactClosure = () => {
           </div>
 
           <div 
-            id="contact-selector-tool" 
+            id="contact-closure-selector-tool" 
             ref={selectorToolRef}
             className="selector-tool"
           >

@@ -1,11 +1,12 @@
 .slideshow-container {
     position: relative;
     width: 99vw;
-    height: 43rem;
+    height: 20rem;
     margin: 0 auto;
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 100, 200, 0.5);
+    margin-bottom: 5rem;
   }
   
   .slideshow {
@@ -128,9 +129,7 @@
 
   @media (max-width: 1000px) {
     .slideshow-container {
-      height: 40rem; 
-      width: 85vw;
-      margin: 0 auto;
+      height: 10rem; 
     }
     
     .prev, .next {

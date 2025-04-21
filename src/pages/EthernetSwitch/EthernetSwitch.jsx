@@ -19,7 +19,7 @@ const EthernetSwitch = () => {
     
     if (selectedContent !== content) {
       setTimeout(() => {
-        if (content === "razberi-selector-tool" && selectorToolRef.current) {
+        if (content === "ethernet-switch-selector-tool" && selectorToolRef.current) {
           selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
         }
       }, 50);
@@ -117,6 +117,12 @@ const EthernetSwitch = () => {
               Power Over Ethernet
             </li>
             <li 
+              className={activeSubSection === "surge" ? "active" : ""}
+              onClick={() => handleSubSectionClick("surge")}
+            >
+              Surge Suppression
+            </li>
+            <li 
               className={activeSubSection === "osi" ? "active" : ""}
               onClick={() => handleSubSectionClick("osi")}
             >
@@ -125,7 +131,7 @@ const EthernetSwitch = () => {
           </>
         )}
         
-        <p onClick={() => handleSectionClick("ethernet-selector-tool")}>Selector Tool</p>
+        <p onClick={() => handleSectionClick("ethernet-switch-selector-tool")}>Selector Tool</p>
       </div>
 
       <div className="main-content">
@@ -146,7 +152,7 @@ const EthernetSwitch = () => {
         </div>
 
         <div 
-          id="ethernet-selector-tool" 
+          id="ethernet-switch-selector-tool" 
           ref={selectorToolRef}
           className="selector-tool"
         >

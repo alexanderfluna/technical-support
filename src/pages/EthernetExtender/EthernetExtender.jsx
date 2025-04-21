@@ -19,7 +19,7 @@ const EthernetExtender = () => {
     
     if (selectedContent !== content) {
       setTimeout(() => {
-        if (content === "razberi-selector-tool" && selectorToolRef.current) {
+        if (content === "ethernet-extender-selector-tool" && selectorToolRef.current) {
           selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
         }
       }, 50);
@@ -77,7 +77,7 @@ const EthernetExtender = () => {
             </>
           )}
           
-          <p onClick={() => handleSectionClick("extender-selector-tool")}>Selector Tool</p>
+          <p onClick={() => handleSectionClick("ethernet-extender-selector-tool")}>Selector Tool</p>
         </div>
 
         <div className="main-content">
@@ -98,7 +98,7 @@ const EthernetExtender = () => {
           </div>
 
           <div 
-            id="extender-selector-tool" 
+            id="ethernet-extender-selector-tool" 
             ref={selectorToolRef}
             className="selector-tool"
           >

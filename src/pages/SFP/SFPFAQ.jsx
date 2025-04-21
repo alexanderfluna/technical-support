@@ -37,9 +37,6 @@ const SFPFAQ = ({ activeSubSection }) => {
         <h1>Comnet's SFP Chart</h1>
         <p><strong>SFP (Small Form-Factor Pluggable)</strong> modules are compact, hot-swappable devices used in network equipment like switches and routers to send and receive data over fiber optic or copper cables. They support singlemode or multimode fiber for different distances and come in various speeds like Fast Ethernet (FE), Gigabit Ethernet (GE), and 10 Gigabit (10G). SFPs use different connectors, such as LC, SC, or RJ-45, depending on the cable type. They help expand network capabilities without replacing entire devices.</p>
         <a href="pdf/SFP/sfp-modules.pdf">
-          <button style={{ backgroundColor: "rgb(13, 128, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px"}}>
-            View Comnet SFP Chart
-          </button>
         </a>
         <img src="photos/SFP/SFP.png" alt="SFP Chart" />
       </div>
