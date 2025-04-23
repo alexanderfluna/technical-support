@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Slideshow from '../components/Slideshow'
+import Slideshow from '../components/Slideshow';
 import "../styles/MainContent.css";
 
 const MainContent = () => {
@@ -29,7 +29,7 @@ const MainContent = () => {
       id: 'datasheet',
       title: 'Product Documentation',
       question: 'Where can I find a Comnet product\'s data sheets or manual?',
-      answer: 'Enter the device\'s part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> and click the \'View product details\' button.'
+      answer: 'Enter the device\'s part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool" target="_blank" rel="noopener noreferrer">Product Selector Tool</a> and click the \'View product details\' button.'
     },
     {
       id: 'firmware',
@@ -50,13 +50,11 @@ const MainContent = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       
-      // Animate elements as they come into view
-      supportData.forEach((item, index) => {
+      supportData.forEach((item) => {
         const element = document.getElementById(item.id);
         if (element) {
           const elementPosition = element.getBoundingClientRect().top;
-          const elementOffset = elementPosition + scrollPosition;
-          const isInView = scrollPosition > elementOffset - windowHeight * 0.7;
+          const isInView = elementPosition < windowHeight * 0.75;
           
           if (isInView && !animatedElements.includes(item.id)) {
             setAnimatedElements(prev => [...prev, item.id]);
@@ -88,39 +86,45 @@ const MainContent = () => {
   ];
 
   return (
-    <main className="support-main">
-      <section className="support-hero">
+    <main className="main-container">
+      <section className="hero-section">
         <div className="hero-content">
-          <h1 className="support-title">Comnet Technical Support</h1>
-          <p className="support-subtitle">Find answers to common technical questions and get the help you need</p>
-          <div className="scroll-indicator">↓ Scroll to explore ↓</div>
+          <h1 className="hero-title">Comnet Technical Support</h1>
+          <p className="hero-subtitle">Find answers to common technical questions and get the help you need</p>
+          <div className="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         </div>
       </section>
 
-      {supportData.map((item, index) => (
-        <section 
-          key={item.id}
-          id={item.id}
-          className={`support-section ${animatedElements.includes(item.id) ? 'animated' : ''} ${activeSection === item.id ? 'active' : ''}`}
-          style={{ '--delay': index * 0.1 }}
-        >
-          <div className="support-card">
-            <div className="support-header">
-              <h2>{item.title}</h2>
-              <div className="support-icon">{index % 2 === 0 ? '📞' : '🔧'}</div>
-            </div>
-            <div className="support-content">
-              <h3 className="support-question">{item.question}</h3>
-              <div 
-                className="support-answer" 
-                dangerouslySetInnerHTML={{ __html: item.answer }} 
-              />
-            </div>
-          </div>
-        </section>
-      ))}
+      <div className="content-container">
+        <div className="support-grid">
+          {supportData.map((item, index) => (
+            <article 
+              key={item.id}
+              id={item.id}
+              className={`support-card ${animatedElements.includes(item.id) ? 'animated' : ''} ${activeSection === item.id ? 'active' : ''}`}
+              style={{ '--delay': index * 0.1 }}
+            >
+              <header className="card-header">
+                <div className="card-icon">{index % 2 === 0 ? '📞' : '🔧'}</div>
+                <h2 className="card-title">{item.title}</h2>
+              </header>
+              <div className="card-body">
+                <h3 className="card-question">{item.question}</h3>
+                <div 
+                  className="card-answer" 
+                  dangerouslySetInnerHTML={{ __html: item.answer }} 
+                />
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
 
-    <Slideshow imageNames={imageNames} />
+      <Slideshow imageNames={imageNames} />
     </main>
   );
 };
