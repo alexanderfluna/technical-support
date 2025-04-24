@@ -164,9 +164,48 @@ const Chatbox = () => {
   const findAnswer = (question) => {
     const lowerQuestion = question.toLowerCase();
     
-    // Existing Razberi server and Ethernet switch checks...
+    // Check for Razberi server questions
+    if (lowerQuestion.includes('razberi') || lowerQuestion.includes('server')) {
+      if (lowerQuestion.includes('power') || lowerQuestion.includes('boot')) {
+        return razberiTroubleshooting["server power"];
+      } else if (lowerQuestion.includes('poe')) {
+        return razberiTroubleshooting["server poe"];
+      } else if (lowerQuestion.includes('raid')) {
+        return razberiTroubleshooting["server raid"];
+      } else if (lowerQuestion.includes('nic') || lowerQuestion.includes('network interface')) {
+        return razberiTroubleshooting["server nic"];
+      } else if (lowerQuestion.includes('os') || lowerQuestion.includes('operating system')) {
+        return razberiTroubleshooting["server os"];
+      } else if (lowerQuestion.includes('rdp') || lowerQuestion.includes('remote desktop')) {
+        return razberiTroubleshooting["server rdp"];
+      } else if (lowerQuestion.includes('registration')) {
+        return razberiTroubleshooting["server registration"];
+      } else if (lowerQuestion.includes('password')) {
+        return razberiTroubleshooting["server password"];
+      } else {
+        return generalInfo["server"];
+      }
+    }
     
-    // Check for Media Converter questions
+    // Check for Ethernet switch questions
+    if (lowerQuestion.includes('ethernet switch') || lowerQuestion.includes('switch')) {
+      if (lowerQuestion.includes('power')) {
+        return ethernetSwitchTroubleshooting["switch power"];
+      } else if (lowerQuestion.includes('optical') || lowerQuestion.includes('fiber') || lowerQuestion.includes('link')) {
+        return ethernetSwitchTroubleshooting["switch optical"];
+      } else if (lowerQuestion.includes('network') || lowerQuestion.includes('communicat')) {
+        return ethernetSwitchTroubleshooting["switch network"];
+      } else if (lowerQuestion.includes('poe') || lowerQuestion.includes('power over ethernet')) {
+        return ethernetSwitchTroubleshooting["switch poe"];
+      } else if (lowerQuestion.includes('ip') || lowerQuestion.includes('address')) {
+        return ethernetSwitchTroubleshooting["switch ip"];
+      } else if (lowerQuestion.includes('default') || lowerQuestion.includes('reset')) {
+        return ethernetSwitchTroubleshooting["switch default"];
+      } else {
+        return generalInfo["ethernet switch"];
+      }
+    }
+    
     if (lowerQuestion.includes('media converter') || lowerQuestion.includes('converter')) {
       if (lowerQuestion.includes('power')) {
         return mediaConverterTroubleshooting["media converter power"];
