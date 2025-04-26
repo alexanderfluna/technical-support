@@ -288,17 +288,7 @@
   padding-bottom: 10px;
   border-bottom: 2px solid #3498db;
 }
-/* Animation for section transitions */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 
-.troubleshooting,
-.relevant-information,
-.selector-tool {
-  animation: fadeIn 0.3s ease-out forwards;
-}
 
 /* Scrollbar styling */
 .table-of-contents2::-webkit-scrollbar {
@@ -348,4 +338,187 @@
     width: 80vw;
   }
 
+}
+
+/* ====== Main Page Layout ====== */
+.content-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+}
+
+/* ====== Table of Contents ====== */
+.toc-wrapper {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.toc-main-title {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.toc-item {
+  padding: 8px 15px;
+  background-color: #e9ecef;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.toc-item:hover {
+  background-color: #dee2e6;
+}
+
+.toc-item.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* ====== Cards Grid Layout ====== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* ====== Content Cards ====== */
+.content-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-card.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content-card.active {
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* ====== Card Components ====== */
+.card-header {
+  padding: 20px;
+  background-color: #f1f8ff;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  margin-right: 15px;
+}
+
+.card-title {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.card-body {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.card-content {
+  line-height: 1.6;
+  color: #495057;
+}
+
+.card-content p {
+  margin-bottom: 15px;
+}
+
+.card-image-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.card-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ====== Full Width Sections ====== */
+.full-width-card {
+  grid-column: 1 / -1;
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+/* ====== Animations ====== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== Responsive Adjustments ====== */
+@media (max-width: 768px) {
+  .toc-list {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .toc-item {
+    width: 100%;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .content-card {
+    height: auto;
+    max-height: 400px;
+  }
 }

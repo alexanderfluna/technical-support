@@ -19,7 +19,7 @@ const Navbar = ({ onCategoryChange }) => {
   const handleMouseClick = (category) => {
     const routeMap = {
       "technical-support": "/technical-support",
-      "razberi": "/technical-support/razberi",
+      "server": "/technical-support/razberi",
       "ethernet-switch": "/technical-support/ethernet-switch",
       "media-converter": "/technical-support/media-converter",
       "ethernet-extender": "/technical-support/ethernet-extender",
@@ -31,8 +31,7 @@ const Navbar = ({ onCategoryChange }) => {
       "power-supply": "/technical-support/power-supply",
       "poe-injector": "/technical-support/poe-injector",
       "card-cage": "/technical-support/enclosure",
-      "enclosure": "/technical-support/enclosure",
-      "server": "/technical-support/razberi"
+      "about-us": "/technical-support/about-us",
     };
     
     const route = routeMap[category];
@@ -162,6 +161,11 @@ const Navbar = ({ onCategoryChange }) => {
             </div>
           )}
         </div>
+
+        <div className="main-category" onClick={() => handleMouseClick("about-us")}>
+          <span>About Us</span>
+        </div>
+
       </div>
     </nav>
   )

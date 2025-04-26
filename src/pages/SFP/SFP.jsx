@@ -1,33 +1,44 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import SFPSelectorTool from './SFPSelectorTool';
 import SFPFAQ from './SFPFAQ';
 import Navbar from '../../components/Navigation/Navbar';
 
 const SFP = () => {
-  const [selectedContent, setSelectedContent] = useState('');
-  const [activeSubSection, setActiveSubSection] = useState(null);
-  
-  // Create refs for content sections
-  const faqRef = useRef(null);
-  const selectorToolRef = useRef(null);
+  const [activeSection, setActiveSection] = useState(null);
+  const [animatedElements, setAnimatedElements] = useState([]);
 
-  const handleSectionClick = (content) => {
-    setSelectedContent(prevContent => prevContent === content ? '' : content);
-    setActiveSubSection(null);
-    
-    if (selectedContent !== content) {
-      setTimeout(() => {
-        if (content === "sfp-selector-tool" && selectorToolRef.current) {
-          selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
+  const sections = [
+    { id: 'no-optical-link', title: 'How to Troubleshoot an SFP module with Optical Link Issues' },
+    { id: 'ddi', title: 'How to View the Status of an SFP Module' },
+    { id: 'cisco', title: 'Will Comnet SFPs work with Cisco devices?' },
+    { id: 'sfp-chart', title: "Comnet's SFP Chart" },
+    { id: 'fiber', title: 'Fiber Optics' }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      sections.forEach((item) => {
+        const element = document.getElementById(item.id);
+        if (element) {
+          const elementPosition = element.getBoundingClientRect().top;
+          const isInView = elementPosition < windowHeight * 0.75;
+          
+          if (isInView && !animatedElements.includes(item.id)) {
+            setAnimatedElements(prev => [...prev, item.id]);
+            setActiveSection(item.id);
+          }
         }
-      }, 50);
-    }
-  };
+      });
+    };
 
-  const handleSubSectionClick = (sectionId) => {
-    setActiveSubSection(sectionId);
-    
-    // Find the element and scroll to it
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [animatedElements]);
+
+  const handleSectionClick = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -35,63 +46,36 @@ const SFP = () => {
   };
 
   return (
-    <div>
+    <div className="content-page">
       <Navbar/>
-      <div className="page">
-        <div className="table-of-contents2">
-          <p onClick={() => handleSectionClick("sfp-faq")}>SFP Information</p>
-          {selectedContent === "sfp-faq" && (
-            <>
+      <div className="content-container">
+        {/* Table of Contents at the top */}
+        <div className="toc-wrapper">
+          <h2 className="toc-main-title">SFP Information</h2>
+          <ul className="toc-list">
+            {sections.map((section) => (
               <li 
-                className={activeSubSection === "no-optical-link" ? "active" : ""}
-                onClick={() => handleSubSectionClick("no-optical-link")}
+                key={section.id}
+                className={`toc-item ${activeSection === section.id ? 'active' : ''}`}
+                onClick={() => handleSectionClick(section.id)}
               >
-                How to Troubleshoot an SFP module with Optical Link Issues
+                {section.title}
               </li>
-              <li 
-                className={activeSubSection === "ddi" ? "active" : ""}
-                onClick={() => handleSubSectionClick("ddi")}
-              >
-                How to View the Status of an SFP Module
-              </li>
-              <li 
-                className={activeSubSection === "cisco" ? "active" : ""}
-                onClick={() => handleSubSectionClick("cisco")}
-              >
-                Will Comnet SFPs work with Cisco devices?
-              </li>
-              <li 
-                className={activeSubSection === "sfp-chart" ? "active" : ""}
-                onClick={() => handleSubSectionClick("sfp-chart")}
-              >
-                Comnet's SFP Chart
-              </li>
-              <li 
-                className={activeSubSection === "fiber" ? "active" : ""}
-                onClick={() => handleSubSectionClick("fiber")}
-              >
-                Fiber Optics
-              </li>
-            </>
-          )}
-          
-          <p onClick={() => handleSectionClick("sfp-selector-tool")}>Selector Tool</p>
+            ))}
+          </ul>
+          <h2 
+            className="toc-main-title"
+            onClick={() => handleSectionClick('selector-tool')}
+          >
+            Selector Tool
+          </h2>
         </div>
 
-        <div className="main-content">
-          <div 
-            id="sfp-faq" 
-            ref={faqRef}
-            className="relevant-information"
-          >
-            <SFPFAQ activeSubSection={activeSubSection} />
-          </div>
-
-          <div 
-            id="sfp-selector-tool" 
-            ref={selectorToolRef}
-            className="selector-tool"
-          >
+        {/* Main content area */}
+        <div className="cards-grid">
+          <SFPFAQ activeSection={activeSection} animatedElements={animatedElements} />
+          
+          <div id="selector-tool" className="full-width-card">
             <SFPSelectorTool />
           </div>
         </div>

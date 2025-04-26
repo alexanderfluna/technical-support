@@ -13,6 +13,7 @@ import SFP from './pages/SFP/SFP';
 import PowerSupply from './pages/PowerSupply/PowerSupply';
 import PoeInjector from './pages/PoeInjector/PoeInjector';
 import Enclosure from './pages/Enclosure/Enclosures';
+import AboutUs from './pages/AboutUs';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/technical-support/power-supply" element={<PowerSupply />} />
         <Route path="/technical-support/poe-injector" element={<PoeInjector />} />
         <Route path="/technical-support/enclosure" element={<Enclosure />} />
+        <Route path="/technical-support/about-us" element={<AboutUs />} />
       </Routes>
     </Router>
   );
