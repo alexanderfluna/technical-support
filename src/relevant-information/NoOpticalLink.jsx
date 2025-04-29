@@ -11,7 +11,7 @@ const NoOpticalLink = () => {
       <p style={{paddingLeft: "40px"}}><strong>[2.3]</strong> Confirm the number of fiber strands match (1 strand vs. 2 strands).</p>
       <p style={{paddingLeft: "40px"}}><strong>[2.4]</strong> Confirm the correct optical connector is used (ST vs. SC vs. LC).</p>
       <p><strong>[3]</strong> Using a process of elimination, swap out the device on either end of the fiber with to determine which unit is failing.</p>
-      <p><strong>[4]</strong> If the link light remains solid green after removing the fiber, follow the <strong>"How to Troubleshoot Power Issues"</strong> procedure to rule out power-related issues.</p>
+      <p><strong>[4]</strong> If the link light remains solid green after removing the fiber, there may be a powering issue.</p>
     </div>
 
   );

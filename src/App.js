@@ -14,6 +14,7 @@ import PowerSupply from './pages/PowerSupply/PowerSupply';
 import PoeInjector from './pages/PoeInjector/PoeInjector';
 import Enclosure from './pages/Enclosure/Enclosures';
 import AboutUs from './pages/AboutUs';
+import './styles/SelectorTool.css'
 
 const App = () => {
   return (

@@ -137,7 +137,7 @@ const Search = () => {
           value={searchTerm}
           onChange={handleSearch}
           onKeyDown={handleKeyDown}
-          placeholder="Enter product number..."
+          placeholder="Enter a product number..."
           className="search-input"
         />
         <button 
