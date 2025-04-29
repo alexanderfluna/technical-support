@@ -41,7 +41,7 @@ const EthernetSwitch = () => {
       <Navbar/>
       <div className="page">
       <div className="table-of-contents2">
-        <p onClick={() => handleSectionClick("ethernet-troubleshooting")}>Troubleshooting</p>
+        <p onClick={() => handleSectionClick("ethernet-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
         {selectedContent === "ethernet-troubleshooting" && (
           <>
             <li 
@@ -89,7 +89,7 @@ const EthernetSwitch = () => {
           </>
         )}
         
-        <p onClick={() => handleSectionClick("ethernet-relevant-information")}>Relevant Information</p>
+        <p onClick={() => handleSectionClick("ethernet-relevant-information")}>Relevant Information<span className="dropdown-chevron"></span></p>
         {selectedContent === "ethernet-relevant-information" && (
           <>
             <li 

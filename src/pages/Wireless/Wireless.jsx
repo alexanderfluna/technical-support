@@ -41,7 +41,7 @@ const Wireless = () => {
         <Navbar/>
         <div className="page">
           <div className="table-of-contents2">
-            <p onClick={() => handleSectionClick("wireless-troubleshooting")}>Troubleshooting</p>
+            <p onClick={() => handleSectionClick("wireless-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
             {selectedContent === "wireless-troubleshooting" && (
               <>
                 <li 
@@ -65,7 +65,7 @@ const Wireless = () => {
               </>
             )}
             
-            <p onClick={() => handleSectionClick("wireless-relevant-information")}>Relevant Information</p>
+            <p onClick={() => handleSectionClick("wireless-relevant-information")}>Relevant Information<span className="dropdown-chevron"></span></p>
             {selectedContent === "wireless-relevant-information" && (
               <>
                 <li 

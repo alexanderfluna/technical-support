@@ -39,7 +39,7 @@ const Wiegand = () => {
         <Navbar/>
         <div className="page">
           <div className="table-of-contents2">
-            <p onClick={() => handleSectionClick("wiegand-faq")}>Wiegand Information</p>
+            <p onClick={() => handleSectionClick("wiegand-faq")}>Wiegand <span className="dropdown-chevron"></span></p>
             {selectedContent === "wiegand-faq" && (
               <>
                 <li 

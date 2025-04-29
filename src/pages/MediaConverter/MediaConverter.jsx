@@ -41,7 +41,7 @@ const MediaConverter = () => {
       <Navbar />
       <div className="page">
         <div className="table-of-contents2">
-          <p onClick={() => handleSectionClick("media-troubleshooting")}>Troubleshooting</p>
+          <p onClick={() => handleSectionClick("media-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
           {selectedContent === "media-troubleshooting" && (
             <>
               <li 
@@ -77,7 +77,7 @@ const MediaConverter = () => {
             </>
           )}
           
-          <p onClick={() => handleSectionClick("media-relevant-information")}>Relevant Information</p>
+          <p onClick={() => handleSectionClick("media-relevant-information")}>Relevant Information<span className="dropdown-chevron"></span></p>
           {selectedContent === "media-relevant-information" && (
             <>
               <li 

@@ -41,7 +41,7 @@ const ContactClosure = () => {
       <Navbar />
       <div className="page">
         <div className="table-of-contents2">
-          <p onClick={() => handleSectionClick("contact-troubleshooting")}>Troubleshooting</p>
+          <p onClick={() => handleSectionClick("contact-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
           {selectedContent === "contact-troubleshooting" && (
             <>
               <li 
@@ -65,7 +65,7 @@ const ContactClosure = () => {
             </>
           )}
           
-          <p onClick={() => handleSectionClick("contact-relevant-information")}>Relevant Information</p>
+          <p onClick={() => handleSectionClick("contact-relevant-information")}>Relevant Information<span className="dropdown-chevron"></span></p>
           {selectedContent === "contact-relevant-information" && (
             <>
               <li 

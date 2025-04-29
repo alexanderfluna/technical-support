@@ -41,7 +41,7 @@ const EthernetExtender = () => {
       <Navbar/>
       <div className="page">
         <div className="table-of-contents2">
-          <p onClick={() => handleSectionClick("extender-troubleshooting")}>Troubleshooting</p>
+          <p onClick={() => handleSectionClick("extender-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
           {selectedContent === "extender-troubleshooting" && (
             <>
               <li 
@@ -59,7 +59,7 @@ const EthernetExtender = () => {
             </>
           )}
           
-          <p onClick={() => handleSectionClick("extender-relevant-information")}>Relevant Information</p>
+          <p onClick={() => handleSectionClick("extender-relevant-information")}>Relevant Information<span className="dropdown-chevron"></span></p>
           {selectedContent === "extender-relevant-information" && (
             <>
               <li 

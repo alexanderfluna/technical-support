@@ -292,7 +292,7 @@ const Razberi = () => {
       <Navbar/>
       <div className="page">
         <div className="table-of-contents2">
-          <p onClick={() => handleSectionClick("razberi-troubleshooting")}>Troubleshooting</p>
+          <p onClick={() => handleSectionClick("razberi-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
           {selectedContent === "razberi-troubleshooting" && (
             <>
               <li 
@@ -358,7 +358,7 @@ const Razberi = () => {
             </>
           )}
           
-          <p onClick={() => handleSectionClick("razberi-relevant-information")}>Relevant Information</p>
+          <p onClick={() => handleSectionClick("razberi-relevant-information")}>Relevant Information<span className="dropdown-chevron"></span></p>
           {selectedContent === "razberi-relevant-information" && (
             <>
               <li 

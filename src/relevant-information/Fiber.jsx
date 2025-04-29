@@ -29,7 +29,7 @@ const Fiber = () => {
       <h1>Fiber Optics</h1>
       <p>The <strong>glass composition</strong> of  fiber makes it resistant to electromagnetic interference (EMI). The core and cladding of the fiber work together to transmit light signals efficiently while minimizing signal loss. The fiber's design ensures reliable data transmission even in environments with high electromagnetic interference, which is crucial for maintaining the integrity of data in communication networks.</p>
 
-      <img src="photos/Fiber/Fiber.jpg" alt="Fiber optics cross-section" style={{width: "100%"}}/>
+      <img src="photos/Fiber/Fiber.jpg" alt="Fiber optics cross-section" style={{width: "70%"}}/>
 
       <p><strong>Multimode fiber</strong> covers shorter distances than single mode, typically up to 2 miles at 100 Mbps. <strong>OM1 multimode fiber,</strong>  which has a 62.5 micron core and 125 micron cladding, supports distances of 275 meters at 1 Gbps. <strong>OM2 and higher multimode fibers,</strong> with a 50 micron core and 125 micron cladding, can extend up to 550 meters at 1 Gbps. These fibers are suitable for applications where the transmission distances are not as long, such as within buildings or across campuses.</p>
 
