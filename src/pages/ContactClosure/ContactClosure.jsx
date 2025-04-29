@@ -65,7 +65,7 @@ const ContactClosure = () => {
             </>
           )}
           
-          <p onClick={() => handleSectionClick("contact-relevant-information")}>Relevant Information<span className="dropdown-chevron"></span></p>
+          <p onClick={() => handleSectionClick("contact-relevant-information")}>Educational<span className="dropdown-chevron"></span></p>
           {selectedContent === "contact-relevant-information" && (
             <>
               <li 

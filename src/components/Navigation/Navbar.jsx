@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Search from './Search';
-import Chatbox from '../Chatbox'
+import Chatbot from '../Chatbot/Chatbot'
 import '../../styles/Navbar.css';
 
 const Navbar = ({ onCategoryChange }) => {
@@ -87,7 +87,7 @@ const Navbar = ({ onCategoryChange }) => {
 
   return (
     <nav className="navbar">
-      <Chatbox/>
+      <Chatbot/>
 
       <div className="mobile-header">
         <div className="hamburger" onClick={toggleMobileMenu}>

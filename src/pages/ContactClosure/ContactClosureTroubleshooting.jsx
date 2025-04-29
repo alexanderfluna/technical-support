@@ -16,20 +16,18 @@ const ContactClosureTroubleshooting = ({ activeSubSection }) => {
 
   return (
     <div className="faq-list">
-        <h1 className="faq-title">Troubleshooting Contact Closures</h1>
-
         <div id="no-power" className="faq-answer">
-          <h1>How to Troubleshoot a Contact Closure Device with Power Issues</h1>
+          <h1 className="faq-title">How to Troubleshoot a Contact Closure Device with Power Issues</h1>
           {<NoPowerLight />}
           </div>
 
         <div id="no-optical-link" className="faq-answer">
-          <h1>How to Troubleshoot a Unit with Optical Link Issues</h1>
+          <h1 className="faq-title">How to Troubleshoot a Unit with Optical Link Issues</h1>
           {<NoOpticalLink />}
         </div>
 
           <div id="no-contacts" className="faq-answer">
-            <h1>How to Troubleshoot a Unit That is Not Sending or Receiving the Status of a Contact</h1>
+            <h1 className="faq-title">How to Troubleshoot a Unit That is Not Sending or Receiving the Status of a Contact</h1>
             <p><strong>[1] Ensure the wires are connected properly.</strong></p>
             <p><strong>FDC10:</strong></p>
             <img src="photos/FDC/fdc10.jpg" style={{"padding-right": "100px"}}></img>

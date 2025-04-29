@@ -24,7 +24,7 @@ const ContactClosureSelectorTool = () => {
         window.scrollTo(0, 0);
         setFilteredProducts(products); 
         updateAvailableOptions(products);
-      }, []);
+    }, []);
 
     const handleFilterChange = (filterType, value) => {
         const newFilters = { ...filters, [filterType]: value };
@@ -61,149 +61,74 @@ const ContactClosureSelectorTool = () => {
         const bidirectional = [...new Set(filteredProducts.map((product) => product.bidirectional))];
     
         setAvailableOptions({ fiber, Latching_Or_NonLatching, inputContactSupervision, summaryFaultRelay, numberOfChannels, bidirectional });
-      };
+    };
 
-  return (
-    <div className="faq-list">
-      <h1 className="faq-title">Contact Closure Selector Tool</h1>
-      <div className="filter-options" style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '10px',
-        padding: '20px',
-        backgroundColor: '#f9f9f9',
-        borderRadius: '8px',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-        marginBottom: '20px',
-      }}>
-        <button
-          className="reset-button"
-          onClick={resetFilters}
-          style={{
-            padding: '8px 15px',
-            backgroundColor: '#ff4d4d',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            fontWeight: 'bold',
-            transition: 'background-color 0.3s',
-          }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
-        >
-          Reset
-        </button>
-
-        {["fiber", "Latching_Or_NonLatching", "inputContactSupervision", "summaryFaultRelay", "numberOfChannels", "bidirectional"].map((filterType) => (
-          <div key={filterType} style={{ width: '200px', minWidth: '150px' }}>
-            <h3 style={{
-              fontSize: '1rem',
-              fontWeight: 'bold',
-              color: '#333',
-              marginBottom: '5px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-              {filterType.replace(/([A-Z])/g, ' $1').trim().replace(/\b\w/g, char => char.toUpperCase())}
-              {filters[filterType] && (
-                <button
-                  className="clear-filter"
-                  onClick={() => clearFilter(filterType)}
-                  style={{
-                    backgroundColor: '#ff4d4d',
-                    color: '#fff',
-                    border: 'none',
-                    borderRadius: '50%',
-                    padding: '5px 10px',
-                    fontSize: '1rem',
-                    cursor: 'pointer',
-                    transition: 'background-color 0.3s',
-                  }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
-                >
-                  X
+    return (
+        <div className="tool-container">
+            <h1 className="tool-title">Contact Closure Selector Tool</h1>
+            
+            <div className="filter-grid">
+                <button className="reset-button" onClick={resetFilters}>
+                    Reset Filters
                 </button>
-              )}
-            </h3>
-            <div className="dropdown-group">
-              <select
-                name={filterType}
-                value={filters[filterType] || ""}
-                onChange={(e) => handleFilterChange(filterType, e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '8px 12px',
-                  fontSize: '0.875rem',
-                  border: '1px solid #ccc',
-                  borderRadius: '5px',
-                  boxSizing: 'border-box',
-                  backgroundColor: '#fff',
-                  cursor: 'pointer',
-                  transition: 'border-color 0.3s ease-in-out',
-                }}
-              >
-                <option value="">Select {filterType.replace(/([A-Z])/g, ' $1')}</option>
-                {availableOptions[filterType]?.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
+
+                {["fiber", "Latching_Or_NonLatching", "inputContactSupervision", "summaryFaultRelay", "numberOfChannels", "bidirectional"].map((filterType) => (
+                    <div key={filterType} className="filter-group">
+                        <div className="filter-label">
+                            {filterType.replace(/([A-Z])/g, ' $1').trim().replace(/\b\w/g, char => char.toUpperCase())}
+                            {filters[filterType] && (
+                                <button className="clear-button" onClick={() => clearFilter(filterType)}>
+                                    ×
+                                </button>
+                            )}
+                        </div>
+                        <select
+                            className="filter-select"
+                            name={filterType}
+                            value={filters[filterType] || ""}
+                            onChange={(e) => handleFilterChange(filterType, e.target.value)}
+                        >
+                            <option value="">Select {filterType.replace(/([A-Z])/g, ' $1')}</option>
+                            {availableOptions[filterType]?.map((option) => (
+                                <option key={option} value={option}>
+                                    {option}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                 ))}
-              </select>
             </div>
-          </div>
-        ))}
-      </div>
 
-      <div className="table-container" style={{
-        padding: '20px',
-        backgroundColor: '#fff',
-        borderRadius: '8px',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-        overflowX: 'auto',
-      }}>
-        <table className="selector-table" style={{
-          width: '100%',
-          borderCollapse: 'collapse',
-          marginBottom: '20px',
-          textAlign: 'left',
-          borderRadius: '8px',
-          overflow: 'hidden',
-        }}>
-          <thead>
-            <tr style={{ backgroundColor: '#007bff', color: '#fff' }}>
-              <th style={{ padding: '12px', fontSize: '1rem' }}>Model</th>
-              <th style={{ padding: '12px', fontSize: '1rem' }}>Fiber</th>
-              <th style={{ padding: '12px', fontSize: '1rem' }}>Latching or Non-Latching</th>
-              <th style={{ padding: '12px', fontSize: '1rem' }}>Input Contact Supervision</th>
-              <th style={{ padding: '12px', fontSize: '1rem' }}>Summary Fault Relay</th>
-              <th style={{ padding: '12px', fontSize: '1rem' }}>Number of Channels</th>
-              <th style={{ padding: '12px', fontSize: '1rem' }}>Bidirectional</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredProducts.map((product, index) => (
-              <tr key={index} style={{
-                backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#fff",
-                borderBottom: '1px solid #ddd',
-                transition: 'background-color 0.3s ease',
-              }}>
-                <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Model}</td>
-                <td style={{ padding: '12px', fontSize: '1rem' }}>{product.fiber}</td>
-                <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Latching_Or_NonLatching}</td>
-                <td style={{ padding: '12px', fontSize: '1rem' }}>{product.inputContactSupervision}</td>
-                <td style={{ padding: '12px', fontSize: '1rem' }}>{product.summaryFaultRelay}</td>
-                <td style={{ padding: '12px', fontSize: '1rem' }}>{product.numberOfChannels}</td>
-                <td style={{ padding: '12px', fontSize: '1rem' }}>{product.bidirectional}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  )
-}
+            <div className="table-wrapper">
+                <table className="data-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Fiber</th>
+                            <th>Latching or Non-Latching</th>
+                            <th>Input Contact Supervision</th>
+                            <th>Summary Fault Relay</th>
+                            <th>Number of Channels</th>
+                            <th>Bidirectional</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredProducts.map((product, index) => (
+                            <tr key={index}>
+                                <td>{product.Model}</td>
+                                <td>{product.fiber}</td>
+                                <td>{product.Latching_Or_NonLatching}</td>
+                                <td>{product.inputContactSupervision}</td>
+                                <td>{product.summaryFaultRelay}</td>
+                                <td>{product.numberOfChannels}</td>
+                                <td>{product.bidirectional}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+};
 
-export default ContactClosureSelectorTool
+export default ContactClosureSelectorTool;
