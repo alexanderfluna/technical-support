@@ -14,15 +14,13 @@ const WirelessTroubleshooting = ({ activeSubSection }) => {
 
   return (
     <div className="faq-list">
-      <h1 className="faq-title">Troubleshooting Wireless Ethernet</h1>
-
       <div className="faq-answer" id="netwave-configurations">
-        <h1>How to Configure Comnet's Wireless Radios</h1>
+        <h1 className="faq-title">How to Configure Comnet's Wireless Radios</h1>
         <p>Click the link to <a href="pdf/Wireless/NetWave.pdf">view Comnet's wireless configuration documentation</a>.</p>
       </div>
 
       <div className="faq-answer" id="radio-not-powering-on">
-        <h1>How to Troubleshoot a Wireless Radio with Power Issues</h1>
+        <h1 className="faq-title">How to Troubleshoot a Wireless Radio with Power Issues</h1>
         <p><strong>[1] Try using a hardened IEEE 802.3af/at compliant PoE injector to power the radio.</strong></p>
         <p style={{ paddingLeft: "40px" }}><strong>[1.1]</strong> Replace the Ethernet cable to rule it out.</p>
         <p style={{ paddingLeft: "40px" }}><strong>[1.2]</strong> Verify that the PoE injector will power on another device.</p>
@@ -39,7 +37,7 @@ const WirelessTroubleshooting = ({ activeSubSection }) => {
       </div>
 
       <div className="faq-answer" id="radio-losing-connection">
-      <h1>How to Troubleshoot a Wireless Radio that Drops Out</h1>
+      <h1 className="faq-title">How to Troubleshoot a Wireless Radio that Drops Out</h1>
 
       <p><strong>[1]</strong> Default the wireless radio and reconfigure it.</p>
       <p style={{ paddingLeft: "40px" }}>Click the link to <a href="pdf/Wireless/NetWave.pdf">view Comnet's wireless configuration documentation</a>.</p>

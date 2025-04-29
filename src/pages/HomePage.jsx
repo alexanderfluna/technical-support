@@ -1,6 +1,5 @@
 import React from 'react';
-import Slideshow from '../components/Slideshow';
-import "../styles/MainContent.css";
+import "../styles/HomePage.css";
 
 const MainContent = () => {
   return (

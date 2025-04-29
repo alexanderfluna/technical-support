@@ -3,7 +3,7 @@ import React from 'react';
 const OSI = () => {
   return (
     <div>
-      <h1>The OSI Model</h1>
+      <h1 className="faq-title">The OSI Model</h1>
       <p><strong>Layer 1, the Physical layer</strong>, is all about the actual signals that carry data. These signals can be electrical pulses, light pulses, or radio waves that represent binary bits (0s and 1s). It handles how data moves through cables and wireless signals. Copper cables, like Ethernet, send electrical signals, while fiber optic cables use light. Wireless connections, such as Wi-Fi and Bluetooth, use radio waves. Devices like media converters change signals from one type to another, and hubs repeat signals to all connected devices.</p>
       <p><strong>Layer 2, the Data Link layer</strong>, is responsible for organizing data into frames, which include MAC addresses for communication. This layer ensures data moves from one device to another without errors. It has two parts: the MAC (Media Access Control) and LLC (Logical Link Control). Network Interface Cards (NICs) allow devices to connect to networks using MAC addresses. Switches forward frames to the correct device, reducing unnecessary network traffic. Bridges help connect and filter traffic between different networks.</p>
       <p><strong>Layer 3, the Network layer</strong>, deals with packets, which contain IP addresses for communication across networks. This layer ensures that data reaches the right destination by managing routing and logical addressing. Routers direct packets based on IP addresses, helping them move between networks. Layer 3 switches combine the features of both switches and routers, allowing them to handle both local and wide network communication.</p>

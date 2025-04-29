@@ -26,7 +26,7 @@ const Fiber = () => {
 
   return (
     <div>
-      <h1>Fiber Optics</h1>
+      <h1 className="faq-title">Fiber Optics</h1>
       <p>The <strong>glass composition</strong> of  fiber makes it resistant to electromagnetic interference (EMI). The core and cladding of the fiber work together to transmit light signals efficiently while minimizing signal loss. The fiber's design ensures reliable data transmission even in environments with high electromagnetic interference, which is crucial for maintaining the integrity of data in communication networks.</p>
 
       <img src="photos/Fiber/Fiber.jpg" alt="Fiber optics cross-section" style={{width: "100%"}}/>

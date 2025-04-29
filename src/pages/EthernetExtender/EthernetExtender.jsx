@@ -59,7 +59,7 @@ const EthernetExtender = () => {
             </>
           )}
           
-          <p onClick={() => handleSectionClick("extender-relevant-information")}>Relevant Information<span className="dropdown-chevron"></span></p>
+          <p onClick={() => handleSectionClick("extender-relevant-information")}>Educational<span className="dropdown-chevron"></span></p>
           {selectedContent === "extender-relevant-information" && (
             <>
               <li 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navigation/Navbar';
-import '../../styles/Pages.css';
 
 const CardCage = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);

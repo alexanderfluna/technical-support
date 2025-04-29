@@ -65,7 +65,7 @@ const Wireless = () => {
               </>
             )}
             
-            <p onClick={() => handleSectionClick("wireless-relevant-information")}>Relevant Information<span className="dropdown-chevron"></span></p>
+            <p onClick={() => handleSectionClick("wireless-relevant-information")}>Educational<span className="dropdown-chevron"></span></p>
             {selectedContent === "wireless-relevant-information" && (
               <>
                 <li 

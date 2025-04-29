@@ -16,20 +16,18 @@ const SerialDataTroubleshooting = ({ activeSubSection }) => {
 
   return (
     <div className="faq-list">
-      <h1 className="faq-title">Troubleshooting Serial Data</h1>
-
       <div id="no-power" className="faq-answer">
-        <h1>How to Troubleshoot a Unit with Power Issues</h1>
+        <h1 className="faq-title">How to Troubleshoot a Unit with Power Issues</h1>
         {<NoPowerLight />}
       </div>
 
       <div id="no-optical-link" className="faq-answer">
-        <h1>Troubleshooting a unit that will not link optically</h1>
+        <h1 className="faq-title">Troubleshooting a unit that will not link optically</h1>
         {<NoOpticalLink />}
       </div>
       
       <div id="fdx60" className="faq-answer">
-        <h1>How to Troubleshoot an FDX60</h1>
+        <h1 className="faq-title">How to Troubleshoot an FDX60</h1>
         <p><strong>[1] Document what lights are illuminated on the unit.</strong></p>
         <img src="photos/FDX/fdx60-led.jpg"></img>
         <p><strong>[2] If passing 2-wire RS485, ensure there is 120-omh resistor across pins 6 and 7 (+I/O and -I/O).</strong></p>
@@ -42,7 +40,7 @@ const SerialDataTroubleshooting = ({ activeSubSection }) => {
       </div>
 
       <div id="cnfe3doe2" className="faq-answer">
-        <h1>How to Troubleshoot a CNFE3DOE2/M</h1>
+        <h1 className="faq-title">How to Troubleshoot a CNFE3DOE2/M</h1>
         <a href="pdf/SerialData/CNFE3DOE2.pdf">Click the link to view the configuration manual for the CNFE3DOE2/M.</a>
       </div>
 

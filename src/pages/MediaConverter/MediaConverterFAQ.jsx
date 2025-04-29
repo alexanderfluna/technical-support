@@ -17,10 +17,8 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
 
   return (
         <div className="faq-list">
-            <h1 className="faq-title">Relevant Media Converter Information</h1>
-
             <div className="faq-answer" id="media-converters">
-                <h1>Media Converters</h1>
+                <h1 className="faq-title">Media Converters</h1>
                 <p><strong>A media converter</strong> facilitates communication between different networking media. It converts Ethernet data, transmitted as electrical pulses over copper cables, into infrared light signals that can travel through optical fiber and vice versa. Media converters are essential in modern networking, particularly when extending network distances beyond the limits of traditional copper cabling.</p>
                 <p>Operating at <strong>Layer 1,</strong> media converters strictly function as data pass-through devices. Unlike routers or switches, they do not analyze or modify network traffic. Their role is purely to convert signals, ensuring compatibility between different transmission media while maintaining the integrity and speed of data transfer.</p>
                 <p>Some media converters support <strong>Power over Ethernet (PoE),</strong> which allows the transmission of both power and data over a single Ethernet cable. Non-PoE versions, on the other hand, require separate power sources for connected devices. These devices also come in different physical sizes. <strong>Full-sized media converters</strong> are designed to be mounted in <strong>rack-mountable card cages,</strong> making them ideal for structured networking environments where multiple conversions need to be managed centrally. <strong>Miniature media converters,</strong> which are compact and standalone, offer flexibility for installations in tight spaces or single-device deployments.</p>

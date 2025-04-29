@@ -89,7 +89,7 @@ const EthernetSwitch = () => {
           </>
         )}
         
-        <p onClick={() => handleSectionClick("ethernet-relevant-information")}>Relevant Information<span className="dropdown-chevron"></span></p>
+        <p onClick={() => handleSectionClick("ethernet-relevant-information")}>Educational<span className="dropdown-chevron"></span></p>
         {selectedContent === "ethernet-relevant-information" && (
           <>
             <li 

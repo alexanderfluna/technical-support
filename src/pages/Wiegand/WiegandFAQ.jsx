@@ -16,20 +16,18 @@ const WiegandFAQ = ({ activeSubSection }) => {
 
   return (
     <div className="faq-list">
-      <h1 className="faq-title">Wiegand</h1>
-
       <div id="no-power" className="faq-answer">
-        <h1>How to Troubleshoot a Unit with Power Issues</h1>
+        <h1 className="faq-title">How to Troubleshoot a Unit with Power Issues</h1>
         {<NoPowerLight />}
       </div>
 
       <div id="no-link-light" className="faq-answer">
-        <h1>How to Troubleshoot a Unit with Optical Link Issues</h1>
+        <h1 className="faq-title">How to Troubleshoot a Unit with Optical Link Issues</h1>
         <p>Swap the transmit and receive fiber strands.</p>
       </div>
 
       <div id="fdw1000" className="faq-answer">
-        <h1>How to Configure FDW1000 and EXP101 Devices</h1>
+        <h1 className="faq-title">How to Configure FDW1000 and EXP101 Devices</h1>
         <p><strong>[1] Default the FDW1000/C.</strong></p>
         <p style={{paddingLeft: "40px"}}>[1.1] Remove the power, fiber strands, and metal housing to expose the DIP switches.</p>
         <p style={{paddingLeft: "40px"}}>[1.2] Flip all dip switches OFF.</p>
@@ -80,7 +78,7 @@ const WiegandFAQ = ({ activeSubSection }) => {
       </div>
 
       <div id="Wiegand vs. OSDP" className="faq-answer">
-        <h1>Wiegand vs. OSDP</h1>
+        <h1 className="faq-title">Wiegand vs. OSDP</h1>
         <p><strong>Wiegand</strong> is a communication protocol commonly used in access control systems, where data from a credential (like a card or keypad) is transmitted as binary pulses over two wires (Data 0 and Data 1) to a controller for authentication and authorization.</p>
         <p><strong>OSDP (Open Supervised Device Protocol)</strong> is a modern, secure communication protocol for access control systems that enables bidirectional data exchange, device supervision, and advanced encryption over a 2-wire RS-485 serial connection.</p>
       </div>

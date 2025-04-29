@@ -58,86 +58,35 @@ const SerialDataSelectorTool = () => {
   };
 
   return (
-    <div className="faq-list">
-      <h1 className="faq-title">Serial Data Selector Tool</h1>
-      <div className="filter-options" style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '10px', 
-        padding: '20px',
-        backgroundColor: '#f9f9f9',
-        borderRadius: '8px',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-        marginBottom: '20px',
-      }}>
-            <button 
-        className="reset-button" 
-        onClick={resetFilters}
-        style={{
-          padding: '8px 15px',
-          backgroundColor: '#ff4d4d',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          fontWeight: 'bold',
-          transition: 'background-color 0.3s',
-        }}
-        onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
-        onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
-      >
-        Reset
-      </button>
+    <div className="tool-container">
+      <h1 className="tool-title">Serial Data Selector Tool</h1>
+      <div className="filter-grid">
+        <button 
+          className="reset-button" 
+          onClick={resetFilters}
+        >
+          Reset
+        </button>
+
         {["Number_Of_Fibers", "fiber", "optics", "package"].map((filterType) => (
-          <div key={filterType} style={{ width: '200px', minWidth: '150px' }}>
-            <h3 style={{
-              fontSize: '1rem',
-              fontWeight: 'bold',
-              color: '#333',
-              marginBottom: '5px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-              {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
+          <div key={filterType} className="filter-group">
+            <div className="filter-label">
+              {filterType.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
               {filters[filterType] && (
                 <button
-                  className="clear-filter"
+                  className="clear-button"
                   onClick={() => clearFilter(filterType)}
-                  style={{
-                    backgroundColor: '#ff4d4d',
-                    color: '#fff',
-                    border: 'none',
-                    borderRadius: '50%',
-                    padding: '5px 10px',
-                    fontSize: '1rem',
-                    cursor: 'pointer',
-                    transition: 'background-color 0.3s',
-                  }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
                 >
                   X
                 </button>
               )}
-            </h3>
-
+            </div>
             <select
+              className="filter-select"
               value={filters[filterType] || ''}
               onChange={(e) => handleFilterChange(filterType, e.target.value)}
-              style={{
-                width: '100%',
-                padding: '8px 12px',
-                fontSize: '0.875rem',
-                border: '1px solid #ccc',
-                borderRadius: '5px',
-                boxSizing: 'border-box',
-                backgroundColor: '#fff',
-                cursor: 'pointer',
-                transition: 'border-color 0.3s ease-in-out',
-              }}
             >
-              <option value="">Select {filterType}</option>
+              <option value="">Select {filterType.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</option>
               {availableOptions[filterType].map((option) => (
                 <option key={option} value={option}>
                   {option}
@@ -148,49 +97,32 @@ const SerialDataSelectorTool = () => {
         ))}
       </div>
 
-      <div className="table-container" style={{
-        padding: '20px',
-        backgroundColor: '#fff',
-        borderRadius: '8px',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-        overflowX: 'auto',
-      }}>
-        <table className="selector-table" style={{
-          width: '100%',
-          borderCollapse: 'collapse',
-          marginBottom: '20px',
-          textAlign: 'left',
-          borderRadius: '8px',
-          overflow: 'hidden',
-        }}>
+      <div className="table-wrapper">
+        <table className="data-table">
           <thead>
-            <tr style={{ backgroundColor: '#007bff', color: '#fff' }}>
-              <th style={{ padding: '12px', fontSize: '1rem' }}>Model</th>
-              <th style={{ padding: '12px', fontSize: '1rem' }}>NumOfFibers</th>
-              <th style={{ padding: '12px', fontSize: '1rem' }}>Fiber</th>
-              <th style={{ padding: '12px', fontSize: '1rem' }}>Optics</th>
-              <th style={{ padding: '12px', fontSize: '1rem' }}>Package</th>
+            <tr>
+              <th>Model</th>
+              <th>NumOfFibers</th>
+              <th>Fiber</th>
+              <th>Optics</th>
+              <th>Package</th>
             </tr>
           </thead>
           <tbody>
             {filteredProducts.map((product, index) => (
-              <tr key={index} style={{
-                backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#fff",
-                borderBottom: '1px solid #ddd',
-                transition: 'background-color 0.3s ease',
-              }}>
-                <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Model}</td>
-                <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Number_Of_Fibers}</td>
-                <td style={{ padding: '12px', fontSize: '1rem' }}>{product.fiber}</td>
-                <td style={{ padding: '12px', fontSize: '1rem' }}>{product.optics}</td>
-                <td style={{ padding: '12px', fontSize: '1rem' }}>{product.package}</td>
+              <tr key={index}>
+                <td>{product.Model}</td>
+                <td>{product.Number_Of_Fibers}</td>
+                <td>{product.fiber}</td>
+                <td>{product.optics}</td>
+                <td>{product.package}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SerialDataSelectorTool
+export default SerialDataSelectorTool;

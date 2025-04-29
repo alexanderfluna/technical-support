@@ -12,7 +12,7 @@ import PowerSupply from './PowerSupply/PowerSupply';
 import PoeInjector from './PoeInjector/PoeInjector';
 import CardCage from './Enclosure/Enclosures';
 import Navbar from '../components/Navigation/Navbar';
-import MainContent from './MainContent';
+import HomePage from './HomePage';
 
 const Webpage = ({ category }) => {
   const renderContent = () => {
@@ -42,7 +42,7 @@ const Webpage = ({ category }) => {
       case 'card-cage':
         return <CardCage />;
       default:
-        return <MainContent />   
+        return <HomePage />   
     }
   };
 

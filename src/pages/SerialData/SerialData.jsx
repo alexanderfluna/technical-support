@@ -71,7 +71,7 @@ const SerialData = () => {
             </>
           )}
           
-          <p onClick={() => handleSectionClick("serial-relevant-information")}>Relevant Information<span className="dropdown-chevron"></span></p>
+          <p onClick={() => handleSectionClick("serial-relevant-information")}>Educational<span className="dropdown-chevron"></span></p>
           {selectedContent === "serial-relevant-information" && (
             <>
               <li 

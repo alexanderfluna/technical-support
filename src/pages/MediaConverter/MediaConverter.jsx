@@ -77,7 +77,7 @@ const MediaConverter = () => {
             </>
           )}
           
-          <p onClick={() => handleSectionClick("media-relevant-information")}>Relevant Information<span className="dropdown-chevron"></span></p>
+          <p onClick={() => handleSectionClick("media-relevant-information")}>Educational<span className="dropdown-chevron"></span></p>
           {selectedContent === "media-relevant-information" && (
             <>
               <li 

@@ -62,12 +62,12 @@ const Navbar = ({ onCategoryChange }) => {
       case 'ethernet':
         return [
           { name: 'Ethernet Switch', id: 'ethernet-switch' },
+          { name: 'Media Converter', id: 'media-converter' },
           { name: 'Ethernet Extender', id: 'ethernet-extender' },
           { name: 'Terminal Server', id: 'terminal-server' }
         ];
       case 'data-over-fiber':
         return [
-          { name: 'Media Converter', id: 'media-converter' },
           { name: 'Serial Data', id: 'serial-data' },
           { name: 'Wiegand', id: 'wiegand' },
           { name: 'Contact Closure', id: 'contact-closure' },

@@ -26,10 +26,8 @@ const WirelessFAQ = ({ activeSubSection }) => {
 
   return (
     <div className="faq-list">
-      <h1 className="faq-title">Relevant Wireless Ethernet Information</h1>
-
       <div className="faq-answer" id="wireless">
-        <h1>Wireless Ethernet</h1>
+        <h1 className="faq-title">Wireless Ethernet</h1>
         <p>The <strong>Extended Service Set Identifier (ESSID)</strong> is the broadcast name of a wireless network, allowing devices to identify and connect to the correct access point. It serves as a unique identifier within a wireless network, ensuring seamless roaming between multiple access points when configured correctly.</p>
         <p>The <strong>Pre-Shared Key (PSK)</strong> is the password required to join a secured wireless network. This key is an essential component of WPA and WPA2 encryption protocols, ensuring that only authorized users can access the network. A strong PSK helps protect against unauthorized access and potential security threats.</p>
         <p><strong>Antenna gain</strong> measures how effectively an antenna directs or concentrates radio frequency (RF) energy in a particular direction compared to a reference antenna. Higher gain antennas focus energy more efficiently, increasing signal range and strength while reducing interference from unwanted directions.</p>

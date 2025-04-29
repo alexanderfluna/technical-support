@@ -17,10 +17,8 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
 
   return (
     <div className="faq-list">
-        <h1 className="faq-title">Troubleshooting Ethernet Switches</h1>
-
         <div className="faq-answer" id="switch-diagnose">
-            <h1>Diagnose the Issues of the Ethernet Switch</h1>
+            <h1 className="faq-title">Diagnose the Issues of the Ethernet Switch</h1>
             <p><strong>Document the following information:</strong></p>
             <p><strong>[1]</strong> Has the Ethernet switch ever operated correctly? If so, for how long before the issue occurred?</p>
             <p><strong>[2]</strong> Does the Ethernet switch power on and remain powered?</p>
@@ -31,17 +29,17 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
         </div>
 
         <div className="faq-answer" id="switch-no-power-light">
-            <h1>How to Troubleshoot an Ethernet Switch with Power Issues</h1>
+            <h1 className="faq-title">How to Troubleshoot an Ethernet Switch with Power Issues</h1>
             <NoPowerLight />
         </div>
 
         <div className="faq-answer" id="switch-no-optical-link">
-            <h1>How to Troubleshoot an Ethernet Switch with Optical Link Issues</h1>
+            <h1 className="faq-title">How to Troubleshoot an Ethernet Switch with Optical Link Issues</h1>
             <NoOpticalLink />
         </div>
 
         <div className="faq-answer" id="switch-not-communicating">
-            <h1>How to Troubleshoot an Ethernet Switch with Network Issues</h1>
+            <h1 className="faq-title">How to Troubleshoot an Ethernet Switch with Network Issues</h1>
             <p><strong>[1]</strong> Follow the <strong>"How to Troubleshoot an Ethernet Switch with Power Issues"</strong> procedure to rule out power-related issues </p>
             <p><strong>[2]</strong> Determine if all ports succesfully pass network traffic</p>
             <p><strong>[3]</strong> Determine if communication is restored on its own or if the switch requires a power cycle.</p>
@@ -59,12 +57,12 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
 
 
         <div className="faq-answer" id="switch-no-poe">
-            <h1>How to Troubleshoot an Ethernet Switch with PoE Issues</h1>
+            <h1 className="faq-title">How to Troubleshoot an Ethernet Switch with PoE Issues</h1>
             <NoPoE />
         </div>
 
         <div className="faq-answer" id="switch-ip-address">
-            <h1>How to Find the IP Address of an Ethernet Switch</h1>
+            <h1 className="faq-title">How to Find the IP Address of an Ethernet Switch</h1>
             <p><strong>[1]</strong> Enter the device's part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to find the default IP address in the installation manual. The typical default configurations of a Comnet Ethernet switch are:</p>
             <li style={{paddingLeft: "40px"}}>Default IP address: 192.168.10.1</li>
             <li style={{paddingLeft: "40px"}}>Default username: "admin"</li>
@@ -84,7 +82,7 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
         </div>
 
         <div className="faq-answer" id="switch-default">
-            <h1>How to Factory Default an Ethernet Switch</h1>
+            <h1 className="faq-title">How to Factory Default an Ethernet Switch</h1>
             <p><strong>[1]</strong> Open PuTTY or Tera Term and start a serial connection using the following configurations.</p>
             <li style={{paddingLeft: "60px"}}>Speed (baud): 115200</li>
             <li style={{paddingLeft: "60px"}}>Data bits: 8</li>
