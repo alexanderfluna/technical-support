@@ -41,6 +41,7 @@ const MediaConverter = () => {
       <Navbar />
       <div className="page">
         <div className="table-of-contents2">
+          <h1 className="faq-title">Media Converters</h1>
           <p onClick={() => handleSectionClick("media-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
           {selectedContent === "media-troubleshooting" && (
             <>

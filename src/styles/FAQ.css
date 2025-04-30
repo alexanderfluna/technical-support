@@ -67,11 +67,12 @@ body {
   width: 90%;
   margin: 0 auto;
   padding: var(--space-xl);
+  border-top: 1px solid rgb(73, 134, 212);
 }
 
 /* Table of Contents - Enhanced Sidebar */
 .table-of-contents2 {
-  width: 17%;
+  width: 20%;
   min-width: 220px;
   padding: var(--space-lg);
   background-color: white;
@@ -82,6 +83,8 @@ body {
   z-index: 10;
   scrollbar-width: thin;
   scrollbar-color: var(--neutral-400) var(--neutral-100);
+  border-top: 1px solid rgb(73, 134, 212);
+  border-right: 1px solid rgb(73, 134, 212);
 }
 
 .table-of-contents2 h2 {
@@ -183,16 +186,14 @@ body {
 }
 
 .faq-title {
-  font-size: var(--text-4xl);
+  font-size: var(--text-3xl);
   font-weight: 800;
-  margin-bottom: var(--space-xl);
   background-image: linear-gradient(135deg, rgb(27, 69, 118), rgb(241, 242, 246));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   line-height: 1.2;
   letter-spacing: -0.025em;
-  border-bottom: .1rem solid black;
 }
 
 .faq-list {
@@ -200,32 +201,15 @@ body {
 }
 
 .faq-answer {
-  margin-bottom: var(--space-md);
-  padding: var(--space-lg);
+  padding: var(--space-md);
   transition: var(--transition);
+  background-color: rgb(247, 249, 255);
+  margin-bottom: 10px;
 }
 
-.faq-answer h1 {
-  border-bottom: 1px solid black;
-}
-
-.faq-answer h2 {
-  font-size: var(--text-xl);
-  font-weight: 600;
-  margin: 0;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--neutral-800);
-  gap: var(--space-md);
-}
-
-.faq-answer h2 span {
+.faq-answer:hover {
   transition: var(--transition);
-  color: var(--primary-600);
-  font-size: var(--text-2xl);
-  flex-shrink: 0;
+  background-color: rgb(216, 231, 255);
 }
 
 .faq-answer p {
@@ -278,10 +262,10 @@ body {
   border: none;
   cursor: pointer;
   transition: var(--transition);
-  min-width: 200px;
   font-weight: 600;
   text-align: center;
   position: relative;
+  width: 100%;
 }
 
 .selector-button:not(:last-child)::after {
@@ -375,6 +359,10 @@ body {
   
   .selector-button:not(:last-child) {
     border-bottom: 1px solid var(--neutral-200);
+  }
+
+  images {
+    max-width: 90%;
   }
 }
 

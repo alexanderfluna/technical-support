@@ -246,7 +246,7 @@ const Chatbox = () => {
     } else {
       setTimeout(() => {
         setMessages(prev => [...prev, { 
-          text: "I don't know the answer to that. Please ask another question or use the navigation bar for further assistance.", 
+          text: "Please try again.", 
           isUser: false 
         }]);
       }, 1000);
@@ -271,7 +271,7 @@ const Chatbox = () => {
       {isOpen && (
         <div className="chatbox-popup">
           <div className="chatbox-header">
-            <span>🤖 Comnet Bot</span>
+            <span>Comnet Bot</span>
             <button onClick={closeChat} className="close-button">X</button>
           </div>
 

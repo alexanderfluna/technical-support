@@ -19,7 +19,6 @@
   flex-direction: column;
   width: 100%;
   position: relative;
-  border-bottom: 1px solid blue;
 }
 
 .mobile-header {

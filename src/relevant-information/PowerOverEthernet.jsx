@@ -22,7 +22,6 @@ const PowerOverEthernet = () => {
 
   return (
     <div>
-      <h1 className="faq-title">Power Over Ethernet</h1>
       <p><strong>Power over Ethernet (PoE)</strong> allows both data and electrical power to be transmitted over a single Ethernet cable, eliminating the need for separate power adapters. This is especially useful for powering IP cameras, wireless access points, VoIP phones, and other networked devices in environments where running additional power lines is impractical or expensive.</p>
       <p>To enable PoE, you need a PoE-enabled device such as a <strong>PoE switch, media converter, or injector</strong>. A PoE switch is the most common solution, as it provides both data and power from a single network device. A PoE injector, on the other hand, is useful when you have a non-PoE switch but need to power a PoE device. A media converter with PoE functionality can also be used when extending network connectivity over fiber optic cables while still supplying power to a remote device.</p>
       <p>It's important to note that <strong>a PoE switch or media converter is only required on the end of the connection where power needs to be supplied to a device</strong>. If you're using fiber optics to extend your network, keep in mind that fiber cables do not carry electrical power—only data. The PoE-enabled device should be placed at the end where power needs to be injected.</p>

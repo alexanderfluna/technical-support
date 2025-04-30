@@ -41,6 +41,7 @@ const EthernetSwitch = () => {
       <Navbar/>
       <div className="page">
       <div className="table-of-contents2">
+        <h1 className="faq-title">Ethernet Switch</h1>
         <p onClick={() => handleSectionClick("ethernet-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
         {selectedContent === "ethernet-troubleshooting" && (
           <>
@@ -48,7 +49,7 @@ const EthernetSwitch = () => {
               className={activeSubSection === "switch-diagnose" ? "active" : ""}
               onClick={() => handleSubSectionClick("switch-diagnose")}
             >
-              Diagnose the Issues of the Ethernet Switch
+              Diagnosing the Issues of an Ethernet Switch
             </li>
             <li 
               className={activeSubSection === "switch-no-power-light" ? "active" : ""}
