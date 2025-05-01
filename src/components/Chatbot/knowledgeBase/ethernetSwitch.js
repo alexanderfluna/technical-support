@@ -6,7 +6,3 @@ export const ethernetSwitchTroubleshooting = {
     "switch ip": "How to Find the IP Address of an Ethernet Switch:\n[1] Check default IP in installation manual (typically 192.168.10.1).\n[2] Use serial connection if default IP doesn't work.\n[3] Use LLDP if credentials are unknown.\n[4] Use IP scanner to scan possible ranges.",
     "switch default": "How to Factory Default an Ethernet Switch:\n[1] Open serial connection (115200 baud, 8 data bits, 1 stop bit).\n[2] Enter username and password.\n[3] Type 'enable'.\n[4] Type 'reload defaults'."
   };
-
-  export const ethernetSwitchInfo = {
-    "ethernet switch": "Ethernet Switch Information:\n- Switch Protocols\n- Fiber Information\n- Power Over Ethernet\n- Surge Suppression\n- OSI Model\nUse navigation for detailed information."
-  }

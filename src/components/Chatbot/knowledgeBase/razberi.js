@@ -52,7 +52,7 @@ export const razberiTroubleshooting = {
 - Intel Rapid Storage Technology
 - iDRAC`,
 
-  "ssd": `How to Troubleshoot a Server with a Bad mSATA:
+  "msata": `How to Troubleshoot a Server with a Bad mSATA:
 [Option #1] Ship the server to us, and we can re-image the unit.
 [Option #2] We can ship out a new mSATA with our image on it.
 [Option #3] Purchase a new mSATA, install the OS, and we can provide the necessary drivers and software.`,

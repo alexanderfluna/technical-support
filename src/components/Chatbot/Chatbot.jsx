@@ -13,7 +13,6 @@ import PoeInjectorProducts from '../../pages/PoeInjector/PoeInjectorProducts';
 import EnclosureProducts from '../../pages/Enclosure/EnclosureProducts';
 import "../../styles/Chatbot.css";
 
-// Import knowledge bases
 import { razberiTroubleshooting } from './knowledgeBase/razberi';
 import { razberiInfo } from './knowledgeBase/razberi';
 import { ethernetSwitchTroubleshooting } from './knowledgeBase/ethernetSwitch';
@@ -35,7 +34,6 @@ const Chatbox = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const messagesEndRef = useRef(null);
 
-  // Combine all products into a single array with their categories
   const allProducts = [
     ...ServerProducts.map(p => ({ ...p, category: 'Server' })),
     ...EthernetSwitchProducts.map(p => ({ ...p, category: 'Ethernet Switch' })),
@@ -65,7 +63,6 @@ const Chatbox = () => {
     "Enclosure"
   ];
 
-  // Scroll to bottom whenever messages change
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
@@ -115,6 +112,11 @@ const Chatbox = () => {
                lowerQuestion.includes('disk') || lowerQuestion.includes('volume')) {
         return razberiTroubleshooting["raid"];
       }
+      // mSATA issues
+      else if (lowerQuestion.includes('msata') || 
+              lowerQuestion.includes('m.2')) {
+        return razberiTroubleshooting["msata"];
+      }
       // Network issues
       else if (lowerQuestion.includes('nic') || lowerQuestion.includes('network interface') ||
                lowerQuestion.includes('ethernet') || lowerQuestion.includes('lan') ||
@@ -136,13 +138,11 @@ const Chatbox = () => {
       }
       // Registration
       else if (lowerQuestion.includes('registration') || lowerQuestion.includes('register') ||
-               lowerQuestion.includes('activate') || lowerQuestion.includes('license')) {
+               lowerQuestion.includes('activate') || lowerQuestion.includes('skip')) {
         return razberiTroubleshooting["registration"];
       }
       // Security
-      else if (lowerQuestion.includes('camera defense') || lowerQuestion.includes('security') ||
-               lowerQuestion.includes('firewall') || lowerQuestion.includes('protection') ||
-               lowerQuestion.includes('whitelist') || lowerQuestion.includes('block')) {
+      else if (lowerQuestion.includes('camera defense')) {
         return razberiTroubleshooting["camera defense"];
       }
       // Password
