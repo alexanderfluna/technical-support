@@ -93,8 +93,9 @@ const Chatbox = () => {
     
     // Expanded Razberi server questions
     if (lowerQuestion.includes('razberi') || lowerQuestion.includes('server') || 
-        lowerQuestion.includes('edge') || lowerQuestion.includes('compute') ||
-        lowerQuestion.includes('ss32x') || lowerQuestion.includes('core server')) {
+        lowerQuestion.includes('ssiq') || lowerQuestion.includes('rz') ||
+        lowerQuestion.includes('nvr') ||
+        lowerQuestion.includes('ss32') || lowerQuestion.includes('core')) {
       
       // Power/Booting issues
       if (lowerQuestion.includes('power') || lowerQuestion.includes('boot') || 
@@ -296,7 +297,7 @@ const Chatbox = () => {
     } else {
       setTimeout(() => {
         setMessages(prev => [...prev, { 
-          text: "Please try again.", 
+          text: "I don't know how to answer that. Please ask me another question.", 
           isUser: false 
         }]);
       }, 1000);
