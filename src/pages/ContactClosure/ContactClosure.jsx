@@ -41,6 +41,7 @@ const ContactClosure = () => {
       <Navbar />
       <div className="page">
         <div className="table-of-contents2">
+          <h1 className="faq-title">Contact Closure</h1>
           <p onClick={() => handleSectionClick("contact-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
           {selectedContent === "contact-troubleshooting" && (
             <>

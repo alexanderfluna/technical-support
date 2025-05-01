@@ -41,6 +41,7 @@ const Wireless = () => {
         <Navbar/>
         <div className="page">
           <div className="table-of-contents2">
+            <h1 className="faq-title">Wireless Ethernet</h1>
             <p onClick={() => handleSectionClick("wireless-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
             {selectedContent === "wireless-troubleshooting" && (
               <>

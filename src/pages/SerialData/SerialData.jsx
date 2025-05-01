@@ -41,6 +41,7 @@ const SerialData = () => {
       <Navbar/>
       <div className="page">
         <div className="table-of-contents2">
+          <h1 className="faq-title">Serial Data</h1>
           <p onClick={() => handleSectionClick("serial-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
           {selectedContent === "serial-troubleshooting" && (
             <>

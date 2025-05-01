@@ -17,6 +17,7 @@ import AboutUs from './pages/AboutUs';
 import './styles/FAQ.css'
 import './styles/Cards.css'
 import './styles/SelectorTool.css'
+import './styles/Navbar.css';
 
 const App = () => {
   return (

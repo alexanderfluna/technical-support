@@ -4,28 +4,47 @@ import NoOpticalLink from '../../relevant-information/NoOpticalLink';
 import NoPoE from '../../relevant-information/NoPoe';
 
 const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
-    const [expandedFAQ, setExpandedFAQ] = useState(null);
+    const [expandedFAQs, setExpandedFAQs] = useState([]);
   
     const toggleFAQ = (sectionID) => {
-      setExpandedFAQ(prev => prev === sectionID ? null : sectionID);
+      setExpandedFAQs(prev => {
+        if (prev.includes(sectionID)) {
+          // Remove the section if it's already open
+          return prev.filter(id => id !== sectionID);
+        } else {
+          // Add the section if it's closed
+          return [...prev, sectionID];
+        }
+      });
     }
 
-  useEffect(() => {
-    if (activeSubSection) {
-      const element = document.getElementById(activeSubSection);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
+    const isFAQExpanded = (sectionID) => {
+      return expandedFAQs.includes(sectionID);
     }
-  }, [activeSubSection]);
+
+    useEffect(() => {
+      if (activeSubSection) {
+        const element = document.getElementById(activeSubSection);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+          // Automatically expand the active subsection if it's not already expanded
+          if (!expandedFAQs.includes(activeSubSection)) {
+            setExpandedFAQs(prev => [...prev, activeSubSection]);
+          }
+        }
+      }
+    }, [activeSubSection]);
 
   return (
     <div className="faq-list">
         <div className="faq-answer" id="switch-diagnose">
-            <h1 className="faq-title" onClick={() => toggleFAQ("switch-diagnose")}>Diagnosing the Issues of an Ethernet Switch<span className="dropdown-chevron"></span></h1>
-            {expandedFAQ === "switch-diagnose" && (
+            <h1 className="faq-title" onClick={() => toggleFAQ("switch-diagnose")}>
+              Diagnosing the Issues of an Ethernet Switch
+              <span className={`dropdown-chevron ${isFAQExpanded("switch-diagnose") ? 'expanded' : ''}`}></span>
+            </h1>
+            {isFAQExpanded("switch-diagnose") && (
               <>
                 <p><strong>Document the following information:</strong></p>
                 <p><strong>[1]</strong> Has the Ethernet switch ever operated correctly? If so, for how long before the issue occurred?</p>
@@ -39,8 +58,11 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
         </div>
 
         <div className="faq-answer" id="switch-no-power-light">
-            <h1 className="faq-title" onClick={() => toggleFAQ("switch-no-power-light")}>How to Troubleshoot an Ethernet Switch with Power Issues<span className="dropdown-chevron"></span></h1>
-            {expandedFAQ === "switch-no-power-light" && (
+            <h1 className="faq-title" onClick={() => toggleFAQ("switch-no-power-light")}>
+              How to Troubleshoot an Ethernet Switch with Power Issues
+              <span className={`dropdown-chevron ${isFAQExpanded("switch-no-power-light") ? 'expanded' : ''}`}></span>
+            </h1>
+            {isFAQExpanded("switch-no-power-light") && (
               <>
                 <NoPowerLight />
               </>
@@ -48,8 +70,11 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
         </div>
 
         <div className="faq-answer" id="switch-no-optical-link">
-            <h1 className="faq-title" onClick={() => toggleFAQ("switch-no-optical-link")}>How to Troubleshoot an Ethernet Switch with Optical Link Issues<span className="dropdown-chevron"></span></h1>
-            {expandedFAQ === "switch-no-optical-link" && (
+            <h1 className="faq-title" onClick={() => toggleFAQ("switch-no-optical-link")}>
+              How to Troubleshoot an Ethernet Switch with Optical Link Issues
+              <span className={`dropdown-chevron ${isFAQExpanded("switch-no-optical-link") ? 'expanded' : ''}`}></span>
+            </h1>
+            {isFAQExpanded("switch-no-optical-link") && (
               <>
                 <NoOpticalLink />
               </>
@@ -57,8 +82,11 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
         </div>
 
         <div className="faq-answer" id="switch-not-communicating">
-            <h1 className="faq-title" onClick={() => toggleFAQ("switch-not-communicating")}>How to Troubleshoot an Ethernet Switch with Network Issues<span className="dropdown-chevron"></span></h1>
-            {expandedFAQ === "switch-not-communicating" && (
+            <h1 className="faq-title" onClick={() => toggleFAQ("switch-not-communicating")}>
+              How to Troubleshoot an Ethernet Switch with Network Issues
+              <span className={`dropdown-chevron ${isFAQExpanded("switch-not-communicating") ? 'expanded' : ''}`}></span>
+            </h1>
+            {isFAQExpanded("switch-not-communicating") && (
               <>
                 <p><strong>[1]</strong> Follow the <strong>"How to Troubleshoot an Ethernet Switch with Power Issues"</strong> procedure to rule out power-related issues </p>
                 <p><strong>[2]</strong> Determine if all ports succesfully pass network traffic</p>
@@ -77,10 +105,12 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
             )}
         </div>
 
-
         <div className="faq-answer" id="switch-no-poe">
-            <h1 className="faq-title" onClick={() => toggleFAQ("switch-no-poe")}>How to Troubleshoot an Ethernet Switch with PoE Issues<span className="dropdown-chevron"></span></h1>
-            {expandedFAQ === "switch-no-poe" && (
+            <h1 className="faq-title" onClick={() => toggleFAQ("switch-no-poe")}>
+              How to Troubleshoot an Ethernet Switch with PoE Issues
+              <span className={`dropdown-chevron ${isFAQExpanded("switch-no-poe") ? 'expanded' : ''}`}></span>
+            </h1>
+            {isFAQExpanded("switch-no-poe") && (
               <>
                 <NoPoE />
               </>
@@ -88,8 +118,11 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
         </div>
 
         <div className="faq-answer" id="switch-ip-address">
-            <h1 className="faq-title" onClick={() => toggleFAQ("switch-ip-address")}>How to Find the IP Address of an Ethernet Switch<span className="dropdown-chevron"></span></h1>
-            {expandedFAQ === "switch-ip-address" && (
+            <h1 className="faq-title" onClick={() => toggleFAQ("switch-ip-address")}>
+              How to Find the IP Address of an Ethernet Switch
+              <span className={`dropdown-chevron ${isFAQExpanded("switch-ip-address") ? 'expanded' : ''}`}></span>
+            </h1>
+            {isFAQExpanded("switch-ip-address") && (
               <>
                 <p><strong>[1]</strong> Enter the device's part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to find the default IP address in the installation manual. The typical default configurations of a Comnet Ethernet switch are:</p>
                 <li style={{paddingLeft: "40px"}}>Default IP address: 192.168.10.1</li>
@@ -112,8 +145,11 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
         </div>
 
         <div className="faq-answer" id="switch-default">
-            <h1 className="faq-title" onClick={() => toggleFAQ("switch-default")}>How to Factory Default an Ethernet Switch<span className="dropdown-chevron"></span></h1>
-            {expandedFAQ === "switch-default" && (
+            <h1 className="faq-title" onClick={() => toggleFAQ("switch-default")}>
+              How to Factory Default an Ethernet Switch
+              <span className={`dropdown-chevron ${isFAQExpanded("switch-default") ? 'expanded' : ''}`}></span>
+            </h1>
+            {isFAQExpanded("switch-default") && (
               <>
                 <p><strong>[1]</strong> Open PuTTY or Tera Term and start a serial connection using the following configurations.</p>
                 <li style={{paddingLeft: "60px"}}>Speed (baud): 115200</li>

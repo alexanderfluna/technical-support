@@ -59,7 +59,7 @@ const SerialDataSelectorTool = () => {
 
   return (
     <div className="tool-container">
-      <h1 className="tool-title">Serial Data Selector Tool</h1>
+      <h1 className="faq-title">Serial Data Selector Tool<span className="dropdown-chevron"></span></h1>
       <div className="filter-grid">
         <button 
           className="reset-button" 

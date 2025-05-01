@@ -41,6 +41,7 @@ const EthernetExtender = () => {
       <Navbar/>
       <div className="page">
         <div className="table-of-contents2">
+          <h1 className="faq-title">Ethernet Extender</h1>
           <p onClick={() => handleSectionClick("extender-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
           {selectedContent === "extender-troubleshooting" && (
             <>

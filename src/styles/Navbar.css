@@ -321,8 +321,14 @@
   vertical-align: middle;
 }
 
+
 .main-category:hover .dropdown-chevron {
   transform: rotate(180deg);
+}
+
+.dropdown-chevron.expanded {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
 }
 
 /* SEARCH CONTAINER IMPROVEMENTS */

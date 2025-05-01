@@ -91,31 +91,81 @@ const Chatbox = () => {
   const findAnswer = (question) => {
     const lowerQuestion = question.toLowerCase();
     
-    // Check for Razberi server questions
-    if (lowerQuestion.includes('razberi') || lowerQuestion.includes('server')) {
-      if (lowerQuestion.includes('power') || lowerQuestion.includes('boot')) {
+    // Expanded Razberi server questions
+    if (lowerQuestion.includes('razberi') || lowerQuestion.includes('server') || 
+        lowerQuestion.includes('edge') || lowerQuestion.includes('compute') ||
+        lowerQuestion.includes('ss32x') || lowerQuestion.includes('core server')) {
+      
+      // Power/Booting issues
+      if (lowerQuestion.includes('power') || lowerQuestion.includes('boot') || 
+          lowerQuestion.includes('start') || lowerQuestion.includes('turn on') ||
+          lowerQuestion.includes('shut down') || lowerQuestion.includes('restart')) {
         return razberiTroubleshooting["server power"];
-      } else if (lowerQuestion.includes('poe')) {
-        return razberiTroubleshooting["server poe"];
-      } else if (lowerQuestion.includes('raid')) {
-        return razberiTroubleshooting["server raid"];
-      } else if (lowerQuestion.includes('nic') || lowerQuestion.includes('network interface')) {
-        return razberiTroubleshooting["server nic"];
-      } else if (lowerQuestion.includes('os') || lowerQuestion.includes('operating system')) {
-        return razberiTroubleshooting["server os"];
-      } else if (lowerQuestion.includes('rdp') || lowerQuestion.includes('remote desktop')) {
-        return razberiTroubleshooting["server rdp"];
-      } else if (lowerQuestion.includes('registration')) {
-        return razberiTroubleshooting["server registration"];
-      } else if (lowerQuestion.includes('camera defense') || lowerQuestion.includes('camera security')) {
-        return razberiTroubleshooting["server camera defense"];
-      } else if (lowerQuestion.includes('password')) {
-        return razberiTroubleshooting["server password"];
-      } else if (lowerQuestion.includes('ping') || lowerQuestion.includes('ssiq24')) {
-        return razberiTroubleshooting["server ping"];
-      } else if (lowerQuestion.includes('computing') || lowerQuestion.includes('terminology')) {
+      }
+      // PoE issues
+      else if (lowerQuestion.includes('poe') || lowerQuestion.includes('power over ethernet') ||
+               lowerQuestion.includes('injector') || lowerQuestion.includes('powered device')) {
+        return razberiTroubleshooting["no poe"];
+      }
+      // Storage/RAID issues
+      else if (lowerQuestion.includes('raid') || lowerQuestion.includes('drive') || 
+               lowerQuestion.includes('hard disk') || lowerQuestion.includes('hdd') ||
+               lowerQuestion.includes('ssd') || lowerQuestion.includes('storage') ||
+               lowerQuestion.includes('disk') || lowerQuestion.includes('volume')) {
+        return razberiTroubleshooting["raid"];
+      }
+      // Network issues
+      else if (lowerQuestion.includes('nic') || lowerQuestion.includes('network interface') ||
+               lowerQuestion.includes('ethernet') || lowerQuestion.includes('lan') ||
+               lowerQuestion.includes('port') || lowerQuestion.includes('connection') ||
+               lowerQuestion.includes('adapter')) {
+        return razberiTroubleshooting["nic"];
+      }
+      // OS issues
+      else if (lowerQuestion.includes('os') || lowerQuestion.includes('operating system') ||
+               lowerQuestion.includes('windows') || lowerQuestion.includes('reboot') ||
+               lowerQuestion.includes('crash') || lowerQuestion.includes('freeze') ||
+               lowerQuestion.includes('hang') || lowerQuestion.includes('slow')) {
+        return razberiTroubleshooting["os"];
+      }
+      // Remote access
+      else if (lowerQuestion.includes('rdp') || lowerQuestion.includes('remote desktop') ||
+               lowerQuestion.includes('remote access') || lowerQuestion.includes('connect remotely')) {
+        return razberiTroubleshooting["rdp"];
+      }
+      // Registration
+      else if (lowerQuestion.includes('registration') || lowerQuestion.includes('register') ||
+               lowerQuestion.includes('activate') || lowerQuestion.includes('license')) {
+        return razberiTroubleshooting["registration"];
+      }
+      // Security
+      else if (lowerQuestion.includes('camera defense') || lowerQuestion.includes('security') ||
+               lowerQuestion.includes('firewall') || lowerQuestion.includes('protection') ||
+               lowerQuestion.includes('whitelist') || lowerQuestion.includes('block')) {
+        return razberiTroubleshooting["camera defense"];
+      }
+      // Password
+      else if (lowerQuestion.includes('password') || lowerQuestion.includes('login') ||
+               lowerQuestion.includes('credentials') || lowerQuestion.includes('forgot') ||
+               lowerQuestion.includes('reset') || lowerQuestion.includes('authentication')) {
+        return razberiTroubleshooting["password"];
+      }
+      // Computing terms
+      else if (lowerQuestion.includes('computing') || lowerQuestion.includes('terminology') ||
+               lowerQuestion.includes('define') || lowerQuestion.includes('what is') ||
+               lowerQuestion.includes('meaning') || lowerQuestion.includes('explain') ||
+               lowerQuestion.includes('cpu') || lowerQuestion.includes('gpu') ||
+               lowerQuestion.includes('ram') || lowerQuestion.includes('memory') ||
+               lowerQuestion.includes('storage') || lowerQuestion.includes('raid') ||
+               lowerQuestion.includes('hertz') || lowerQuestion.includes('ghz') ||
+               lowerQuestion.includes('mhz') || lowerQuestion.includes('bandwidth') ||
+               lowerQuestion.includes('throughput') || lowerQuestion.includes('latency')) {
         return razberiInfo["computing terminology"];
-      } else if (lowerQuestion.includes('power over ethernet') || lowerQuestion.includes('poe info')) {
+      }
+      // PoE info
+      else if (lowerQuestion.includes('power over ethernet') || lowerQuestion.includes('poe info') ||
+               lowerQuestion.includes('poe standard') || lowerQuestion.includes('poe class') ||
+               lowerQuestion.includes('poe pinout') || lowerQuestion.includes('poe budget')) {
         return razberiInfo["power over ethernet"];
       }
     }

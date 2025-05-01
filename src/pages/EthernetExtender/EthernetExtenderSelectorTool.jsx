@@ -62,7 +62,7 @@ const EthernetExtenderSelectorTool = () => {
 
   return (
     <div className="tool-container">
-      <h1 className="tool-title">Ethernet Extender Selector Tool</h1>
+      <h1 className="faq-title">Ethernet Extender Selector Tool<span className="dropdown-chevron"></span></h1>
       <div className="filter-grid">
         <button 
           className="reset-button" 

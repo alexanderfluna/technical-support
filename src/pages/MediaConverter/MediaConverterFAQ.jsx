@@ -4,10 +4,22 @@ import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
 import OSI from '../../relevant-information/OSI';
 
 const MediaConverterFAQ = ({ activeSubSection }) => {
-  const [expandedFAQ, setExpandedFAQ] = useState(null);
+  const [expandedFAQs, setExpandedFAQs] = useState([]);
 
   const toggleFAQ = (sectionID) => {
-    setExpandedFAQ(prev => prev === sectionID ? null : sectionID);
+    setExpandedFAQs(prev => {
+      if (prev.includes(sectionID)) {
+        // Remove the section if it's already open
+        return prev.filter(id => id !== sectionID);
+      } else {
+        // Add the section if it's closed
+        return [...prev, sectionID];
+      }
+    });
+  }
+
+  const isFAQExpanded = (sectionID) => {
+    return expandedFAQs.includes(sectionID);
   }
 
   useEffect(() => {
@@ -17,6 +29,10 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth' });
         }, 100);
+        // Automatically expand the active subsection if it's not already expanded
+        if (!expandedFAQs.includes(activeSubSection)) {
+          setExpandedFAQs(prev => [...prev, activeSubSection]);
+        }
       }
     }
   }, [activeSubSection]);
@@ -24,8 +40,11 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
   return (
     <div className="faq-list">
       <div className="faq-answer" id="media-converters">
-        <h1 className="faq-title" onClick={() => toggleFAQ("media-converters")}>Media Converters<span className="dropdown-chevron"></span></h1>
-        {expandedFAQ === "media-converters" && (
+        <h1 className="faq-title" onClick={() => toggleFAQ("media-converters")}>
+          Media Converters
+          <span className={`dropdown-chevron ${isFAQExpanded("media-converters") ? 'expanded' : ''}`}></span>
+        </h1>
+        {isFAQExpanded("media-converters") && (
           <>
             <p><strong>A media converter</strong> facilitates communication between different networking media. It converts Ethernet data, transmitted as electrical pulses over copper cables, into infrared light signals that can travel through optical fiber and vice versa. Media converters are essential in modern networking, particularly when extending network distances beyond the limits of traditional copper cabling.</p>
             <p>Operating at <strong>Layer 1,</strong> media converters strictly function as data pass-through devices. Unlike routers or switches, they do not analyze or modify network traffic. Their role is purely to convert signals, ensuring compatibility between different transmission media while maintaining the integrity and speed of data transfer.</p>
@@ -37,8 +56,11 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
       </div>
 
       <div className="faq-answer" id="fiber">
-        <h1 className="faq-title" onClick={() => toggleFAQ("fiber")}>Fiber Optics<span className="dropdown-chevron"></span></h1>
-        {expandedFAQ === "fiber" && (
+        <h1 className="faq-title" onClick={() => toggleFAQ("fiber")}>
+          Fiber Optics
+          <span className={`dropdown-chevron ${isFAQExpanded("fiber") ? 'expanded' : ''}`}></span>
+        </h1>
+        {isFAQExpanded("fiber") && (
           <>
             <Fiber />
           </>
@@ -46,8 +68,11 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
       </div>
 
       <div className="faq-answer" id="poe">
-        <h1 className="faq-title" onClick={() => toggleFAQ("poe")}>Power Over Ethernet<span className="dropdown-chevron"></span></h1>
-        {expandedFAQ === "poe" && (
+        <h1 className="faq-title" onClick={() => toggleFAQ("poe")}>
+          Power Over Ethernet
+          <span className={`dropdown-chevron ${isFAQExpanded("poe") ? 'expanded' : ''}`}></span>
+        </h1>
+        {isFAQExpanded("poe") && (
           <>
             <PowerOverEthernet />
           </>
@@ -55,8 +80,11 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
       </div>
 
       <div className="faq-answer" id="osi">
-        <h1 className="faq-title" onClick={() => toggleFAQ("osi")}>The OSI Model<span className="dropdown-chevron"></span></h1>
-        {expandedFAQ === "osi" && (
+        <h1 className="faq-title" onClick={() => toggleFAQ("osi")}>
+          The OSI Model
+          <span className={`dropdown-chevron ${isFAQExpanded("osi") ? 'expanded' : ''}`}></span>
+        </h1>
+        {isFAQExpanded("osi") && (
           <>
             <OSI />
           </>

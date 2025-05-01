@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Search from './Search';
 import Chatbot from '../Chatbot/Chatbot'
-import '../../styles/Navbar.css';
 
 const Navbar = ({ onCategoryChange }) => {
   const [hoveredCategory, setHoveredCategory] = useState(null);

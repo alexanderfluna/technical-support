@@ -4,7 +4,7 @@ const RazberiSelectorTool = () => {
   const [selected, setSelected] = useState("");
   return (
     <div className="faq-answer">
-        <h1 className="faq-title">Server Selector Tool</h1>
+        <h1 className="faq-title">Server Selector Tool<span className="dropdown-chevron"></span></h1>
         <div className="selector-placeholder" >
           <div className="selector-options" style={{width: "50%"}}>
             <button

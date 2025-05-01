@@ -90,7 +90,7 @@ const EthernetSwitchSelectorTool = () => {
 
   return (
     <div className="tool-container">
-      <h1 className="tool-title">Ethernet Switch Selector Tool</h1>
+      <h1 className="faq-title">Ethernet Switch Selector Tool<span className="dropdown-chevron"></span></h1>
       <div className="filter-grid">
         <button className="reset-button" onClick={resetFilters}>
           Reset

@@ -65,7 +65,7 @@ const ContactClosureSelectorTool = () => {
 
     return (
         <div className="tool-container">
-            <h1 className="tool-title">Contact Closure Selector Tool</h1>
+            <h1 className="faq-title">Contact Closure Selector Tool</h1>
             
             <div className="filter-grid">
                 <button className="reset-button" onClick={resetFilters}>

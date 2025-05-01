@@ -5,37 +5,59 @@ import OSI from '../../relevant-information/OSI';
 import SurgeSuppression from '../../relevant-information/SurgeSuppression';
 
 const EthernetSwitchFAQ = ({ activeSubSection }) => {
-    const [expandedFAQ, setExpandedFAQ] = useState(null);
+    const [expandedFAQs, setExpandedFAQs] = useState([]);
   
     const toggleFAQ = (sectionID) => {
-      setExpandedFAQ(prev => prev === sectionID ? null : sectionID);
+      setExpandedFAQs(prev => {
+        if (prev.includes(sectionID)) {
+          // Remove the section if it's already open
+          return prev.filter(id => id !== sectionID);
+        } else {
+          // Add the section if it's closed
+          return [...prev, sectionID];
+        }
+      });
     }
 
-  useEffect(() => {
-    if (activeSubSection) {
-      const element = document.getElementById(activeSubSection);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
+    const isFAQExpanded = (sectionID) => {
+      return expandedFAQs.includes(sectionID);
     }
-  }, [activeSubSection]);
+
+    useEffect(() => {
+      if (activeSubSection) {
+        const element = document.getElementById(activeSubSection);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+          // Automatically expand the active subsection if it's not already expanded
+          if (!expandedFAQs.includes(activeSubSection)) {
+            setExpandedFAQs(prev => [...prev, activeSubSection]);
+          }
+        }
+      }
+    }, [activeSubSection]);
 
   return (
     <div className="faq-list">
       <div id="switch" className="faq-answer">
-        <h1 className="faq-title" onClick={() => toggleFAQ("switch")}>Ethernet Switches<span className="dropdown-chevron"></span></h1>
-        {expandedFAQ === "switch" && (
-              <>
-                <p>Ethernet switches are used to connect end devices like PCs, printers, servers, and other networking devices within a <strong>local area network (LAN)</strong>. Their role is to switch packets of data from one device to another. This is achieved by examining the destination <strong>MAC address</strong> in the Ethernet frame and forwarding the packet to the appropriate port on the switch that is connected to the destination device.</p>
-              </>
-            )}
+        <h1 className="faq-title" onClick={() => toggleFAQ("switch")}>
+          Ethernet Switches
+          <span className={`dropdown-chevron ${isFAQExpanded("switch") ? 'expanded' : ''}`}></span>
+        </h1>
+        {isFAQExpanded("switch") && (
+          <>
+            <p>Ethernet switches are used to connect end devices like PCs, printers, servers, and other networking devices within a <strong>local area network (LAN)</strong>. Their role is to switch packets of data from one device to another. This is achieved by examining the destination <strong>MAC address</strong> in the Ethernet frame and forwarding the packet to the appropriate port on the switch that is connected to the destination device.</p>
+          </>
+        )}
       </div>
 
       <div id="switch-protocols" className="faq-answer">
-        <h1 className="faq-title" onClick={() => toggleFAQ("switch-protocols")}>Ethernet Switch Protocols<span className="dropdown-chevron"></span></h1>
-        {expandedFAQ === "switch-protocols" && (
+        <h1 className="faq-title" onClick={() => toggleFAQ("switch-protocols")}>
+          Ethernet Switch Protocols
+          <span className={`dropdown-chevron ${isFAQExpanded("switch-protocols") ? 'expanded' : ''}`}></span>
+        </h1>
+        {isFAQExpanded("switch-protocols") && (
           <>
             <p><strong>ARP (Address Resolution Protocol)</strong> is used to map an IP address to a MAC address. It allows devices on the same local network to find each other and communicate effectively by resolving IP addresses to their corresponding physical hardware addresses.</p>
             <p><strong>LLDP (Link Layer Discovery Protocol)</strong> is a protocol used by network devices to discover and exchange information about each other on a local network. It helps network administrators manage their network by providing details about connected devices and their capabilities.</p>
@@ -56,8 +78,11 @@ const EthernetSwitchFAQ = ({ activeSubSection }) => {
       </div>
 
       <div id="fiber" className="faq-answer">
-        <h1 className="faq-title" onClick={() => toggleFAQ("fiber")}>Fiber Optics<span className="dropdown-chevron"></span></h1>
-        {expandedFAQ === "fiber" && (
+        <h1 className="faq-title" onClick={() => toggleFAQ("fiber")}>
+          Fiber Optics
+          <span className={`dropdown-chevron ${isFAQExpanded("fiber") ? 'expanded' : ''}`}></span>
+        </h1>
+        {isFAQExpanded("fiber") && (
           <>
             <Fiber />
           </>
@@ -65,26 +90,35 @@ const EthernetSwitchFAQ = ({ activeSubSection }) => {
       </div>
 
       <div id="poe" className="faq-answer">
-        <h1 className="faq-title"  onClick={() => toggleFAQ("poe")}>Power Over Ethernet<span className="dropdown-chevron"></span></h1>
-        {expandedFAQ === "poe" && (
-              <>
-                <PowerOverEthernet />
-              </>
-            )}
+        <h1 className="faq-title" onClick={() => toggleFAQ("poe")}>
+          Power Over Ethernet
+          <span className={`dropdown-chevron ${isFAQExpanded("poe") ? 'expanded' : ''}`}></span>
+        </h1>
+        {isFAQExpanded("poe") && (
+          <>
+            <PowerOverEthernet />
+          </>
+        )}
       </div>
 
       <div id="surge" className="faq-answer">
-        <h1 className="faq-title" onClick={() => toggleFAQ("surge")}>Surge Suppression<span className="dropdown-chevron"></span></h1>
-        {expandedFAQ === "surge" && (
-              <>
-                <SurgeSuppression />
-              </>
-            )}
+        <h1 className="faq-title" onClick={() => toggleFAQ("surge")}>
+          Surge Suppression
+          <span className={`dropdown-chevron ${isFAQExpanded("surge") ? 'expanded' : ''}`}></span>
+        </h1>
+        {isFAQExpanded("surge") && (
+          <>
+            <SurgeSuppression />
+          </>
+        )}
       </div>
 
       <div id="osi" className="faq-answer">
-        <h1 className="faq-title" onClick={() => toggleFAQ("osi")}>The OSI Model<span className="dropdown-chevron"></span></h1>
-        {expandedFAQ === "osi" && (
+        <h1 className="faq-title" onClick={() => toggleFAQ("osi")}>
+          The OSI Model
+          <span className={`dropdown-chevron ${isFAQExpanded("osi") ? 'expanded' : ''}`}></span>
+        </h1>
+        {isFAQExpanded("osi") && (
           <>
             <OSI />
           </>
