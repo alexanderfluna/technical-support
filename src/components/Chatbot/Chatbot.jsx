@@ -151,24 +151,6 @@ const Chatbox = () => {
                lowerQuestion.includes('reset') || lowerQuestion.includes('authentication')) {
         return razberiTroubleshooting["password"];
       }
-      // Computing terms
-      else if (lowerQuestion.includes('computing') || lowerQuestion.includes('terminology') ||
-               lowerQuestion.includes('define') || lowerQuestion.includes('what is') ||
-               lowerQuestion.includes('meaning') || lowerQuestion.includes('explain') ||
-               lowerQuestion.includes('cpu') || lowerQuestion.includes('gpu') ||
-               lowerQuestion.includes('ram') || lowerQuestion.includes('memory') ||
-               lowerQuestion.includes('storage') || lowerQuestion.includes('raid') ||
-               lowerQuestion.includes('hertz') || lowerQuestion.includes('ghz') ||
-               lowerQuestion.includes('mhz') || lowerQuestion.includes('bandwidth') ||
-               lowerQuestion.includes('throughput') || lowerQuestion.includes('latency')) {
-        return razberiInfo["computing terminology"];
-      }
-      // PoE info
-      else if (lowerQuestion.includes('power over ethernet') || lowerQuestion.includes('poe info') ||
-               lowerQuestion.includes('poe standard') || lowerQuestion.includes('poe class') ||
-               lowerQuestion.includes('poe pinout') || lowerQuestion.includes('poe budget')) {
-        return razberiInfo["power over ethernet"];
-      }
     }
     
     // Check for Ethernet switch questions
