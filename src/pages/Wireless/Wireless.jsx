@@ -61,7 +61,7 @@ const Wireless = () => {
                   className={activeSubSection === "radio-losing-connection" ? "active" : ""}
                   onClick={() => handleSubSectionClick("radio-losing-connection")}
                 >
-                  How to Troubleshoot a Wireless Radio that Drops Out
+                  How to Troubleshoot a Wireless Radio with Communication Issues
                 </li>
               </>
             )}

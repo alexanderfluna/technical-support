@@ -86,7 +86,7 @@ const Navbar = ({ onCategoryChange }) => {
 
   return (
     <nav className="navbar">
-      <Chatbot/>
+      {/* <Chatbot/> */}
 
       <div className="mobile-header">
         <div className="hamburger" onClick={toggleMobileMenu}>
