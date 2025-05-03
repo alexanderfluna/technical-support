@@ -87,6 +87,7 @@ const EthernetExtender = () => {
             ref={troubleshootingRef}
             className="troubleshooting"
           >
+            <h1>Troubleshooting</h1>
             <EthernetExtenderTroubleshooting activeSubSection={activeSubSection} />
           </div>
 
@@ -95,6 +96,7 @@ const EthernetExtender = () => {
             ref={relevantInfoRef}
             className="relevant-information"
           >
+            <h1>Educational</h1>
             <EthernetExtenderFAQ activeSubSection={activeSubSection} />
           </div>
 
@@ -103,6 +105,7 @@ const EthernetExtender = () => {
             ref={selectorToolRef}
             className="selector-tool"
           >
+            <h1>Selector Tool</h1>
             <EthernetExtenderSelectorTool />
           </div>
         </div>

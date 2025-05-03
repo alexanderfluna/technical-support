@@ -99,6 +99,7 @@ const Wireless = () => {
               ref={troubleshootingRef}
               className="troubleshooting"
             >
+              <h1>Troubleshooting</h1>
               <WirelessTroubleshooting activeSubSection={activeSubSection} />
             </div>
 
@@ -107,6 +108,7 @@ const Wireless = () => {
               ref={relevantInfoRef}
               className="relevant-information"
             >
+              <h1>Educational</h1>
               <WirelessFAQ activeSubSection={activeSubSection} />
             </div>
 
@@ -115,6 +117,7 @@ const Wireless = () => {
               ref={selectorToolRef}
               className="selector-tool"
             >
+              <h1>Selector Tool</h1>
               <WirelessSelectorTool />
             </div>
           </div>

@@ -117,6 +117,7 @@ const ContactClosure = () => {
             ref={troubleshootingRef}
             className="troubleshooting"
           >
+            <h1>Troubleshooting</h1>
             <ContactClosureTroubleshooting activeSubSection={activeSubSection} />
           </div>
 
@@ -125,6 +126,7 @@ const ContactClosure = () => {
             ref={relevantInfoRef}
             className="relevant-information"
           >
+            <h1>Educational</h1>
             <ContactClosureFAQ activeSubSection={activeSubSection} />
           </div>
 
@@ -133,6 +135,7 @@ const ContactClosure = () => {
             ref={selectorToolRef}
             className="selector-tool"
           >
+            <h1>Selector Tool</h1>
             <ContactClosureSelectorTool />
           </div>
         </div>

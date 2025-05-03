@@ -50,7 +50,7 @@ const Razberi = () => {
 
           <p onClick={() => handleSectionClick("razberi-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
           {selectedContent === "razberi-troubleshooting" && (
-            <>
+            <> 
               <li 
                 className={activeSubSection === "server-power" ? "active" : ""}
                 onClick={() => handleSubSectionClick("server-power")}
@@ -141,6 +141,7 @@ const Razberi = () => {
             ref={troubleshootingRef}
             className="troubleshooting"
           >
+            <h1>Troubleshooting</h1>
             <RazberiTroubleshooting activeSubSection={activeSubSection} expandedFAQ={expandedFAQ} toggleFAQ={toggleFAQ} />
           </div>
 
@@ -149,6 +150,7 @@ const Razberi = () => {
             ref={relevantInfoRef}
             className="relevant-information"
           >
+            <h1>Educational</h1>
             <RazberiFAQ activeSubSection={activeSubSection} expandedFAQ={expandedFAQ} toggleFAQ={toggleFAQ} />
           </div>
 
@@ -157,6 +159,7 @@ const Razberi = () => {
             ref={selectorToolRef}
             className="selector-tool"
           >
+            <h1>Selector Tool</h1>
             <RazberiSelectorTool />
           </div>
         </div>

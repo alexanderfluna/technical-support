@@ -111,6 +111,7 @@ const SerialData = () => {
             ref={troubleshootingRef}
             className="troubleshooting"
           >
+            <h1>Troubleshooting</h1>
             <SerialDataTroubleshooting activeSubSection={activeSubSection} />
           </div>
 
@@ -119,6 +120,7 @@ const SerialData = () => {
             ref={relevantInfoRef}
             className="relevant-information"
           >
+            <h1>Educational</h1>
             <SerialDataFAQ activeSubSection={activeSubSection} />
           </div>
 
@@ -127,6 +129,7 @@ const SerialData = () => {
             ref={selectorToolRef}
             className="selector-tool"
           >
+            <h1>Selector Tool</h1>
             <SerialDataSelectorTool />
           </div>
         </div>

@@ -186,7 +186,7 @@ body {
 }
 
 .faq-title {
-  font-size: var(--text-3xl);
+  font-size: 1.5rem;
   font-weight: 800;
   background-image: linear-gradient(135deg, rgb(27, 69, 118), rgb(241, 242, 246));
   -webkit-background-clip: text;
@@ -294,6 +294,19 @@ body {
   color: var(--neutral-800);
   text-align: center;
   font-weight: 500;
+}
+
+.section-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: .8rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.subsection-list {
+  margin-left: 15px;
 }
 
 /* Animations */

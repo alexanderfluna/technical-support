@@ -141,6 +141,7 @@ const EthernetSwitch = () => {
           ref={troubleshootingRef}
           className="troubleshooting"
         >
+          <h1>Troubleshooting</h1>
           <EthernetSwitchTroubleshooting activeSubSection={activeSubSection} />
         </div>
 
@@ -149,6 +150,7 @@ const EthernetSwitch = () => {
           ref={relevantInfoRef}
           className="relevant-information"
         >
+          <h1>Educational</h1>
           <EthernetSwitchFAQ activeSubSection={activeSubSection} />
         </div>
 
@@ -157,6 +159,7 @@ const EthernetSwitch = () => {
           ref={selectorToolRef}
           className="selector-tool"
         >
+          <h1>Selector Tool</h1>
           <EthernetSwitchSelectorTool />
         </div>
       </div>

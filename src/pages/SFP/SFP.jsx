@@ -174,6 +174,7 @@ const SFP = () => {
             ref={faqRef}
             className="relevant-information"
           >
+            <h1>SFP</h1>
             <SFPFAQ activeSubSection={activeSubSection} />
           </div>
 
@@ -182,6 +183,7 @@ const SFP = () => {
             ref={selectorToolRef}
             className="selector-tool"
           >
+            <h1>SFP Selector Tool</h1>
             <SFPSelectorTool />
           </div>
         </div>

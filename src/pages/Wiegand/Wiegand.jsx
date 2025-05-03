@@ -85,6 +85,7 @@ const Wiegand = () => {
               ref={faqRef}
               className="relevant-information"
             >
+              <h1>Wiegand</h1>
               <WiegandFAQ activeSubSection={activeSubSection} />
             </div>
 
@@ -93,6 +94,7 @@ const Wiegand = () => {
               ref={selectorToolRef}
               className="selector-tool"
             >
+              <h1>Wiegand Selector Tool</h1>
               <WiegandSelectorTool />
             </div>
           </div>

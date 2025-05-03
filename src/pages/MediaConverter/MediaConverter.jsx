@@ -117,6 +117,7 @@ const MediaConverter = () => {
             ref={troubleshootingRef}
             className="troubleshooting"
           >
+            <h1>Troubleshooting</h1>
             <MediaConverterTroubleshooting activeSubSection={activeSubSection} />
           </div>
 
@@ -125,6 +126,7 @@ const MediaConverter = () => {
             ref={relevantInfoRef}
             className="relevant-information"
           >
+            <h1>Educational</h1>
             <MediaConverterFAQ activeSubSection={activeSubSection} />
           </div>
 
@@ -133,6 +135,7 @@ const MediaConverter = () => {
             ref={selectorToolRef}
             className="selector-tool"
           >
+            <h1>Selector Tool</h1>
             <MediaConverterSelectorTool />
           </div>
         </div>
