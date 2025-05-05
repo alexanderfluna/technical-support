@@ -54,7 +54,7 @@ const WirelessTroubleshooting = ({ activeSubSection }) => {
 
       <div id="radio-not-powering-on" className="faq-answer">
         <h1 className="faq-title" onClick={() => toggleFAQ("radio-not-powering-on")}>
-          How to Troubleshoot a Wireless Radio with Power Issues
+          How to Troubleshoot a Wireless Radio That Will Not Power On
           <span className={`dropdown-chevron ${isFAQExpanded("radio-not-powering-on") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("radio-not-powering-on") && (
@@ -83,24 +83,24 @@ const WirelessTroubleshooting = ({ activeSubSection }) => {
         </h1>
         {isFAQExpanded("radio-losing-connection") && (
           <>
-            <p><strong>[1]</strong> Confirm the radio is being properly powered.</p>
-            <p style={{ paddingLeft: "40px" }}><strong>[1.1]</strong> The radio must be powered on via a hardened, 802.3af/at compliant PoE source.</p>
-            <p style={{ paddingLeft: "40px" }}><strong>[1.2]</strong> There cannot be more than one radio powered by the same PoE switch as this will create a ring.</p>
+            <p><strong>[1]</strong> Confirm the radio is powered properly.</p>
+            <p style={{ paddingLeft: "40px" }}><strong>[1.1]</strong> The radio should be powered by a hardened, 802.3af/at compliant PSE.</p>
+            <p style={{ paddingLeft: "40px" }}><strong>[1.2]</strong> Only one radio should be powered by a single PoE switch to prevent a network loop.</p>
             <p><strong>[2]</strong> Default the wireless radio and reconfigure it. Click the link to <a href="pdf/Wireless/NetWave.pdf">view Comnet's wireless configuration documentation</a>.</p>
             <p><strong>[3]</strong> Confirm each radio in the network has the latest firmware version.</p>
             <p><strong>[4]</strong> Confirm each radio in the network has a unique IP address.</p>
-            <p><strong>[5]</strong> Confirm there is a direct line of sight between the access points and its associated client(s).</p>
+            <p><strong>[5]</strong> Confirm there is a direct line of sight between the access point and its associated client(s).</p>
             <p><strong>[6]</strong> Confirm the access point and its associated client(s) share the same ESSID and PSK.</p>
-            <p><strong>[7]</strong> If there are multiple access points in the network, confirm each access point and its associated client(s) share a unique ESSID and PSK.</p>
+            <p><strong>[7]</strong> If there are multiple access points in the area, confirm each access point and its associated client(s) share a unique ESSID and PSK.</p>
             <p><strong>[8]</strong> Using an aerial view in Google Maps, confirm the client(s) are within the beamwidth of the access point.</p>
-            <p><strong>[9]</strong> Determine the throughput. It is recommended to limit the throughput to 250Mbps in either direction.</p>
-            <p><strong>[10]</strong> Enable Ping Watchdog to reboot the radio after 5 failed ping attempts.</p>
-            <p><strong>[11]</strong> Set the radio to reboot automatically at a specified interval (e.g., 2 hours, 12 hours, 24 hours).</p>
-            <p><strong>[12]</strong> Enable AP Background ACS scan on the access point radio to automatically scan and switch to the best channel after 60 seconds.</p>
-            <p><strong>[13]</strong> In an add/drop/repeat topology, ensure there are no more than 3 hops.</p>
-            <p><strong>[14]</strong> If there are two radios mounted on the same pole:</p>
-            <p style={{ paddingLeft: "40px" }}><strong>[14.1]</strong> If the radios are facing the same direction, ensure there is at least a 3-meter distance between them.</p>
-            <p style={{ paddingLeft: "40px" }}><strong>[14.2]</strong> If the radios are facing opposite directions, ensure there is at least a 3-foot distance between them.</p>
+            <p><strong>[9]</strong> Determine the throughput. It is recommended to limit the throughput to a total of 500 Mbps.</p>
+            <p><strong>[10]</strong> In an add/drop/repeat topology, ensure there are no more than 3 hops.</p>
+            <p><strong>[11]</strong> If there are two radios mounted on the same pole:</p>
+            <p style={{ paddingLeft: "40px" }}><strong>[11.1]</strong> If the radios are facing the same direction, ensure there is at least a 3-meter distance between them.</p>
+            <p style={{ paddingLeft: "40px" }}><strong>[11.2]</strong> If the radios are facing opposite directions, ensure there is at least a 3-foot distance between them.</p>
+            <p><strong>[12]</strong> Consider enabling AP Background ACS scan on the access point radio to automatically scan and switch to the best channel after 60 seconds.</p>
+            <p><strong>[13]</strong> Consider enabling Ping Watchdog to reboot the radio after 5 failed ping attempts.</p>
+            <p><strong>[14]</strong> Consider setting the radio to reboot automatically at a specified interval (e.g., 2 hours, 12 hours, 24 hours).</p>
           </>
         )}
       </div>

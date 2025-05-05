@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import products from './SerialDataProducts';
 
 const SerialDataSelectorTool = () => {
+  const [selectorTool, setSelectorTool] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     Number_Of_Fibers: [],
@@ -15,6 +16,10 @@ const SerialDataSelectorTool = () => {
     optics: null,
     package: null,
   });
+
+  const handleClick = () => {
+    setSelectorTool(!selectorTool);
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -59,68 +64,72 @@ const SerialDataSelectorTool = () => {
 
   return (
     <div className="tool-container">
-      <h1 className="faq-title">Serial Data Selector Tool<span className="dropdown-chevron"></span></h1>
-      <div className="filter-grid">
-        <button 
-          className="reset-button" 
-          onClick={resetFilters}
-        >
-          Reset
-        </button>
-
-        {["Number_Of_Fibers", "fiber", "optics", "package"].map((filterType) => (
-          <div key={filterType} className="filter-group">
-            <div className="filter-label">
-              {filterType.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-              {filters[filterType] && (
-                <button
-                  className="clear-button"
-                  onClick={() => clearFilter(filterType)}
-                >
-                  X
-                </button>
-              )}
-            </div>
-            <select
-              className="filter-select"
-              value={filters[filterType] || ''}
-              onChange={(e) => handleFilterChange(filterType, e.target.value)}
+      <h1 className="faq-title" onClick={handleClick}>Serial Data Selector Tool<span className="dropdown-chevron"></span></h1>
+      {selectorTool && (
+        <>
+          <div className="filter-grid">
+            <button 
+              className="reset-button" 
+              onClick={resetFilters}
             >
-              <option value="">Select {filterType.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</option>
-              {availableOptions[filterType].map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-        ))}
-      </div>
+              Reset
+            </button>
 
-      <div className="table-wrapper">
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>NumOfFibers</th>
-              <th>Fiber</th>
-              <th>Optics</th>
-              <th>Package</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredProducts.map((product, index) => (
-              <tr key={index}>
-                <td>{product.Model}</td>
-                <td>{product.Number_Of_Fibers}</td>
-                <td>{product.fiber}</td>
-                <td>{product.optics}</td>
-                <td>{product.package}</td>
-              </tr>
+            {["Number_Of_Fibers", "fiber", "optics", "package"].map((filterType) => (
+              <div key={filterType} className="filter-group">
+                <div className="filter-label">
+                  {filterType.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                  {filters[filterType] && (
+                    <button
+                      className="clear-button"
+                      onClick={() => clearFilter(filterType)}
+                    >
+                      X
+                    </button>
+                  )}
+                </div>
+                <select
+                  className="filter-select"
+                  value={filters[filterType] || ''}
+                  onChange={(e) => handleFilterChange(filterType, e.target.value)}
+                >
+                  <option value="">Select {filterType.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</option>
+                  {availableOptions[filterType].map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </div>
+
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>NumOfFibers</th>
+                  <th>Fiber</th>
+                  <th>Optics</th>
+                  <th>Package</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredProducts.map((product, index) => (
+                  <tr key={index}>
+                    <td>{product.Model}</td>
+                    <td>{product.Number_Of_Fibers}</td>
+                    <td>{product.fiber}</td>
+                    <td>{product.optics}</td>
+                    <td>{product.package}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </div>
   );
 };

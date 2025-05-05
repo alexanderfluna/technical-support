@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import products from './EthernetSwitchProducts';
 
 const EthernetSwitchSelectorTool = () => {
+  const [selectorTool, setSelectorTool] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     Hardened: [],
@@ -11,6 +12,10 @@ const EthernetSwitchSelectorTool = () => {
     Fiber_Ports: [],
     Combo_Ports: [],
   });
+
+  const handleClick = () => {
+    setSelectorTool(!selectorTool);
+  }
 
   const sortOrders = {
     Hardened: ["No", "Yes"],
@@ -90,67 +95,71 @@ const EthernetSwitchSelectorTool = () => {
 
   return (
     <div className="tool-container">
-      <h1 className="faq-title">Ethernet Switch Selector Tool<span className="dropdown-chevron"></span></h1>
-      <div className="filter-grid">
-        <button className="reset-button" onClick={resetFilters}>
-          Reset
-        </button>
-        {Object.entries(availableOptions).map(([filterType, options]) => (
-          <div key={filterType} className="filter-group">
-            <div className="filter-label">
-              {filterType === 'Copper_Ports' ? 'Copper Ports' : 
-               filterType === 'Fiber_Ports' ? 'Fiber Ports' : 
-               filterType === 'Combo_Ports' ? 'Combo Ports' : filterType}
-              {filters[filterType] && (
-                <button className="clear-button" onClick={() => clearFilter(filterType)}>
-                  X
-                </button>
-              )}
-            </div>
-            <select
-              className="filter-select"
-              value={filters[filterType] || ''}
-              onChange={(e) => handleFilterChange(filterType, e.target.value)}
-            >
-              <option value="">Select {filterType}</option>
-              {sortOptions(filterType, options).map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-        ))}
-      </div>
-
-      <div className="table-wrapper">
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Hardened</th>
-              <th>Managed</th>
-              <th>PoE</th>
-              <th>Copper Ports</th>
-              <th>Fiber Ports</th>
-              <th>Combo Ports</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredProducts.map((product, index) => (
-              <tr key={index}>
-                <td>{product.Model}</td>
-                <td>{product.Hardened}</td>
-                <td>{product.Managed}</td>
-                <td>{product.PoE}</td>
-                <td>{product.Copper_Ports === "0" ? "-" : product.Copper_Ports}</td>
-                <td>{product.Fiber_Ports === "0" ? "-" : product.Fiber_Ports}</td>
-                <td>{product.Combo_Ports === "0" ? "-" : product.Combo_Ports}</td>
-              </tr>
+      <h1 className="faq-title" onClick={handleClick}>Ethernet Switch Selector Tool<span className="dropdown-chevron"></span></h1>
+      {selectorTool && (
+        <>
+          <div className="filter-grid">
+            <button className="reset-button" onClick={resetFilters}>
+              Reset
+            </button>
+            {Object.entries(availableOptions).map(([filterType, options]) => (
+              <div key={filterType} className="filter-group">
+                <div className="filter-label">
+                  {filterType === 'Copper_Ports' ? 'Copper Ports' : 
+                  filterType === 'Fiber_Ports' ? 'Fiber Ports' : 
+                  filterType === 'Combo_Ports' ? 'Combo Ports' : filterType}
+                  {filters[filterType] && (
+                    <button className="clear-button" onClick={() => clearFilter(filterType)}>
+                      X
+                    </button>
+                  )}
+                </div>
+                <select
+                  className="filter-select"
+                  value={filters[filterType] || ''}
+                  onChange={(e) => handleFilterChange(filterType, e.target.value)}
+                >
+                  <option value="">Select {filterType}</option>
+                  {sortOptions(filterType, options).map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </div>
+
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Hardened</th>
+                  <th>Managed</th>
+                  <th>PoE</th>
+                  <th>Copper Ports</th>
+                  <th>Fiber Ports</th>
+                  <th>Combo Ports</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredProducts.map((product, index) => (
+                  <tr key={index}>
+                    <td>{product.Model}</td>
+                    <td>{product.Hardened}</td>
+                    <td>{product.Managed}</td>
+                    <td>{product.PoE}</td>
+                    <td>{product.Copper_Ports === "0" ? "-" : product.Copper_Ports}</td>
+                    <td>{product.Fiber_Ports === "0" ? "-" : product.Fiber_Ports}</td>
+                    <td>{product.Combo_Ports === "0" ? "-" : product.Combo_Ports}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </div>
   );
 };

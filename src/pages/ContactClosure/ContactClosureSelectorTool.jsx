@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import products from "./ContactClosureProducts";
 
 const ContactClosureSelectorTool = () => {
+    const [selectorTool, setSelectorTool] = useState(false);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [availableOptions, setAvailableOptions] = useState({
         fiber: [],
@@ -19,6 +20,10 @@ const ContactClosureSelectorTool = () => {
         numberOfChannels: null,
         bidirectional: null,
     });
+
+    const handleClick = () => {
+        setSelectorTool(!selectorTool);
+    }
     
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -65,68 +70,72 @@ const ContactClosureSelectorTool = () => {
 
     return (
         <div className="tool-container">
-            <h1 className="faq-title">Contact Closure Selector Tool</h1>
+            <h1 className="faq-title" onClick={handleClick}>Contact Closure Selector Tool<span className="dropdown-chevron"></span></h1>
             
-            <div className="filter-grid">
-                <button className="reset-button" onClick={resetFilters}>
-                    Reset Filters
-                </button>
+            {selectorTool && (
+                <>
+                    <div className="filter-grid">
+                        <button className="reset-button" onClick={resetFilters}>
+                            Reset Filters
+                        </button>
 
-                {["fiber", "Latching_Or_NonLatching", "inputContactSupervision", "summaryFaultRelay", "numberOfChannels", "bidirectional"].map((filterType) => (
-                    <div key={filterType} className="filter-group">
-                        <div className="filter-label">
-                            {filterType.replace(/([A-Z])/g, ' $1').trim().replace(/\b\w/g, char => char.toUpperCase())}
-                            {filters[filterType] && (
-                                <button className="clear-button" onClick={() => clearFilter(filterType)}>
-                                    ×
-                                </button>
-                            )}
-                        </div>
-                        <select
-                            className="filter-select"
-                            name={filterType}
-                            value={filters[filterType] || ""}
-                            onChange={(e) => handleFilterChange(filterType, e.target.value)}
-                        >
-                            <option value="">Select {filterType.replace(/([A-Z])/g, ' $1')}</option>
-                            {availableOptions[filterType]?.map((option) => (
-                                <option key={option} value={option}>
-                                    {option}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                ))}
-            </div>
-
-            <div className="table-wrapper">
-                <table className="data-table">
-                    <thead>
-                        <tr>
-                            <th>Model</th>
-                            <th>Fiber</th>
-                            <th>Latching or Non-Latching</th>
-                            <th>Input Contact Supervision</th>
-                            <th>Summary Fault Relay</th>
-                            <th>Number of Channels</th>
-                            <th>Bidirectional</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredProducts.map((product, index) => (
-                            <tr key={index}>
-                                <td>{product.Model}</td>
-                                <td>{product.fiber}</td>
-                                <td>{product.Latching_Or_NonLatching}</td>
-                                <td>{product.inputContactSupervision}</td>
-                                <td>{product.summaryFaultRelay}</td>
-                                <td>{product.numberOfChannels}</td>
-                                <td>{product.bidirectional}</td>
-                            </tr>
+                        {["fiber", "Latching_Or_NonLatching", "inputContactSupervision", "summaryFaultRelay", "numberOfChannels", "bidirectional"].map((filterType) => (
+                            <div key={filterType} className="filter-group">
+                                <div className="filter-label">
+                                    {filterType.replace(/([A-Z])/g, ' $1').trim().replace(/\b\w/g, char => char.toUpperCase())}
+                                    {filters[filterType] && (
+                                        <button className="clear-button" onClick={() => clearFilter(filterType)}>
+                                            ×
+                                        </button>
+                                    )}
+                                </div>
+                                <select
+                                    className="filter-select"
+                                    name={filterType}
+                                    value={filters[filterType] || ""}
+                                    onChange={(e) => handleFilterChange(filterType, e.target.value)}
+                                >
+                                    <option value="">Select {filterType.replace(/([A-Z])/g, ' $1')}</option>
+                                    {availableOptions[filterType]?.map((option) => (
+                                        <option key={option} value={option}>
+                                            {option}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
                         ))}
-                    </tbody>
-                </table>
-            </div>
+                    </div>
+
+                    <div className="table-wrapper">
+                        <table className="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Model</th>
+                                    <th>Fiber</th>
+                                    <th>Latching or Non-Latching</th>
+                                    <th>Input Contact Supervision</th>
+                                    <th>Summary Fault Relay</th>
+                                    <th>Number of Channels</th>
+                                    <th>Bidirectional</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {filteredProducts.map((product, index) => (
+                                    <tr key={index}>
+                                        <td>{product.Model}</td>
+                                        <td>{product.fiber}</td>
+                                        <td>{product.Latching_Or_NonLatching}</td>
+                                        <td>{product.inputContactSupervision}</td>
+                                        <td>{product.summaryFaultRelay}</td>
+                                        <td>{product.numberOfChannels}</td>
+                                        <td>{product.bidirectional}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </>
+            )}
         </div>
     );
 };

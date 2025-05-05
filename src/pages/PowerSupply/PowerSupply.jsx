@@ -69,92 +69,94 @@ const PowerSupply = () => {
   };
 
   return (
-    <div className="tool-container">
+    <div>
       <Navbar />
-      <div className="faq-list">
-        <h1 className="tool-title">Power Supply</h1>
-        <div className="filter-grid">
-          <button 
-            className="reset-button" 
-            onClick={resetFilters}
-          >
-            Reset Filters
-          </button>
-          
-          <div className="filter-group">
-            <div className="filter-label">
-              Voltage
-              {filters.voltage && (
-                <button
-                  className="clear-button"
-                  onClick={() => clearFilter("voltage")}
-                >
-                  ×
-                </button>
-              )}
-            </div>
-            <select
-              className="filter-select"
-              name="voltage"
-              value={filters.voltage || ""}
-              onChange={(e) => handleFilterChange("voltage", e.target.value)}
+      <div className="tool-container">
+        <div className="faq-list">
+          <h1 className="tool-title">Power Supply</h1>
+          <div className="filter-grid">
+            <button 
+              className="reset-button" 
+              onClick={resetFilters}
             >
-              <option value="">Select Voltage</option>
-              {availableOptions.voltage.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
+              Reset Filters
+            </button>
+            
+            <div className="filter-group">
+              <div className="filter-label">
+                Voltage
+                {filters.voltage && (
+                  <button
+                    className="clear-button"
+                    onClick={() => clearFilter("voltage")}
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+              <select
+                className="filter-select"
+                name="voltage"
+                value={filters.voltage || ""}
+                onChange={(e) => handleFilterChange("voltage", e.target.value)}
+              >
+                <option value="">Select Voltage</option>
+                {availableOptions.voltage.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="filter-group">
+              <div className="filter-label">
+                Watts
+                {filters.watts && (
+                  <button
+                    className="clear-button"
+                    onClick={() => clearFilter("watts")}
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+              <select
+                className="filter-select"
+                name="watts"
+                value={filters.watts || ""}
+                onChange={(e) => handleFilterChange("watts", e.target.value)}
+              >
+                <option value="">Select Watts</option>
+                {availableOptions.watts.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
-          <div className="filter-group">
-            <div className="filter-label">
-              Watts
-              {filters.watts && (
-                <button
-                  className="clear-button"
-                  onClick={() => clearFilter("watts")}
-                >
-                  ×
-                </button>
-              )}
-            </div>
-            <select
-              className="filter-select"
-              name="watts"
-              value={filters.watts || ""}
-              onChange={(e) => handleFilterChange("watts", e.target.value)}
-            >
-              <option value="">Select Watts</option>
-              {availableOptions.watts.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div className="table-wrapper">
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>Model</th>
-                <th>Voltage</th>
-                <th>Watts</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredProducts.map((product, index) => (
-                <tr key={index}>
-                  <td>{product.model}</td>
-                  <td>{product.voltage}</td>
-                  <td>{product.watts}</td>
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Voltage</th>
+                  <th>Watts</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredProducts.map((product, index) => (
+                  <tr key={index}>
+                    <td>{product.model}</td>
+                    <td>{product.voltage}</td>
+                    <td>{product.watts}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

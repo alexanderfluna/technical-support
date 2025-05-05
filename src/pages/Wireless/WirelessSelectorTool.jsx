@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import products from './WirelessProducts';
 
 const WirelessSelectorTool = () => {
+  const [selectorTool, setSelectorTool] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     quantity: [],
@@ -22,6 +23,10 @@ const WirelessSelectorTool = () => {
     setFilteredProducts(products); 
     updateAvailableOptions(products);
   }, []);
+
+  const handleClick = () => {
+    setSelectorTool(!selectorTool);
+  }
 
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
@@ -59,69 +64,73 @@ const WirelessSelectorTool = () => {
 
   return (
     <div className="tool-container">
-      <h1 className="faq-title">Wireless Ethernet Selector Tool<span className="dropdown-chevron"></span></h1>
-      <div className="filter-grid">
-        <button 
-          className="reset-button" 
-          onClick={resetFilters}
-        >
-          Reset
-        </button>
-
-        {["quantity", "size", "beamwidth", "continent"].map((filterType) => (
-          <div key={filterType} className="filter-group">
-            <div className="filter-label">
-              {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
-              {filters[filterType] && (
-                <button
-                  className="clear-button"
-                  onClick={() => clearFilter(filterType)}
-                >
-                  X
-                </button>
-              )}
-            </div>
-            <select
-              className="filter-select"
-              name={filterType}
-              value={filters[filterType] || ""}
-              onChange={(e) => handleFilterChange(filterType, e.target.value)}
+      <h1 className="faq-title" onClick={handleClick}>Wireless Ethernet Selector Tool<span className="dropdown-chevron"></span></h1>
+      {selectorTool && (
+        <>
+          <div className="filter-grid">
+            <button 
+              className="reset-button" 
+              onClick={resetFilters}
             >
-              <option value="">Select {filterType.charAt(0).toUpperCase() + filterType.slice(1)}</option>
-              {availableOptions[filterType]?.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-        ))}
-      </div>
+              Reset
+            </button>
 
-      <div className="table-wrapper">
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Quantity</th>
-              <th>Size</th>
-              <th>Beamwidth</th>
-              <th>Continent</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredProducts.map((product, index) => (
-              <tr key={index}>
-                <td>{product.Model}</td>
-                <td>{product.quantity}</td>
-                <td>{product.size}</td>
-                <td>{product.beamwidth}</td>
-                <td>{product.continent}</td>
-              </tr>
+            {["quantity", "size", "beamwidth", "continent"].map((filterType) => (
+              <div key={filterType} className="filter-group">
+                <div className="filter-label">
+                  {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
+                  {filters[filterType] && (
+                    <button
+                      className="clear-button"
+                      onClick={() => clearFilter(filterType)}
+                    >
+                      X
+                    </button>
+                  )}
+                </div>
+                <select
+                  className="filter-select"
+                  name={filterType}
+                  value={filters[filterType] || ""}
+                  onChange={(e) => handleFilterChange(filterType, e.target.value)}
+                >
+                  <option value="">Select {filterType.charAt(0).toUpperCase() + filterType.slice(1)}</option>
+                  {availableOptions[filterType]?.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </div>
+
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Quantity</th>
+                  <th>Size</th>
+                  <th>Beamwidth</th>
+                  <th>Continent</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredProducts.map((product, index) => (
+                  <tr key={index}>
+                    <td>{product.Model}</td>
+                    <td>{product.quantity}</td>
+                    <td>{product.size}</td>
+                    <td>{product.beamwidth}</td>
+                    <td>{product.continent}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </div>
   );
 };

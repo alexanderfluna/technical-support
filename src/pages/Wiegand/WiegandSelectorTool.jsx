@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const WiegandSelectorTool = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    setFilteredProducts(products);
-    updateAvailableOptions(products);
-  }, []);
-
+  const [selectorTool, setSelectorTool] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     fiber: [],
@@ -28,6 +23,16 @@ const WiegandSelectorTool = () => {
     fiber: null,
     Central_Remote: null,
   });
+
+  const handleClick = () => {
+    setSelectorTool(!selectorTool);
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setFilteredProducts(products);
+    updateAvailableOptions(products);
+  }, []);
 
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
@@ -63,66 +68,69 @@ const WiegandSelectorTool = () => {
 
   return (
     <div className="tool-container">
-      <h1 className="faq-title">Wiegand Selector Tool</h1>
-
-      <div className="filter-grid">
-        <button 
-          className="reset-button" 
-          onClick={resetFilters}
-        >
-          Reset
-        </button>
-
-        {["fiber", "Central_Remote"].map((filterType) => (
-          <div key={filterType} className="filter-group">
-            <div className="filter-label">
-              {filterType === 'Central_Remote' ? 'Central/Remote' : filterType.charAt(0).toUpperCase() + filterType.slice(1)}
-              {filters[filterType] && (
-                <button
-                  className="clear-button"
-                  onClick={() => clearFilter(filterType)}
-                >
-                  X
-                </button>
-              )}
-            </div>
-            <select
-              className="filter-select"
-              name={filterType}
-              value={filters[filterType] || ""}
-              onChange={(e) => handleFilterChange(filterType, e.target.value)}
+      <h1 className="faq-title" onClick={handleClick}>Wiegand Selector Tool<span className="dropdown-chevron"></span></h1>
+      {selectorTool && (
+        <>
+          <div className="filter-grid">
+            <button 
+              className="reset-button" 
+              onClick={resetFilters}
             >
-              <option value="">Select {filterType === 'Central_Remote' ? 'Central/Remote' : filterType.charAt(0).toUpperCase() + filterType.slice(1)}</option>
-              {availableOptions[filterType]?.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-        ))}
-      </div>
+              Reset
+            </button>
 
-      <div className="table-wrapper">
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Fiber</th>
-              <th>Central/Remote</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredProducts.map((product, index) => (
-              <tr key={index}>
-                <td>{product.model}</td>
-                <td>{product.fiber}</td>
-                <td>{product.Central_Remote}</td>
-              </tr>
+            {["fiber", "Central_Remote"].map((filterType) => (
+              <div key={filterType} className="filter-group">
+                <div className="filter-label">
+                  {filterType === 'Central_Remote' ? 'Central/Remote' : filterType.charAt(0).toUpperCase() + filterType.slice(1)}
+                  {filters[filterType] && (
+                    <button
+                      className="clear-button"
+                      onClick={() => clearFilter(filterType)}
+                    >
+                      X
+                    </button>
+                  )}
+                </div>
+                <select
+                  className="filter-select"
+                  name={filterType}
+                  value={filters[filterType] || ""}
+                  onChange={(e) => handleFilterChange(filterType, e.target.value)}
+                >
+                  <option value="">Select {filterType === 'Central_Remote' ? 'Central/Remote' : filterType.charAt(0).toUpperCase() + filterType.slice(1)}</option>
+                  {availableOptions[filterType]?.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </div>
+
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Fiber</th>
+                  <th>Central/Remote</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredProducts.map((product, index) => (
+                  <tr key={index}>
+                    <td>{product.model}</td>
+                    <td>{product.fiber}</td>
+                    <td>{product.Central_Remote}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </div>
   );
 };

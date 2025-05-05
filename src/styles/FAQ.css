@@ -72,7 +72,7 @@ body {
 
 /* Table of Contents - Enhanced Sidebar */
 .table-of-contents2 {
-  width: 20%;
+  width: 15%;
   min-width: 220px;
   padding: var(--space-lg);
   background-color: white;

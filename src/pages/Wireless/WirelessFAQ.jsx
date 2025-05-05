@@ -44,6 +44,41 @@ const WirelessFAQ = ({ activeSubSection }) => {
 
     return (
         <div className="faq-list">
+            <div id="bom" className="faq-answer">
+                <h1 className="faq-title" onClick={() => toggleFAQ("bom")}>
+                    How to Design a Wireless Application
+                    <span className={`dropdown-chevron ${isFAQExpanded("bom") ? 'expanded' : ''}`}></span>
+                </h1>
+                {isFAQExpanded("bom") && (
+                    <>
+                        <p><strong>Take note of the following information before creating a Bill of Materials.</strong></p>
+                        <p>[1] An RF site survey is strongly recommended to ensure the suitability of Wi-Fi radios for use at this site.</p>
+                        <p>[2] Determine which locations will be point-to-point or point-to-multipoint.</p>
+                        <p>[3] Confirm that the wireless radios have a clear line of sight and there is no obstruction in the fresnel zone.</p>
+                        <p>[4] Confirm that the client radios are placed within the beamwidth of the access point radio.</p>
+                        <p>[5] Confirm that 120 VAC power will be available at each location for use by the Comnet device(s) at that location.</p>
+                        <p>[6] Confirm the PoE requirements of each powered device.</p>
+                        <p><strong>Start creating a Bill of Materials by location.</strong></p>
+                        <p>[1] One of the following wireless radios.</p>
+                        <li>NW1</li>
+                        <li>NW1/M</li>
+                        <li>NW1/M/IA870</li>
+                        <li>NW9</li>
+                        <p>[2] One articulating bracket.</p>
+                        <li>NWBKT</li>
+                        <p>[3] One or more of the following PoE switches or midspans.</p>
+                        <li>CNGE1IPS</li>
+                        <li>CN1IPSBT-DC</li>
+                        <li>CNGE6FX2TX4MSP</li>
+                        <li>CNGE11FX3TX8MSPOE</li>
+                        <p>[4] One of the following 48 VDC power supplies for the PoE switch as needed.</p>
+                        <li>PS48VDC-5A</li>
+                        <p>[5] One enclosure as needed.</p>
+                        <li>CNEE2</li>
+                    </>
+                )}
+            </div>
+
             <div id="wireless" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("wireless")}>
                     Wireless Ethernet
@@ -55,6 +90,7 @@ const WirelessFAQ = ({ activeSubSection }) => {
                         <p>The <strong>Pre-Shared Key (PSK)</strong> is the password required to join a secured wireless network. This key is an essential component of WPA and WPA2 encryption protocols, ensuring that only authorized users can access the network. A strong PSK helps protect against unauthorized access and potential security threats.</p>
                         <p><strong>Antenna gain</strong> measures how effectively an antenna directs or concentrates radio frequency (RF) energy in a particular direction compared to a reference antenna. Higher gain antennas focus energy more efficiently, increasing signal range and strength while reducing interference from unwanted directions.</p>
                         <p>Gain is typically referenced in <strong>decibels isotropic (dBi)</strong>, which represents the gain relative to an <strong>isotropic radiator</strong>—a theoretical antenna that radiates power uniformly in all directions. An antenna with a positive dBi value directs energy more efficiently than an isotropic source, making it ideal for focused, long-range wireless communications.</p>
+                        <p><strong>Wireless Security Features:</strong> The access point and client(s) are bound together by a shared ESSID and PSK. It is recommended to change the IP addresses, ESSID, and PSK of the wireless radios, as this information is public. Hiding the ESSID prevents it from appearing in Wi-Fi scans. Additionally, wireless communication is encrypted using WPA2 for enhanced security.</p>
                         <p>The <strong>Received Signal Strength Indicator (RSSI)</strong> measures the power level of a received wireless signal, serving as an indicator of connection quality between an access point and a client device. RSSI values are measured in negative decibels (dBm), with higher values (closer to zero) representing stronger signals.</p>
                         <p>The <strong>Wi-Fi standards</strong> can be observed in the table below.</p>
                         <table
@@ -94,7 +130,6 @@ const WirelessFAQ = ({ activeSubSection }) => {
                                 ))}
                             </tbody>
                         </table>
-                        <p><strong>Wireless Security Features:</strong> The access point and client(s) are bound together by a shared ESSID and PSK. It is recommended to change the IP addresses, ESSID, and PSK of the wireless radios, as this information is public. Hiding the ESSID prevents it from appearing in Wi-Fi scans. Additionally, wireless communication is encrypted using WPA2 for enhanced security.</p>
                     </>
                 )}
             </div>

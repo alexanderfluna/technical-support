@@ -55,7 +55,7 @@ const Wireless = () => {
                   className={activeSubSection === "radio-not-powering-on" ? "active" : ""}
                   onClick={() => handleSubSectionClick("radio-not-powering-on")}
                 >
-                  How to Troubleshoot a Wireless Radio with Power Issues
+                  How to Troubleshoot a Wireless Radio That Will Not Power On
                 </li>
                 <li 
                   className={activeSubSection === "radio-losing-connection" ? "active" : ""}
@@ -69,6 +69,12 @@ const Wireless = () => {
             <p onClick={() => handleSectionClick("wireless-relevant-information")}>Educational<span className="dropdown-chevron"></span></p>
             {selectedContent === "wireless-relevant-information" && (
               <>
+                <li 
+                  className={activeSubSection === "bom" ? "active" : ""}
+                  onClick={() => handleSubSectionClick("bom")}
+                >
+                  How to Design a Wireless Application
+                </li>
                 <li 
                   className={activeSubSection === "wireless" ? "active" : ""}
                   onClick={() => handleSubSectionClick("wireless")}

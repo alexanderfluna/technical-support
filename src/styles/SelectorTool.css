@@ -18,8 +18,9 @@
   }
   
   .tool-container {
-    background: var(--card-bg);
+    background-color: rgb(247, 249, 255);
     width: 100%;
+    padding: 1rem;
   }
   
   .tool-title {
@@ -132,7 +133,7 @@
   }
   
   .data-table tr:hover {
-    background-color: #f0f4f8;
+    background-color: #8ab6e2;
   }
   
   /* Responsive Design */

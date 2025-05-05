@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import products from "./EthernetExtenderProducts";
 
 const EthernetExtenderSelectorTool = () => {
+  const [selectorTool, setSelectorTool] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     position: [],
@@ -23,6 +24,10 @@ const EthernetExtenderSelectorTool = () => {
     setFilteredProducts(products);
     updateAvailableOptions(products);
   }, []);
+
+  const handleClick = () => {
+    setSelectorTool(!selectorTool);
+  }
 
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
@@ -62,69 +67,73 @@ const EthernetExtenderSelectorTool = () => {
 
   return (
     <div className="tool-container">
-      <h1 className="faq-title">Ethernet Extender Selector Tool<span className="dropdown-chevron"></span></h1>
-      <div className="filter-grid">
-        <button 
-          className="reset-button" 
-          onClick={resetFilters}
-        >
-          Reset
-        </button>
-
-        {['position', 'channels', 'formFactor', 'cable', 'poeInjection'].map((filterKey) => (
-          <div key={filterKey} className="filter-group">
-            <div className="filter-label">
-              {filterKey.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
-              {filters[filterKey] && (
-                <button
-                  className="clear-button"
-                  onClick={() => clearFilter(filterKey)}
-                >
-                  X
-                </button>
-              )}
-            </div>
-            <select
-              className="filter-select"
-              name={filterKey}
-              value={filters[filterKey] || ""}
-              onChange={(e) => handleFilterChange(filterKey, e.target.value)}
+      <h1 className="faq-title" onClick={handleClick}>Ethernet Extender Selector Tool<span className="dropdown-chevron"></span></h1>
+      {selectorTool && (
+        <>
+          <div className="filter-grid">
+            <button 
+              className="reset-button" 
+              onClick={resetFilters}
             >
-              <option value="">Select {filterKey.replace(/([A-Z])/g, ' $1').toLowerCase()}</option>
-              {availableOptions[filterKey]?.map((option) => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
-          </div>
-        ))}
-      </div>
+              Reset
+            </button>
 
-      <div className="table-wrapper">
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th>Part Number</th>
-              <th>Position</th>
-              <th>Channels</th>
-              <th>Form Factor</th>
-              <th>Cable</th>
-              <th>Poe Injection</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredProducts.map((product, index) => (
-              <tr key={index}>
-                <td>{product.Model}</td>
-                <td>{product.position}</td>
-                <td>{product.channels}</td>
-                <td>{product.formFactor}</td>
-                <td>{product.cable}</td>
-                <td>{product.poeInjection}</td>
-              </tr>
+            {['position', 'channels', 'formFactor', 'cable', 'poeInjection'].map((filterKey) => (
+              <div key={filterKey} className="filter-group">
+                <div className="filter-label">
+                  {filterKey.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+                  {filters[filterKey] && (
+                    <button
+                      className="clear-button"
+                      onClick={() => clearFilter(filterKey)}
+                    >
+                      X
+                    </button>
+                  )}
+                </div>
+                <select
+                  className="filter-select"
+                  name={filterKey}
+                  value={filters[filterKey] || ""}
+                  onChange={(e) => handleFilterChange(filterKey, e.target.value)}
+                >
+                  <option value="">Select {filterKey.replace(/([A-Z])/g, ' $1').toLowerCase()}</option>
+                  {availableOptions[filterKey]?.map((option) => (
+                    <option key={option} value={option}>{option}</option>
+                  ))}
+                </select>
+              </div>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </div>
+
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Part Number</th>
+                  <th>Position</th>
+                  <th>Channels</th>
+                  <th>Form Factor</th>
+                  <th>Cable</th>
+                  <th>Poe Injection</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredProducts.map((product, index) => (
+                  <tr key={index}>
+                    <td>{product.Model}</td>
+                    <td>{product.position}</td>
+                    <td>{product.channels}</td>
+                    <td>{product.formFactor}</td>
+                    <td>{product.cable}</td>
+                    <td>{product.poeInjection}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </div>
   )
 }

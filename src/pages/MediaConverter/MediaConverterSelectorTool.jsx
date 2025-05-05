@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import products from './MediaConverters';
 
 const MediaConverterSelectorTool = () => {
-  const [showTable, setShowTable] = useState(false);
+  const [selectorTool, setSelectorTool] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     Multi_Rate: ['No', 'Yes'], 
@@ -17,6 +17,10 @@ const MediaConverterSelectorTool = () => {
     Operating_Power: ['12 to 24 VDC', '24 VAC', '48 to 56 VDC', '8 to 15 VDC', '8 to 24 VDC', '8 to 24 VDC, 24 VAC', '9 tp 24 VDC, 24 VAC']
   });
 
+  const handleClick = () => {
+    setSelectorTool(!selectorTool);
+  }
+
   const [filters, setFilters] = useState({});
 
   useEffect(() => {
@@ -24,13 +28,6 @@ const MediaConverterSelectorTool = () => {
     setFilteredProducts(products);
     updateAvailableOptions(products);
   }, []);
-
-  const toggleTable = () => {
-    setShowTable(!showTable);
-    setFilteredProducts(products);
-    updateAvailableOptions(products);
-    setFilters({});
-  };
 
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
@@ -86,71 +83,75 @@ const MediaConverterSelectorTool = () => {
 
   return (
     <div className="tool-container">
-      <h1 className="faq-title">Media Converter Selector Tool<span className="dropdown-chevron"></span></h1>
-      <div className="filter-grid">
-        <button 
-          className="reset-button" 
-          onClick={resetFilters}
-        >
-          Reset
-        </button>
-
-        {Object.entries(availableOptions).map(([filterType, options]) => (
-          <div key={filterType} className="filter-group">
-            <div className="filter-label">
-              {filterType}
-              {filters[filterType] && (
-                <button
-                  className="clear-button"
-                  onClick={() => clearFilter(filterType)}
-                >
-                  X
-                </button>
-              )}
-            </div>
-            <select
-              className="filter-select"
-              name={filterType}
-              value={filters[filterType] || ""}
-              onChange={(e) => handleFilterChange(filterType, e.target.value)}
+      <h1 className="faq-title" onClick={handleClick}>Media Converter Selector Tool<span className="dropdown-chevron"></span></h1>
+      {selectorTool && (
+        <>
+          <div className="filter-grid">
+            <button 
+              className="reset-button" 
+              onClick={resetFilters}
             >
-              <option value="">Select {filterType}</option>
-              {options.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-        ))}
-      </div>
+              Reset
+            </button>
 
-      <div className="table-wrapper">
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th>Model</th>
-              {Object.keys(availableOptions).map((key) => (
-                <th key={key}>
-                  {key}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {filteredProducts.map((product, index) => (
-              <tr key={index}>
-                <td>{product.Model}</td>
-                {Object.keys(availableOptions).map((key) => (
-                  <td key={key}>
-                    {product[key]}
-                  </td>
-                ))}
-              </tr>
+            {Object.entries(availableOptions).map(([filterType, options]) => (
+              <div key={filterType} className="filter-group">
+                <div className="filter-label">
+                  {filterType}
+                  {filters[filterType] && (
+                    <button
+                      className="clear-button"
+                      onClick={() => clearFilter(filterType)}
+                    >
+                      X
+                    </button>
+                  )}
+                </div>
+                <select
+                  className="filter-select"
+                  name={filterType}
+                  value={filters[filterType] || ""}
+                  onChange={(e) => handleFilterChange(filterType, e.target.value)}
+                >
+                  <option value="">Select {filterType}</option>
+                  {options.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </div>
+
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  {Object.keys(availableOptions).map((key) => (
+                    <th key={key}>
+                      {key}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {filteredProducts.map((product, index) => (
+                  <tr key={index}>
+                    <td>{product.Model}</td>
+                    {Object.keys(availableOptions).map((key) => (
+                      <td key={key}>
+                        {product[key]}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </div>
   );
 };

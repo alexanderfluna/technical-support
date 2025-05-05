@@ -73,74 +73,76 @@ const PoEInjector = () => {
   };
 
   return (
-    <div className="tool-container">
+    <div>
       <Navbar />
-      <div className="faq-list">
-        <h1 className="tool-title">PoE Injector</h1>
-        <div className="filter-grid">
-          <button 
-            className="reset-button" 
-            onClick={resetFilters}
-          >
-            Reset Filters
-          </button>
-          
-          {["Data_Rate", "IEEE", "power", "Output_Voltage", "Input_Voltage"].map((filterType) => (
-            <div key={filterType} className="filter-group">
-              <div className="filter-label">
-                {filterType.replace('_', ' ')}
-                {filters[filterType] && (
-                  <button
-                    className="clear-button"
-                    onClick={() => clearFilter(filterType)}
-                  >
-                    ×
-                  </button>
-                )}
+      <div className="tool-container">
+        <div className="faq-list">
+          <h1 className="tool-title">PoE Injector</h1>
+          <div className="filter-grid">
+            <button 
+              className="reset-button" 
+              onClick={resetFilters}
+            >
+              Reset Filters
+            </button>
+            
+            {["Data_Rate", "IEEE", "power", "Output_Voltage", "Input_Voltage"].map((filterType) => (
+              <div key={filterType} className="filter-group">
+                <div className="filter-label">
+                  {filterType.replace('_', ' ')}
+                  {filters[filterType] && (
+                    <button
+                      className="clear-button"
+                      onClick={() => clearFilter(filterType)}
+                    >
+                      ×
+                    </button>
+                  )}
+                </div>
+
+                <select
+                  className="filter-select"
+                  name={filterType}
+                  value={filters[filterType] || ""}
+                  onChange={(e) => handleFilterChange(filterType, e.target.value)}
+                >
+                  <option value="">Select {filterType.replace('_', ' ')}</option>
+                  {availableOptions[filterType]?.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
               </div>
+            ))}
+          </div>
 
-              <select
-                className="filter-select"
-                name={filterType}
-                value={filters[filterType] || ""}
-                onChange={(e) => handleFilterChange(filterType, e.target.value)}
-              >
-                <option value="">Select {filterType.replace('_', ' ')}</option>
-                {availableOptions[filterType]?.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ))}
-        </div>
-
-        <div className="table-wrapper">
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>Model</th>
-                <th>Data Rate</th>
-                <th>IEEE</th>
-                <th>Output Power</th>
-                <th>Output Voltage</th>
-                <th>Input Voltage</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredProducts.map((product, index) => (
-                <tr key={index}>
-                  <td>{product.model}</td>
-                  <td>{product.Data_Rate}</td>
-                  <td>{product.IEEE}</td>
-                  <td>{product.power}</td>
-                  <td>{product.Output_Voltage}</td>
-                  <td>{product.Input_Voltage}</td>
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Data Rate</th>
+                  <th>IEEE</th>
+                  <th>Output Power</th>
+                  <th>Output Voltage</th>
+                  <th>Input Voltage</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredProducts.map((product, index) => (
+                  <tr key={index}>
+                    <td>{product.model}</td>
+                    <td>{product.Data_Rate}</td>
+                    <td>{product.IEEE}</td>
+                    <td>{product.power}</td>
+                    <td>{product.Output_Voltage}</td>
+                    <td>{product.Input_Voltage}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
