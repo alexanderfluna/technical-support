@@ -66,7 +66,7 @@ const AboutUs = () => {
     ];
 
     return (
-        <div>
+        <div className="main-container">
             <Navbar/>
             {/*<Slideshow imageNames={imageNames} /> */}
             <div className="content-container">

@@ -4,7 +4,7 @@ const RazberiSelectorTool = () => {
   const [selected, setSelected] = useState("");
   return (
     <div className="faq-answer">
-        <h1 className="faq-title">Server Selector Tool<span className="dropdown-chevron"></span></h1>
+        <h1 className="faq-title">Selector Tool<span className="dropdown-chevron"></span></h1>
         <div className="selector-placeholder" >
           <div className="selector-options" style={{width: "50%"}}>
             <button
@@ -28,7 +28,7 @@ const RazberiSelectorTool = () => {
                 <div>
                   <a href="pdf/razberi/SS32_Data_Sheet.pdf">
                   </a>
-                  <p>The <strong>SS32X server switch</strong> is a high-performance networking device designed for enterprise environments. It features a <strong>32-port PoE switch,</strong> powered by an <strong>Intel I5 processor</strong> for reliable performance. It includes two <strong>M.2 SSDs</strong> in RAID 1 for redundancy, with up to <strong>88TB</strong> of total capacity with <strong>RAID</strong> configurations of 0, 1, 5, 6, or 10 for storage flexibility. Users can choose between <strong>16GB or 32GB of RAM</strong>. It supports Windows 10, Windows 11, Windows Server 2019, and Windows Server 2022. The SS32X is also available in two form factors: a <strong>long chassis</strong> version, marked with "LX" in the part number, and a <strong>2U rack-mounted</strong> model, identified by "2U."</p>
+                  <p>The <strong>SS32X server switch</strong> is a high-performance networking device designed for enterprise environments. It features a <strong>32-port PoE switch,</strong> powered by an <strong>Intel I5 processor</strong> for reliable performance. It includes two <strong>M.2 SSDs</strong> in RAID 1 for redundancy, with up to <strong>88TB</strong> of total capacity with <strong>RAID</strong> configurations of 0, 1, 5, 6, or 10 for storage flexibility. Users can choose between <strong>16GB or 32GB of RAM</strong>. It supports Windows 10, Windows 11, Windows Server 2019, and Windows Server 2022.</p>
                   <p>By default, the SS32X server switch is configured for easy deployment. The <strong>switch IP</strong> is set to 192.168.50.1, with a dedicated <strong>Admin Uplink IP</strong> of 192.168.50.19 for management access. The <strong>U2</strong> port is set to receive IP addresses via DHCP, allowing for seamless integration into dynamic network environments.</p>
                   <p><strong>Camera Defense</strong> allows the binding of ports to the MAC address of connected devices, disabling unused ports to reduce vulnerabilities. The firewall can be configured to allow only essential services or protocols, removing unnecessary ones. Network traffic can be restricted to known networks or approved devices with fixed IP addresses through whitelisting. It enforces secure password policies, disallowing default, prohibited, or common passwords.</p>
                   <p><strong>Appliance Defense (Cylance)</strong> is an  antimalware solution that leverages artificial intelligence and machine learning to build predictive models, enabling it to detect even previously unknown malware in real time. Cylance is fully integrated into Razberi Monitor, providing real-time notifications on malware protection through the dashboard.</p>

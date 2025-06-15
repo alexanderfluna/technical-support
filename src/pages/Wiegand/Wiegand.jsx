@@ -35,67 +35,25 @@ const Wiegand = () => {
   };
 
   return (
-    <div>
+    <div className="main-container">
         <Navbar/>
         <div className="page">
-          <div className="table-of-contents2">
-            <h1 className="faq-title">Wiegand</h1>
-            <p onClick={() => handleSectionClick("wiegand-faq")}>Wiegand <span className="dropdown-chevron"></span></p>
-            {selectedContent === "wiegand-faq" && (
-              <>
-                <li 
-                  className={activeSubSection === "no-power" ? "active" : ""}
-                  onClick={() => handleSubSectionClick("no-power")}
-                >
-                  How to Troubleshoot a Unit with Power Issues
-                </li>
-                <li 
-                  className={activeSubSection === "no-link-light" ? "active" : ""}
-                  onClick={() => handleSubSectionClick("no-link-light")}
-                >
-                  How to Troubleshoot a Unit with Optical Link Issues
-                </li>
-                <li 
-                  className={activeSubSection === "fdw1000" ? "active" : ""}
-                  onClick={() => handleSubSectionClick("fdw1000")}
-                >
-                  How to Configure FDW1000 and EXP101 Devices
-                </li>
-                <li 
-                  className={activeSubSection === "Wiegand vs. OSDP" ? "active" : ""}
-                  onClick={() => handleSubSectionClick("Wiegand vs. OSDP")}
-                >
-                  Wiegand vs. OSDP
-                </li>
-                <li 
-                  className={activeSubSection === "fiber" ? "active" : ""}
-                  onClick={() => handleSubSectionClick("fiber")}
-                >
-                  Optical Fiber
-                </li>
-              </>
-            )}
-            
-            <p onClick={() => handleSectionClick("wiegand-selector-tool")}>Selector Tool</p>
-          </div>
-
           <div className="main-content">
-            <div 
-              id="wiegand-faq" 
-              ref={faqRef}
-              className="relevant-information"
-            >
-              <h1>Wiegand</h1>
-              <WiegandFAQ activeSubSection={activeSubSection} />
-            </div>
-
+            <h1 style={{textAlign: "center"}}>Wiegand</h1>
             <div 
               id="wiegand-selector-tool" 
               ref={selectorToolRef}
               className="selector-tool"
             >
-              <h1>Wiegand Selector Tool</h1>
               <WiegandSelectorTool />
+            </div>
+            <div 
+              id="wiegand-faq" 
+              ref={faqRef}
+              className="relevant-information"
+            >
+              <h1>Technical Support</h1>
+              <WiegandFAQ activeSubSection={activeSubSection} />
             </div>
           </div>
         </div>

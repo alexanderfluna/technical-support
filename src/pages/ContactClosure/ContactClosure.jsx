@@ -7,8 +7,6 @@ import Navbar from '../../components/Navigation/Navbar';
 const ContactClosure = () => {
   const [selectedContent, setSelectedContent] = useState('');
   const [activeSubSection, setActiveSubSection] = useState(null);
-  
-  // Create refs for each content section
   const troubleshootingRef = useRef(null);
   const relevantInfoRef = useRef(null);
   const selectorToolRef = useRef(null);
@@ -29,7 +27,6 @@ const ContactClosure = () => {
   const handleSubSectionClick = (sectionId) => {
     setActiveSubSection(sectionId);
     
-    // Find the element and scroll to it
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -37,87 +34,24 @@ const ContactClosure = () => {
   };
 
   return (
-    <div>
+    <div className="main-container">
       <Navbar />
       <div className="page">
-        <div className="table-of-contents2">
-          <h1 className="faq-title">Contact Closure</h1>
-          <p onClick={() => handleSectionClick("contact-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
-          {selectedContent === "contact-troubleshooting" && (
-            <>
-              <li 
-                className={activeSubSection === "no-power" ? "active" : ""}
-                onClick={() => handleSubSectionClick("no-power")}
-              >
-                How to Troubleshoot a Unit with Power Issues
-              </li>
-              <li 
-                className={activeSubSection === "no-optical-link" ? "active" : ""}
-                onClick={() => handleSubSectionClick("no-optical-link")}
-              >
-                How to Troubleshoot a Unit with Optical Link Issues
-              </li>
-              <li 
-                className={activeSubSection === "no-contacts" ? "active" : ""}
-                onClick={() => handleSubSectionClick("no-contacts")}
-              >
-                How to Troubleshoot a Unit That is Not Sending or Receiving the Status of a Contact
-              </li>
-            </>
-          )}
-          
-          <p onClick={() => handleSectionClick("contact-relevant-information")}>Educational<span className="dropdown-chevron"></span></p>
-          {selectedContent === "contact-relevant-information" && (
-            <>
-              <li 
-                className={activeSubSection === "formA" ? "active" : ""}
-                onClick={() => handleSubSectionClick("formA")}
-              >
-                Form A Relays
-              </li>
-              <li 
-                className={activeSubSection === "formC" ? "active" : ""}
-                onClick={() => handleSubSectionClick("formC")}
-              >
-                Form C Relays
-              </li>
-              <li 
-                className={activeSubSection === "latching" ? "active" : ""}
-                onClick={() => handleSubSectionClick("latching")}
-              >
-                Latching vs. Non-Latching Relays
-              </li>
-              <li 
-                className={activeSubSection === "supervision" ? "active" : ""}
-                onClick={() => handleSubSectionClick("supervision")}
-              >
-                Supervision
-              </li>
-              <li 
-                className={activeSubSection === "summary" ? "active" : ""}
-                onClick={() => handleSubSectionClick("summary")}
-              >
-                Summary Fault Relays
-              </li>
-              <li 
-                className={activeSubSection === "fiber" ? "active" : ""}
-                onClick={() => handleSubSectionClick("fiber")}
-              >
-                Fiber Optics
-              </li>
-            </>
-          )}
-          
-          <p onClick={() => handleSectionClick("contact-closure-selector-tool")}>Selector Tool</p>
-        </div>
-
         <div className="main-content">
+          <h1 style={{textAlign: "center"}}>Contact Closure</h1>
+          <div 
+            id="contact-closure-selector-tool" 
+            ref={selectorToolRef}
+            className="selector-tool"
+          >
+            <ContactClosureSelectorTool />
+          </div>
           <div 
             id="contact-troubleshooting" 
             ref={troubleshootingRef}
             className="troubleshooting"
           >
-            <h1>Troubleshooting</h1>
+            <h1>Technical Support</h1>
             <ContactClosureTroubleshooting activeSubSection={activeSubSection} />
           </div>
 
@@ -126,17 +60,7 @@ const ContactClosure = () => {
             ref={relevantInfoRef}
             className="relevant-information"
           >
-            <h1>Educational</h1>
             <ContactClosureFAQ activeSubSection={activeSubSection} />
-          </div>
-
-          <div 
-            id="contact-closure-selector-tool" 
-            ref={selectorToolRef}
-            className="selector-tool"
-          >
-            <h1>Selector Tool</h1>
-            <ContactClosureSelectorTool />
           </div>
         </div>
       </div>

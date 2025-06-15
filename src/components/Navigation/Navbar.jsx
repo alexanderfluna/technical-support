@@ -4,16 +4,9 @@ import Search from './Search';
 import Chatbot from '../Chatbot/Chatbot'
 
 const Navbar = ({ onCategoryChange }) => {
-  const [hoveredCategory, setHoveredCategory] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState(null);
   const navigate = useNavigate();
-  
-  const handleMouseEnter = (category) => {
-    if (window.innerWidth > 768) {
-      setHoveredCategory(category);
-    }
-  };
   
   const handleMouseClick = (category) => {
     const routeMap = {
@@ -84,8 +77,6 @@ const Navbar = ({ onCategoryChange }) => {
 
   return (
     <nav className="navbar">
-      {/* <Chatbot/> */}
-
       <div className="mobile-header">
         <div className="hamburger" onClick={toggleMobileMenu}>
           <div className={`hamburger-line ${isMobileMenuOpen ? 'open' : ''}`}></div>
@@ -100,8 +91,6 @@ const Navbar = ({ onCategoryChange }) => {
         />
       </div>
 
-      <Search/>
-
       <div className={`categories ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
         <div className="main-category" onClick={() => handleMouseClick("server")}>
           <span>Edge Computing</span>
@@ -109,12 +98,10 @@ const Navbar = ({ onCategoryChange }) => {
 
         <div 
           className="main-category"
-          onMouseEnter={() => handleMouseEnter("ethernet")}
-          onMouseLeave={() => setHoveredCategory(null)}
-          onClick={() => window.innerWidth <= 768 ? toggleCategory('ethernet') : null}
+          onClick={() => toggleCategory('ethernet')}
         >
           <span>Ethernet<span className="dropdown-chevron"></span></span>
-          {(hoveredCategory === "ethernet" || (window.innerWidth <= 768 && expandedCategory === 'ethernet')) && (
+          {(expandedCategory === 'ethernet') && (
             <div className="hover-box">
               {getSubcategories('ethernet').map(item => (
                 <li key={item.id} onClick={() => handleMouseClick(item.id)}>{item.name}</li>
@@ -129,12 +116,10 @@ const Navbar = ({ onCategoryChange }) => {
 
         <div 
           className="main-category"
-          onMouseEnter={() => handleMouseEnter("data-over-fiber")}
-          onMouseLeave={() => setHoveredCategory(null)}
-          onClick={() => window.innerWidth <= 768 ? toggleCategory('data-over-fiber') : null}
+          onClick={() => toggleCategory('data-over-fiber')}
         >
           <span>Data Over Fiber<span className="dropdown-chevron"></span></span>
-          {(hoveredCategory === "data-over-fiber" || (window.innerWidth <= 768 && expandedCategory === 'data-over-fiber')) && (
+          {(expandedCategory === 'data-over-fiber') && (
             <div className="hover-box">
               {getSubcategories('data-over-fiber').map(item => (
                 <li key={item.id} onClick={() => handleMouseClick(item.id)}>{item.name}</li>
@@ -145,12 +130,10 @@ const Navbar = ({ onCategoryChange }) => {
 
         <div 
           className="main-category"
-          onMouseEnter={() => handleMouseEnter("accessories")}
-          onMouseLeave={() => setHoveredCategory(null)}
-          onClick={() => window.innerWidth <= 768 ? toggleCategory('accessories') : null}
+          onClick={() => toggleCategory('accessories')}
         >
           <span>Accessories<span className="dropdown-chevron"></span></span>
-          {(hoveredCategory === "accessories" || (window.innerWidth <= 768 && expandedCategory === 'accessories')) && (
+          {(expandedCategory === 'accessories') && (
             <div className="hover-box">
               {getSubcategories('accessories').map(item => (
                 <li key={item.id} onClick={() => handleMouseClick(item.id)}>{item.name}</li>
@@ -162,7 +145,6 @@ const Navbar = ({ onCategoryChange }) => {
         <div className="main-category" onClick={() => handleMouseClick("about-us")}>
           <span>About Us</span>
         </div>
-
       </div>
     </nav>
   )

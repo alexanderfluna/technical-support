@@ -73,11 +73,11 @@ const PoEInjector = () => {
   };
 
   return (
-    <div>
+    <div className="main-container">
       <Navbar />
       <div className="tool-container">
         <div className="faq-list">
-          <h1 className="tool-title">PoE Injector</h1>
+          <h1>PoE Injector</h1>
           <div className="filter-grid">
             <button 
               className="reset-button" 

@@ -70,7 +70,7 @@ const ContactClosureSelectorTool = () => {
 
     return (
         <div className="tool-container">
-            <h1 className="faq-title" onClick={handleClick}>Contact Closure Selector Tool<span className="dropdown-chevron"></span></h1>
+            <h1 className="faq-title" onClick={handleClick}>Selector Tool<span className="dropdown-chevron"></span></h1>
             
             {selectorTool && (
                 <>
