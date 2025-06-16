@@ -124,67 +124,25 @@ const SFP = () => {
   };
 
   return (
-    <div>
+    <div className="main-container">
       <Navbar/>
       <div className="page">
-        <div className="table-of-contents2">
-          <h1 className="faq-title">SFP</h1>
-          <p onClick={() => handleSectionClick("sfp-faq")}>SFP<span className="dropdown-chevron"></span></p>
-          {selectedContent === "sfp-faq" && (
-            <>
-              <li 
-                className={activeSubSection === "sfp-module" ? "active" : ""}
-                onClick={() => handleSubSectionClick("sfp-module")}
-              >
-                What is an SFP module?
-              </li>
-              <li 
-                className={activeSubSection === "ddi" ? "active" : ""}
-                onClick={() => handleSubSectionClick("ddi")}
-              >
-                View SFP Status
-              </li>
-              <li 
-                className={activeSubSection === "cisco" ? "active" : ""}
-                onClick={() => handleSubSectionClick("cisco")}
-              >
-                Compatibility with Cisco
-              </li>
-              <li 
-                className={activeSubSection === "fiber" ? "active" : ""}
-                onClick={() => handleSubSectionClick("fiber")}
-              >
-                Fiber Optics Overview
-              </li>
-              <li 
-                className={activeSubSection === "no-optical-link" ? "active" : ""}
-                onClick={() => handleSubSectionClick("no-optical-link")}
-              >
-                Optical Link Troubleshooting
-              </li>
-            </>
-          )}
-          
-          <p onClick={() => handleSectionClick("sfp-selector-tool")}>Selector Tool</p>
-        </div>
-
         <div className="main-content">
-          <div 
-            id="sfp-faq" 
-            ref={faqRef}
-            className="relevant-information"
-          >
-            <h1>SFP</h1>
-            <SFPFAQ activeSubSection={activeSubSection} />
-          </div>
-
+          <h1 style={{textAlign: "center"}}>SFP</h1>
           <div 
             id="sfp-selector-tool" 
             ref={selectorToolRef}
             className="selector-tool"
           >
-            <h1>SFP Selector Tool</h1>
             <SFPSelectorTool />
+          </div>
+          <div 
+            id="sfp-faq" 
+            ref={faqRef}
+            className="relevant-information"
+          >
+            <h1>Technical Support</h1>
+            <SFPFAQ activeSubSection={activeSubSection} />
           </div>
         </div>
       </div>

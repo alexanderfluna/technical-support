@@ -64,10 +64,10 @@ const CardCage = () => {
   };
 
   return (
-    <div className="content-page">
+    <div className="main-container">
       <Navbar/>
       <div className="tool-container">
-        <h1 className="tool-title">Enclosure</h1>
+        <h1>Enclosure</h1>
         
         <div className="filter-grid">
           <button className="reset-button" onClick={resetFilters}>

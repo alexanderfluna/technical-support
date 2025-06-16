@@ -69,11 +69,11 @@ const PowerSupply = () => {
   };
 
   return (
-    <div>
+    <div className="main-container">
       <Navbar />
       <div className="tool-container">
         <div className="faq-list">
-          <h1 className="tool-title">Power Supply</h1>
+          <h1>Power Supply</h1>
           <div className="filter-grid">
             <button 
               className="reset-button" 

@@ -7,8 +7,6 @@ import Navbar from '../../components/Navigation/Navbar'
 const EthernetExtender = () => {
   const [selectedContent, setSelectedContent] = useState('');
   const [activeSubSection, setActiveSubSection] = useState(null);
-  
-  // Create refs for each content section
   const troubleshootingRef = useRef(null);
   const relevantInfoRef = useRef(null);
   const selectorToolRef = useRef(null);
@@ -29,7 +27,6 @@ const EthernetExtender = () => {
   const handleSubSectionClick = (sectionId) => {
     setActiveSubSection(sectionId);
     
-    // Find the element and scroll to it
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -37,57 +34,24 @@ const EthernetExtender = () => {
   };
 
   return (
-    <div>
+    <div className="main-container">
       <Navbar/>
       <div className="page">
-        <div className="table-of-contents2">
-          <h1 className="faq-title">Ethernet Extender</h1>
-          <p onClick={() => handleSectionClick("extender-troubleshooting")}>Troubleshooting<span className="dropdown-chevron"></span></p>
-          {selectedContent === "extender-troubleshooting" && (
-            <>
-              <li 
-                className={activeSubSection === "CLFE(X)EO(U/C) to CLFE(X)EO(U/C)" ? "active" : ""}
-                onClick={() => handleSubSectionClick("CLFE(X)EO(U/C) to CLFE(X)EO(U/C)")}
-              >
-                How to Troubleshoot CLFE(X)EO(U/C) to CLFE(X)EO(U/C) Devices
-              </li>
-              <li 
-                className={activeSubSection === "CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)" ? "active" : ""}
-                onClick={() => handleSubSectionClick("CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)")}
-              >
-                How to Troubleshoot CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C) Devices
-              </li>
-            </>
-          )}
-          
-          <p onClick={() => handleSectionClick("extender-relevant-information")}>Educational<span className="dropdown-chevron"></span></p>
-          {selectedContent === "extender-relevant-information" && (
-            <>
-              <li 
-                className={activeSubSection === "copper" ? "active" : ""}
-                onClick={() => handleSubSectionClick("copper")}
-              >
-                Copper
-              </li>
-              <li 
-                className={activeSubSection === "coax" ? "active" : ""}
-                onClick={() => handleSubSectionClick("coax")}
-              >
-                Coax
-              </li>
-            </>
-          )}
-          
-          <p onClick={() => handleSectionClick("ethernet-extender-selector-tool")}>Selector Tool</p>
-        </div>
-
         <div className="main-content">
+          <h1 style={{textAlign: "center"}}>Ethernet Extender</h1>
+          <div 
+            id="ethernet-extender-selector-tool" 
+            ref={selectorToolRef}
+            className="selector-tool"
+          >
+            <EthernetExtenderSelectorTool />
+          </div>
           <div 
             id="extender-troubleshooting" 
             ref={troubleshootingRef}
             className="troubleshooting"
           >
-            <h1>Troubleshooting</h1>
+            <h1>Technical Support</h1>
             <EthernetExtenderTroubleshooting activeSubSection={activeSubSection} />
           </div>
 
@@ -96,17 +60,7 @@ const EthernetExtender = () => {
             ref={relevantInfoRef}
             className="relevant-information"
           >
-            <h1>Educational</h1>
             <EthernetExtenderFAQ activeSubSection={activeSubSection} />
-          </div>
-
-          <div 
-            id="ethernet-extender-selector-tool" 
-            ref={selectorToolRef}
-            className="selector-tool"
-          >
-            <h1>Selector Tool</h1>
-            <EthernetExtenderSelectorTool />
           </div>
         </div>
       </div>

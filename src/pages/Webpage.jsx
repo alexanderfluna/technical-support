@@ -47,7 +47,7 @@ const Webpage = ({ category }) => {
   };
 
   return (
-    <main>
+    <main className="main-container">
       <Navbar />
       {renderContent()}
     </main>
