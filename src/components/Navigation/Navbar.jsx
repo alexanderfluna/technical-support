@@ -91,6 +91,8 @@ const Navbar = ({ onCategoryChange }) => {
         />
       </div>
 
+      <Search/>
+
       <div className={`categories ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
         <div className="main-category" onClick={() => handleMouseClick("server")}>
           <span>Edge Computing</span>
