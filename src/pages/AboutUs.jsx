@@ -11,25 +11,25 @@ const AboutUs = () => {
             id: 'contact',
             title: 'Contact Information',
             question: 'How can I contact Comnet\'s technical support?',
-            answer: 'Please email comnetsupport@acresecurity.com to create a ticket or call us at 203-796-5300 from 8:00am to 4:30pm EST.'
+            answer: 'Please email comnetsupport@acresecurity.com or or call us at 203-796-5300.'
         },
         {
             id: 'support',
             title: 'Technical Support Services',
             question: 'What technical support services are offered by Comnet?',
-            answer: "Comnet's technical support can assist with providing product information, providing part numbers, application designs, troubleshooting, and processing RMAs."
+            answer: "Comnet's technical support can assist with providing product information, application designs, troubleshooting,  processing RMAs, cross references etc."
         },
         {
             id: 'rma',
             title: 'Return Merchandise Authorization',
             question: 'How do I request an RMA for a Comnet product?',
-            answer: 'To request an RMA, please contact Comnet\'s technical support with the product model, a description of the issue, and the troubleshooting that has been performed.'
+            answer: 'Please contact Comnet\'s technical support with the part number, description of the issue, and any troubleshooting that has been done.'
         },
         {
             id: 'datasheet',
             title: 'Product Documentation',
             question: 'Where can I find a Comnet product\'s data sheets or manual?',
-            answer: 'Enter the device\'s part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool" target="_blank" rel="noopener noreferrer">Product Selector Tool</a> and click the \'View product details\' button.'
+            answer: 'Enter the part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool" target="_blank" rel="noopener noreferrer">Product Selector Tool</a> and click the \'View product details\' button.'
         },
         {
             id: 'firmware',
