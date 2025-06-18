@@ -41,7 +41,7 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
     <div className="faq-list">
         <div className="faq-answer" id="switch-diagnose">
             <h1 className="faq-title" onClick={() => toggleFAQ("switch-diagnose")}>
-              Diagnosing the Issues of an Ethernet Switch
+              How to Diagnose the Issues of an Ethernet Switch
               <span className={`dropdown-chevron ${isFAQExpanded("switch-diagnose") ? 'expanded' : ''}`}></span>
             </h1>
             {isFAQExpanded("switch-diagnose") && (

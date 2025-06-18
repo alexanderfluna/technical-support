@@ -81,7 +81,7 @@ const WirelessFAQ = ({ activeSubSection }) => {
 
             <div id="wireless" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("wireless")}>
-                    Wireless Ethernet
+                    Get a Better Understanding of Wireless Ethernet
                     <span className={`dropdown-chevron ${isFAQExpanded("wireless") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("wireless") && (
@@ -136,7 +136,7 @@ const WirelessFAQ = ({ activeSubSection }) => {
 
             <div id="poe" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("poe")}>
-                    Power Over Ethernet
+                    Get a Better Understanding of Power Over Ethernet
                     <span className={`dropdown-chevron ${isFAQExpanded("poe") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("poe") && <PowerOverEthernet />}
@@ -144,7 +144,7 @@ const WirelessFAQ = ({ activeSubSection }) => {
 
             <div id="osi" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("osi")}>
-                    The OSI Model
+                    Get a Better Understanding of the OSI Model
                     <span className={`dropdown-chevron ${isFAQExpanded("osi") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("osi") && <OSI />}

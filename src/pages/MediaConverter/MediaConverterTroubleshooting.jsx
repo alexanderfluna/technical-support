@@ -41,7 +41,7 @@ const MediaConverterTroubleshooting = ({ activeSubSection }) => {
     <div className="faq-list">
       <div className="faq-answer" id="no-power-light">
         <h1 className="faq-title" onClick={() => toggleFAQ("no-power-light")}>
-          How to Troubleshoot a Media Converter with Power Issues
+          How to Troubleshoot a Media Converter With Power Issues
           <span className={`dropdown-chevron ${isFAQExpanded("no-power-light") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("no-power-light") && (
@@ -53,7 +53,7 @@ const MediaConverterTroubleshooting = ({ activeSubSection }) => {
 
       <div className="faq-answer" id="no-optical-link">
         <h1 className="faq-title" onClick={() => toggleFAQ("no-optical-link")}>
-          How to Troubleshoot a Media Converter with Optical Link Issues
+          How to Troubleshoot a Media Converter With Optical Link Issues
           <span className={`dropdown-chevron ${isFAQExpanded("no-optical-link") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("no-optical-link") && (
@@ -65,7 +65,7 @@ const MediaConverterTroubleshooting = ({ activeSubSection }) => {
 
       <div className="faq-answer" id="no-communication">
         <h1 className="faq-title" onClick={() => toggleFAQ("no-communication")}>
-          How to Troubleshoot a Media Converter with no Ethernet Port Activity
+          How to Troubleshoot a Media Converter With No Ethernet Port Activity
           <span className={`dropdown-chevron ${isFAQExpanded("no-communication") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("no-communication") && (
@@ -79,7 +79,7 @@ const MediaConverterTroubleshooting = ({ activeSubSection }) => {
 
       <div className="faq-answer" id="no-poe">
         <h1 className="faq-title" onClick={() => toggleFAQ("no-poe")}>
-          How to Troubleshoot a Media Converter with PoE Issues
+          How to Troubleshoot a Media Converter That Will Not Provide PoE
           <span className={`dropdown-chevron ${isFAQExpanded("no-poe") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("no-poe") && (
@@ -91,7 +91,7 @@ const MediaConverterTroubleshooting = ({ activeSubSection }) => {
 
       <div className="faq-answer" id="cnfe2mc2c">
         <h1 className="faq-title" onClick={() => toggleFAQ("cnfe2mc2c")}>
-          How to configure the contacts on a CNFE2MC2C
+          How To Configure the Contacts on a CNFE2MC2C
           <span className={`dropdown-chevron ${isFAQExpanded("cnfe2mc2c") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("cnfe2mc2c") && (

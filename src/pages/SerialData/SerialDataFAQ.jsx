@@ -36,7 +36,7 @@ const SerialDataFAQ = ({ activeSubSection }) => {
         <div className="faq-list">
             <div id="rs232" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("rs232")}>
-                    RS232
+                    Get a Better Understanding of RS232
                     <span className={`dropdown-chevron ${isFAQExpanded("rs232") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("rs232") && (
@@ -46,7 +46,7 @@ const SerialDataFAQ = ({ activeSubSection }) => {
 
             <div id="rs422" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("rs422")}>
-                    RS422
+                    Get a Better Understanding of RS422
                     <span className={`dropdown-chevron ${isFAQExpanded("rs422") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("rs422") && (
@@ -56,7 +56,7 @@ const SerialDataFAQ = ({ activeSubSection }) => {
 
             <div id="rs485" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("rs485")}>
-                    RS485
+                    Get a Better Understanding of RS485
                     <span className={`dropdown-chevron ${isFAQExpanded("rs485") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("rs485") && (
@@ -73,7 +73,7 @@ const SerialDataFAQ = ({ activeSubSection }) => {
 
             <div id="fiber" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("fiber")}>
-                    Fiber Optics
+                    Get a Better Understanding of Fiber Optics
                     <span className={`dropdown-chevron ${isFAQExpanded("fiber") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("fiber") && (

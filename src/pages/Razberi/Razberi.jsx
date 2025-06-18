@@ -1,12 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef} from 'react';
 import RazberiTroubleshooting from './RazberiTroubleshooting';
 import RazberiFAQ from './RazberiFAQ';
 import RazberiSelectorTool from './RazberiSelectorTool';
 import Navbar from '../../components/Navigation/Navbar';
 
 const Razberi = () => {
-  const [selectedContent, setSelectedContent] = useState('');
-  const [activeSubSection, setActiveSubSection] = useState(null);
   const [expandedFAQ, setExpandedFAQ] = useState(null);
   const troubleshootingRef = useRef(null);
   const relevantInfoRef = useRef(null);
@@ -15,29 +13,6 @@ const Razberi = () => {
   const toggleFAQ = (sectionID) => {
     setExpandedFAQ(prev => prev === sectionID ? null : sectionID);
   }
-
-  const handleSectionClick = (content) => {
-    setSelectedContent(prevContent => prevContent === content ? '' : content);
-    setActiveSubSection(null);
-    
-    if (selectedContent !== content) {
-      setTimeout(() => {
-        if (content === "razberi-selector-tool" && selectorToolRef.current) {
-          selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 50);
-    }
-  };
-
-  const handleSubSectionClick = (sectionId) => {
-    setActiveSubSection(sectionId);
-    
-    // Find the element and scroll to it
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   return (
     <div className="main-container">
@@ -57,7 +32,7 @@ const Razberi = () => {
             ref={troubleshootingRef}
             className="troubleshooting"
           >
-            <RazberiTroubleshooting activeSubSection={activeSubSection} expandedFAQ={expandedFAQ} toggleFAQ={toggleFAQ} />
+            <RazberiTroubleshooting expandedFAQ={expandedFAQ} toggleFAQ={toggleFAQ} />
           </div>
 
           <div 
@@ -65,7 +40,7 @@ const Razberi = () => {
             ref={relevantInfoRef}
             className="relevant-information"
           >
-            <RazberiFAQ activeSubSection={activeSubSection} expandedFAQ={expandedFAQ} toggleFAQ={toggleFAQ} />
+            <RazberiFAQ expandedFAQ={expandedFAQ} toggleFAQ={toggleFAQ} />
           </div>
         </div>
       </div>

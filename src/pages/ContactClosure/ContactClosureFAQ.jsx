@@ -36,7 +36,7 @@ const ContactClosureFAQ = ({ activeSubSection }) => {
         <div className="faq-list">
             <div id="formA" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("formA")}>
-                    Form A Relays
+                    Get a Better Understanding of Form A Relays
                     <span className={`dropdown-chevron ${isFAQExpanded("formA") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("formA") && (
@@ -49,7 +49,7 @@ const ContactClosureFAQ = ({ activeSubSection }) => {
 
             <div id="formC" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("formC")}>
-                    Form C Relays
+                    Get a Better Understanding of Form C Relays
                     <span className={`dropdown-chevron ${isFAQExpanded("formC") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("formC") && (
@@ -62,7 +62,7 @@ const ContactClosureFAQ = ({ activeSubSection }) => {
 
             <div id="latching" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("latching")}>
-                    Latching vs. Non-Latching Relays
+                    Get a Better Understanding of Latching vs. Non-Latching Relays
                     <span className={`dropdown-chevron ${isFAQExpanded("latching") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("latching") && (
@@ -72,7 +72,7 @@ const ContactClosureFAQ = ({ activeSubSection }) => {
 
             <div id="supervision" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("supervision")}>
-                    Supervision
+                    Get a Better Understanding of Supervision
                     <span className={`dropdown-chevron ${isFAQExpanded("supervision") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("supervision") && (
@@ -90,7 +90,7 @@ const ContactClosureFAQ = ({ activeSubSection }) => {
 
             <div id="summary" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("summary")}>
-                    Summary Fault Relays
+                    Get a Better Understanding of Summary Fault Relays
                     <span className={`dropdown-chevron ${isFAQExpanded("summary") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("summary") && (
@@ -100,7 +100,7 @@ const ContactClosureFAQ = ({ activeSubSection }) => {
 
             <div id="fiber" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("fiber")}>
-                    Fiber Optics
+                    Get a Better Understanding of Fiber Optics
                     <span className={`dropdown-chevron ${isFAQExpanded("fiber") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("fiber") && (

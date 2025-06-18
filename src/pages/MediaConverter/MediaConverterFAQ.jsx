@@ -41,7 +41,7 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
     <div className="faq-list">
       <div className="faq-answer" id="media-converters">
         <h1 className="faq-title" onClick={() => toggleFAQ("media-converters")}>
-          Media Converters
+          Get a Better Understanding of Media Converters
           <span className={`dropdown-chevron ${isFAQExpanded("media-converters") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("media-converters") && (
@@ -57,7 +57,7 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
 
       <div className="faq-answer" id="fiber">
         <h1 className="faq-title" onClick={() => toggleFAQ("fiber")}>
-          Fiber Optics
+          Get a Better Understanding of Fiber Optics
           <span className={`dropdown-chevron ${isFAQExpanded("fiber") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("fiber") && (
@@ -69,7 +69,7 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
 
       <div className="faq-answer" id="poe">
         <h1 className="faq-title" onClick={() => toggleFAQ("poe")}>
-          Power Over Ethernet
+          Get a Better Understanding of Power Over Ethernet
           <span className={`dropdown-chevron ${isFAQExpanded("poe") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("poe") && (
@@ -81,7 +81,7 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
 
       <div className="faq-answer" id="osi">
         <h1 className="faq-title" onClick={() => toggleFAQ("osi")}>
-          The OSI Model
+          Get a Better Understanding of the OSI Model
           <span className={`dropdown-chevron ${isFAQExpanded("osi") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("osi") && (

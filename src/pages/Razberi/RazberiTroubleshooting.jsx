@@ -64,7 +64,7 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
 
             <div id="no-poe" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("no-poe")}>
-                    How to Troubleshoot a Server Switch That is Not Providing PoE
+                    How to Troubleshoot a Server Switch That Will Not Provide PoE
                     <span className={`dropdown-chevron ${isFAQExpanded("no-poe") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("no-poe") && (
@@ -84,7 +84,7 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
 
             <div id="raid" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("raid")}>
-                    How to Troubleshoot a Server with a Bad Drive or RAID
+                    How to Troubleshoot a Server with a Bad HDD or RAID
                     <span className={`dropdown-chevron ${isFAQExpanded("raid") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("raid") && (
@@ -130,7 +130,7 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
 
             <div id="nic" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("nic")}>
-                    How to Troubleshoot a Server with NIC Issues
+                    How to Troubleshoot a Server with a Bad NIC
                     <span className={`dropdown-chevron ${isFAQExpanded("nic") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("nic") && (
@@ -192,9 +192,21 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
                 )}
             </div>
 
+            <div id="password" className="faq-answer">
+                <h1 className="faq-title" onClick={() => toggleFAQ("password")}>
+                    What to do if the Windows Password is Forgotten
+                    <span className={`dropdown-chevron ${isFAQExpanded("password") ? 'expanded' : ''}`}></span>
+                </h1>
+                {isFAQExpanded("password") && (
+                    <>
+                        <p>Try resetting the password. If the server does not allow for a reset of the Windows password, a recovery of the operating system will need to be performed. Contact technical support for the Windows recovery procedure.</p>
+                    </>
+                )}
+            </div>
+
             <div id="camera-defense" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("camera-defense")}>
-                    How to Set Up Camera Defense
+                    Get a Better Understanding of Camera Defense
                     <span className={`dropdown-chevron ${isFAQExpanded("camera-defense") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("camera-defense") && (
@@ -221,18 +233,6 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
                         <p><strong>[5] Set up the Password Protection</strong></p>
                         <li style={{paddingLeft: "60px"}}>Enable Password Monitoring: This feature monitors your devices to ensure they are not using default, user prohibited, or common passwords found on the NIST Bad Password List. By default, Password Protection is enabled.</li>
                         <li style={{paddingLeft: "60px"}}>Device default and common passwords are tested by default. You can optionally add additional prohibited passwords below. (Limit 48)</li>
-                    </>
-                )}
-            </div>
-
-            <div id="password" className="faq-answer">
-                <h1 className="faq-title" onClick={() => toggleFAQ("password")}>
-                    What to do if the Windows Password is Forgotten
-                    <span className={`dropdown-chevron ${isFAQExpanded("password") ? 'expanded' : ''}`}></span>
-                </h1>
-                {isFAQExpanded("password") && (
-                    <>
-                        <p>Try resetting the password. If the server does not allow for a reset of the Windows password, a recovery of the operating system will need to be performed. Contact technical support for the Windows recovery procedure.</p>
                     </>
                 )}
             </div>

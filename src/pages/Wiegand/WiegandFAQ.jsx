@@ -35,26 +35,6 @@ const WiegandFAQ = ({ activeSubSection }) => {
 
     return (
         <div className="faq-list">
-            <div id="no-power" className="faq-answer">
-                <h1 className="faq-title" onClick={() => toggleFAQ("no-power")}>
-                    How to Troubleshoot a Unit with Power Issues
-                    <span className={`dropdown-chevron ${isFAQExpanded("no-power") ? 'expanded' : ''}`}></span>
-                </h1>
-                {isFAQExpanded("no-power") && (
-                    <NoPowerLight />
-                )}
-            </div>
-
-            <div id="no-link-light" className="faq-answer">
-                <h1 className="faq-title" onClick={() => toggleFAQ("no-link-light")}>
-                    How to Troubleshoot a Unit with Optical Link Issues
-                    <span className={`dropdown-chevron ${isFAQExpanded("no-link-light") ? 'expanded' : ''}`}></span>
-                </h1>
-                {isFAQExpanded("no-link-light") && (
-                    <p>Swap the transmit and receive fiber strands.</p>
-                )}
-            </div>
-
             <div id="fdw1000" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("fdw1000")}>
                     How to Configure FDW1000 and EXP101 Devices
@@ -113,9 +93,29 @@ const WiegandFAQ = ({ activeSubSection }) => {
                 )}
             </div>
 
+            <div id="no-power" className="faq-answer">
+                <h1 className="faq-title" onClick={() => toggleFAQ("no-power")}>
+                    How to Troubleshoot a Unit with Power Issues
+                    <span className={`dropdown-chevron ${isFAQExpanded("no-power") ? 'expanded' : ''}`}></span>
+                </h1>
+                {isFAQExpanded("no-power") && (
+                    <NoPowerLight />
+                )}
+            </div>
+
+            <div id="no-link-light" className="faq-answer">
+                <h1 className="faq-title" onClick={() => toggleFAQ("no-link-light")}>
+                    How to Troubleshoot a Unit with Optical Link Issues
+                    <span className={`dropdown-chevron ${isFAQExpanded("no-link-light") ? 'expanded' : ''}`}></span>
+                </h1>
+                {isFAQExpanded("no-link-light") && (
+                    <p>Swap the transmit and receive fiber strands.</p>
+                )}
+            </div>
+
             <div id="Wiegand vs. OSDP" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("Wiegand vs. OSDP")}>
-                    Wiegand vs. OSDP
+                    Get a Better Understanding of Wiegand vs. OSDP
                     <span className={`dropdown-chevron ${isFAQExpanded("Wiegand vs. OSDP") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("Wiegand vs. OSDP") && (
@@ -128,7 +128,7 @@ const WiegandFAQ = ({ activeSubSection }) => {
 
             <div id="fiber" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("fiber")}>
-                    Fiber Optics
+                    Get a Better Understanding of Fiber Optics
                     <span className={`dropdown-chevron ${isFAQExpanded("fiber") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("fiber") && (

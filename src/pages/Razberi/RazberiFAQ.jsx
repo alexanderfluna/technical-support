@@ -45,7 +45,7 @@ const RazberiFAQ = ({ activeSubSection }) => {
         <div className="faq-list">  
             <div id="computing" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("computing")}>
-                    Computing Terminology
+                    Get a Better Understanding of Computing Terminology
                     <span className={`dropdown-chevron ${isFAQExpanded("computing") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("computing") && (
@@ -121,7 +121,7 @@ const RazberiFAQ = ({ activeSubSection }) => {
 
             <div id="power-over-ethernet" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("power-over-ethernet")}>
-                    Power Over Ethernet
+                    Get a Better Understanding of Power Over Ethernet
                     <span className={`dropdown-chevron ${isFAQExpanded("power-over-ethernet") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("power-over-ethernet") && (

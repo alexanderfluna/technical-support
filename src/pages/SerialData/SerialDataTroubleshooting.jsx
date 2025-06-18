@@ -47,7 +47,7 @@ const SerialDataTroubleshooting = ({ activeSubSection }) => {
 
             <div id="no-optical-link" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("no-optical-link")}>
-                    Troubleshooting a Unit that will not link optically
+                    Troubleshooting a Unit that will not Link Optically
                     <span className={`dropdown-chevron ${isFAQExpanded("no-optical-link") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("no-optical-link") && (
