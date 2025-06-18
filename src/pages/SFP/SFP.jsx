@@ -128,7 +128,7 @@ const SFP = () => {
       <Navbar/>
       <div className="page">
         <div className="main-content">
-          <h1 style={{textAlign: "center"}}>SFP</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>SFP</h1>
           <div 
             id="sfp-selector-tool" 
             ref={selectorToolRef}
@@ -141,7 +141,6 @@ const SFP = () => {
             ref={faqRef}
             className="relevant-information"
           >
-            <h1>Technical Support</h1>
             <SFPFAQ activeSubSection={activeSubSection} />
           </div>
         </div>

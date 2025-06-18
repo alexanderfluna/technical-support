@@ -38,7 +38,7 @@ const EthernetExtender = () => {
       <Navbar/>
       <div className="page">
         <div className="main-content">
-          <h1 style={{textAlign: "center"}}>Ethernet Extender</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>Ethernet Extender</h1>
           <div 
             id="ethernet-extender-selector-tool" 
             ref={selectorToolRef}
@@ -51,7 +51,6 @@ const EthernetExtender = () => {
             ref={troubleshootingRef}
             className="troubleshooting"
           >
-            <h1>Technical Support</h1>
             <EthernetExtenderTroubleshooting activeSubSection={activeSubSection} />
           </div>
 

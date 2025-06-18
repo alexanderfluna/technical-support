@@ -38,7 +38,7 @@ const SerialData = () => {
       <Navbar/>
       <div className="page">
         <div className="main-content">
-          <h1 style={{textAlign: "center"}}>Serial Data</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>Serial Data</h1>
           <div 
             id="serial-data-selector-tool" 
             ref={selectorToolRef}
@@ -52,7 +52,6 @@ const SerialData = () => {
             ref={troubleshootingRef}
             className="troubleshooting"
           >
-            <h1>Technical Support</h1>
             <SerialDataTroubleshooting activeSubSection={activeSubSection} />
           </div>
 

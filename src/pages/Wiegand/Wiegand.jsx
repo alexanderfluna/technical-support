@@ -39,7 +39,7 @@ const Wiegand = () => {
         <Navbar/>
         <div className="page">
           <div className="main-content">
-            <h1 style={{textAlign: "center"}}>Wiegand</h1>
+            <h1 className="faq-title" style={{fontSize: "3rem"}}>Wiegand</h1>
             <div 
               id="wiegand-selector-tool" 
               ref={selectorToolRef}
@@ -52,7 +52,6 @@ const Wiegand = () => {
               ref={faqRef}
               className="relevant-information"
             >
-              <h1>Technical Support</h1>
               <WiegandFAQ activeSubSection={activeSubSection} />
             </div>
           </div>

@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Search from './Search';
-import Chatbot from '../Chatbot/Chatbot'
+import Chatbot from '../Chatbot/Chatbot';
 
 const Navbar = ({ onCategoryChange }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState(null);
   const navigate = useNavigate();
-  
+  const categoryRefs = {
+    ethernet: useRef(null),
+    'data-over-fiber': useRef(null),
+    accessories: useRef(null)
+  };
+
   const handleMouseClick = (category) => {
     const routeMap = {
       "technical-support": "/technical-support",
@@ -47,6 +52,26 @@ const Navbar = ({ onCategoryChange }) => {
 
   const toggleCategory = (category) => {
     setExpandedCategory(expandedCategory === category ? null : category);
+  };
+
+  const handleCategoryLeave = (category, e) => {
+    // Check if mouse is leaving to go to the hover-box
+    const relatedTarget = e.relatedTarget;
+    const hoverBox = categoryRefs[category].current;
+    
+    if (!hoverBox || !hoverBox.contains(relatedTarget)) {
+      setExpandedCategory(null);
+    }
+  };
+
+  const handleHoverBoxLeave = (category, e) => {
+    // Check if mouse is leaving to go to the main category
+    const relatedTarget = e.relatedTarget;
+    const mainCategory = e.currentTarget.parentElement;
+    
+    if (!mainCategory.contains(relatedTarget)) {
+      setExpandedCategory(null);
+    }
   };
 
   const getSubcategories = (category) => {
@@ -101,10 +126,15 @@ const Navbar = ({ onCategoryChange }) => {
         <div 
           className="main-category"
           onClick={() => toggleCategory('ethernet')}
+          onMouseLeave={(e) => handleCategoryLeave('ethernet', e)}
         >
           <span>Ethernet<span className="dropdown-chevron"></span></span>
           {(expandedCategory === 'ethernet') && (
-            <div className="hover-box">
+            <div 
+              className="hover-box"
+              ref={categoryRefs.ethernet}
+              onMouseLeave={(e) => handleHoverBoxLeave('ethernet', e)}
+            >
               {getSubcategories('ethernet').map(item => (
                 <li key={item.id} onClick={() => handleMouseClick(item.id)}>{item.name}</li>
               ))}
@@ -119,10 +149,15 @@ const Navbar = ({ onCategoryChange }) => {
         <div 
           className="main-category"
           onClick={() => toggleCategory('data-over-fiber')}
+          onMouseLeave={(e) => handleCategoryLeave('data-over-fiber', e)}
         >
           <span>Data Over Fiber<span className="dropdown-chevron"></span></span>
           {(expandedCategory === 'data-over-fiber') && (
-            <div className="hover-box">
+            <div 
+              className="hover-box"
+              ref={categoryRefs['data-over-fiber']}
+              onMouseLeave={(e) => handleHoverBoxLeave('data-over-fiber', e)}
+            >
               {getSubcategories('data-over-fiber').map(item => (
                 <li key={item.id} onClick={() => handleMouseClick(item.id)}>{item.name}</li>
               ))}
@@ -133,10 +168,15 @@ const Navbar = ({ onCategoryChange }) => {
         <div 
           className="main-category"
           onClick={() => toggleCategory('accessories')}
+          onMouseLeave={(e) => handleCategoryLeave('accessories', e)}
         >
           <span>Accessories<span className="dropdown-chevron"></span></span>
           {(expandedCategory === 'accessories') && (
-            <div className="hover-box">
+            <div 
+              className="hover-box"
+              ref={categoryRefs.accessories}
+              onMouseLeave={(e) => handleHoverBoxLeave('accessories', e)}
+            >
               {getSubcategories('accessories').map(item => (
                 <li key={item.id} onClick={() => handleMouseClick(item.id)}>{item.name}</li>
               ))}

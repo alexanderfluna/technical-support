@@ -38,7 +38,7 @@ const MediaConverter = () => {
       <Navbar />
       <div className="page">
         <div className="main-content">
-          <h1 style={{textAlign: "center"}}>Media Converter</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>Media Converter</h1>
           <div 
             id="media-converter-selector-tool" 
             ref={selectorToolRef}
@@ -52,7 +52,6 @@ const MediaConverter = () => {
             ref={troubleshootingRef}
             className="troubleshooting"
           >
-            <h1>Technical Support</h1>
             <MediaConverterTroubleshooting activeSubSection={activeSubSection} />
           </div>
 

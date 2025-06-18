@@ -67,7 +67,7 @@ const CardCage = () => {
     <div className="main-container">
       <Navbar/>
       <div className="tool-container">
-        <h1>Enclosure</h1>
+        <h1 className="faq-title" style={{fontSize: "3rem"}}>Enclosure</h1>
         
         <div className="filter-grid">
           <button className="reset-button" onClick={resetFilters}>

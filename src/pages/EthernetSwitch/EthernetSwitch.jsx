@@ -41,7 +41,7 @@ const EthernetSwitch = () => {
       <Navbar/>
       <div className="page">
         <div className="main-content">
-          <h1 style={{textAlign: "center"}}>Ethernet Switch</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>Ethernet Switch</h1>
           <div 
             id="ethernet-switch-selector-tool" 
             ref={selectorToolRef}
@@ -54,7 +54,6 @@ const EthernetSwitch = () => {
             ref={troubleshootingRef}
             className="troubleshooting"
           >
-            <h1>Technical Support</h1>
             <EthernetSwitchTroubleshooting activeSubSection={activeSubSection} />
           </div>
 

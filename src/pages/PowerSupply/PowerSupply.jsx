@@ -73,7 +73,7 @@ const PowerSupply = () => {
       <Navbar />
       <div className="tool-container">
         <div className="faq-list">
-          <h1>Power Supply</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>Power Supply</h1>
           <div className="filter-grid">
             <button 
               className="reset-button" 

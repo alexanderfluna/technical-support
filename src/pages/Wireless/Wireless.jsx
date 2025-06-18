@@ -38,7 +38,7 @@ const Wireless = () => {
         <Navbar/>
         <div className="page">
           <div className="main-content">
-            <h1 style={{textAlign: "center"}}>Wireless Ethernet</h1>
+            <h1 className="faq-title" style={{fontSize: "3rem"}}>Wireless Ethernet</h1>
             <div 
               id="wireless-selector-tool" 
               ref={selectorToolRef}
@@ -51,7 +51,6 @@ const Wireless = () => {
               ref={troubleshootingRef}
               className="troubleshooting"
             >
-              <h1>Technical Support</h1>
               <WirelessTroubleshooting activeSubSection={activeSubSection} />
             </div>
 

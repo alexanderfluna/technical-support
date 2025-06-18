@@ -38,7 +38,7 @@ const ContactClosure = () => {
       <Navbar />
       <div className="page">
         <div className="main-content">
-          <h1 style={{textAlign: "center"}}>Contact Closure</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>Contact Closure</h1>
           <div 
             id="contact-closure-selector-tool" 
             ref={selectorToolRef}
@@ -51,7 +51,6 @@ const ContactClosure = () => {
             ref={troubleshootingRef}
             className="troubleshooting"
           >
-            <h1>Technical Support</h1>
             <ContactClosureTroubleshooting activeSubSection={activeSubSection} />
           </div>
 

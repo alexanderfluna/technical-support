@@ -44,7 +44,7 @@ const Razberi = () => {
       <Navbar/>
       <div className="page">
         <div className="main-content">
-          <h1 style={{textAlign: "center"}}>Edge Computing</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>Edge Computing</h1>
           <div 
             id="razberi-selector-tool" 
             ref={selectorToolRef}
@@ -57,7 +57,6 @@ const Razberi = () => {
             ref={troubleshootingRef}
             className="troubleshooting"
           >
-            <h1>Technical Support</h1>
             <RazberiTroubleshooting activeSubSection={activeSubSection} expandedFAQ={expandedFAQ} toggleFAQ={toggleFAQ} />
           </div>
 

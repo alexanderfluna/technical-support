@@ -77,7 +77,7 @@ const PoEInjector = () => {
       <Navbar />
       <div className="tool-container">
         <div className="faq-list">
-          <h1>PoE Injector</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>PoE Injector</h1>
           <div className="filter-grid">
             <button 
               className="reset-button" 
