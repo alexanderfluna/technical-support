@@ -1,38 +1,12 @@
-import React, { useState, useRef } from 'react';
+import { useRef } from 'react';
 import WiegandSelectorTool from './WiegandSelectorTool';
 import WiegandFAQ from './WiegandFAQ';
 import Navbar from '../../components/Navigation/Navbar';
+import WiegandConfigurationTool from './WiegandConfigurationTool'
 
-const Wiegand = () => {
-  const [selectedContent, setSelectedContent] = useState('');
-  const [activeSubSection, setActiveSubSection] = useState(null);
-  
-  // Create refs for content sections
+const Wiegand = () => {  
   const faqRef = useRef(null);
   const selectorToolRef = useRef(null);
-
-  const handleSectionClick = (content) => {
-    setSelectedContent(prevContent => prevContent === content ? '' : content);
-    setActiveSubSection(null);
-    
-    if (selectedContent !== content) {
-      setTimeout(() => {
-        if (content === "wiegand-selector-tool" && selectorToolRef.current) {
-          selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 50);
-    }
-  };
-
-  const handleSubSectionClick = (sectionId) => {
-    setActiveSubSection(sectionId);
-    
-    // Find the element and scroll to it
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   return (
     <div className="main-container">
@@ -52,7 +26,9 @@ const Wiegand = () => {
               ref={faqRef}
               className="relevant-information"
             >
-              <WiegandFAQ activeSubSection={activeSubSection} />
+              <WiegandFAQ  />
+
+              <WiegandConfigurationTool/>
             </div>
           </div>
         </div>
