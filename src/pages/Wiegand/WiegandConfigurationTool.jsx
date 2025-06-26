@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import wiegandConfiguration from './WiegandConfiguration';
+
 
 const WiegandConfigurationTool = () => {
     const [visibleAnswers, setVisibleAnswers] = useState(new Set());
