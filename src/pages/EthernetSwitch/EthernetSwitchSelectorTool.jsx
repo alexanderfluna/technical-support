@@ -11,7 +11,18 @@ const EthernetSwitchSelectorTool = () => {
     Copper_Ports: [],
     Fiber_Ports: [],
     Combo_Ports: [],
+    Operating_Voltage: [],
   });
+
+  const tooltipTexts = {
+    Hardened: "Weather-resistant models designed for harsh environments",
+    Managed: "Whether the switch has advanced configuration options",
+    PoE: "Power over Ethernet capability and wattage",
+    Copper_Ports: "Number of RJ45 ports for copper Ethernet connections",
+    Fiber_Ports: "Number of fiber optic ports (SFP/SFP+)",
+    Combo_Ports: "Ports that can accept either copper or fiber modules",
+    Operating_Voltage: "Required input voltage for the switch"
+  };
 
   const handleClick = () => {
     setSelectorTool(!selectorTool);
@@ -24,6 +35,7 @@ const EthernetSwitchSelectorTool = () => {
     Copper_Ports: ["0", "2x FE", "4x FE", "5x FE", "7x FE", "8x FE", "3x GE", "4x GE", "8x GE", "12x GE", "16x GE", "22x GE", "24x GE", "48x GE"],
     Fiber_Ports: ["0", "1x FE", "2x FE", "4x FE", "1x GE", "2x GE", "3x GE", "4x GE", "8x GE", "12x GE", "24x GE", "2x 10G", "4x 10G"],
     Combo_Ports: ["0", "1x GE", "2x GE", "4x GE", "16x GE"],
+    Operating_Voltage: ["N/A", "X"],
   };
 
   const [filters, setFilters] = useState({
@@ -33,6 +45,7 @@ const EthernetSwitchSelectorTool = () => {
     Copper_Ports: null,
     Fiber_Ports: null,
     Combo_Ports: null,
+    Operating_Voltage: null,
   });
 
   useEffect(() => {
@@ -61,7 +74,15 @@ const EthernetSwitchSelectorTool = () => {
   };
 
   const resetFilters = () => {
-    setFilters({ Hardened: null, Managed: null, PoE: null, Copper_Ports: null, Fiber_Ports: null, Combo_Ports: null });
+    setFilters({ 
+      Hardened: null, 
+      Managed: null, 
+      PoE: null, 
+      Copper_Ports: null, 
+      Fiber_Ports: null, 
+      Combo_Ports: null,
+      Operating_Voltage: null 
+    });
     setFilteredProducts(products);
     updateAvailableOptions(products);
   };
@@ -74,6 +95,7 @@ const EthernetSwitchSelectorTool = () => {
       Copper_Ports: [...new Set(filteredProducts.map((product) => product.Copper_Ports))],
       Fiber_Ports: [...new Set(filteredProducts.map((product) => product.Fiber_Ports))],
       Combo_Ports: [...new Set(filteredProducts.map((product) => product.Combo_Ports))],
+      Operating_Voltage: [...new Set(filteredProducts.map((product) => product.Operating_Voltage))],
     };
     setAvailableOptions(options);
   };
@@ -93,6 +115,16 @@ const EthernetSwitchSelectorTool = () => {
       });
   };
 
+  const getDisplayName = (filterType) => {
+    switch(filterType) {
+      case 'Copper_Ports': return 'Copper Ports';
+      case 'Fiber_Ports': return 'Fiber Ports';
+      case 'Combo_Ports': return 'Combo Ports';
+      case 'Operating_Voltage': return 'Operating Voltage';
+      default: return filterType;
+    }
+  };
+
   return (
     <div className="tool-container">
       <h1 className="faq-title" onClick={handleClick}>Selector Tool<span className="dropdown-chevron"></span></h1>
@@ -105,9 +137,10 @@ const EthernetSwitchSelectorTool = () => {
             {Object.entries(availableOptions).map(([filterType, options]) => (
               <div key={filterType} className="filter-group">
                 <div className="filter-label">
-                  {filterType === 'Copper_Ports' ? 'Copper Ports' : 
-                  filterType === 'Fiber_Ports' ? 'Fiber Ports' : 
-                  filterType === 'Combo_Ports' ? 'Combo Ports' : filterType}
+                  {getDisplayName(filterType)}
+                  <span className="info-tooltip" data-tooltip={tooltipTexts[filterType]}>
+                    (i)
+                  </span>
                   {filters[filterType] && (
                     <button className="clear-button" onClick={() => clearFilter(filterType)}>
                       X
@@ -119,7 +152,7 @@ const EthernetSwitchSelectorTool = () => {
                   value={filters[filterType] || ''}
                   onChange={(e) => handleFilterChange(filterType, e.target.value)}
                 >
-                  <option value="">Select {filterType}</option>
+                  <option value="">Select {getDisplayName(filterType)}</option>
                   {sortOptions(filterType, options).map((option) => (
                     <option key={option} value={option}>
                       {option}
@@ -141,6 +174,7 @@ const EthernetSwitchSelectorTool = () => {
                   <th>Copper Ports</th>
                   <th>Fiber Ports</th>
                   <th>Combo Ports</th>
+                  <th>Operating Voltage</th>
                 </tr>
               </thead>
               <tbody>
@@ -153,6 +187,7 @@ const EthernetSwitchSelectorTool = () => {
                     <td>{product.Copper_Ports === "0" ? "-" : product.Copper_Ports}</td>
                     <td>{product.Fiber_Ports === "0" ? "-" : product.Fiber_Ports}</td>
                     <td>{product.Combo_Ports === "0" ? "-" : product.Combo_Ports}</td>
+                    <td>{product.Operating_Voltage}</td>
                   </tr>
                 ))}
               </tbody>

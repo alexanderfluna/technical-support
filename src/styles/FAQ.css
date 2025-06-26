@@ -416,3 +416,52 @@ body {
     border: none !important;
   }
 }
+
+.info-tooltip {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 0.8em;
+  cursor: help;
+  position: relative;
+  color: #666;
+  font-style: italic;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  border-radius: 50%;
+  background: #f0f0f0;
+}
+
+.info-tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  padding: 8px;
+  background: #333;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.8em;
+  text-align: center;
+  z-index: 100;
+  pointer-events: none;
+  white-space: normal;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.info-tooltip:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+  z-index: 101;
+  margin-bottom: 2px;
+}

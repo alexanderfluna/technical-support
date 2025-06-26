@@ -27,8 +27,6 @@ const Wiegand = () => {
               className="relevant-information"
             >
               <WiegandFAQ  />
-
-              <WiegandConfigurationTool/>
             </div>
           </div>
         </div>
