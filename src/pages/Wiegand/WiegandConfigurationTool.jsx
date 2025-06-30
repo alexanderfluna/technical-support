@@ -2,48 +2,48 @@ import { useState, useEffect } from 'react';
 import wiegandConfiguration from './WiegandConfiguration';
 
 const WiegandConfigurationTool = () => {
-    const [visibleAnswers, setVisibleAnswers] = useState(new Set());
     const [selectedOption, setSelectedOption] = useState('');
     const [selectedValue, setSelectedValue] = useState("0");
     const [readerSelections, setReaderSelections] = useState({});
     const [combinedUserInput, setCombinedUserInput] = useState([]);
+    const [showOutput, setShowOutput] = useState(false);
 
     useEffect(() => {
         const newCombinedInput = [];
+        const numReaders = parseInt(selectedValue) + 1;
+        let allReadersSelected = true;
 
         if (selectedOption && selectedValue !== undefined) {
-            if (readerSelections[1]) {
-                const reader1Key = `0${selectedOption}${readerSelections[1] === "reader-only" ? "Reader Only" : "Reader and Keypad"}`;
-                newCombinedInput.push(reader1Key);
+            // Check if all required readers have selections
+            for (let i = 1; i <= numReaders; i++) {
+                if (!readerSelections[i]) {
+                    allReadersSelected = false;
+                    break;
+                }
             }
 
-            const numReaders = parseInt(selectedValue) + 1;
-            for (let i = 2; i <= numReaders; i++) {
-                if (readerSelections[i]) {
-                    const readerKey = `${i - 1}${selectedOption}${readerSelections[i] === "reader-only" ? "Reader Only" : "Reader and Keypad"}`;
-                    newCombinedInput.push(readerKey);
+            if (allReadersSelected) {
+                if (readerSelections[1]) {
+                    const reader1Key = `0${selectedOption}${readerSelections[1] === "reader-only" ? "Reader Only" : "Reader and Keypad"}`;
+                    newCombinedInput.push(reader1Key);
+                }
+
+                for (let i = 2; i <= numReaders; i++) {
+                    if (readerSelections[i]) {
+                        const readerKey = `${i - 1}${selectedOption}${readerSelections[i] === "reader-only" ? "Reader Only" : "Reader and Keypad"}`;
+                        newCombinedInput.push(readerKey);
+                    }
                 }
             }
         }
 
         setCombinedUserInput(newCombinedInput);
+        setShowOutput(selectedOption !== '' && allReadersSelected);
 
         if (newCombinedInput.length > 0) {
             console.log("combined_user_input:", newCombinedInput);
         }
     }, [selectedOption, selectedValue, readerSelections]);
-
-    const toggleAnswer = (questionId) => {
-        setVisibleAnswers(prevAnswers => {
-            const newAnswers = new Set(prevAnswers);
-            if (newAnswers.has(questionId)) {
-                newAnswers.delete(questionId);
-            } else {
-                newAnswers.add(questionId);
-            }
-            return newAnswers;
-        });
-    };
 
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
@@ -51,6 +51,7 @@ const WiegandConfigurationTool = () => {
 
     const handleValueChange = (event) => {
         setSelectedValue(event.target.value);
+        setReaderSelections({});
     };
 
     const handleReaderSelection = (index, value) => {
@@ -67,7 +68,7 @@ const WiegandConfigurationTool = () => {
     };
 
     const getFdwSwitchConfig = (expCount) => {
-        const configs = {
+        const baseConfigs = {
             0: {
                 c: "Switch 3 ON - all others OFF.",
                 r: "Keep all Switches OFF."
@@ -101,7 +102,42 @@ const WiegandConfigurationTool = () => {
                 r: "Switches 6, 7, and 8 ON - all others OFF."
             }
         };
-        return configs[expCount] || configs[0];
+
+        if (selectedOption !== "Yes") {
+            return baseConfigs[expCount] || baseConfigs[0];
+        }
+
+        // When Relay 3 is used, we need to add switch 4 to all configurations
+        const relayConfigs = {};
+        Object.keys(baseConfigs).forEach(key => {
+            // Handle Central unit configuration
+            let cConfig;
+            if (baseConfigs[key].c.startsWith("Switch 3")) {
+                cConfig = "Switches 3 and 4 ON - all others OFF.";
+            } else if (baseConfigs[key].c.startsWith("Switches 3 and")) {
+                const otherSwitch = baseConfigs[key].c.match(/and (\d+) ON/)[1];
+                cConfig = `Switches 3, 4, and ${otherSwitch} ON - all others OFF.`;
+            } else if (baseConfigs[key].c.startsWith("Switches 3,")) {
+                const otherSwitches = baseConfigs[key].c.match(/3, ([\d, and]+) ON/)[1];
+                cConfig = `Switches 3, 4, ${otherSwitches} ON - all others OFF.`;
+            }
+
+            // Handle Remote unit configuration
+            let rConfig;
+            if (baseConfigs[key].r === "Keep all Switches OFF.") {
+                rConfig = "Switch 4 ON - all others OFF.";
+            } else if (baseConfigs[key].r.startsWith("Switch ")) {
+                const otherSwitch = baseConfigs[key].r.match(/Switch (\d+) ON/)[1];
+                rConfig = `Switches 4 and ${otherSwitch} ON - all others OFF.`;
+            } else if (baseConfigs[key].r.startsWith("Switches ")) {
+                const otherSwitches = baseConfigs[key].r.match(/Switches ([\d, and]+) ON/)[1];
+                rConfig = `Switches 4, ${otherSwitches} ON - all others OFF.`;
+            }
+
+            relayConfigs[key] = { c: cConfig, r: rConfig };
+        });
+
+        return relayConfigs[expCount] || relayConfigs[0];
     };
 
     const renderReaderControls = () => {
@@ -152,7 +188,7 @@ const WiegandConfigurationTool = () => {
     };
 
     const renderWiegandOutput = () => {
-        if (!selectedOption || !selectedValue || combinedUserInput.length === 0) return null;
+        if (!showOutput) return null;
 
         const expCount = parseInt(selectedValue);
         const relayLine = selectedOption === "Yes"
