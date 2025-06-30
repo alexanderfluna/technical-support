@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Fiber = () => {
   const standards = [
     { standard: "1000BASE-SX", wavelength: "850nm", distance: "0.55km" },

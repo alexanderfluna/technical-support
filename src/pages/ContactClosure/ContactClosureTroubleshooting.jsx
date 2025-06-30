@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import NoPowerLight from '../../relevant-information/NoPowerLight';
 import NoOpticalLink from '../../relevant-information/NoOpticalLink';
 
@@ -62,14 +62,14 @@ const ContactClosureTroubleshooting = ({ activeSubSection }) => {
                 </h1>
                 {isFAQExpanded("no-contacts") && (
                     <>
-                        <p><strong>[1] Ensure the wires are connected properly.</strong></p>
+                        <p><strong>1.</strong> Ensure the wires are connected properly.</p>
                         <p><strong>FDC10:</strong></p>
                         <img src="photos/FDC/fdc10.jpg" style={{"padding-right": "100px"}} alt="FDC10 wiring"></img>
                         <p><strong>FDC8 or FDC80:</strong></p>
                         <img src="photos/FDC/fdc80.jpg" style={{height: "600px"}} alt="FDC80 wiring"></img>
-                        <p><strong>[2] Confirm the inputs are dry (volt-free) closures. It is not acceptable to have voltage across the input pair.</strong></p>
-                        <p><strong>[3] If an ohmmeter is being used across the screwheads on the green terminal block and if the screws are not tightened, it will look like the relay is not responding. Be sure that there are wires in the terminal block and that the screws are tightened. If wires are not inserted into the terminal block, tighten the screws anyway and then measure across the screw heads.</strong></p>
-                        <p><strong>[4] Cycle power on the unit.</strong></p>
+                        <p><strong>2.</strong> Confirm the inputs are dry (volt-free) closures. It is not acceptable to have voltage across the input pair.</p>
+                        <p><strong>3.</strong> If an ohmmeter is being used across the screwheads on the green terminal block and if the screws are not tightened, it will look like the relay is not responding. Be sure that there are wires in the terminal block and that the screws are tightened. If wires are not inserted into the terminal block, tighten the screws anyway and then measure across the screw heads.</p>
+                        <p><strong>4.</strong> Cycle power on the unit.</p>
                     </>
                 )}
             </div>

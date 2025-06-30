@@ -70,9 +70,9 @@ const MediaConverterTroubleshooting = ({ activeSubSection }) => {
         </h1>
         {isFAQExpanded("no-communication") && (
           <>
-            <p><strong>[1]</strong> Follow the <strong>"How to Troubleshoot a Media Converter with Power Issues"</strong> procedure to rule out power-related issues.</p>
-            <p><strong>[2]</strong> Replace the Ethernet cable to determine if the issue persists.</p>
-            <p><strong>[3]</strong> Replace the media converter with another of the same model to determine if the issue persists.</p>
+            <p><strong>1.</strong> Follow the <strong>"How to Troubleshoot a Media Converter with Power Issues"</strong> procedure to rule out power-related issues.</p>
+            <p><strong>2.</strong> Replace the Ethernet cable to determine if the issue persists.</p>
+            <p><strong>3.</strong> Replace the media converter with another of the same model to determine if the issue persists.</p>
           </>
         )}
       </div>

@@ -68,7 +68,7 @@ const WiegandFAQ = ({ activeSubSection }) => {
 
             <div id="Wiegand vs. OSDP" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("Wiegand vs. OSDP")}>
-                    Get a Better Understanding of Wiegand vs. OSDP
+                    Gain a Better Understanding of Wiegand vs. OSDP
                     <span className={`dropdown-chevron ${isFAQExpanded("Wiegand vs. OSDP") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("Wiegand vs. OSDP") && (
@@ -81,7 +81,7 @@ const WiegandFAQ = ({ activeSubSection }) => {
 
             <div id="fiber" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("fiber")}>
-                    Get a Better Understanding of Fiber Optics
+                    Gain a Better Understanding of Fiber Optics
                     <span className={`dropdown-chevron ${isFAQExpanded("fiber") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("fiber") && (

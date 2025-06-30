@@ -38,7 +38,7 @@ const EthernetExtenderFAQ = ({ activeSubSection }) => {
     <div className="faq-list">
       <div id="copper" className="faq-answer">
         <h1 className="faq-title" onClick={() => toggleFAQ("copper")}>
-          Get a Better Understanding of Twisted Pair Cabling
+          Gain a Better Understanding of Twisted Pair Cabling
           <span className={`dropdown-chevron ${isFAQExpanded("copper") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("copper") && (
@@ -52,7 +52,7 @@ const EthernetExtenderFAQ = ({ activeSubSection }) => {
 
       <div id="coax" className="faq-answer">
         <h1 className="faq-title" onClick={() => toggleFAQ("coax")}>
-          Get a Better Understanding of Coaxial Cabling
+          Gain a Better Understanding of Coaxial Cabling
           <span className={`dropdown-chevron ${isFAQExpanded("coax") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("coax") && (

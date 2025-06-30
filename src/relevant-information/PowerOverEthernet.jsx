@@ -1,5 +1,3 @@
-import React from 'react';
-
 const PowerOverEthernet = () => {
   const standards = [
     { standard: "IEEE 802.3af", type: "Type 1", power: "12.5W / 15W", voltage: "48VDC - 47VDC" },

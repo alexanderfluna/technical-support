@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
-import OSI from '../../relevant-information/OSI';
 
 const WirelessFAQ = ({ activeSubSection }) => {
     const [expandedFAQs, setExpandedFAQs] = useState([]);
@@ -52,28 +51,28 @@ const WirelessFAQ = ({ activeSubSection }) => {
                 {isFAQExpanded("bom") && (
                     <>
                         <p><strong>Take note of the following information before creating a Bill of Materials.</strong></p>
-                        <p>[1] An RF site survey is strongly recommended to ensure the suitability of Wi-Fi radios for use at this site.</p>
-                        <p>[2] Determine which locations will be point-to-point or point-to-multipoint.</p>
-                        <p>[3] Confirm that the wireless radios have a clear line of sight and there is no obstruction in the fresnel zone.</p>
-                        <p>[4] Confirm that the client radios are placed within the beamwidth of the access point radio.</p>
-                        <p>[5] Confirm that 120 VAC power will be available at each location for use by the Comnet device(s) at that location.</p>
-                        <p>[6] Confirm the PoE requirements of each powered device.</p>
+                        <p>1. An RF site survey is strongly recommended to ensure the suitability of Wi-Fi radios for use at this site.</p>
+                        <p>2. Determine which locations will be point-to-point or point-to-multipoint.</p>
+                        <p>3. Confirm that the wireless radios have a clear line of sight and there is no obstruction in the fresnel zone.</p>
+                        <p>4. Confirm that the client radios are placed within the beamwidth of the access point radio.</p>
+                        <p>5. Confirm that 120 VAC power will be available at each location for use by the Comnet device(s) at that location.</p>
+                        <p>6. Confirm the PoE requirements of each powered device.</p>
                         <p><strong>Start creating a Bill of Materials by location.</strong></p>
-                        <p>[1] One of the following wireless radios.</p>
+                        <p>1. One of the following wireless radios.</p>
                         <li>NW1</li>
                         <li>NW1/M</li>
                         <li>NW1/M/IA870</li>
                         <li>NW9</li>
-                        <p>[2] One articulating bracket.</p>
+                        <p>2. One articulating bracket.</p>
                         <li>NWBKT</li>
-                        <p>[3] One or more of the following PoE switches or midspans.</p>
+                        <p>3. One or more of the following PoE switches or midspans.</p>
                         <li>CNGE1IPS</li>
                         <li>CN1IPSBT-DC</li>
                         <li>CNGE6FX2TX4MSP</li>
                         <li>CNGE11FX3TX8MSPOE</li>
-                        <p>[4] One of the following 48 VDC power supplies for the PoE switch as needed.</p>
+                        <p>4. One of the following 48 VDC power supplies for the PoE switch as needed.</p>
                         <li>PS48VDC-5A</li>
-                        <p>[5] One enclosure as needed.</p>
+                        <p>5. One enclosure as needed.</p>
                         <li>CNEE2</li>
                     </>
                 )}
@@ -81,7 +80,7 @@ const WirelessFAQ = ({ activeSubSection }) => {
 
             <div id="wireless" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("wireless")}>
-                    Get a Better Understanding of Wireless Ethernet
+                    Gain a Better Understanding of Wireless Ethernet
                     <span className={`dropdown-chevron ${isFAQExpanded("wireless") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("wireless") && (
@@ -136,18 +135,10 @@ const WirelessFAQ = ({ activeSubSection }) => {
 
             <div id="poe" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("poe")}>
-                    Get a Better Understanding of Power Over Ethernet
+                    Gain a Better Understanding of Power Over Ethernet
                     <span className={`dropdown-chevron ${isFAQExpanded("poe") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("poe") && <PowerOverEthernet />}
-            </div>
-
-            <div id="osi" className="faq-answer">
-                <h1 className="faq-title" onClick={() => toggleFAQ("osi")}>
-                    Get a Better Understanding of the OSI Model
-                    <span className={`dropdown-chevron ${isFAQExpanded("osi") ? 'expanded' : ''}`}></span>
-                </h1>
-                {isFAQExpanded("osi") && <OSI />}
             </div>
         </div>
     );

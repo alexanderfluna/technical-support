@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Fiber from '../../relevant-information/Fiber';
 import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
-import OSI from '../../relevant-information/OSI';
 
 const MediaConverterFAQ = ({ activeSubSection }) => {
   const [expandedFAQs, setExpandedFAQs] = useState([]);
@@ -9,10 +8,8 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
   const toggleFAQ = (sectionID) => {
     setExpandedFAQs(prev => {
       if (prev.includes(sectionID)) {
-        // Remove the section if it's already open
         return prev.filter(id => id !== sectionID);
       } else {
-        // Add the section if it's closed
         return [...prev, sectionID];
       }
     });
@@ -29,7 +26,6 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth' });
         }, 100);
-        // Automatically expand the active subsection if it's not already expanded
         if (!expandedFAQs.includes(activeSubSection)) {
           setExpandedFAQs(prev => [...prev, activeSubSection]);
         }
@@ -41,7 +37,7 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
     <div className="faq-list">
       <div className="faq-answer" id="media-converters">
         <h1 className="faq-title" onClick={() => toggleFAQ("media-converters")}>
-          Get a Better Understanding of Media Converters
+          Gain a Better Understanding of Media Converters
           <span className={`dropdown-chevron ${isFAQExpanded("media-converters") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("media-converters") && (
@@ -57,7 +53,7 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
 
       <div className="faq-answer" id="fiber">
         <h1 className="faq-title" onClick={() => toggleFAQ("fiber")}>
-          Get a Better Understanding of Fiber Optics
+          Gain a Better Understanding of Fiber Optics
           <span className={`dropdown-chevron ${isFAQExpanded("fiber") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("fiber") && (
@@ -69,24 +65,12 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
 
       <div className="faq-answer" id="poe">
         <h1 className="faq-title" onClick={() => toggleFAQ("poe")}>
-          Get a Better Understanding of Power Over Ethernet
+          Gain a Better Understanding of Power Over Ethernet
           <span className={`dropdown-chevron ${isFAQExpanded("poe") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("poe") && (
           <>
             <PowerOverEthernet />
-          </>
-        )}
-      </div>
-
-      <div className="faq-answer" id="osi">
-        <h1 className="faq-title" onClick={() => toggleFAQ("osi")}>
-          Get a Better Understanding of the OSI Model
-          <span className={`dropdown-chevron ${isFAQExpanded("osi") ? 'expanded' : ''}`}></span>
-        </h1>
-        {isFAQExpanded("osi") && (
-          <>
-            <OSI />
           </>
         )}
       </div>

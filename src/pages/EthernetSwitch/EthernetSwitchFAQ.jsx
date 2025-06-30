@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Fiber from '../../relevant-information/Fiber';
 import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
-import OSI from '../../relevant-information/OSI';
 import SurgeSuppression from '../../relevant-information/SurgeSuppression';
 
 const EthernetSwitchFAQ = ({ activeSubSection }) => {
@@ -42,7 +41,7 @@ const EthernetSwitchFAQ = ({ activeSubSection }) => {
     <div className="faq-list">
       <div id="switch" className="faq-answer">
         <h1 className="faq-title" onClick={() => toggleFAQ("switch")}>
-          Get a Better Understanding of Ethernet Switches
+          Gain a Better Understanding of Ethernet Switches
           <span className={`dropdown-chevron ${isFAQExpanded("switch") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("switch") && (
@@ -69,7 +68,7 @@ const EthernetSwitchFAQ = ({ activeSubSection }) => {
 
       <div id="fiber" className="faq-answer">
         <h1 className="faq-title" onClick={() => toggleFAQ("fiber")}>
-          Get a Better Understanding of Fiber Optics
+          Gain a Better Understanding of Fiber Optics
           <span className={`dropdown-chevron ${isFAQExpanded("fiber") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("fiber") && (
@@ -81,7 +80,7 @@ const EthernetSwitchFAQ = ({ activeSubSection }) => {
 
       <div id="poe" className="faq-answer">
         <h1 className="faq-title" onClick={() => toggleFAQ("poe")}>
-          Get a Better Understanding of Power Over Ethernet
+          Gain a Better Understanding of Power Over Ethernet
           <span className={`dropdown-chevron ${isFAQExpanded("poe") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("poe") && (
@@ -93,24 +92,12 @@ const EthernetSwitchFAQ = ({ activeSubSection }) => {
 
       <div id="surge" className="faq-answer">
         <h1 className="faq-title" onClick={() => toggleFAQ("surge")}>
-          Get a Better Understanding of Surge Suppression
+          Gain a Better Understanding of Surge Suppression
           <span className={`dropdown-chevron ${isFAQExpanded("surge") ? 'expanded' : ''}`}></span>
         </h1>
         {isFAQExpanded("surge") && (
           <>
             <SurgeSuppression />
-          </>
-        )}
-      </div>
-
-      <div id="osi" className="faq-answer">
-        <h1 className="faq-title" onClick={() => toggleFAQ("osi")}>
-          Get a Better Understanding of the OSI Model
-          <span className={`dropdown-chevron ${isFAQExpanded("osi") ? 'expanded' : ''}`}></span>
-        </h1>
-        {isFAQExpanded("osi") && (
-          <>
-            <OSI />
           </>
         )}
       </div>

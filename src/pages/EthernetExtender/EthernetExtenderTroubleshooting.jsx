@@ -43,7 +43,7 @@ const EthernetExtenderTroubleshooting = ({ activeSubSection }) => {
         </h1>
         {isFAQExpanded("CLFE-troubleshooting") && (
           <>
-            <p><strong>[1]</strong> Note the following information.</p>
+            <p><strong>1.</strong> Note the following information.</p>
             <li><strong>Local vs. Remote</strong></li>
             <li style={{paddingLeft: "40px"}}>A local and remote device are required on both ends of the extended distance.</li>
             <li style={{paddingLeft: "40px"}}>Devices with 1 or 4 channels can be set as a local or remote via the dip switch. The devices with 8 or 16 channels can only be used as the local device.</li>
@@ -62,7 +62,7 @@ const EthernetExtenderTroubleshooting = ({ activeSubSection }) => {
             <li style={{paddingLeft: "40px"}}>The Ethernet port LEDs will illuminate when there is a valid connection.</li>
 
 
-            <p><strong>[2] View the <a href="pdf/EthernetExtender/CLFE_X_EO_C-U.pdf" >installation manual</a> for the device images, installation instructions, and specification tables.</strong></p>
+            <p><strong>2. View the <a href="pdf/EthernetExtender/CLFE_X_EO_C-U.pdf" >installation manual</a> for the device images, installation instructions, and specification tables.</strong></p>
             <li style={{paddingLeft: "40px"}}>Page 2: CLFE1EOC and CLFE1EOU images and dip switches.</li>
             <li style={{paddingLeft: "40px"}}>Page 3: CLFE4EOC images and dip switches.</li>
             <li style={{paddingLeft: "40px"}}>Page 4: CLFE4EOU images and dip switches.</li>
@@ -83,7 +83,7 @@ const EthernetExtenderTroubleshooting = ({ activeSubSection }) => {
         </h1>
         {isFAQExpanded("CLLFE-troubleshooting") && (
           <>
-            <p><strong>[1]</strong> Note the following information.</p>
+            <p><strong>1.</strong> Note the following information.</p>
             <li><strong>Local (CLL) vs. Remote (CLR)</strong></li>
             <li style={{paddingLeft: "40px"}}>A local and remote device are required on both ends of the extended distance.</li>
             <li style={{paddingLeft: "40px"}}>The devices with 1, 4, 8, or 16 channels that begin with <strong>CLL</strong> are the local units. The devices with 1 or 4 channels that begin with <strong>CLR</strong> are the remote units.</li>
@@ -102,7 +102,7 @@ const EthernetExtenderTroubleshooting = ({ activeSubSection }) => {
             <li style={{paddingLeft: "40px"}}>The Extended Distance LED will illuminate when there is a valid connection.</li>
             <li style={{paddingLeft: "40px"}}>The Ethernet port LEDs will illuminate when there is a valid connection.</li>
 
-            <p><strong>[2] View the <a href="pdf/EthernetExtender/CL_L-R_FE_X_POE_C-U.pdf" >installation manual</a> for the device images, installation instructions, and speciication tables.</strong></p>
+            <p><strong>2. View the <a href="pdf/EthernetExtender/CL_L-R_FE_X_POE_C-U.pdf" >installation manual</a> for the device images, installation instructions, and speciication tables.</strong></p>
             <li style={{paddingLeft: "40px"}}>Page 2: CLLFE1POEC and CLRFE1POEC images and dip switch.</li>
             <li style={{paddingLeft: "40px"}}>Page 3: CLLFE1POEU and CLRFE1PEOU images and dip switches.</li>
             <li style={{paddingLeft: "40px"}}>Page 4: CLLFE4POEC and CLRFE4PEOU images and dip switch.</li>
