@@ -10,6 +10,14 @@ const SerialDataSelectorTool = () => {
     optics: [],
     package: [],
   });
+
+  const tooltipTexts = {
+    Number_Of_Fibers: "Number of fibers in the connection",
+    fiber: "Type of fiber (Multimode or Single mode)",
+    optics: "Type of optical connector",
+    package: "Form factor or packaging type"
+  };
+
   const [filters, setFilters] = useState({
     Number_Of_Fibers: null,
     fiber: null,
@@ -23,7 +31,7 @@ const SerialDataSelectorTool = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setFilteredProducts(products); 
+    setFilteredProducts(products);
     updateAvailableOptions(products);
   }, []);
 
@@ -37,7 +45,6 @@ const SerialDataSelectorTool = () => {
       )
     );
     setFilteredProducts(newFilteredProducts);
-
     updateAvailableOptions(newFilteredProducts);
   };
 
@@ -48,18 +55,34 @@ const SerialDataSelectorTool = () => {
   };
 
   const resetFilters = () => {
-    setFilters({ Number_Of_Fibers: null, fiber: null, optics: null, package: null});
+    setFilters({ 
+      Number_Of_Fibers: null, 
+      fiber: null, 
+      optics: null, 
+      package: null
+    });
     setFilteredProducts(products);
     updateAvailableOptions(products);
   };
 
   const updateAvailableOptions = (filteredProducts) => {
-    const Number_Of_Fibers = [...new Set(filteredProducts.map((product) => product.Number_Of_Fibers))];
-    const fiber = [...new Set(filteredProducts.map((product) => product.fiber))];
-    const optics = [...new Set(filteredProducts.map((product) => product.optics))];
-    const packageOptions = [...new Set(filteredProducts.map((product) => product.package))];
+    const options = {
+      Number_Of_Fibers: [...new Set(filteredProducts.map((product) => product.Number_Of_Fibers))],
+      fiber: [...new Set(filteredProducts.map((product) => product.fiber))],
+      optics: [...new Set(filteredProducts.map((product) => product.optics))],
+      package: [...new Set(filteredProducts.map((product) => product.package))]
+    };
+    setAvailableOptions(options);
+  };
 
-    setAvailableOptions({ Number_Of_Fibers, fiber, optics, package: packageOptions });
+  const getDisplayName = (filterType) => {
+    switch(filterType) {
+      case 'Number_Of_Fibers': return 'Number of Fibers';
+      case 'fiber': return 'Fiber';
+      case 'optics': return 'Optics';
+      case 'package': return 'Package';
+      default: return filterType;
+    }
   };
 
   return (
@@ -68,17 +91,17 @@ const SerialDataSelectorTool = () => {
       {selectorTool && (
         <>
           <div className="filter-grid">
-            <button 
-              className="reset-button" 
-              onClick={resetFilters}
-            >
+            <button className="reset-button" onClick={resetFilters}>
               Reset
             </button>
 
-            {["Number_Of_Fibers", "fiber", "optics", "package"].map((filterType) => (
+            {Object.entries(availableOptions).map(([filterType, options]) => (
               <div key={filterType} className="filter-group">
                 <div className="filter-label">
-                  {filterType.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                  {getDisplayName(filterType)}
+                  <span className="info-tooltip" data-tooltip={tooltipTexts[filterType]}>
+                    (i)
+                  </span>
                   {filters[filterType] && (
                     <button
                       className="clear-button"
@@ -93,8 +116,8 @@ const SerialDataSelectorTool = () => {
                   value={filters[filterType] || ''}
                   onChange={(e) => handleFilterChange(filterType, e.target.value)}
                 >
-                  <option value="">Select {filterType.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</option>
-                  {availableOptions[filterType].map((option) => (
+                  <option value="">Select {getDisplayName(filterType)}</option>
+                  {options.map((option) => (
                     <option key={option} value={option}>
                       {option}
                     </option>
@@ -109,10 +132,11 @@ const SerialDataSelectorTool = () => {
               <thead>
                 <tr>
                   <th>Model</th>
-                  <th>NumOfFibers</th>
-                  <th>Fiber</th>
-                  <th>Optics</th>
-                  <th>Package</th>
+                  {Object.keys(availableOptions).map((key) => (
+                    <th key={key}>
+                      {getDisplayName(key)}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>

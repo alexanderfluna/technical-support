@@ -39,6 +39,7 @@ const SerialData = () => {
       <div className="page">
         <div className="main-content">
           <h1 className="faq-title" style={{fontSize: "3rem"}}>Serial Data</h1>
+          <p className="hero-subtitle"><strong>Selector Tool</strong> — Identify the perfect solution for your requirements.</p>
           <div 
             id="serial-data-selector-tool" 
             ref={selectorToolRef}
@@ -46,7 +47,7 @@ const SerialData = () => {
           >
             <SerialDataSelectorTool />
           </div>
-
+          <p className="hero-subtitle"><strong>Technical Support</strong> — Find answers to common technical questions.</p>
           <div 
             id="serial-troubleshooting" 
             ref={troubleshootingRef}
@@ -54,7 +55,6 @@ const SerialData = () => {
           >
             <SerialDataTroubleshooting activeSubSection={activeSubSection} />
           </div>
-
           <div 
             id="serial-relevant-information" 
             ref={relevantInfoRef}

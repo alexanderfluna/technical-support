@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../components/Navigation/Navbar';
-import Slideshow from '../components/Slideshow';
 
 const AboutUs = () => {
-    const [animatedElements, setAnimatedElements] = useState([]);
     const [activeSection, setActiveSection] = useState(null);
 
     const supportData = [
@@ -48,22 +46,8 @@ const AboutUs = () => {
     useEffect(() => {
         // Set all elements as animated immediately when component mounts
         const allIds = supportData.map(item => item.id);
-        setAnimatedElements(allIds);
         setActiveSection(allIds[0]);
     }, []);
-
-    const imageNames = [
-        "CNGE3FE8MS.jpg",
-        "CNFE3DOE2.jpg",
-        "NW1.jpg",
-        "FDX60.jpg",
-        "FDW1000.jpg",
-        "FDC80.jpg",
-        "SFP.jpg",
-        "PSU.jpg",
-        "CNGE1IPS.jpg",
-        "C1US.jpg",
-    ];
 
     return (
         <div className="main-container">

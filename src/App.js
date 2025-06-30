@@ -24,7 +24,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/technical-support" element={<Webpage />} />
-        <Route path="/technical-support/razberi" element={<Razberi />} />
+        <Route path="/technical-support/server" element={<Razberi />} />
         <Route path="/technical-support/ethernet-switch" element={<EthernetSwitch />} />
         <Route path="/technical-support/media-converter" element={<MediaConverter />} />
         <Route path="/technical-support/ethernet-extender" element={<EthernetExtender />} />
@@ -35,7 +35,7 @@ const App = () => {
         <Route path="/technical-support/sfp" element={<SFP />} />
         <Route path="/technical-support/power-supply" element={<PowerSupply />} />
         <Route path="/technical-support/poe-injector" element={<PoeInjector />} />
-        <Route path="/technical-support/enclosure" element={<Enclosure />} />
+        <Route path="/technical-support/card-cage" element={<Enclosure />} />
         <Route path="/technical-support/about-us" element={<AboutUs />} />
       </Routes>
     </Router>

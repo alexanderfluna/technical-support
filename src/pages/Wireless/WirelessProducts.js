@@ -1,7 +1,7 @@
 const WirelessProducts = [
     { Model: "NW1", quantity: "Single", size: "Full", beamwidth: "17°", continent: "North America" },
     { Model: "NW1/M", quantity: "Single", size: "Mini", beamwidth: "30°", continent: "North America" },
-    { Model: "NW1/M/IA870", quantity: "Single", size: "Mini", beamwidth: "30°", continent: "North America" },
+    { Model: "NW1/M/IA870", quantity: "Single", size: "Mini", beamwidth: "70°", continent: "North America" },
     { Model: "NWK1", quantity: "Kit", size: "Full", beamwidth: "17°", continent: "North America" },
     { Model: "NWK1/M", quantity: "Kit", size: "Mini", beamwidth: "30°", continent: "North America" },
     { Model: "NW2", quantity: "Single", size: "Full", beamwidth: "17°", continent: "Europe" },

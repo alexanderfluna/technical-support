@@ -13,6 +13,17 @@ const SFPSelectorTool = () => {
     Tx: ['N/A', '850', '1270', '1310', '1330', '1490', '1550'],
     Rx: ['N/A', '850', '1270', '1310', '1330', '1490', '1550'],
   });
+
+  const tooltipTexts = {
+    dataRate: "Supported data rates (Fast Ethernet, Gigabit Ethernet, or 10 Gigabit)",
+    txMedium: "Transmission medium (Copper, Single-mode fiber, or Multi-mode fiber)",
+    fibers: "Number of fiber strands required",
+    optics: "Type of optical connector",
+    pathLength: "Maximum supported transmission distance",
+    Tx: "Transmitter wavelength in nanometers",
+    Rx: "Receiver wavelength in nanometers"
+  };
+
   const [filters, setFilters] = useState({
     dataRate: null,
     txMedium: null,
@@ -77,6 +88,19 @@ const SFPSelectorTool = () => {
     });
   };
 
+  const getDisplayName = (filterType) => {
+    switch(filterType) {
+      case 'dataRate': return 'Data Rate';
+      case 'txMedium': return 'Tx Medium';
+      case 'fibers': return 'Number of Fibers';
+      case 'optics': return 'Optics';
+      case 'pathLength': return 'Path Length';
+      case 'Tx': return 'Tx Wavelength';
+      case 'Rx': return 'Rx Wavelength';
+      default: return filterType;
+    }
+  };
+
   return (
     <div className="tool-container">
       <h1 className="faq-title" onClick={handleClick}>Selector Tool<span className="dropdown-chevron"></span></h1>
@@ -84,38 +108,38 @@ const SFPSelectorTool = () => {
       {selectorTool && (
         <>
           <div className="filter-grid">
-            <button 
-              className="reset-button" 
-              onClick={resetFilters}
-            >
-              Reset All Filters
+            <button className="reset-button" onClick={resetFilters}>
+              Reset
             </button>
 
-            {['dataRate', 'txMedium', 'fibers', 'optics', 'pathLength', 'Tx', 'Rx'].map((filterKey) => (
-              <div key={filterKey} className="filter-group">
-                <h3 className="filter-label">
-                  {filterKey.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
-                  {filters[filterKey] && (
+            {Object.entries(availableOptions).map(([filterType, options]) => (
+              <div key={filterType} className="filter-group">
+                <div className="filter-label">
+                  {getDisplayName(filterType)}
+                  <span className="info-tooltip" data-tooltip={tooltipTexts[filterType]}>
+                    (i)
+                  </span>
+                  {filters[filterType] && (
                     <button
                       className="clear-button"
-                      onClick={() => clearFilter(filterKey)}
+                      onClick={() => clearFilter(filterType)}
                     >
-                      ×
+                      X
                     </button>
                   )}
-                </h3>
-                <div className="select-wrapper">
-                  <select
-                    value={filters[filterKey] || ""}
-                    onChange={(e) => handleFilterChange(filterKey, e.target.value)}
-                    className="filter-select"
-                  >
-                    <option value=""> </option>
-                    {availableOptions[filterKey]?.map((option) => (
-                      <option key={option} value={option}>{option}</option>
-                    ))}
-                  </select>
                 </div>
+                <select
+                  className="filter-select"
+                  value={filters[filterType] || ""}
+                  onChange={(e) => handleFilterChange(filterType, e.target.value)}
+                >
+                  <option value="">Select {getDisplayName(filterType)}</option>
+                  {options.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
               </div>
             ))}
           </div>
@@ -125,13 +149,11 @@ const SFPSelectorTool = () => {
               <thead>
                 <tr>
                   <th>Model</th>
-                  <th>Data Rate</th>
-                  <th>Tx Medium</th>
-                  <th># of Fibers</th>
-                  <th>Optics</th>
-                  <th>Path Length</th>
-                  <th>Tx</th>
-                  <th>Rx</th>
+                  {Object.keys(availableOptions).map((key) => (
+                    <th key={key}>
+                      {getDisplayName(key)}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>

@@ -17,6 +17,19 @@ const MediaConverterSelectorTool = () => {
     Operating_Power: ['12 to 24 VDC', '24 VAC', '48 to 56 VDC', '8 to 15 VDC', '8 to 24 VDC', '8 to 24 VDC, 24 VAC', '9 tp 24 VDC, 24 VAC']
   });
 
+  const tooltipTexts = {
+    Multi_Rate: "Whether the converter supports multiple data rates",
+    Data_Rate: "Supported data rates (Fast Ethernet or Gigabit Ethernet)",
+    PoE: "Power over Ethernet capability",
+    Fiber: "Type of fiber supported (Multimode or Single mode)",
+    Number_Of_Fibers: "Number of fibers in the connection",
+    Optics: "Type of optical connector",
+    Tx: "Transmitter wavelength",
+    Single_Dual_Quad: "Number of ports (Single, Dual, or Quad)",
+    Package: "Form factor or packaging type",
+    Operating_Power: "Required input power for the converter"
+  };
+
   const handleClick = () => {
     setSelectorTool(!selectorTool);
   }
@@ -79,7 +92,17 @@ const MediaConverterSelectorTool = () => {
     };
     setAvailableOptions(newOptions);
   };
-  
+
+  const getDisplayName = (filterType) => {
+    switch(filterType) {
+      case 'Multi_Rate': return 'Multi Rate';
+      case 'Data_Rate': return 'Data Rate';
+      case 'Number_Of_Fibers': return 'Number of Fibers';
+      case 'Single_Dual_Quad': return 'Single/Dual/Quad';
+      case 'Operating_Power': return 'Operating Power';
+      default: return filterType;
+    }
+  };
 
   return (
     <div className="tool-container">
@@ -97,7 +120,10 @@ const MediaConverterSelectorTool = () => {
             {Object.entries(availableOptions).map(([filterType, options]) => (
               <div key={filterType} className="filter-group">
                 <div className="filter-label">
-                  {filterType}
+                  {getDisplayName(filterType)}
+                  <span className="info-tooltip" data-tooltip={tooltipTexts[filterType]}>
+                    (i)
+                  </span>
                   {filters[filterType] && (
                     <button
                       className="clear-button"
@@ -113,7 +139,7 @@ const MediaConverterSelectorTool = () => {
                   value={filters[filterType] || ""}
                   onChange={(e) => handleFilterChange(filterType, e.target.value)}
                 >
-                  <option value="">Select {filterType}</option>
+                  <option value="">Select {getDisplayName(filterType)}</option>
                   {options.map((option) => (
                     <option key={option} value={option}>
                       {option}
@@ -131,7 +157,7 @@ const MediaConverterSelectorTool = () => {
                   <th>Model</th>
                   {Object.keys(availableOptions).map((key) => (
                     <th key={key}>
-                      {key}
+                      {getDisplayName(key)}
                     </th>
                   ))}
                 </tr>

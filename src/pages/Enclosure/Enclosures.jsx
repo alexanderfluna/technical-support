@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navigation/Navbar';
 
 const CardCage = () => {
+  const [selectorTool, setSelectorTool] = useState(true); // Always show for this component
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     slots: [],
@@ -9,6 +10,13 @@ const CardCage = () => {
     PSU: [],
     power: []
   });
+
+  const tooltipTexts = {
+    slots: "Number of available card slots in the enclosure",
+    voltage: "Input voltage range supported",
+    PSU: "Power supply unit configuration",
+    power: "Total output power capacity"
+  };
 
   const products = [
     { model: "C1US", slots: 14, power: "70W", voltage: "90-264 VAC", PSU: "1 PSU", outputVoltage: "12 VDC" },
@@ -39,7 +47,6 @@ const CardCage = () => {
       )
     );
     setFilteredProducts(newFilteredProducts);
-
     updateAvailableOptions(newFilteredProducts);
   };
 
@@ -50,83 +57,108 @@ const CardCage = () => {
   };
 
   const resetFilters = () => {
-    setFilters({ slots: null, voltage: null, PSU: null, power: null });
-    setFilteredProducts(products); 
-    updateAvailableOptions(products); 
+    setFilters({ 
+      slots: null, 
+      voltage: null, 
+      PSU: null, 
+      power: null 
+    });
+    setFilteredProducts(products);
+    updateAvailableOptions(products);
   };
 
   const updateAvailableOptions = (filteredProducts) => {
-    const slots = [...new Set(filteredProducts.map((product) => product.slots))];
-    const voltage = [...new Set(filteredProducts.map((product) => product.voltage))];
-    const PSU = [...new Set(filteredProducts.map((product) => product.PSU))];
-    const power = [...new Set(filteredProducts.map((product) => product.power))];
-    setAvailableOptions({ slots, voltage, PSU, power });
+    const options = {
+      slots: [...new Set(filteredProducts.map((product) => product.slots))],
+      voltage: [...new Set(filteredProducts.map((product) => product.voltage))],
+      PSU: [...new Set(filteredProducts.map((product) => product.PSU))],
+      power: [...new Set(filteredProducts.map((product) => product.power))]
+    };
+    setAvailableOptions(options);
+  };
+
+  const getDisplayName = (filterType) => {
+    switch(filterType) {
+      case 'PSU': return 'Power Supply';
+      case 'voltage': return 'Input Voltage';
+      case 'power': return 'Output Power';
+      case 'slots': return 'Card Slots';
+      default: return filterType;
+    }
   };
 
   return (
     <div className="main-container">
-      <Navbar/>
+      <Navbar />
       <div className="tool-container">
-        <h1 className="faq-title" style={{fontSize: "3rem"}}>Enclosure</h1>
-        
-        <div className="filter-grid">
-          <button className="reset-button" onClick={resetFilters}>
-            Reset Filters
-          </button>
+        <h1 className="faq-title" style={{fontSize: "3rem"}}>Card Cage</h1>
+        {selectorTool && (
+          <>
+            <div className="filter-grid">
+              <button className="reset-button" onClick={resetFilters}>
+                Reset
+              </button>
 
-          {["slots", "voltage", "power", "PSU"].map((filterType) => (
-            <div key={filterType} className="filter-group">
-              <div className="filter-label">
-                {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
-                {filters[filterType] && (
-                  <button className="clear-button" onClick={() => clearFilter(filterType)}>
-                    ×
-                  </button>
-                )}
-              </div>
-              <select
-                className="filter-select"
-                name={filterType}
-                value={filters[filterType] || ""}
-                onChange={(e) => handleFilterChange(filterType, e.target.value)}
-              >
-                <option value="">Select {filterType.charAt(0).toUpperCase() + filterType.slice(1)}</option>
-                {availableOptions[filterType]?.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ))}
-        </div>
-
-        <div className="table-wrapper">
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>Model</th>
-                <th>Slots</th>
-                <th>Input Voltage</th>
-                <th>Output Voltage</th>
-                <th>Output Power</th>
-                <th>PSU</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredProducts.map((product, index) => (
-                <tr key={index}>
-                  <td>{product.model}</td>
-                  <td>{product.slots}</td>
-                  <td>{product.voltage}</td>
-                  <td>{product.outputVoltage}</td>
-                  <td>{product.power}</td>
-                  <td>{product.PSU}</td>
-                </tr>
+              {Object.entries(availableOptions).map(([filterType, options]) => (
+                <div key={filterType} className="filter-group">
+                  <div className="filter-label">
+                    {getDisplayName(filterType)}
+                    <span className="info-tooltip" data-tooltip={tooltipTexts[filterType]}>
+                      (i)
+                    </span>
+                    {filters[filterType] && (
+                      <button
+                        className="clear-button"
+                        onClick={() => clearFilter(filterType)}
+                      >
+                        X
+                      </button>
+                    )}
+                  </div>
+                  <select
+                    className="filter-select"
+                    value={filters[filterType] || ""}
+                    onChange={(e) => handleFilterChange(filterType, e.target.value)}
+                  >
+                    <option value="">Select {getDisplayName(filterType)}</option>
+                    {options.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               ))}
-            </tbody>
-          </table>
-        </div>
+            </div>
+
+            <div className="table-wrapper">
+              <table className="data-table">
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>Card Slots</th>
+                    <th>Input Voltage</th>
+                    <th>Output Voltage</th>
+                    <th>Output Power</th>
+                    <th>Power Supply</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredProducts.map((product, index) => (
+                    <tr key={index}>
+                      <td>{product.model}</td>
+                      <td>{product.slots}</td>
+                      <td>{product.voltage}</td>
+                      <td>{product.outputVoltage}</td>
+                      <td>{product.power}</td>
+                      <td>{product.PSU}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

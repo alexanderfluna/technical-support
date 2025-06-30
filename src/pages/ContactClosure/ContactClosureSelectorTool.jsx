@@ -12,6 +12,20 @@ const ContactClosureSelectorTool = () => {
         numberOfChannels: [],
         bidirectional: [],
     });
+
+    const tooltipTexts = {
+        fiber: "Type of fiber connection (Multimode or Single mode)",
+        Latching_Or_NonLatching: "Whether the contact closure is latching or non-latching",
+        inputContactSupervision: "Presence of input contact supervision",
+        summaryFaultRelay: "Presence of summary fault relay",
+        numberOfChannels: "Number of contact closure channels",
+        bidirectional: "Whether the contact closure supports bidirectional communication"
+    };
+
+    const handleClick = () => {
+        setSelectorTool(!selectorTool);
+    }
+    
     const [filters, setFilters] = useState({
         fiber: null,
         Latching_Or_NonLatching: null,
@@ -21,10 +35,6 @@ const ContactClosureSelectorTool = () => {
         bidirectional: null,
     });
 
-    const handleClick = () => {
-        setSelectorTool(!selectorTool);
-    }
-    
     useEffect(() => {
         window.scrollTo(0, 0);
         setFilteredProducts(products); 
@@ -41,7 +51,6 @@ const ContactClosureSelectorTool = () => {
           )
         );
         setFilteredProducts(newFilteredProducts);
-    
         updateAvailableOptions(newFilteredProducts);
     };
 
@@ -52,20 +61,39 @@ const ContactClosureSelectorTool = () => {
     };
     
     const resetFilters = () => {
-        setFilters({ fiber: null, Latching_Or_NonLatching: null, inputContactSupervision: null, summaryFaultRelay: null, numberOfChannels: null, bidirectional: null});
+        setFilters({ 
+            fiber: null, 
+            Latching_Or_NonLatching: null, 
+            inputContactSupervision: null, 
+            summaryFaultRelay: null, 
+            numberOfChannels: null, 
+            bidirectional: null
+        });
         setFilteredProducts(products); 
         updateAvailableOptions(products); 
     };
 
     const updateAvailableOptions = (filteredProducts) => {
-        const fiber = [...new Set(filteredProducts.map((product) => product.fiber))];
-        const Latching_Or_NonLatching = [...new Set(filteredProducts.map((product) => product.Latching_Or_NonLatching))];
-        const inputContactSupervision = [...new Set(filteredProducts.map((product) => product.inputContactSupervision))];
-        const summaryFaultRelay = [...new Set(filteredProducts.map((product) => product.summaryFaultRelay))];
-        const numberOfChannels = [...new Set(filteredProducts.map((product) => product.numberOfChannels))];
-        const bidirectional = [...new Set(filteredProducts.map((product) => product.bidirectional))];
-    
-        setAvailableOptions({ fiber, Latching_Or_NonLatching, inputContactSupervision, summaryFaultRelay, numberOfChannels, bidirectional });
+        const options = {
+            fiber: [...new Set(filteredProducts.map((product) => product.fiber))],
+            Latching_Or_NonLatching: [...new Set(filteredProducts.map((product) => product.Latching_Or_NonLatching))],
+            inputContactSupervision: [...new Set(filteredProducts.map((product) => product.inputContactSupervision))],
+            summaryFaultRelay: [...new Set(filteredProducts.map((product) => product.summaryFaultRelay))],
+            numberOfChannels: [...new Set(filteredProducts.map((product) => product.numberOfChannels))],
+            bidirectional: [...new Set(filteredProducts.map((product) => product.bidirectional))]
+        };
+        setAvailableOptions(options);
+    };
+
+    const getDisplayName = (filterType) => {
+        switch(filterType) {
+            case 'Latching_Or_NonLatching': return 'Latching or Non-Latching';
+            case 'inputContactSupervision': return 'Input Contact Supervision';
+            case 'summaryFaultRelay': return 'Summary Fault Relay';
+            case 'numberOfChannels': return 'Number of Channels';
+            case 'bidirectional': return 'Bidirectional';
+            default: return filterType;
+        }
     };
 
     return (
@@ -76,27 +104,29 @@ const ContactClosureSelectorTool = () => {
                 <>
                     <div className="filter-grid">
                         <button className="reset-button" onClick={resetFilters}>
-                            Reset Filters
+                            Reset
                         </button>
 
-                        {["fiber", "Latching_Or_NonLatching", "inputContactSupervision", "summaryFaultRelay", "numberOfChannels", "bidirectional"].map((filterType) => (
+                        {Object.entries(availableOptions).map(([filterType, options]) => (
                             <div key={filterType} className="filter-group">
                                 <div className="filter-label">
-                                    {filterType.replace(/([A-Z])/g, ' $1').trim().replace(/\b\w/g, char => char.toUpperCase())}
+                                    {getDisplayName(filterType)}
+                                    <span className="info-tooltip" data-tooltip={tooltipTexts[filterType]}>
+                                        (i)
+                                    </span>
                                     {filters[filterType] && (
                                         <button className="clear-button" onClick={() => clearFilter(filterType)}>
-                                            ×
+                                            X
                                         </button>
                                     )}
                                 </div>
                                 <select
                                     className="filter-select"
-                                    name={filterType}
                                     value={filters[filterType] || ""}
                                     onChange={(e) => handleFilterChange(filterType, e.target.value)}
                                 >
-                                    <option value="">Select {filterType.replace(/([A-Z])/g, ' $1')}</option>
-                                    {availableOptions[filterType]?.map((option) => (
+                                    <option value="">Select {getDisplayName(filterType)}</option>
+                                    {options.map((option) => (
                                         <option key={option} value={option}>
                                             {option}
                                         </option>
@@ -111,12 +141,11 @@ const ContactClosureSelectorTool = () => {
                             <thead>
                                 <tr>
                                     <th>Model</th>
-                                    <th>Fiber</th>
-                                    <th>Latching or Non-Latching</th>
-                                    <th>Input Contact Supervision</th>
-                                    <th>Summary Fault Relay</th>
-                                    <th>Number of Channels</th>
-                                    <th>Bidirectional</th>
+                                    {Object.keys(availableOptions).map((key) => (
+                                        <th key={key}>
+                                            {getDisplayName(key)}
+                                        </th>
+                                    ))}
                                 </tr>
                             </thead>
                             <tbody>

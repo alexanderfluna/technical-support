@@ -90,25 +90,25 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
                 {isFAQExpanded("raid") && (
                     <>
                         <p><strong>1.</strong> Take note of the following RAID configurations.</p>
-                        <li style={{paddingLeft: "60px"}}><strong>RAID 0</strong> requires at least 2 drives. One drive failing corrupts the entire RAID.</li>
-                        <li style={{paddingLeft: "60px"}}><strong>RAID 1</strong> requires at least 2 drives and can lose up to half the drives. Replacing the drive(s) should automatically rebuild the RAID.</li>
-                        <li style={{paddingLeft: "60px"}}><strong>RAID 5</strong> requires at least 3 drives and can lose up to one drive. Replacing the drive should automatically rebuild the RAID.</li>
-                        <li style={{paddingLeft: "60px"}}><strong>RAID 6</strong> requires at least 4 drives and can lose up to two. Replacing the drive(s) should automatically rebuild the RAID.</li>
-                        <li style={{paddingLeft: "60px"}}><strong>RAID 10</strong> requires at least 4 drives and can lose up to half the drives. Replacing the drive(s) should automatically rebuild the RAID.</li>
+                        <p style={{paddingLeft: "60px"}}>— <strong>RAID 0</strong> requires at least 2 drives. One drive failing corrupts the entire RAID.</p>
+                        <p style={{paddingLeft: "60px"}}>— <strong>RAID 1</strong> requires at least 2 drives and can lose up to half the drives. Replacing the drive(s) should automatically rebuild the RAID.</p>
+                        <p style={{paddingLeft: "60px"}}>— <strong>RAID 5</strong> requires at least 3 drives and can lose up to one drive. Replacing the drive should automatically rebuild the RAID.</p>
+                        <p style={{paddingLeft: "60px"}}>— <strong>RAID 6</strong> requires at least 4 drives and can lose up to two. Replacing the drive(s) should automatically rebuild the RAID.</p>
+                        <p style={{paddingLeft: "60px"}}>— <strong>RAID 10</strong> requires at least 4 drives and can lose up to half the drives. Replacing the drive(s) should automatically rebuild the RAID.</p>
                         <p><strong>2.</strong> Using one of the following, confirm the server's current RAID configuration and which HDD has failed. </p>
-                        <li style={{paddingLeft: "60px"}}>Razberi Monitor Cloud</li>
-                        <li style={{paddingLeft: "60px"}}>Razberi Monitor -- System Info</li>
-                        <li style={{paddingLeft: "60px"}}>BIOS</li>
-                        <li style={{paddingLeft: "60px"}}>Device Manager</li>
-                        <li style={{paddingLeft: "60px"}}>Intel Rapid Storage Technology</li>
-                        <li style={{paddingLeft: "60px"}}>iDRAC</li>
-                        <li style={{paddingLeft: "60px"}}>Diskpart</li>
+                        <p style={{paddingLeft: "60px"}}>— Razberi Monitor Cloud</p>
+                        <p style={{paddingLeft: "60px"}}>— Razberi Monitor -- System Info</p>
+                        <p style={{paddingLeft: "60px"}}>— BIOS</p>
+                        <p style={{paddingLeft: "60px"}}>— Device Manager</p>
+                        <p style={{paddingLeft: "60px"}}>— Intel Rapid Storage Technology</p>
+                        <p style={{paddingLeft: "60px"}}>— iDRAC</p>
+                        <p style={{paddingLeft: "60px"}}>— Diskpart</p>
                         <p><strong>3.</strong> Contact technical support to check the server's warranty status. Covered drives receive free replacements. Out-of-warranty drives must be purchased separately.</p>
                         <p><strong>4.</strong> If the RAID is corrupted, delete the virtual disk, create a new virtual disk with each HDD selected, and format the volume as NTFS using one the following. </p>
-                        <li style={{paddingLeft: "60px"}}>BIOS</li>
-                        <li style={{paddingLeft: "60px"}}>Disk Management</li>
-                        <li style={{paddingLeft: "60px"}}>Intel Rapid Storage Technology</li>
-                        <li style={{paddingLeft: "60px"}}>iDRAC</li>
+                        <p style={{paddingLeft: "60px"}}>— BIOS</p>
+                        <p style={{paddingLeft: "60px"}}>— Disk Management</p>
+                        <p style={{paddingLeft: "60px"}}>— Intel Rapid Storage Technology</p>
+                        <p style={{paddingLeft: "60px"}}>— iDRAC</p>
                     </>
                 )}
             </div>
@@ -135,11 +135,12 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
                 </h1>
                 {isFAQExpanded("nic") && (
                     <>
-                        <p><strong>1.</strong> Document if (1) the LEDs illuminate on the NIC when an Ethernet connection is made and (2) whether the NIC can be successfully pinged.</p>
-                        <p><strong>2.</strong> Enter "View network connections" in the Windows search box.</p>
-                        <p><strong>3.</strong> In Network Connections, disable and reenable the NIC.</p>
-                        <p><strong>4.</strong> Select the 'Diagnose this connection' option for the NIC to diagnose the issue.</p>
-                        <p><strong>5.</strong> In Device Manager, verify what drivers the NIC has. Contact technical support to determine if all of the necessary drivers are installed for the NIC.</p>
+                        <p><strong>1.</strong> Check if the NIC's LEDs illuminate when an Ethernet connection is made.</p>
+                        <p><strong>2.</strong> Verify if the NIC can be pinged successfully.</p>
+                        <p><strong>3.</strong> Enter "View network connections" in the Windows search box.</p>
+                        <p><strong>4.</strong> In Network Connections, disable and reenable the NIC.</p>
+                        <p><strong>5.</strong> Select the 'Diagnose this connection' option for the NIC to diagnose the issue.</p>
+                        <p><strong>6.</strong> In Device Manager, verify what drivers the NIC has. Contact technical support to determine if all of the necessary drivers are installed for the NIC.</p>
                     </>
                 )}
             </div>
@@ -151,7 +152,7 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
                 </h1>
                 {isFAQExpanded("os") && (
                     <>
-                        <p><strong>1.</strong> Determine the OS image installation date. In PowerShell, type the command <strong>Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object InstallDate</strong>. Make sure this matches what is in Razberi Monitor Cloud. </p>
+                        <p><strong>1.</strong> As needed, to determine the OS image installation date, type the command <strong>Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object InstallDate</strong> in PowerShell, and verify this matches in Razberi Monitor Cloud. </p>
                         <p><strong>2.</strong> Open Disk Management to confirm there is only one OS partition and that the RAID is healthy.</p>
                         <p><strong>3.</strong> Review the server's alert logs to identify the cause of the OS issue.</p>
                         <p style={{paddingLeft: "60px"}}><strong>3.1.</strong> Check the Razberi Monitor alert logs.</p>
@@ -171,11 +172,12 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
                 </h1>
                 {isFAQExpanded("rdp") && (
                     <>
-                        <p><strong>1.</strong> Enable Remote Desktop in the server's settings.</p>
-                        <p><strong>2.</strong> Connect a PC to a NIC on the server.</p>
-                        <p><strong>3.</strong> Open the Remote Desktop Connection software on the PC.</p>
-                        <p><strong>4.</strong> Enter the IP address of the server's NIC.</p>
-                        <p><strong>5.</strong> Enter the server's Windows username and password.</p>
+                        <p><strong>1.</strong> Confirm that port 3389 is not blocked on the PC or server.</p>
+                        <p><strong>2.</strong> Enable Remote Desktop in the server's Settings.</p>
+                        <p><strong>3.</strong> Connect the PC to a NIC on the server.</p>
+                        <p><strong>4.</strong> Open the Remote Desktop Connection software on the PC.</p>
+                        <p><strong>5.</strong> Enter the IP address of the server's NIC.</p>
+                        <p><strong>6.</strong> Enter the server's Windows username and password.</p>
                     </>
                 )}
             </div>
@@ -212,27 +214,27 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
                 {isFAQExpanded("camera-defense") && (
                     <>
                         <p><strong>1. Set up Device Binding</strong></p>
-                        <li style={{paddingLeft: "60px"}}>Master Device Binding: Enable or Disable All</li>
-                        <li style={{paddingLeft: "60px"}}>Bind a specific port to the MAC address of the connected device.</li>
+                        <p style={{paddingLeft: "60px"}}>Master Device Binding: Enable or Disable All</p>
+                        <p style={{paddingLeft: "60px"}}>Bind a specific port to the MAC address of the connected device.</p>
                         <p><strong>2. Set up the Device Groups</strong></p>
-                        <li style={{paddingLeft: "60px"}}>A device group is a set of similar devices assigned the same security policies. By default, all active ports are assigned to the "Cameras" device group. If cameras are the only devices connected to the SSIQ then hit "Save" to save the settings, otherwise:</li>
-                        <li style={{paddingLeft: "60px"}}>Create a new device group or modify existing device group(s) giving each device group a unique name.</li>
-                        <li style={{paddingLeft: "60px"}}>Add or modify the ports to be associated with each device group.</li>
-                        <li style={{paddingLeft: "60px"}}>Review all changes and then hit "Save" to save the settings.</li>
-                        <li style={{paddingLeft: "60px"}}>Note: Deleting an existing device group removes its firewall and whitelist settings. Changing the name of an existing device group causes that device group to be deleted and a new device group to be created.</li>
+                        <p style={{paddingLeft: "60px"}}>A device group is a set of similar devices assigned the same security policies. By default, all active ports are assigned to the "Cameras" device group. If cameras are the only devices connected to the SSIQ then hit "Save" to save the settings, otherwise:</p>
+                        <p style={{paddingLeft: "60px"}}>Create a new device group or modify existing device group(s) giving each device group a unique name.</p>
+                        <p style={{paddingLeft: "60px"}}>Add or modify the ports to be associated with each device group.</p>
+                        <p style={{paddingLeft: "60px"}}>Review all changes and then hit "Save" to save the settings.</p>
+                        <p style={{paddingLeft: "60px"}}>Note: Deleting an existing device group removes its firewall and whitelist settings. Changing the name of an existing device group causes that device group to be deleted and a new device group to be created.</p>
                         <p><strong>3. Set up the Firewall</strong></p>
-                        <li style={{paddingLeft: "60px"}}>Use the firewall feature to limit traffic to video services and to disable discovery services. For each device group:</li>
-                        <li style={{paddingLeft: "60px"}}>Select HTTP, HTTPS, and RTSP (Real-Time Streaming Protocol) services for device groups with cameras.</li>
-                        <li style={{paddingLeft: "60px"}}>Disable discovery services to prevent cyber attackers from finding devices: Ping, DHCP, NTP, Telnet, DNS, FTP, TFTP, SSH, SMTP, Bonjour</li>
-                        <li style={{paddingLeft: "60px"}}>Allow additional services as needed providing the name, protocol, and port.</li>
+                        <p style={{paddingLeft: "60px"}}>Use the firewall feature to limit traffic to video services and to disable discovery services. For each device group:</p>
+                        <p style={{paddingLeft: "60px"}}>Select HTTP, HTTPS, and RTSP (Real-Time Streaming Protocol) services for device groups with cameras.</p>
+                        <p style={{paddingLeft: "60px"}}>Disable discovery services to prevent cyber attackers from finding devices: Ping, DHCP, NTP, Telnet, DNS, FTP, TFTP, SSH, SMTP, Bonjour</p>
+                        <p style={{paddingLeft: "60px"}}>Allow additional services as needed providing the name, protocol, and port.</p>
                         <p><strong>4. Set up the Internet Protection</strong></p>
-                        <li style={{paddingLeft: "60px"}}>A whitelist limits traffic to specified networks by device group. The default option of Internet Protection prevents devices from communicating over routable networks such as the Internet.</li>
-                        <li style={{paddingLeft: "60px"}}>Use Internet Protection to prevent devices from reaching routable networks, otherwise</li>
-                        <li style={{paddingLeft: "60px"}}>Specify the allowed networks using sub-masks and/or individual IP addresses.</li>
-                        <li style={{paddingLeft: "60px"}}>Enable alerts for devices that attempt to communicate outside of the whitelist.</li>
+                        <p style={{paddingLeft: "60px"}}>A whitelist limits traffic to specified networks by device group. The default option of Internet Protection prevents devices from communicating over routable networks such as the Internet.</p>
+                        <p style={{paddingLeft: "60px"}}>Use Internet Protection to prevent devices from reaching routable networks, otherwise</p>
+                        <p style={{paddingLeft: "60px"}}>Specify the allowed networks using sub-masks and/or individual IP addresses.</p>
+                        <p style={{paddingLeft: "60px"}}>Enable alerts for devices that attempt to communicate outside of the whitelist.</p>
                         <p><strong>5. Set up the Password Protection</strong></p>
-                        <li style={{paddingLeft: "60px"}}>Enable Password Monitoring: This feature monitors your devices to ensure they are not using default, user prohibited, or common passwords found on the NIST Bad Password List. By default, Password Protection is enabled.</li>
-                        <li style={{paddingLeft: "60px"}}>Device default and common passwords are tested by default. You can optionally add additional prohibited passwords below. (Limit 48)</li>
+                        <p style={{paddingLeft: "60px"}}>Enable Password Monitoring: This feature monitors your devices to ensure they are not using default, user prohibited, or common passwords found on the NIST Bad Password List. By default, Password Protection is enabled.</p>
+                        <p style={{paddingLeft: "60px"}}>Device default and common passwords are tested by default. You can optionally add additional prohibited passwords below. (Limit 48)</p>
                     </>
                 )}
             </div>

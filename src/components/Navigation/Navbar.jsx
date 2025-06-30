@@ -16,7 +16,7 @@ const Navbar = ({ onCategoryChange }) => {
   const handleMouseClick = (category) => {
     const routeMap = {
       "technical-support": "/technical-support",
-      "server": "/technical-support/razberi",
+      "server": "/technical-support/server",
       "ethernet-switch": "/technical-support/ethernet-switch",
       "media-converter": "/technical-support/media-converter",
       "ethernet-extender": "/technical-support/ethernet-extender",
@@ -27,7 +27,7 @@ const Navbar = ({ onCategoryChange }) => {
       "sfp": "/technical-support/sfp",
       "power-supply": "/technical-support/power-supply",
       "poe-injector": "/technical-support/poe-injector",
-      "card-cage": "/technical-support/enclosure",
+      "card-cage": "/technical-support/card-cage",
       "about-us": "/technical-support/about-us",
     };
     
@@ -93,7 +93,7 @@ const Navbar = ({ onCategoryChange }) => {
           { name: 'SFP', id: 'sfp' },
           { name: 'Power Supply', id: 'power-supply' },
           { name: 'PoE Injector', id: 'poe-injector' },
-          { name: 'Enclosure', id: 'card-cage' }
+          { name: 'Card Cage', id: 'card-cage' }
         ];
       default:
         return [];
@@ -120,7 +120,7 @@ const Navbar = ({ onCategoryChange }) => {
 
       <div className={`categories ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
         <div className="main-category" onClick={() => handleMouseClick("server")}>
-          <span>Edge Computing</span>
+          <span>Server</span>
         </div>
 
         <div 
@@ -143,7 +143,7 @@ const Navbar = ({ onCategoryChange }) => {
         </div>
 
         <div className="main-category" onClick={() => handleMouseClick("wireless")}>
-          <span>Wireless Ethernet</span>
+          <span>Wireless Radio</span>
         </div>
 
         <div 

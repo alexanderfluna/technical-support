@@ -11,6 +11,15 @@ const EthernetExtenderSelectorTool = () => {
     cable: [],
     poeInjection: []
   });
+
+  const tooltipTexts = {
+    position: "Position in the network (Central or Remote)",
+    channels: "Number of Ethernet channels supported",
+    formFactor: "Physical form factor of the extender",
+    cable: "Type of cable supported",
+    poeInjection: "Power over Ethernet injection capability"
+  };
+
   const [filters, setFilters] = useState({
     position: null,
     channels: null,
@@ -39,7 +48,6 @@ const EthernetExtenderSelectorTool = () => {
       )
     );
     setFilteredProducts(newFilteredProducts);
-
     updateAvailableOptions(newFilteredProducts);
   };
 
@@ -50,19 +58,35 @@ const EthernetExtenderSelectorTool = () => {
   };
 
   const resetFilters = () => {
-    setFilters({ position: null, channels: null, formFactor: null, cable: null, poeInjection: null});
-    setFilteredProducts(products); 
-    updateAvailableOptions(products); 
+    setFilters({ 
+      position: null, 
+      channels: null, 
+      formFactor: null, 
+      cable: null, 
+      poeInjection: null
+    });
+    setFilteredProducts(products);
+    updateAvailableOptions(products);
   };
 
   const updateAvailableOptions = (filteredProducts) => {
-    const position = [...new Set(filteredProducts.map((product) => product.position))];
-    const channels = [...new Set(filteredProducts.map((product) => product.channels))];
-    const formFactor = [...new Set(filteredProducts.map((product) => product.formFactor))];
-    const cable = [...new Set(filteredProducts.map((product) => product.cable))];
-    const poeInjection = [...new Set(filteredProducts.map((product) => product.poeInjection))];
- 
-    setAvailableOptions({ position, channels, formFactor, cable, poeInjection });
+    const options = {
+      position: [...new Set(filteredProducts.map((product) => product.position))],
+      channels: [...new Set(filteredProducts.map((product) => product.channels))],
+      formFactor: [...new Set(filteredProducts.map((product) => product.formFactor))],
+      cable: [...new Set(filteredProducts.map((product) => product.cable))],
+      poeInjection: [...new Set(filteredProducts.map((product) => product.poeInjection))]
+    };
+    setAvailableOptions(options);
+  };
+
+  const getDisplayName = (filterType) => {
+    switch(filterType) {
+      case 'poeInjection': return 'PoE Injection';
+      case 'formFactor': return 'Form Factor';
+      default: 
+        return filterType.charAt(0).toUpperCase() + filterType.slice(1);
+    }
   };
 
   return (
@@ -71,21 +95,21 @@ const EthernetExtenderSelectorTool = () => {
       {selectorTool && (
         <>
           <div className="filter-grid">
-            <button 
-              className="reset-button" 
-              onClick={resetFilters}
-            >
+            <button className="reset-button" onClick={resetFilters}>
               Reset
             </button>
 
-            {['position', 'channels', 'formFactor', 'cable', 'poeInjection'].map((filterKey) => (
-              <div key={filterKey} className="filter-group">
+            {Object.entries(availableOptions).map(([filterType, options]) => (
+              <div key={filterType} className="filter-group">
                 <div className="filter-label">
-                  {filterKey.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
-                  {filters[filterKey] && (
+                  {getDisplayName(filterType)}
+                  <span className="info-tooltip" data-tooltip={tooltipTexts[filterType]}>
+                    (i)
+                  </span>
+                  {filters[filterType] && (
                     <button
                       className="clear-button"
-                      onClick={() => clearFilter(filterKey)}
+                      onClick={() => clearFilter(filterType)}
                     >
                       X
                     </button>
@@ -93,13 +117,14 @@ const EthernetExtenderSelectorTool = () => {
                 </div>
                 <select
                   className="filter-select"
-                  name={filterKey}
-                  value={filters[filterKey] || ""}
-                  onChange={(e) => handleFilterChange(filterKey, e.target.value)}
+                  value={filters[filterType] || ""}
+                  onChange={(e) => handleFilterChange(filterType, e.target.value)}
                 >
-                  <option value="">Select {filterKey.replace(/([A-Z])/g, ' $1').toLowerCase()}</option>
-                  {availableOptions[filterKey]?.map((option) => (
-                    <option key={option} value={option}>{option}</option>
+                  <option value="">Select {getDisplayName(filterType)}</option>
+                  {options.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -110,12 +135,12 @@ const EthernetExtenderSelectorTool = () => {
             <table className="data-table">
               <thead>
                 <tr>
-                  <th>Part Number</th>
-                  <th>Position</th>
-                  <th>Channels</th>
-                  <th>Form Factor</th>
-                  <th>Cable</th>
-                  <th>Poe Injection</th>
+                  <th>Model</th>
+                  {Object.keys(availableOptions).map((key) => (
+                    <th key={key}>
+                      {getDisplayName(key)}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>

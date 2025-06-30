@@ -39,6 +39,7 @@ const EthernetExtender = () => {
       <div className="page">
         <div className="main-content">
           <h1 className="faq-title" style={{fontSize: "3rem"}}>Ethernet Extender</h1>
+          <p className="hero-subtitle"><strong>Selector Tool</strong> — Identify the perfect solution for your requirements.</p>
           <div 
             id="ethernet-extender-selector-tool" 
             ref={selectorToolRef}
@@ -46,6 +47,7 @@ const EthernetExtender = () => {
           >
             <EthernetExtenderSelectorTool />
           </div>
+          <p className="hero-subtitle"><strong>Technical Support</strong> — Find answers to common technical questions.</p>
           <div 
             id="extender-troubleshooting" 
             ref={troubleshootingRef}
@@ -53,7 +55,6 @@ const EthernetExtender = () => {
           >
             <EthernetExtenderTroubleshooting activeSubSection={activeSubSection} />
           </div>
-
           <div 
             id="extender-relevant-information" 
             ref={relevantInfoRef}

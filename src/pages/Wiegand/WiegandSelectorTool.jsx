@@ -8,6 +8,11 @@ const WiegandSelectorTool = () => {
     Central_Remote: []
   });
 
+  const tooltipTexts = {
+    fiber: "Type of fiber connection (Multimode or Single mode)",
+    Central_Remote: "Whether the unit is a Central or Remote device"
+  };
+
   const products = [
     { model: "FDW1000M/C", fiber: "Multimode", Central_Remote: "Central" },
     { model: "FDW1000M/R", fiber: "Multimode", Central_Remote: "Remote" },
@@ -44,7 +49,6 @@ const WiegandSelectorTool = () => {
       )
     );
     setFilteredProducts(newFilteredProducts);
-
     updateAvailableOptions(newFilteredProducts);
   };
 
@@ -55,15 +59,28 @@ const WiegandSelectorTool = () => {
   };
 
   const resetFilters = () => {
-    setFilters({ fiber: null, Central_Remote: null });
+    setFilters({ 
+      fiber: null, 
+      Central_Remote: null 
+    });
     setFilteredProducts(products);
     updateAvailableOptions(products);
   };
 
   const updateAvailableOptions = (filteredProducts) => {
-    const fiber = [...new Set(filteredProducts.map((product) => product.fiber))];
-    const Central_Remote = [...new Set(filteredProducts.map((product) => product.Central_Remote))];
-    setAvailableOptions({ fiber, Central_Remote });
+    const options = {
+      fiber: [...new Set(filteredProducts.map((product) => product.fiber))],
+      Central_Remote: [...new Set(filteredProducts.map((product) => product.Central_Remote))]
+    };
+    setAvailableOptions(options);
+  };
+
+  const getDisplayName = (filterType) => {
+    switch(filterType) {
+      case 'Central_Remote': return 'Central/Remote';
+      case 'fiber': return 'Fiber';
+      default: return filterType;
+    }
   };
 
   return (
@@ -72,17 +89,17 @@ const WiegandSelectorTool = () => {
       {selectorTool && (
         <>
           <div className="filter-grid">
-            <button 
-              className="reset-button" 
-              onClick={resetFilters}
-            >
+            <button className="reset-button" onClick={resetFilters}>
               Reset
             </button>
 
-            {["fiber", "Central_Remote"].map((filterType) => (
+            {Object.entries(availableOptions).map(([filterType, options]) => (
               <div key={filterType} className="filter-group">
                 <div className="filter-label">
-                  {filterType === 'Central_Remote' ? 'Central/Remote' : filterType.charAt(0).toUpperCase() + filterType.slice(1)}
+                  {getDisplayName(filterType)}
+                  <span className="info-tooltip" data-tooltip={tooltipTexts[filterType]}>
+                    (i)
+                  </span>
                   {filters[filterType] && (
                     <button
                       className="clear-button"
@@ -94,12 +111,11 @@ const WiegandSelectorTool = () => {
                 </div>
                 <select
                   className="filter-select"
-                  name={filterType}
                   value={filters[filterType] || ""}
                   onChange={(e) => handleFilterChange(filterType, e.target.value)}
                 >
-                  <option value="">Select {filterType === 'Central_Remote' ? 'Central/Remote' : filterType.charAt(0).toUpperCase() + filterType.slice(1)}</option>
-                  {availableOptions[filterType]?.map((option) => (
+                  <option value="">Select {getDisplayName(filterType)}</option>
+                  {options.map((option) => (
                     <option key={option} value={option}>
                       {option}
                     </option>
@@ -114,8 +130,11 @@ const WiegandSelectorTool = () => {
               <thead>
                 <tr>
                   <th>Model</th>
-                  <th>Fiber</th>
-                  <th>Central/Remote</th>
+                  {Object.keys(availableOptions).map((key) => (
+                    <th key={key}>
+                      {getDisplayName(key)}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>

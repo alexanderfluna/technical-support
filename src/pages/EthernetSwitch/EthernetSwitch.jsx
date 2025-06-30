@@ -15,6 +15,7 @@ const EthernetSwitch = () => {
       <div className="page">
         <div className="main-content">
           <h1 className="faq-title" style={{fontSize: "3rem"}}>Ethernet Switch</h1>
+          <p className="hero-subtitle"><strong>Selector Tool</strong> — Identify the perfect solution for your requirements.</p>
           <div 
             id="ethernet-switch-selector-tool" 
             ref={selectorToolRef}
@@ -22,6 +23,7 @@ const EthernetSwitch = () => {
           >
             <EthernetSwitchSelectorTool />
           </div>
+          <p className="hero-subtitle"><strong>Technical Support</strong> — Find answers to common technical questions.</p>
           <div 
             id="ethernet-troubleshooting" 
             ref={troubleshootingRef}

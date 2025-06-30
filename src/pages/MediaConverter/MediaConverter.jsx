@@ -39,6 +39,7 @@ const MediaConverter = () => {
       <div className="page">
         <div className="main-content">
           <h1 className="faq-title" style={{fontSize: "3rem"}}>Media Converter</h1>
+          <p className="hero-subtitle"><strong>Selector Tool</strong> — Identify the perfect solution for your requirements.</p>
           <div 
             id="media-converter-selector-tool" 
             ref={selectorToolRef}
@@ -46,7 +47,7 @@ const MediaConverter = () => {
           >
             <MediaConverterSelectorTool />
           </div>
-
+          <p className="hero-subtitle"><strong>Technical Support</strong> — Find answers to common technical questions.</p>
           <div 
             id="media-troubleshooting" 
             ref={troubleshootingRef}

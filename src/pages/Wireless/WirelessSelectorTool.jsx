@@ -11,6 +11,13 @@ const WirelessSelectorTool = () => {
     continent: []
   });
 
+  const tooltipTexts = {
+    quantity: "Number of units or antennas included",
+    size: "Physical dimensions of the product",
+    beamwidth: "Angular width of the antenna beam",
+    continent: "Regional availability or compatibility"
+  };
+
   const [filters, setFilters] = useState({
     quantity: null,
     size: null,
@@ -20,7 +27,7 @@ const WirelessSelectorTool = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setFilteredProducts(products); 
+    setFilteredProducts(products);
     updateAvailableOptions(products);
   }, []);
 
@@ -38,7 +45,6 @@ const WirelessSelectorTool = () => {
       )
     );
     setFilteredProducts(newFilteredProducts);
-
     updateAvailableOptions(newFilteredProducts);
   };
 
@@ -49,17 +55,32 @@ const WirelessSelectorTool = () => {
   };
 
   const resetFilters = () => {
-    setFilters({ quantity: null, size: null, beamwidth: null, continent: null });
-    setFilteredProducts(products); 
-    updateAvailableOptions(products); 
+    setFilters({ 
+      quantity: null, 
+      size: null, 
+      beamwidth: null, 
+      continent: null 
+    });
+    setFilteredProducts(products);
+    updateAvailableOptions(products);
   };
 
   const updateAvailableOptions = (filteredProducts) => {
-    const quantity = [...new Set(filteredProducts.map((product) => product.quantity))];
-    const size = [...new Set(filteredProducts.map((product) => product.size))];
-    const beamwidth = [...new Set(filteredProducts.map((product) => product.beamwidth))];
-    const continent = [...new Set(filteredProducts.map((product) => product.continent))];
-    setAvailableOptions({ quantity, size, beamwidth, continent });
+    const options = {
+      quantity: [...new Set(filteredProducts.map((product) => product.quantity))],
+      size: [...new Set(filteredProducts.map((product) => product.size))],
+      beamwidth: [...new Set(filteredProducts.map((product) => product.beamwidth))],
+      continent: [...new Set(filteredProducts.map((product) => product.continent))]
+    };
+    setAvailableOptions(options);
+  };
+
+  const getDisplayName = (filterType) => {
+    switch(filterType) {
+      case 'beamwidth': return 'Beamwidth';
+      default: 
+        return filterType.charAt(0).toUpperCase() + filterType.slice(1);
+    }
   };
 
   return (
@@ -68,17 +89,17 @@ const WirelessSelectorTool = () => {
       {selectorTool && (
         <>
           <div className="filter-grid">
-            <button 
-              className="reset-button" 
-              onClick={resetFilters}
-            >
+            <button className="reset-button" onClick={resetFilters}>
               Reset
             </button>
 
-            {["quantity", "size", "beamwidth", "continent"].map((filterType) => (
+            {Object.entries(availableOptions).map(([filterType, options]) => (
               <div key={filterType} className="filter-group">
                 <div className="filter-label">
-                  {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
+                  {getDisplayName(filterType)}
+                  <span className="info-tooltip" data-tooltip={tooltipTexts[filterType]}>
+                    (i)
+                  </span>
                   {filters[filterType] && (
                     <button
                       className="clear-button"
@@ -90,12 +111,11 @@ const WirelessSelectorTool = () => {
                 </div>
                 <select
                   className="filter-select"
-                  name={filterType}
                   value={filters[filterType] || ""}
                   onChange={(e) => handleFilterChange(filterType, e.target.value)}
                 >
-                  <option value="">Select {filterType.charAt(0).toUpperCase() + filterType.slice(1)}</option>
-                  {availableOptions[filterType]?.map((option) => (
+                  <option value="">Select {getDisplayName(filterType)}</option>
+                  {options.map((option) => (
                     <option key={option} value={option}>
                       {option}
                     </option>
@@ -110,10 +130,11 @@ const WirelessSelectorTool = () => {
               <thead>
                 <tr>
                   <th>Model</th>
-                  <th>Quantity</th>
-                  <th>Size</th>
-                  <th>Beamwidth</th>
-                  <th>Continent</th>
+                  {Object.keys(availableOptions).map((key) => (
+                    <th key={key}>
+                      {getDisplayName(key)}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
