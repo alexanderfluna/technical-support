@@ -39,8 +39,7 @@ const EthernetSwitchProducts = [
     {Model: "CNGE24FX12TX12MS/12", Hardened: "Yes", Managed: "Yes", Fiber_Ports: "12x GE", Copper_Ports: "12x GE", Combo_Ports: "0", PoE: "No", Operating_Voltage: "X"},
     {Model: "CNGE24FX12TX12MSPOE", Hardened: "Yes", Managed: "Yes", Fiber_Ports: "12x GE", Copper_Ports: "12x GE", Combo_Ports: "0", PoE: "30W", Operating_Voltage: "X"},
     {Model: "CNGE24FX12TX12MSPOE/48", Hardened: "Yes", Managed: "Yes", Fiber_Ports: "12x GE", Copper_Ports: "12x GE", Combo_Ports: "0", PoE: "30W", Operating_Voltage: "X"},
-    {Model: "CNGE26FX2TX24MSP", Hardened: "Yes", Managed: "Yes", Fiber_Ports: "2x GE", Copper_Ports: "22x GE", Combo_Ports: "2x GE", PoE: "30W", Operating_Voltage: "X"},
-    {Model: "CNGE28FX4TX24MS2", Hardened: "Yes", Managed: "Yes", Fiber_Ports: "4x GE", Copper_Ports: "24x GE", Combo_Ports: "0", PoE: "No", Operating_Voltage: "X"},
+    {Model: "CNGE26FX2TX24MSPOE1", Hardened: "Yes", Managed: "Yes", Fiber_Ports: "2x GE", Copper_Ports: "22x GE", Combo_Ports: "2x GE", PoE: "30W", Operating_Voltage: "X"},
     {Model: "CNFE4SMS", Hardened: "Yes", Managed: "No", Fiber_Ports: "0", Copper_Ports: "4x FE", Combo_Ports: "0", PoE: "No", Operating_Voltage: "X"},
     {Model: "CNFE4SMSPOE", Hardened: "Yes", Managed: "No", Fiber_Ports: "0", Copper_Ports: "4x FE", Combo_Ports: "0", PoE: "30W", Operating_Voltage: "X"},
     {Model: "CNFE4FX4US", Hardened: "Yes", Managed: "No", Fiber_Ports: "4x FE", Copper_Ports: "0", Combo_Ports: "0", PoE: "No", Operating_Voltage: "X"},
@@ -58,7 +57,7 @@ const EthernetSwitchProducts = [
     {Model: "CWG26F4T22M", Hardened: "No", Managed: "Yes", Fiber_Ports: "2x GE", Copper_Ports: "22x GE", Combo_Ports: "2x GE", PoE: "No", Operating_Voltage: "X"},
     {Model: "CWG26F4T22MP", Hardened: "No", Managed: "Yes", Fiber_Ports: "2x GE", Copper_Ports: "22x GE", Combo_Ports: "2x GE", PoE: "30W", Operating_Voltage: "X"},
     {Model: "CWX28F4T24MPB", Hardened: "No", Managed: "Yes", Fiber_Ports: "4x 10G", Copper_Ports: "24x GE", Combo_Ports: "0", PoE: "90W", Operating_Voltage: "X"},
-    {Model: "CWX52F4T48MP", Hardened: "No", Managed: "Yes", Fiber_Ports: "4x 10G", Copper_Ports: "48x GE", Combo_Ports: "0", PoE: "90W", Operating_Voltage: "X"},
+    {Model: "CWX52F4T48MP", Hardened: "No", Managed: "Yes", Fiber_Ports: "4x 10G", Copper_Ports: "48x GE", Combo_Ports: "0", PoE: "30W", Operating_Voltage: "X"},
   ];
 
   export default EthernetSwitchProducts;
