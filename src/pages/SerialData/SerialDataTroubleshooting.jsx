@@ -71,6 +71,7 @@ const SerialDataTroubleshooting = ({ activeSubSection }) => {
                         <img src="photos/FDX/fdx60-switches.jpg" alt="FDX60 dip switches"></img>
                         <p><strong>4. Verify the wires are connected properly.</strong></p>
                         <img src="photos/FDX/fdx60-wires.jpg" alt="FDX60 wiring diagram"></img>
+                        <p><strong>5. Ensure the baud rate of the terminal equipment is enough for the FDX60 to handle.</strong></p>
                     </>
                 )}
             </div>
