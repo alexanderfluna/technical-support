@@ -67,6 +67,7 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: var(--space-xl);
+  background-color: white;
 }
 
 /* Table of Contents - Enhanced Sidebar */

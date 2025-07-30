@@ -19,7 +19,7 @@ const Razberi = () => {
       <Navbar/>
       <div className="page">
         <div className="main-content">
-          <h1 className="faq-title" style={{fontSize: "3rem"}}>Server</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>Razberi Server</h1>
           <p className="hero-subtitle"><strong>Selector Tool</strong> — Identify the perfect solution for your requirements.</p>
           <div 
             id="razberi-selector-tool" 

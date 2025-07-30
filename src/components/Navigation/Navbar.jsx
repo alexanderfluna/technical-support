@@ -120,7 +120,7 @@ const Navbar = ({ onCategoryChange }) => {
 
       <div className={`categories ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
         <div className="main-category" onClick={() => handleMouseClick("server")}>
-          <span>Server</span>
+          <span>Razberi Server</span>
         </div>
 
         <div 
@@ -182,10 +182,6 @@ const Navbar = ({ onCategoryChange }) => {
               ))}
             </div>
           )}
-        </div>
-
-        <div className="main-category" onClick={() => handleMouseClick("about-us")}>
-          <span>About Us</span>
         </div>
       </div>
     </nav>
