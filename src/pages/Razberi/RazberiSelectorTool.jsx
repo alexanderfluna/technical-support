@@ -34,18 +34,77 @@ const RazberiSelectorTool = () => {
                 <div>
                   {selected === "Server Switch" && (
                     <div>
-                      <a href="pdf/razberi/SS32_Data_Sheet.pdf">
-                      </a>
-                      <p>The <strong>SS32X server switch</strong> is a high-performance networking device designed for enterprise environments. It features a <strong>32-port PoE switch,</strong> powered by an <strong>Intel I5 processor</strong> for reliable performance. It includes two <strong>M.2 SSDs</strong> in RAID 1 for redundancy, with up to <strong>88TB</strong> of total capacity with <strong>RAID</strong> configurations of 0, 1, 5, 6, or 10 for storage flexibility. Users can choose between <strong>16GB or 32GB of RAM</strong>. It supports Windows 10, Windows 11, Windows Server 2019, and Windows Server 2022.</p>
-                      <p>By default, the SS32X server switch is configured for easy deployment. The <strong>switch IP</strong> is set to 192.168.50.1, with a dedicated <strong>Admin Uplink IP</strong> of 192.168.50.19 for management access. The <strong>U2</strong> port is set to receive IP addresses via DHCP, allowing for seamless integration into dynamic network environments.</p>
-                      <p><strong>Camera Defense</strong> allows the binding of ports to the MAC address of connected devices, disabling unused ports to reduce vulnerabilities. The firewall can be configured to allow only essential services or protocols, removing unnecessary ones. Network traffic can be restricted to known networks or approved devices with fixed IP addresses through whitelisting. It enforces secure password policies, disallowing default, prohibited, or common passwords.</p>
-                      <p><strong>Appliance Defense (Cylance)</strong> is an  antimalware solution that leverages artificial intelligence and machine learning to build predictive models, enabling it to detect even previously unknown malware in real time. Cylance is fully integrated into Razberi Monitor, providing real-time notifications on malware protection through the dashboard.</p>
+                      <p style={{paddingTop: "10px"}}>The Razberi server switch includes a high-performance 32-port PoE switch, featuring <strong>28 x 1GbE IEEE 802.3at ports (up to 30W per port)</strong> and <strong>4 x 1GbE IEEE 802.3at 4-pair ports (up to 60W per port)</strong>, with a <strong>total PoE output of up to 450W</strong>. It also offers <strong>3 x SFP+ 10GbE ports</strong> for high-speed connectivity, <strong>2 x USB 3.1 ports</strong>, and <strong>2 x HDMI 1.4 ports</strong> supporting 4096x2160 resolution at 30Hz. For network management, it includes <strong>1 x RJ45 1GbE port with AMT support (i219LM)</strong>, <strong>1 x RJ45 2.5GbE port (i225V)</strong>, and an additional <strong>internal RJ45 2.5GbE port</strong> for switch communication.</p>
+                      <p style={{paddingTop: "30px", textDecoration: "underline"}}>The following customization options are available:</p>
+                      <p style={{paddingTop: "10px"}}><strong>CPU:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— Intel® Core™ I5-10500TE</p>
+                      <p style={{paddingLeft: "10px"}}>— Intel® Xeon™ W-1270TE</p>
+                      <p style={{paddingTop: "20px"}}><strong>Memory:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— 16 GB</p>
+                      <p style={{paddingLeft: "10px"}}>— 32 GB</p>
+                      <p style={{paddingTop: "20px"}}><strong>Storage:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— Up to 88 TB</p>
+                      <p style={{paddingTop: "20px"}}><strong>Raid Card:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— SS-R4</p>
+                      <p style={{paddingTop: "20px"}}><strong>RAID Configuration:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— JBOD</p>
+                      <p style={{paddingLeft: "10px"}}>— RAID 0</p>
+                      <p style={{paddingLeft: "10px"}}>— RAID 1</p>
+                      <p style={{paddingLeft: "10px"}}>— RAID 5</p>
+                      <p style={{paddingLeft: "10px"}}>— RAID 6</p>
+                      <p style={{paddingLeft: "10px"}}>— RAID 10</p>
+                      <p style={{paddingTop: "20px"}}><strong>GPU:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— GPU-T400</p>
+                      <p style={{paddingLeft: "10px"}}>— GPU-T1000</p>
+                      <p style={{paddingLeft: "10px"}}>— GPU-A400</p>
+                      <p style={{paddingLeft: "10px"}}>— GPU-A1000</p>
+                      <p style={{paddingTop: "20px"}}><strong>Operating System:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— Windows 10</p>
+                      <p style={{paddingLeft: "10px"}}>— Windows 11</p>
+                      <p style={{paddingLeft: "10px"}}>— Server 2019</p>
+                      <p style={{paddingLeft: "10px"}}>— Server 2022</p>
                     </div>
                   )}
                   {selected === "Server" && (
                     <div>
-                      <p>Purchasing a <strong>Razberi recording server</strong> is a smart choice for reliable, scalable, high-performance video storage. Dell PowerEdge servers offer RAID configurations for data protection, critical for continuous recording and long-term storage. With support for large drives and SSDs, they handle large video archives while ensuring fast access. Their compatibility with video management software (VMS) makes them ideal for security applications. Remote management tools like Dell <strong>iDRAC</strong> enable easy monitoring and maintenance, reducing downtime. These servers offer the performance, security, and scalability needed for both small and large surveillance systems. They can also include <strong>10 GbE Ethernet or 10GbE SFP+ ports</strong> for faster data rates.</p>
-                      <p>The <strong>Xeon processor</strong> is perfect for managing camera footage with its 24/7 reliability, multiple cores, and ECC memory for error-free operation. It quickly processes video files and offers fast access to stored footage. Xeon CPUs are built for long-term use, making them ideal for continuous security systems. A <strong>dual Xeon setup</strong> doubles processing power, enabling faster video processing, smoother performance, and better multitasking. This setup enhances redundancy, supports more camera streams, and improves video analytics and AI-driven surveillance, making it ideal for high-performance security systems.</p>
+                      <p style={{paddingTop: "10px"}}>The <strong>Razberi recording server</strong> delivers reliable, scalable, and high-performance video storage, making it an intelligent investment for security applications. Powered by a robust <strong>Xeon processor</strong>, it ensures long-term durability, ideal for continuous surveillance operations. A <strong>dual Xeon configuration</strong> enhances processing power, enabling accelerated video handling, seamless performance, and superior multitasking capabilities. The integrated <strong>PERC card</strong> supports RAID configurations for critical data protection, safeguarding continuous recording and extended storage needs. With <strong>live drive</strong> support, these servers provide rapid data access, while seamless compatibility with leading <strong>video management software (VMS)</strong> ensures effortless integration. Additionally, remote management tools such as Dell <strong>iDRAC</strong> simplify monitoring and maintenance, minimizing downtime and optimizing operational efficiency.</p>                      <p style={{paddingTop: "30px", textDecoration: "underline"}}>The following customization options are available:</p>
+                      <p style={{paddingTop: "10px"}}><strong>CPU:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— Intel Xeon Silver 4410Y</p>
+                      <p style={{paddingLeft: "10px"}}>— Dual Intel Xeon Silver 4410Y</p>
+                      <p style={{paddingTop: "20px"}}><strong>Memory:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— 16 GB</p>
+                      <p style={{paddingLeft: "10px"}}>— 32 GB</p>
+                      <p style={{paddingLeft: "10px"}}>— 64 GB</p>
+                      <p style={{paddingLeft: "10px"}}>— 128 GB</p>
+                      <p style={{paddingLeft: "10px"}}>— 256 GB</p>
+                      <p style={{paddingTop: "20px"}}><strong>Storage:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— Up to 528 TB</p>
+                      <p style={{paddingTop: "20px"}}><strong>RAID Configuration:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— JBOD</p>
+                      <p style={{paddingLeft: "10px"}}>— RAID 0</p>
+                      <p style={{paddingLeft: "10px"}}>— RAID 1</p>
+                      <p style={{paddingLeft: "10px"}}>— RAID 5</p>
+                      <p style={{paddingLeft: "10px"}}>— RAID 6</p>
+                      <p style={{paddingLeft: "10px"}}>— RAID 10</p>
+                      <p style={{paddingTop: "20px"}}><strong>SSD (Live Drive):</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— S512</p>
+                      <p style={{paddingLeft: "10px"}}>— S1000</p>
+                      <p style={{paddingLeft: "10px"}}>— S2000</p>
+                      <p style={{paddingLeft: "10px"}}>— S4000</p>
+                      <p style={{paddingLeft: "10px"}}>— S8000</p>
+                      <p style={{paddingTop: "20px"}}><strong>GPU:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— GPU-T400</p>
+                      <p style={{paddingLeft: "10px"}}>— GPU-T1000</p>
+                      <p style={{paddingLeft: "10px"}}>— GPU-A400</p>
+                      <p style={{paddingLeft: "10px"}}>— GPU-A1000</p>
+                      <p style={{paddingTop: "20px"}}><strong>Operating System:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— Server 2019</p>
+                      <p style={{paddingLeft: "10px"}}>— Server 2022</p>
+                      <p style={{paddingTop: "20px"}}><strong>Additional Network Options:</strong></p>
+                      <p style={{paddingLeft: "10px"}}>— 4 x 1GbE RJ45 ports</p>
+                      <p style={{paddingLeft: "10px"}}>— 2 x 10GbE RJ45 ports</p>
+                      <p style={{paddingLeft: "10px"}}>— 2 x 10GbE SFP+ ports</p>
+                      <p style={{paddingLeft: "10px"}}>— 2 x 25GbE SFP+ ports</p>
                     </div>
                   )}
                 </div>

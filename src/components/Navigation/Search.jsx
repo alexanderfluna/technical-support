@@ -16,7 +16,7 @@ import EnclosureProducts from '../../pages/Enclosure/EnclosureProducts'
 const productsConfig = {
   RazberiServer: { 
     products: ServerProducts,
-    path: '/technical-support/razberi'
+    path: '/technical-support/server'
   },
   EthernetSwitch: {
     products: EthernetSwitchProducts,

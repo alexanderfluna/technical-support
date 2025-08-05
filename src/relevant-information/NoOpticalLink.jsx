@@ -8,8 +8,9 @@ const NoOpticalLink = () => {
       <p style={{paddingLeft: "40px"}}><strong>2.2.</strong> Confirm the expected fiber types match (Multimode vs. Single mode).</p>
       <p style={{paddingLeft: "40px"}}><strong>2.3.</strong> Confirm the number of fiber strands match (1 strand vs. 2 strands).</p>
       <p style={{paddingLeft: "40px"}}><strong>2.4.</strong> Confirm the correct optical connector is used (ST vs. SC vs. LC).</p>
-      <p><strong>3.</strong> Using a process of elimination, swap out the device on either end of the fiber with to determine which unit is failing.</p>
-      <p><strong>4.</strong> If the link light remains solid green after removing the fiber, there may be a powering issue.</p>
+      <p><strong>3.</strong>To rule out contamination, use a fiber optic cleaning kit to clean the optical receptacle and optical connector.</p>
+      <p><strong>4.</strong> Using a process of elimination, swap out the device on either end of the fiber with to determine which unit is failing.</p>
+      <p><strong>5.</strong> If the link light remains solid green after removing the fiber, there may be a powering issue.</p>
     </div>
 
   );
