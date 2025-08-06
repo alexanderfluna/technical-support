@@ -11,18 +11,10 @@ const SerialDataProducts = [
     { Model: "FDX60M1AM", Number_Of_Fibers: "1", fiber: "Multimode", optics: "ST", package: "Compact" },
     { Model: "FDX60M1A/SC", Number_Of_Fibers: "1", fiber: "Multimode", optics: "SC", package: "ComFit" },
     { Model: "FDX60M1AM/SC", Number_Of_Fibers: "1", fiber: "Multimode", optics: "SC", package: "Compact" },
-    { Model: "FDX60SM1A", Number_Of_Fibers: "1", fiber: "Single mode", optics: "ST", package: "ComFit" },
-    { Model: "FDX60S1AM", Number_Of_Fibers: "1", fiber: "Single mode", optics: "ST", package: "Compact" },
-    { Model: "FDX60S1A/SC", Number_Of_Fibers: "1", fiber: "Single mode", optics: "SC", package: "ComFit" },
-    { Model: "FDX60S1AM/SC", Number_Of_Fibers: "1", fiber: "Single mode", optics: "SC", package: "Compact" },
     { Model: "FDX60M1B", Number_Of_Fibers: "1", fiber: "Multimode", optics: "ST", package: "ComFit" },
     { Model: "FDX60M1BM", Number_Of_Fibers: "1", fiber: "Multimode", optics: "ST", package: "Compact" },
     { Model: "FDX60M1B/SC", Number_Of_Fibers: "1", fiber: "Multimode", optics: "SC", package: "ComFit" },
     { Model: "FDX60M1BM/SC", Number_Of_Fibers: "1", fiber: "Multimode", optics: "SC", package: "Compact" },
-    { Model: "FDX60SM1B", Number_Of_Fibers: "1", fiber: "Single mode", optics: "ST", package: "ComFit" },
-    { Model: "FDX60S1BM", Number_Of_Fibers: "1", fiber: "Single mode", optics: "ST", package: "Compact" },
-    { Model: "FDX60S1B/SC", Number_Of_Fibers: "1", fiber: "Single mode", optics: "SC", package: "ComFit" },
-    { Model: "FDX60S1BM/SC", Number_Of_Fibers: "1", fiber: "Single mode", optics: "SC", package: "Compact" },
   ];
 
 export default SerialDataProducts;

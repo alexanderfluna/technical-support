@@ -36,24 +36,6 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
 
   return (
     <div className="faq-list">
-        <div className="faq-answer" id="switch-diagnose">
-            <h1 className="faq-title" onClick={() => toggleFAQ("switch-diagnose")}>
-              How to Diagnose the Issues of an Ethernet Switch
-              <span className={`dropdown-chevron ${isFAQExpanded("switch-diagnose") ? 'expanded' : ''}`}></span>
-            </h1>
-            {isFAQExpanded("switch-diagnose") && (
-              <>
-                <p><strong>Document the following information:</strong></p>
-                <p><strong>1.</strong> Has the Ethernet switch ever operated correctly? If so, for how long before the issue occurred?</p>
-                <p><strong>2.</strong> Does the Ethernet switch power on and remain powered?</p>
-                <p><strong>3.</strong> Can the Ethernet switch be reached via a ping test?</p>
-                <p><strong>4.</strong> Do all ports successfully forward network traffic?</p>
-                <p><strong>5.</strong> If this is a PoE switch, are connected devices receiving power as expected?</p>
-                <p><strong>6.</strong> If none of the above issues apply, could the issue be related to the switch's configuration?</p>
-              </>
-            )}
-        </div>
-
         <div className="faq-answer" id="switch-no-power-light">
             <h1 className="faq-title" onClick={() => toggleFAQ("switch-no-power-light")}>
               How to Troubleshoot an Ethernet Switch with Power Issues
@@ -125,18 +107,18 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
                 <li style={{paddingLeft: "40px"}}>Default IP address: 192.168.10.1</li>
                 <li style={{paddingLeft: "40px"}}>Default username: "admin"</li>
                 <li style={{paddingLeft: "40px"}}>Default password: "admin"</li>
-                <p><strong>2.</strong> If the default IP address does not work, but the username and password are known:</p>
-                <p style={{paddingLeft: "40px"}}><strong>2.1.</strong> Open PuTTY or Tera Term and start a serial connection using the following configurations.</p>
-                <li style={{paddingLeft: "60px"}}>Speed (baud): 115200</li>
-                <li style={{paddingLeft: "60px"}}>Data bits: 8</li>
-                <li style={{paddingLeft: "60px"}}>Stop bits: 1</li>
-                <li style={{paddingLeft: "60px"}}>Parity: None</li>
-                <li style={{paddingLeft: "60px"}}>Flow control: None</li>
+                <p><strong>2.</strong> If the default IP address does not work, but the username and password of the switch is known:</p>
+                <p style={{paddingLeft: "40px"}}><strong>2.1.</strong> Open PuTTY or Tera Term and start a serial connection. The typical serial connection configuration for a Comnet Ethernet switch are:</p>
+                <li style={{paddingLeft: "100px"}}>Speed (baud): 115200</li>
+                <li style={{paddingLeft: "100px"}}>Data bits: 8</li>
+                <li style={{paddingLeft: "100px"}}>Stop bits: 1</li>
+                <li style={{paddingLeft: "100px"}}>Parity: None</li>
+                <li style={{paddingLeft: "100px"}}>Flow control: None</li>
                 <p style={{paddingLeft: "40px"}}><strong>2.2.</strong> Enter the username and password.</p>
-                <p style={{paddingLeft: "40px"}}><strong>2.3.</strong> Type "show ip interface brief" and click enter.</p>
-                <p><strong>3.</strong> If the username or password is not known:</p>
-                <p style={{paddingLeft: "40px"}}><strong>3.1.</strong> Connect the switch to another LLDP-enabled switch, then check the LLDP Remote Device Summary to view details about the connected device.</p>
-                <p><strong>4.</strong> Use Advanced IP Scanner to scan through the possible IP ranges that the switch is under.</p>
+                <p style={{paddingLeft: "40px"}}><strong>2.3.</strong> Enter the command "show ip interface brief"</p>
+                <p><strong>3.</strong> If the username or password of the switch is unknown:</p>
+                <p style={{paddingLeft: "40px"}}><strong>3.1.</strong> Connect the unit to another switch with LLDP enabled. Then, check the LLDP Neighbors section of the other switch to find the IP address of all connected devices.</p>
+                <p><strong>4.</strong> Use Advanced IP Scanner to scan through the possible IP ranges that the switch may be under.</p>
               </>
             )}
         </div>
@@ -148,15 +130,14 @@ const EthernetSwitchTroubleshooting = ({ activeSubSection }) => {
             </h1>
             {isFAQExpanded("switch-default") && (
               <>
-                <p><strong>1.</strong> Open PuTTY or Tera Term and start a serial connection using the following configurations.</p>
+                <p><strong>1.</strong> If the IP address of the switch is known, use the Factory Default option in the GUI.</p>
+                <p><strong>2.</strong> If the IP address of the switch is unkown, open PuTTY or Tera Term and start a serial connection. The typical serial connection configuration for a Comnet Ethernet switch are:</p>
                 <li style={{paddingLeft: "60px"}}>Speed (baud): 115200</li>
                 <li style={{paddingLeft: "60px"}}>Data bits: 8</li>
                 <li style={{paddingLeft: "60px"}}>Stop bits: 1</li>
                 <li style={{paddingLeft: "60px"}}>Parity: None</li>
                 <li style={{paddingLeft: "60px"}}>Flow control: None</li>
-                <p><strong>2.</strong> Enter the username and password.</p>
-                <p><strong>3.</strong> Type "enable" and click enter.</p>
-                <p><strong>4.</strong> Type "reload defaults" and click enter.</p>
+                <p><strong>2.1</strong> Enter the command "reload defaults".</p>
               </>
             )}
         </div>

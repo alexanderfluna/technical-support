@@ -32,10 +32,10 @@ const EthernetSwitchSelectorTool = () => {
     Hardened: ["No", "Yes"],
     Managed: ["No", "Yes"],
     PoE: ["No", "30W", "60W", "90W"],
-    Copper_Ports: ["0", "2x FE", "4x FE", "5x FE", "7x FE", "8x FE", "3x GE", "4x GE", "8x GE", "12x GE", "16x GE", "22x GE", "24x GE", "48x GE"],
-    Fiber_Ports: ["0", "1x FE", "2x FE", "4x FE", "1x GE", "2x GE", "3x GE", "4x GE", "8x GE", "12x GE", "24x GE", "2x 10G", "4x 10G"],
-    Combo_Ports: ["0", "1x GE", "2x GE", "4x GE", "16x GE"],
-    Operating_Voltage: ["N/A", "X"],
+    Copper_Ports: ["(48) GE",  "(24) GE", "(22) GE", "(16) GE", "(12) GE", "(8) GE", "(4) GE", "(3) GE", "(8) FE", "(7) FE", "(5) FE", "(4) FE", "(2) FE", "0"],
+    Fiber_Ports: ["(4) 10G", "(2) 10G", "(2) 2.5G", "(24) GE", "(12) GE", "(8) GE", "(4) GE", "(3) GE", "(2) GE", "(1) GE", "(4) FE", "(2) FE", "(1) FE", "0"],
+    Combo_Ports: ["(16) GE", "(4) GE", "(2) GE", "(1) GE", "0"],
+    Operating_Voltage: ["100-240 VAC", "100-240 VAC / 48-57 VDC", "100-240 VAC / 36-72 VDC", "52-57 VDC", "50-57 VDC", "48-57 VDC", "48-56 VDC", "48 VDC", "24 VDC", "12-57 VDC", "12-48 VDC", "12-48 VDC / 24 VAC", "12-24 VDC", "12 VDC", "9-36 VDC", "9-24 VDC"],
   };
 
   const [filters, setFilters] = useState({

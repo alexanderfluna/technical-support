@@ -115,15 +115,15 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
 
             <div id="ssd" className="faq-answer">
                 <h1 className="faq-title" onClick={() => toggleFAQ("ssd")}>
-                    How to Troubleshoot a Server with a Bad mSATA
+                    How to Troubleshoot a Server with a Bad OS Drive
                     <span className={`dropdown-chevron ${isFAQExpanded("ssd") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("ssd") && (
                     <>
                         <p>Please contact technical support regarding one of the following options.</p>
                         <p><strong>[Option #1]</strong> Ship the server to us, and we can re-image the unit.</p>
-                        <p><strong>[Option #2]</strong> We can ship out a new mSATA with our image on it.</p>
-                        <p><strong>[Option #3]</strong> Purchase a new mSATA, install the OS, and we can provide the necessary drivers and software.</p>
+                        <p><strong>[Option #2]</strong> We can ship out a new OS drive with our image on it.</p>
+                        <p><strong>[Option #3]</strong> Purchase a new OS drive, install the OS, and we can provide the necessary drivers and software.</p>
                     </>
                 )}
             </div>
@@ -159,8 +159,7 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
                         <p style={{paddingLeft: "60px"}}><strong>3.2.</strong> Check the Event Viewer alert logs.</p>
                         <p style={{paddingLeft: "60px"}}><strong>3.3.</strong> Check the iDRAC alert logs.</p>
                         <p><strong>4.</strong> Open Task Manager and review the the CPU and memory utilization. If either are high, determine what processes are using the most resources and what services are being used by those processes.</p>
-                        <p><strong>5.</strong> If the OS is not accessible, or if all other options are exhausted, perform a recovery of the OS. Please note it is recommended to back up all of the data on the server as all of the storage will be lost.</p>
-                        <p><strong>6.</strong> If the OS is still experiencing issues after a recovery, contact technical support.</p>
+                        <p><strong>5.</strong> If the OS is not accessible, or if all other options are exhausted, perform a recovery of the OS. Please note it is recommended to back up all of the data on the server as all of the storage may be lost.</p>
                     </>
                 )}
             </div>
@@ -212,30 +211,37 @@ const RazberiTroubleshooting = ({ activeSubSection }) => {
                     <span className={`dropdown-chevron ${isFAQExpanded("camera-defense") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("camera-defense") && (
-                    <>
+                    <div>
                         <p><strong>1. Set up Device Binding</strong></p>
-                        <p style={{paddingLeft: "60px"}}>Master Device Binding: Enable or Disable All</p>
-                        <p style={{paddingLeft: "60px"}}>Bind a specific port to the MAC address of the connected device.</p>
+                        <p style={{paddingLeft: "60px"}}>Configure port-level security by binding specific ports to connected devices' MAC addresses. The master toggle enables/disables this feature globally for all ports, while individual port bindings provide granular control.</p>
+
                         <p><strong>2. Set up the Device Groups</strong></p>
-                        <p style={{paddingLeft: "60px"}}>A device group is a set of similar devices assigned the same security policies. By default, all active ports are assigned to the "Cameras" device group. If cameras are the only devices connected to the SSIQ then hit "Save" to save the settings, otherwise:</p>
-                        <p style={{paddingLeft: "60px"}}>Create a new device group or modify existing device group(s) giving each device group a unique name.</p>
-                        <p style={{paddingLeft: "60px"}}>Add or modify the ports to be associated with each device group.</p>
-                        <p style={{paddingLeft: "60px"}}>Review all changes and then hit "Save" to save the settings.</p>
-                        <p style={{paddingLeft: "60px"}}>Note: Deleting an existing device group removes its firewall and whitelist settings. Changing the name of an existing device group causes that device group to be deleted and a new device group to be created.</p>
+                        <p style={{paddingLeft: "60px"}}>Organize connected devices into logical groups sharing common security policies:</p>
+                        <p style={{paddingLeft: "60px"}}>- All active ports default to the "Cameras" group</p>
+                        <p style={{paddingLeft: "60px"}}>- Create/modify groups with descriptive names as needed</p>
+                        <p style={{paddingLeft: "60px"}}>- Assign ports to appropriate groups</p>
+                        <p style={{paddingLeft: "60px"}}>- <em>Important:</em> Renaming groups creates new configurations, while deletions remove associated firewall/whitelist rules</p>
+
                         <p><strong>3. Set up the Firewall</strong></p>
-                        <p style={{paddingLeft: "60px"}}>Use the firewall feature to limit traffic to video services and to disable discovery services. For each device group:</p>
-                        <p style={{paddingLeft: "60px"}}>Select HTTP, HTTPS, and RTSP (Real-Time Streaming Protocol) services for device groups with cameras.</p>
-                        <p style={{paddingLeft: "60px"}}>Disable discovery services to prevent cyber attackers from finding devices: Ping, DHCP, NTP, Telnet, DNS, FTP, TFTP, SSH, SMTP, Bonjour</p>
-                        <p style={{paddingLeft: "60px"}}>Allow additional services as needed providing the name, protocol, and port.</p>
+                        <p style={{paddingLeft: "60px"}}>Implement service-level restrictions per device group:</p>
+                        <p style={{paddingLeft: "60px"}}>- Camera groups: Enable HTTP/HTTPS/RTSP for video streaming</p>
+                        <p style={{paddingLeft: "60px"}}>- Security hardening: Disable discovery services (Ping, DHCP, SSH, etc.)</p>
+                        <p style={{paddingLeft: "60px"}}>- Custom services: Add exceptions by specifying protocol/port combinations</p>
+
                         <p><strong>4. Set up the Internet Protection</strong></p>
-                        <p style={{paddingLeft: "60px"}}>A whitelist limits traffic to specified networks by device group. The default option of Internet Protection prevents devices from communicating over routable networks such as the Internet.</p>
-                        <p style={{paddingLeft: "60px"}}>Use Internet Protection to prevent devices from reaching routable networks, otherwise</p>
-                        <p style={{paddingLeft: "60px"}}>Specify the allowed networks using sub-masks and/or individual IP addresses.</p>
-                        <p style={{paddingLeft: "60px"}}>Enable alerts for devices that attempt to communicate outside of the whitelist.</p>
+                        <p style={{paddingLeft: "60px"}}>Control external communications through:</p>
+                        <p style={{paddingLeft: "60px"}}>- Default internet blocking (recommended)</p>
+                        <p style={{paddingLeft: "60px"}}>- Whitelist customization using subnet masks/IP addresses</p>
+                        <p style={{paddingLeft: "60px"}}>- Alert configuration for unauthorized access attempts</p>
+
                         <p><strong>5. Set up the Password Protection</strong></p>
-                        <p style={{paddingLeft: "60px"}}>Enable Password Monitoring: This feature monitors your devices to ensure they are not using default, user prohibited, or common passwords found on the NIST Bad Password List. By default, Password Protection is enabled.</p>
-                        <p style={{paddingLeft: "60px"}}>Device default and common passwords are tested by default. You can optionally add additional prohibited passwords below. (Limit 48)</p>
-                    </>
+                        <p style={{paddingLeft: "60px"}}>Enforce credential security via:</p>
+                        <p style={{paddingLeft: "60px"}}>- Default password monitoring (enabled by default)</p>
+                        <p style={{paddingLeft: "60px"}}>- NIST Bad Password List integration</p>
+                        <p style={{paddingLeft: "60px"}}>- Custom prohibited password list (up to 48 entries)</p>
+
+                        <p style={{paddingLeft: "60px"}}><em>Implementation Note:</em> Review all settings before finalizing. Changes take effect immediately upon saving.</p>
+                    </div>
                 )}
             </div>
         </div>

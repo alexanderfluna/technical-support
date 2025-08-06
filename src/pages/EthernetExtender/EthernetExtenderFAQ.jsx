@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
+import SurgeSuppression from '../../relevant-information/SurgeSuppression';
 
 const EthernetExtenderFAQ = ({ activeSubSection }) => {
     const [expandedFAQs, setExpandedFAQs] = useState([]);
@@ -101,6 +103,30 @@ const EthernetExtenderFAQ = ({ activeSubSection }) => {
                 ))}
               </tbody>
             </table>
+          </>
+        )}
+      </div>
+
+      <div id="poe" className="faq-answer">
+        <h1 className="faq-title" onClick={() => toggleFAQ("poe")}>
+          Gain a Better Understanding of Power Over Ethernet
+          <span className={`dropdown-chevron ${isFAQExpanded("poe") ? 'expanded' : ''}`}></span>
+        </h1>
+        {isFAQExpanded("poe") && (
+          <>
+            <PowerOverEthernet />
+          </>
+        )}
+      </div>
+
+      <div id="surge" className="faq-answer">
+        <h1 className="faq-title" onClick={() => toggleFAQ("surge")}>
+          Gain a Better Understanding of Surge Suppression
+          <span className={`dropdown-chevron ${isFAQExpanded("surge") ? 'expanded' : ''}`}></span>
+        </h1>
+        {isFAQExpanded("surge") && (
+          <>
+            <SurgeSuppression />
           </>
         )}
       </div>

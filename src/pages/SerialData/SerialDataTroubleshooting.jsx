@@ -64,14 +64,14 @@ const SerialDataTroubleshooting = ({ activeSubSection }) => {
                     <>
                         <p><strong>1. Document what lights are illuminated on the unit.</strong></p>
                         <img src="photos/FDX/fdx60-led.jpg" alt="FDX60 LED indicators"></img>
-                        <p><strong>2. If passing 2-wire RS485, ensure there is 120-ohm resistor across pins 6 and 7 (+I/O and -I/O).</strong></p>
+                        <p><strong>2. Confirm the dip switches are set correctly. Cycle power after changing the dip switch configuration.</strong></p>
+                        <img src="photos/FDX/fdx60-switches.jpg" alt="FDX60 dip switches"></img>
+                        <p><strong>3. Verify the wires are connected properly.</strong></p>
+                        <img src="photos/FDX/fdx60-wires.jpg" alt="FDX60 wiring diagram"></img>
+                        <p><strong>4. Ensure the baud rate of the terminal equipment is enough for the FDX60 to handle.</strong></p>
+                        <p><strong>5. If passing 2-wire RS485, ensure there is 120-ohm resistor across pins 6 and 7 (+I/O and -I/O).</strong></p>
                         <li>An impedance mismatch occurs because of two electronic devices with different impedance values, meaning they resist alternating current differently. Without proper termination, a resistor that matches the cable's characteristic impedance, the signal is not properly absorbed, leading to ringing.</li>
                         <li>Ringing happens when a data signal reflects back and forth between devices instead of cleanly reaching its destination. In a lumped distance, where devices are very close together, the resistor can be placed at either end. In distributed distance systems, where devices are far apart, the terminating resistor must be placed at both ends.</li>
-                        <p><strong>3. Confirm the dip switches are set correctly. Cycle power after changing the dip switch configuration.</strong></p>
-                        <img src="photos/FDX/fdx60-switches.jpg" alt="FDX60 dip switches"></img>
-                        <p><strong>4. Verify the wires are connected properly.</strong></p>
-                        <img src="photos/FDX/fdx60-wires.jpg" alt="FDX60 wiring diagram"></img>
-                        <p><strong>5. Ensure the baud rate of the terminal equipment is enough for the FDX60 to handle.</strong></p>
                     </>
                 )}
             </div>

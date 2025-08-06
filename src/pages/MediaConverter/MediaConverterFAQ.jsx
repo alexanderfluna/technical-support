@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Fiber from '../../relevant-information/Fiber';
 import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
+import SurgeSuppression from '../../relevant-information/SurgeSuppression';
 
 const MediaConverterFAQ = ({ activeSubSection }) => {
   const [expandedFAQs, setExpandedFAQs] = useState([]);
@@ -73,6 +74,18 @@ const MediaConverterFAQ = ({ activeSubSection }) => {
             <PowerOverEthernet />
           </>
         )}
+      </div>
+
+      <div id="surge" className="faq-answer">
+          <h1 className="faq-title" onClick={() => toggleFAQ("surge")}>
+            Gain a Better Understanding of Surge Suppression
+            <span className={`dropdown-chevron ${isFAQExpanded("surge") ? 'expanded' : ''}`}></span>
+          </h1>
+          {isFAQExpanded("surge") && (
+            <>
+              <SurgeSuppression />
+            </>
+          )}
       </div>
     </div>
   );
