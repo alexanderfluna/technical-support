@@ -1,12 +1,10 @@
 import { useState, useRef} from 'react';
-import RazberiTroubleshooting from './RazberiTroubleshooting';
 import RazberiFAQ from './RazberiFAQ';
 import RazberiSelectorTool from './RazberiSelectorTool';
 import Navbar from '../../components/Navigation/Navbar';
 
 const Razberi = () => {
   const [expandedFAQ, setExpandedFAQ] = useState(null);
-  const troubleshootingRef = useRef(null);
   const relevantInfoRef = useRef(null);
   const selectorToolRef = useRef(null);
 
@@ -29,14 +27,6 @@ const Razberi = () => {
             <RazberiSelectorTool />
           </div>
           <p className="hero-subtitle"><strong>Technical Support</strong> — Find answers to common technical questions.</p>
-          <div 
-            id="razberi-troubleshooting" 
-            ref={troubleshootingRef}
-            className="troubleshooting"
-          >
-            <RazberiTroubleshooting expandedFAQ={expandedFAQ} toggleFAQ={toggleFAQ} />
-          </div>
-
           <div 
             id="razberi-relevant-information" 
             ref={relevantInfoRef}

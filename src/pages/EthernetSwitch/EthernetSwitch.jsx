@@ -1,11 +1,9 @@
 import { useRef } from 'react';
-import EthernetSwitchTroubleshooting from './EthernetSwitchTroubleshooting';
 import EthernetSwitchSelectorTool from './EthernetSwitchSelectorTool';
 import EthernetSwitchFAQ from './EthernetSwitchFAQ';
 import Navbar from '../../components/Navigation/Navbar';
 
 const EthernetSwitch = () => {
-  const troubleshootingRef = useRef(null);
   const relevantInfoRef = useRef(null);
   const selectorToolRef = useRef(null);
 
@@ -24,14 +22,6 @@ const EthernetSwitch = () => {
             <EthernetSwitchSelectorTool />
           </div>
           <p className="hero-subtitle"><strong>Technical Support</strong> — Find answers to common technical questions.</p>
-          <div 
-            id="ethernet-troubleshooting" 
-            ref={troubleshootingRef}
-            className="troubleshooting"
-          >
-            <EthernetSwitchTroubleshooting/>
-          </div>
-
           <div 
             id="ethernet-relevant-information" 
             ref={relevantInfoRef}
