@@ -62,7 +62,11 @@ const WiegandFAQ = ({ activeSubSection }) => {
                     <span className={`dropdown-chevron ${isFAQExpanded("no-link-light") ? 'expanded' : ''}`}></span>
                 </h1>
                 {isFAQExpanded("no-link-light") && (
-                    <p>Swap the transmit and receive fiber strands.</p>
+                  <div>
+                    <p><strong>1.</strong> Confirm there is a central unit and remote unit on both ends of the fiber.</p>
+                    <p><strong>2.</strong> Swap the transmit and receive fiber strands on either the central or the remote unit.</p>
+                    <p><strong>3.</strong>Using a visual fault locator, confirm light successfully passes through the fiber.</p>
+                  </div>
                 )}
             </div>
 

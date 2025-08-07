@@ -18,10 +18,8 @@ const WiegandSelectorTool = () => {
     { model: "FDW1000M/R", fiber: "Multimode", Central_Remote: "Remote" },
     { model: "FDW1000S/C", fiber: "Single mode", Central_Remote: "Central" },
     { model: "FDW1000S/R", fiber: "Single mode", Central_Remote: "Remote" },
-    { model: "EXP101/C", fiber: "Multimode", Central_Remote: "Central"},
-    { model: "EXP101/C", fiber: "Single mode", Central_Remote: "Central"},
-    { model: "EXP101/R", fiber: "Multimode", Central_Remote: "Remote"},
-    { model: "EXP101/R", fiber: "Single mode", Central_Remote: "Remote"},
+    { model: "EXP101/C", fiber: "--", Central_Remote: "Central"},
+    { model: "EXP101/R", fiber: "--", Central_Remote: "Remote"},
   ];
 
   const [filters, setFilters] = useState({

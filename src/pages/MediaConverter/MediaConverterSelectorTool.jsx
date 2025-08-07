@@ -7,14 +7,14 @@ const MediaConverterSelectorTool = () => {
   const [availableOptions, setAvailableOptions] = useState({
     Multi_Rate: ['No', 'Yes'], 
     Data_Rate: ['FE', 'GE'], 
-    PoE: ['No', 'PoE', 'PoEHo'], 
+    PoE: ['No', '30W', '60W', '90W'], 
     Fiber: ['Multimode', 'Single mode'],
     Number_Of_Fibers: ['1', '2'],
     Optics: ['LC', 'SC', 'ST'],
     Tx: ['850 nm', '1310 nm', '1550 nm'],
     Single_Dual_Quad: ['Single', 'Dual', 'Quad'], 
     Package: ['ComFit', 'Compact', 'DTF', 'Standalone'],
-    Operating_Power: ['12 to 24 VDC', '24 VAC', '48 to 56 VDC', '8 to 15 VDC', '8 to 24 VDC', '8 to 24 VDC, 24 VAC', '9 tp 24 VDC, 24 VAC']
+    Operating_Power: ['12 to 24 VDC', '24 VAC', '48 to 56 VDC', '8 to 15 VDC', '8 to 24 VDC', '8 to 24 VDC, 24 VAC', '9 to 24 VDC, 24 VAC']
   });
 
   const tooltipTexts = {
@@ -28,6 +28,27 @@ const MediaConverterSelectorTool = () => {
     Single_Dual_Quad: "Number of ports (Single, Dual, or Quad)",
     Package: "Form factor or packaging type",
     Operating_Power: "Required input power for the converter"
+  };
+
+  const sortOrders = {
+    Multi_Rate: ["No", "Yes"],
+    Data_Rate: ["FE", "GE"],
+    PoE: ["No", "30W", "60W", "90W"],
+    Fiber: ["Multimode", "Single mode"],
+    Number_Of_Fibers: ["1", "2"],
+    Optics: ["LC", "SC", "ST"],
+    Tx: ["850 nm", "1310 nm", "1550 nm"],
+    Single_Dual_Quad: ["Single", "Dual", "Quad"],
+    Package: ["ComFit", "Compact", "DTF", "Standalone"],
+    Operating_Power: [
+      "8 to 15 VDC",
+      "8 to 24 VDC",
+      "8 to 24 VDC, 24 VAC",
+      "9 to 24 VDC, 24 VAC",
+      "12 to 24 VDC",
+      "24 VAC",
+      "48 to 56 VDC",
+    ]
   };
 
   const handleClick = () => {
@@ -77,20 +98,32 @@ const MediaConverterSelectorTool = () => {
   };
 
   const updateAvailableOptions = (filteredProducts) => {
-    const getUniqueOrderedValues = (arr) => [...new Set(arr)];
     const newOptions = {
-      Multi_Rate: getUniqueOrderedValues(filteredProducts.map((product) => product.Multi_Rate)),
-      Data_Rate: getUniqueOrderedValues(filteredProducts.map((product) => product.Data_Rate)),
-      PoE: getUniqueOrderedValues(filteredProducts.map((product) => product.PoE)),
-      Fiber: getUniqueOrderedValues(filteredProducts.map((product) => product.Fiber)),
-      Number_Of_Fibers: getUniqueOrderedValues(filteredProducts.map((product) => product.Number_Of_Fibers)),
-      Optics: getUniqueOrderedValues(filteredProducts.map((product) => product.Optics)),
-      Tx: getUniqueOrderedValues(filteredProducts.map((product) => product.Tx)),
-      Single_Dual_Quad: getUniqueOrderedValues(filteredProducts.map((product) => product.Single_Dual_Quad)),
-      Package: getUniqueOrderedValues(filteredProducts.map((product) => product.Package)),
-      Operating_Power: getUniqueOrderedValues(filteredProducts.map((product) => product.Operating_Power))
+      Multi_Rate: [...new Set(filteredProducts.map((product) => product.Multi_Rate))],
+      Data_Rate: [...new Set(filteredProducts.map((product) => product.Data_Rate))],
+      PoE: [...new Set(filteredProducts.map((product) => product.PoE))],
+      Fiber: [...new Set(filteredProducts.map((product) => product.Fiber))],
+      Number_Of_Fibers: [...new Set(filteredProducts.map((product) => product.Number_Of_Fibers))],
+      Optics: [...new Set(filteredProducts.map((product) => product.Optics))],
+      Tx: [...new Set(filteredProducts.map((product) => product.Tx))],
+      Single_Dual_Quad: [...new Set(filteredProducts.map((product) => product.Single_Dual_Quad))],
+      Package: [...new Set(filteredProducts.map((product) => product.Package))],
+      Operating_Power: [...new Set(filteredProducts.map((product) => product.Operating_Power))]
     };
     setAvailableOptions(newOptions);
+  };
+
+  const sortOptions = (filterType, options) => {
+    const orderMap = sortOrders[filterType].reduce((acc, val, idx) => {
+      acc[val] = idx;
+      return acc;
+    }, {});
+
+    return options.sort((a, b) => {
+      const orderA = orderMap[a] ?? Infinity;
+      const orderB = orderMap[b] ?? Infinity;
+      return orderA - orderB;
+    });
   };
 
   const getDisplayName = (filterType) => {
@@ -140,7 +173,7 @@ const MediaConverterSelectorTool = () => {
                   onChange={(e) => handleFilterChange(filterType, e.target.value)}
                 >
                   <option value="">Select {getDisplayName(filterType)}</option>
-                  {options.map((option) => (
+                  {sortOptions(filterType, options).map((option) => (
                     <option key={option} value={option}>
                       {option}
                     </option>

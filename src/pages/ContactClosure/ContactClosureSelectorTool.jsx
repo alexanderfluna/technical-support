@@ -5,7 +5,7 @@ const ContactClosureSelectorTool = () => {
     const [selectorTool, setSelectorTool] = useState(false);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [availableOptions, setAvailableOptions] = useState({
-        fiber: [],
+        Fiber: [],
         Latching_Or_NonLatching: [],
         inputContactSupervision: [],
         summaryFaultRelay: [],
@@ -14,7 +14,7 @@ const ContactClosureSelectorTool = () => {
     });
 
     const tooltipTexts = {
-        fiber: "Type of fiber connection (Multimode or Single mode)",
+        Fiber: "Type of fiber connection (Multimode or Single mode)",
         Latching_Or_NonLatching: "Whether the contact closure is latching or non-latching",
         inputContactSupervision: "Presence of input contact supervision",
         summaryFaultRelay: "Presence of summary fault relay",
@@ -27,7 +27,7 @@ const ContactClosureSelectorTool = () => {
     }
     
     const [filters, setFilters] = useState({
-        fiber: null,
+        Fiber: null,
         Latching_Or_NonLatching: null,
         inputContactSupervision: null,
         summaryFaultRelay: null,
@@ -62,7 +62,7 @@ const ContactClosureSelectorTool = () => {
     
     const resetFilters = () => {
         setFilters({ 
-            fiber: null, 
+            Fiber: null, 
             Latching_Or_NonLatching: null, 
             inputContactSupervision: null, 
             summaryFaultRelay: null, 
@@ -75,7 +75,7 @@ const ContactClosureSelectorTool = () => {
 
     const updateAvailableOptions = (filteredProducts) => {
         const options = {
-            fiber: [...new Set(filteredProducts.map((product) => product.fiber))],
+            Fiber: [...new Set(filteredProducts.map((product) => product.Fiber))],
             Latching_Or_NonLatching: [...new Set(filteredProducts.map((product) => product.Latching_Or_NonLatching))],
             inputContactSupervision: [...new Set(filteredProducts.map((product) => product.inputContactSupervision))],
             summaryFaultRelay: [...new Set(filteredProducts.map((product) => product.summaryFaultRelay))],
@@ -152,7 +152,7 @@ const ContactClosureSelectorTool = () => {
                                 {filteredProducts.map((product, index) => (
                                     <tr key={index}>
                                         <td>{product.Model}</td>
-                                        <td>{product.fiber}</td>
+                                        <td>{product.Fiber}</td>
                                         <td>{product.Latching_Or_NonLatching}</td>
                                         <td>{product.inputContactSupervision}</td>
                                         <td>{product.summaryFaultRelay}</td>
