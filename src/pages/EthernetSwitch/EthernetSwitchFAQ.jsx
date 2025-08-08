@@ -80,7 +80,7 @@ const EthernetSwitchFAQ = ({ activeSubSection }) => {
         <input
           type="text"
           className="search-input"
-          placeholder="Search Ethernet Switch FAQs..."
+          placeholder="Search FAQs..."
           value={searchQuery}
           onChange={handleSearch}
         />

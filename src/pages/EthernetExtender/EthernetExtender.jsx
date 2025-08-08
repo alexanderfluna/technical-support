@@ -1,37 +1,11 @@
-import React, { useState, useRef } from 'react';
-import EthernetExtenderTroubleshooting from './EthernetExtenderTroubleshooting';
+import { useState, useRef } from 'react';
 import EthernetExtenderSelectorTool from './EthernetExtenderSelectorTool';
 import EthernetExtenderFAQ from './EthernetExtenderFAQ';
 import Navbar from '../../components/Navigation/Navbar'
 
 const EthernetExtender = () => {
-  const [selectedContent, setSelectedContent] = useState('');
-  const [activeSubSection, setActiveSubSection] = useState(null);
-  const troubleshootingRef = useRef(null);
   const relevantInfoRef = useRef(null);
   const selectorToolRef = useRef(null);
-
-  const handleSectionClick = (content) => {
-    setSelectedContent(prevContent => prevContent === content ? '' : content);
-    setActiveSubSection(null);
-    
-    if (selectedContent !== content) {
-      setTimeout(() => {
-        if (content === "ethernet-extender-selector-tool" && selectorToolRef.current) {
-          selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 50);
-    }
-  };
-
-  const handleSubSectionClick = (sectionId) => {
-    setActiveSubSection(sectionId);
-    
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   return (
     <div className="main-container">
@@ -49,18 +23,11 @@ const EthernetExtender = () => {
           </div>
           <p className="hero-subtitle"><strong>Technical Support</strong> — Find answers to common technical questions.</p>
           <div 
-            id="extender-troubleshooting" 
-            ref={troubleshootingRef}
-            className="troubleshooting"
-          >
-            <EthernetExtenderTroubleshooting activeSubSection={activeSubSection} />
-          </div>
-          <div 
             id="extender-relevant-information" 
             ref={relevantInfoRef}
             className="relevant-information"
           >
-            <EthernetExtenderFAQ activeSubSection={activeSubSection} />
+            <EthernetExtenderFAQ/>
           </div>
         </div>
       </div>

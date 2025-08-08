@@ -1,11 +1,9 @@
-import { useState, useRef } from 'react';
-import ContactClosureTroubleshooting from './ContactClosureTroubleshooting';
+import { useRef } from 'react';
 import ContactClosureSelectorTool from './ContactClosureSelectorTool';
 import ContactClosureFAQ from './ContactClosureFAQ';
 import Navbar from '../../components/Navigation/Navbar';
 
 const ContactClosure = () => {
-  const troubleshootingRef = useRef(null);
   const relevantInfoRef = useRef(null);
   const selectorToolRef = useRef(null);
 
@@ -25,14 +23,6 @@ const ContactClosure = () => {
             <ContactClosureSelectorTool />
           </div>
           <p className="hero-subtitle"><strong>Technical Support</strong> — Find answers to common technical questions.</p>
-          <div 
-            id="contact-troubleshooting" 
-            ref={troubleshootingRef}
-            className="troubleshooting"
-          >
-            <ContactClosureTroubleshooting />
-          </div>
-
           <div 
             id="contact-relevant-information" 
             ref={relevantInfoRef}

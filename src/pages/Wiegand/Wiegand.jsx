@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import WiegandSelectorTool from './WiegandSelectorTool';
 import WiegandFAQ from './WiegandFAQ';
 import Navbar from '../../components/Navigation/Navbar';
-import WiegandConfigurationTool from './WiegandConfigurationTool'
 
 const Wiegand = () => {  
   const faqRef = useRef(null);

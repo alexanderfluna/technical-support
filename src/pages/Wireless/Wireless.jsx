@@ -1,37 +1,11 @@
-import React, { useState, useRef } from 'react';
-import WirelessTroubleshooting from './WirelessTroubleshooting';
+import { useState, useRef } from 'react';
 import WirelessSelectorTool from './WirelessSelectorTool';
 import WirelessFAQ from './WirelessFAQ';
 import Navbar from '../../components/Navigation/Navbar';
 
 const Wireless = () => {
-  const [selectedContent, setSelectedContent] = useState('');
-  const [activeSubSection, setActiveSubSection] = useState(null);
-  const troubleshootingRef = useRef(null);
   const relevantInfoRef = useRef(null);
   const selectorToolRef = useRef(null);
-
-  const handleSectionClick = (content) => {
-    setSelectedContent(prevContent => prevContent === content ? '' : content);
-    setActiveSubSection(null);
-    
-    if (selectedContent !== content) {
-      setTimeout(() => {
-        if (content === "wireless-selector-tool" && selectorToolRef.current) {
-          selectorToolRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 50);
-    }
-  };
-
-  const handleSubSectionClick = (sectionId) => {
-    setActiveSubSection(sectionId);
-    
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   return (
     <div className="main-container">
@@ -49,19 +23,11 @@ const Wireless = () => {
             </div>
             <p className="hero-subtitle"><strong>Technical Support</strong> — Find answers to common technical questions.</p>
             <div 
-              id="wireless-troubleshooting" 
-              ref={troubleshootingRef}
-              className="troubleshooting"
-            >
-              <WirelessTroubleshooting activeSubSection={activeSubSection} />
-            </div>
-
-            <div 
               id="wireless-relevant-information" 
               ref={relevantInfoRef}
               className="relevant-information"
             >
-              <WirelessFAQ activeSubSection={activeSubSection} />
+              <WirelessFAQ />
             </div>
           </div>
         </div>
