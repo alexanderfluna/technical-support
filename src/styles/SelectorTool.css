@@ -40,8 +40,6 @@
   }
   
   .reset-button {
-    grid-column: 1 / -1;
-    padding: 0.75rem 1.5rem;
     background-color: rgb(231, 54, 54);
     color: white;
     border: none;
@@ -49,6 +47,8 @@
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
+    height: 3rem;
+    width: 15rem;
   }
   
   .reset-button:hover {

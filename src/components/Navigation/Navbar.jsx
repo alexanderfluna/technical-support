@@ -1,29 +1,28 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Search from './Search';
-import Chatbot from '../Chatbot/Chatbot';
 
 const Navbar = ({ onCategoryChange }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState(null);
   const navigate = useNavigate();
   const categoryRefs = {
-    ethernet: useRef(null),
-    'data-over-fiber': useRef(null),
+    'media-converter': useRef(null),
     accessories: useRef(null)
   };
 
   const handleMouseClick = (category) => {
     const routeMap = {
       "technical-support": "/technical-support",
-      "server": "/technical-support/server",
+      "server": "/technical-support/razberi-server",
       "ethernet-switch": "/technical-support/ethernet-switch",
       "media-converter": "/technical-support/media-converter",
-      "ethernet-extender": "/technical-support/ethernet-extender",
-      "wireless": "/technical-support/wireless",
-      "serial-data": "/technical-support/serial-data",
-      "wiegand": "/technical-support/wiegand",
-      "contact-closure": "/technical-support/contact-closure",
+      "ethernet-to-fiber": "/technical-support/ethernet-to-fiber",
+      "ethernet-to-utp-coax": "/technical-support/ethernet-to-utp-coax",
+      "serial-data-to-fiber": "/technical-support/serial-data-to-fiber",
+      "contact-closure-to-fiber": "/technical-support/contact-closure-to-fiber",
+      "wiegand-to-fiber": "/technical-support/wiegand-to-fiber",
+      "wireless-ethernet": "/technical-support/wireless-ethernet",
       "sfp": "/technical-support/sfp",
       "power-supply": "/technical-support/power-supply",
       "poe-injector": "/technical-support/poe-injector",
@@ -55,7 +54,6 @@ const Navbar = ({ onCategoryChange }) => {
   };
 
   const handleCategoryLeave = (category, e) => {
-    // Check if mouse is leaving to go to the hover-box
     const relatedTarget = e.relatedTarget;
     const hoverBox = categoryRefs[category].current;
     
@@ -76,17 +74,13 @@ const Navbar = ({ onCategoryChange }) => {
 
   const getSubcategories = (category) => {
     switch(category) {
-      case 'ethernet':
+      case 'media-converter':
         return [
-          { name: 'Ethernet Switch', id: 'ethernet-switch' },
-          { name: 'Media Converter', id: 'media-converter' },
-          { name: 'Ethernet Extender', id: 'ethernet-extender' },
-        ];
-      case 'data-over-fiber':
-        return [
-          { name: 'Serial Data', id: 'serial-data' },
-          { name: 'Wiegand', id: 'wiegand' },
-          { name: 'Contact Closure', id: 'contact-closure' },
+          { name: 'Ethernet To Fiber', id: 'ethernet-to-fiber' },
+          { name: 'Ethernet To UTP/Coax', id: 'ethernet-to-utp-coax' },
+          { name: 'Serial Data To Fiber', id: 'serial-data-to-fiber' },
+          { name: 'Contact Closure To Fiber', id: 'contact-closure-to-fiber' },
+          { name: 'Wiegand To Fiber', id: 'wiegand-to-fiber' },
         ];
       case 'accessories':
         return [
@@ -123,46 +117,31 @@ const Navbar = ({ onCategoryChange }) => {
           <span>Razberi Server</span>
         </div>
 
+        <div className="main-category" onClick={() => handleMouseClick("ethernet-switch")}>
+          <span>Ethernet Switch</span>
+        </div>
+
         <div 
           className="main-category"
-          onClick={() => toggleCategory('ethernet')}
-          onMouseLeave={(e) => handleCategoryLeave('ethernet', e)}
+          onClick={() => toggleCategory('media-converter')}
+          onMouseLeave={(e) => handleCategoryLeave('media-converter', e)}
         >
-          <span>Ethernet<span className="dropdown-chevron"></span></span>
-          {(expandedCategory === 'ethernet') && (
+          <span>Media Converter<span className="dropdown-chevron"></span></span>
+          {(expandedCategory === 'media-converter') && (
             <div 
               className="hover-box"
-              ref={categoryRefs.ethernet}
-              onMouseLeave={(e) => handleHoverBoxLeave('ethernet', e)}
+              ref={categoryRefs['media-converter']}
+              onMouseLeave={(e) => handleHoverBoxLeave('media-converter', e)}
             >
-              {getSubcategories('ethernet').map(item => (
+              {getSubcategories('media-converter').map(item => (
                 <li key={item.id} onClick={() => handleMouseClick(item.id)}>{item.name}</li>
               ))}
             </div>
           )}
         </div>
 
-        <div className="main-category" onClick={() => handleMouseClick("wireless")}>
-          <span>Wireless Radio</span>
-        </div>
-
-        <div 
-          className="main-category"
-          onClick={() => toggleCategory('data-over-fiber')}
-          onMouseLeave={(e) => handleCategoryLeave('data-over-fiber', e)}
-        >
-          <span>Data Over Fiber<span className="dropdown-chevron"></span></span>
-          {(expandedCategory === 'data-over-fiber') && (
-            <div 
-              className="hover-box"
-              ref={categoryRefs['data-over-fiber']}
-              onMouseLeave={(e) => handleHoverBoxLeave('data-over-fiber', e)}
-            >
-              {getSubcategories('data-over-fiber').map(item => (
-                <li key={item.id} onClick={() => handleMouseClick(item.id)}>{item.name}</li>
-              ))}
-            </div>
-          )}
+        <div className="main-category" onClick={() => handleMouseClick("wireless-ethernet")}>
+          <span>Wireless Ethernet</span>
         </div>
 
         <div 

@@ -12,7 +12,7 @@ const EthernetExtender = () => {
       <Navbar/>
       <div className="page">
         <div className="main-content">
-          <h1 className="faq-title" style={{fontSize: "3rem"}}>Ethernet Extender</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>Ethernet to UTP/Coax</h1>
           <p className="hero-subtitle"><strong>Selector Tool</strong> — Identify the perfect solution for your requirements.</p>
           <div 
             id="ethernet-extender-selector-tool" 

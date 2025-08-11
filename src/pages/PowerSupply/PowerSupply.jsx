@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navigation/Navbar';
 
 const PowerSupply = () => {
-  const [selectorTool, setSelectorTool] = useState(true); // Always show for this component
+  const [selectorTool, setSelectorTool] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     voltage: [],
@@ -90,7 +90,7 @@ const PowerSupply = () => {
         {selectorTool && (
           <>
             <div className="filter-grid">
-              <button className="reset-button" onClick={resetFilters}>
+              <button className="reset-button" style={{width: "10rem"}} onClick={resetFilters}>
                 Reset
               </button>
 

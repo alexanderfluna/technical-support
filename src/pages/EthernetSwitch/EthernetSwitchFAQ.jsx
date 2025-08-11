@@ -80,6 +80,7 @@ const EthernetSwitchFAQ = ({ activeSubSection }) => {
         <input
           type="text"
           className="search-input"
+          style={{width: "20rem"}}
           placeholder="Search FAQs..."
           value={searchQuery}
           onChange={handleSearch}

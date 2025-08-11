@@ -82,6 +82,7 @@ const SFP = () => {
         <div className="search-container" style={{ marginBottom: '20px' }}>
           <input
             type="text"
+            style={{width: "20rem"}}
             className="search-input"
             placeholder="Search FAQs..."
             value={searchQuery}

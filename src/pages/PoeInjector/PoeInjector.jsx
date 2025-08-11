@@ -107,7 +107,7 @@ const PoEInjector = () => {
         {selectorTool && (
           <>
             <div className="filter-grid">
-              <button className="reset-button" onClick={resetFilters}>
+              <button className="reset-button" style={{width: "10rem"}} onClick={resetFilters}>
                 Reset
               </button>
 

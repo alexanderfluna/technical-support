@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import SerialDataSelectorTool from './SerialDataSelectorTool';
 import SerialDataFAQ from './SerialDataFAQ';
 import Navbar from '../../components/Navigation/Navbar';
@@ -12,7 +12,7 @@ const SerialData = () => {
       <Navbar/>
       <div className="page">
         <div className="main-content">
-          <h1 className="faq-title" style={{fontSize: "3rem"}}>Serial Data</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>Serial Data To Fiber</h1>
           <p className="hero-subtitle"><strong>Selector Tool</strong> — Identify the perfect solution for your requirements.</p>
           <div 
             id="serial-data-selector-tool" 

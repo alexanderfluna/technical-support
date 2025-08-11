@@ -13,7 +13,7 @@ const ContactClosure = () => {
       <Navbar />
       <div className="page">
         <div className="main-content">
-          <h1 className="faq-title" style={{fontSize: "3rem"}}>Contact Closure</h1>
+          <h1 className="faq-title" style={{fontSize: "3rem"}}>Contact Closure To Fiber</h1>
           <p className="hero-subtitle"><strong>Selector Tool</strong> — Identify the perfect solution for your requirements.</p>
           <div 
             id="contact-closure-selector-tool" 

@@ -12,7 +12,7 @@ const Wiegand = () => {
         <Navbar/>
         <div className="page">
           <div className="main-content">
-            <h1 className="faq-title" style={{fontSize: "3rem"}}>Wiegand</h1>
+            <h1 className="faq-title" style={{fontSize: "3rem"}}>Wiegand To Fiber</h1>
             <p className="hero-subtitle"><strong>Selector Tool</strong> — Identify the perfect solution for your requirements.</p>
             <div 
               id="wiegand-selector-tool" 

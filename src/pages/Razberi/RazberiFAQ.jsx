@@ -82,6 +82,7 @@ const RazberiFAQ = ({ activeSubSection }) => {
         <div>
             <div className="search-container" style={{ marginBottom: '20px' }}>
             <input
+                style={{width: "20rem"}}
                 type="text"
                 className="search-input"
                 placeholder="Search FAQs..."

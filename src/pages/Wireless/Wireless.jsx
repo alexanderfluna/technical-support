@@ -12,7 +12,7 @@ const Wireless = () => {
         <Navbar/>
         <div className="page">
           <div className="main-content">
-            <h1 className="faq-title" style={{fontSize: "3rem"}}>Wireless Radio</h1>
+            <h1 className="faq-title" style={{fontSize: "3rem"}}>Wireless Ethernet</h1>
             <p className="hero-subtitle"><strong>Selector Tool</strong> — Identify the perfect solution for your requirements.</p>
             <div 
               id="wireless-selector-tool" 

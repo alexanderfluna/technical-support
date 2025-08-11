@@ -24,14 +24,14 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/technical-support" element={<Webpage />} />
-        <Route path="/technical-support/server" element={<Razberi />} />
+        <Route path="/technical-support/razberi-server" element={<Razberi />} />
         <Route path="/technical-support/ethernet-switch" element={<EthernetSwitch />} />
-        <Route path="/technical-support/media-converter" element={<MediaConverter />} />
-        <Route path="/technical-support/ethernet-extender" element={<EthernetExtender />} />
-        <Route path="/technical-support/wireless" element={<Wireless />} />
-        <Route path="/technical-support/serial-data" element={<SerialData />} />
-        <Route path="/technical-support/wiegand" element={<Wiegand />} />
-        <Route path="/technical-support/contact-closure" element={<ContactClosure />} />
+        <Route path="/technical-support/ethernet-to-fiber" element={<MediaConverter />} />
+        <Route path="/technical-support/ethernet-to-utp-coax" element={<EthernetExtender />} />
+        <Route path="/technical-support/wireless-ethernet" element={<Wireless />} />
+        <Route path="/technical-support/serial-data-to-fiber" element={<SerialData />} />
+        <Route path="/technical-support/wiegand-to-fiber" element={<Wiegand />} />
+        <Route path="/technical-support/contact-closure-to-fiber" element={<ContactClosure />} />
         <Route path="/technical-support/sfp" element={<SFP />} />
         <Route path="/technical-support/power-supply" element={<PowerSupply />} />
         <Route path="/technical-support/poe-injector" element={<PoeInjector />} />
