@@ -6,20 +6,22 @@ const ContactClosureSelectorTool = () => {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [availableOptions, setAvailableOptions] = useState({
         Fiber: [],
+        numberOfChannels: [],
+        bidirectional: [],
         Latching_Or_NonLatching: [],
         inputContactSupervision: [],
         summaryFaultRelay: [],
-        numberOfChannels: [],
-        bidirectional: [],
+        carrierDetect: [],
     });
 
     const tooltipTexts = {
         Fiber: "Type of fiber connection (Multimode or Single mode)",
+        numberOfChannels: "Number of contact closure channels",
+        bidirectional: "Whether the contact closure supports bidirectional communication",
         Latching_Or_NonLatching: "Whether the contact closure is latching or non-latching",
         inputContactSupervision: "Presence of input contact supervision",
         summaryFaultRelay: "Presence of summary fault relay",
-        numberOfChannels: "Number of contact closure channels",
-        bidirectional: "Whether the contact closure supports bidirectional communication"
+        carrierDetect: "Whether the device monitors the status of the optical link"
     };
 
     const handleClick = () => {
@@ -28,11 +30,12 @@ const ContactClosureSelectorTool = () => {
     
     const [filters, setFilters] = useState({
         Fiber: null,
+        numberOfChannels: null,
+        bidirectional: null,
         Latching_Or_NonLatching: null,
         inputContactSupervision: null,
         summaryFaultRelay: null,
-        numberOfChannels: null,
-        bidirectional: null,
+        carrierDetect: null,
     });
 
     useEffect(() => {
@@ -63,11 +66,12 @@ const ContactClosureSelectorTool = () => {
     const resetFilters = () => {
         setFilters({ 
             Fiber: null, 
+            numberOfChannels: null, 
+            bidirectional: null,
             Latching_Or_NonLatching: null, 
             inputContactSupervision: null, 
-            summaryFaultRelay: null, 
-            numberOfChannels: null, 
-            bidirectional: null
+            summaryFaultRelay: null,
+            carrierDetect: null
         });
         setFilteredProducts(products); 
         updateAvailableOptions(products); 
@@ -76,11 +80,12 @@ const ContactClosureSelectorTool = () => {
     const updateAvailableOptions = (filteredProducts) => {
         const options = {
             Fiber: [...new Set(filteredProducts.map((product) => product.Fiber))],
-            Latching_Or_NonLatching: [...new Set(filteredProducts.map((product) => product.Latching_Or_NonLatching))],
-            inputContactSupervision: [...new Set(filteredProducts.map((product) => product.inputContactSupervision))],
-            summaryFaultRelay: [...new Set(filteredProducts.map((product) => product.summaryFaultRelay))],
             numberOfChannels: [...new Set(filteredProducts.map((product) => product.numberOfChannels))],
-            bidirectional: [...new Set(filteredProducts.map((product) => product.bidirectional))]
+            bidirectional: [...new Set(filteredProducts.map((product) => product.bidirectional).filter(opt => opt !== "--"))],
+            Latching_Or_NonLatching: [...new Set(filteredProducts.map((product) => product.Latching_Or_NonLatching).filter(opt => opt !== "--"))],
+            inputContactSupervision: [...new Set(filteredProducts.map((product) => product.inputContactSupervision).filter(opt => opt !== "--"))],
+            summaryFaultRelay: [...new Set(filteredProducts.map((product) => product.summaryFaultRelay).filter(opt => opt !== "--"))],
+            carrierDetect: [...new Set(filteredProducts.map((product) => product.carrierDetect).filter(opt => opt !== "--"))]
         };
         setAvailableOptions(options);
     };
@@ -92,9 +97,21 @@ const ContactClosureSelectorTool = () => {
             case 'summaryFaultRelay': return 'Summary Fault Relay';
             case 'numberOfChannels': return 'Number of Channels';
             case 'bidirectional': return 'Bidirectional';
+            case 'carrierDetect': return 'Carrier Detect';
             default: return filterType;
         }
     };
+
+    // Define the order of columns
+    const columnOrder = [
+        'Fiber',
+        'numberOfChannels',
+        'bidirectional',
+        'Latching_Or_NonLatching',
+        'inputContactSupervision',
+        'summaryFaultRelay',
+        'carrierDetect'
+    ];
 
     return (
         <div className="tool-container">
@@ -107,7 +124,7 @@ const ContactClosureSelectorTool = () => {
                             Reset
                         </button>
 
-                        {Object.entries(availableOptions).map(([filterType, options]) => (
+                        {columnOrder.map((filterType) => (
                             <div key={filterType} className="filter-group">
                                 <div className="filter-label">
                                     {getDisplayName(filterType)}
@@ -126,7 +143,7 @@ const ContactClosureSelectorTool = () => {
                                     onChange={(e) => handleFilterChange(filterType, e.target.value)}
                                 >
                                     <option value="">Select {getDisplayName(filterType)}</option>
-                                    {options.map((option) => (
+                                    {availableOptions[filterType].map((option) => (
                                         <option key={option} value={option}>
                                             {option}
                                         </option>
@@ -141,7 +158,7 @@ const ContactClosureSelectorTool = () => {
                             <thead>
                                 <tr>
                                     <th>Model</th>
-                                    {Object.keys(availableOptions).map((key) => (
+                                    {columnOrder.map((key) => (
                                         <th key={key}>
                                             {getDisplayName(key)}
                                         </th>
@@ -153,11 +170,12 @@ const ContactClosureSelectorTool = () => {
                                     <tr key={index}>
                                         <td>{product.Model}</td>
                                         <td>{product.Fiber}</td>
+                                        <td>{product.numberOfChannels}</td>
+                                        <td>{product.bidirectional}</td>
                                         <td>{product.Latching_Or_NonLatching}</td>
                                         <td>{product.inputContactSupervision}</td>
                                         <td>{product.summaryFaultRelay}</td>
-                                        <td>{product.numberOfChannels}</td>
-                                        <td>{product.bidirectional}</td>
+                                        <td>{product.carrierDetect}</td>
                                     </tr>
                                 ))}
                             </tbody>

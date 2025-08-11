@@ -439,7 +439,7 @@ body {
   position: absolute;
   bottom: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-105%);
   width: 180px;
   padding: 8px;
   background: #333;

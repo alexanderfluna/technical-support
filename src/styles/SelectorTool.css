@@ -48,7 +48,7 @@
     cursor: pointer;
     transition: var(--transition);
     height: 3rem;
-    width: 15rem;
+    width: 13rem;
   }
   
   .reset-button:hover {
